@@ -12,8 +12,11 @@ const meta: Meta<typeof Radio> = {
 };
 
 export const Off: Story = { args: { label: 'Timer', checked: false } };
+
 export const On: Story = { args: { label: 'Timer', checked: true } };
+
 export const DisabledOff: Story = { args: { label: 'Timer', checked: false, disabled: true } };
+
 export const DisabledOn: Story = { args: { label: 'Timer', checked: true, disabled: true } };
 
 export default meta;

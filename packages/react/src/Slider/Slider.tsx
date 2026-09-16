@@ -21,6 +21,7 @@ export function Slider({ value, max, min = 0, step = 1, onChange, disabled, labe
 
   const pct = safeMax > safeMin ? ((safeValue - safeMin) / (safeMax - safeMin)) * 100 : 0;
   const effectiveStep = Number.isFinite(step) && step > 0 ? step : 1;
+
   return (
     <input
       type="range"

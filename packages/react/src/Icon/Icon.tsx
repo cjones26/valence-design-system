@@ -40,6 +40,7 @@ export function Icon({ name, size = 20, color = 'currentColor' }: IconProps) {
   // Safe: `glyphs` is a Record over the exact IconName union, so every
   // name has an entry — noUncheckedIndexedAccess just can't see that.
   const g = glyphs[name]!;
+
   return (
     <svg width={size} height={size} viewBox={g.viewBox} fill="none" aria-hidden="true">
       <path

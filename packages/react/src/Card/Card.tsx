@@ -18,6 +18,7 @@ export function Card({ status = 'resting', title, actionLabel, onPress, children
     [title, status !== 'resting' ? status : undefined, describedChildren]
       .filter(Boolean)
       .join(', ');
+
   return (
     <div className={`${styles.card} ${STATUS_CLASS[status] ?? ''}`}>
       {onPress && (

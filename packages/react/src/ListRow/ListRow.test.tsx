@@ -6,6 +6,7 @@ import { ListRow } from './ListRow';
 
 function PressableListRow() {
   const [pressed, setPressed] = useState(false);
+
   return (
     <>
       <ListRow title="Groceries" onPress={() => setPressed(true)} />

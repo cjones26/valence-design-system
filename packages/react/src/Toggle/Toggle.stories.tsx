@@ -11,13 +11,18 @@ const meta: Meta<typeof Toggle> = {
 
 function TogglePlayground() {
   const [checked, setChecked] = useState(false);
+
   return <Toggle label="Reminders" checked={checked} onChange={setChecked} />;
 }
 
 export const Off: Story = { args: { label: 'Reminders', checked: false } };
+
 export const On: Story = { args: { label: 'Reminders', checked: true } };
+
 export const DisabledOff: Story = { args: { label: 'Reminders', checked: false, disabled: true } };
+
 export const DisabledOn: Story = { args: { label: 'Reminders', checked: true, disabled: true } };
+
 export const Playground: Story = { render: () => <TogglePlayground /> };
 
 export default meta;

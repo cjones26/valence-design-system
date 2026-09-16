@@ -5,6 +5,7 @@ import { SearchField } from './SearchField';
 
 function SearchExample({ onSubmit }: { onSubmit?: () => void }) {
   const [value, setValue] = useState('');
+
   return (
     <SearchField
       label="Search documentation"

@@ -155,6 +155,7 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
             outlineStyle: 'solid',
           }),
         };
+
         return style;
       }}
     >

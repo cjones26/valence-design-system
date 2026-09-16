@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import stylistic from '@stylistic/eslint-plugin';
 
 const nodeGlobals = { console: 'readonly', process: 'readonly', __dirname: 'readonly' };
 const typescriptFiles = ['**/*.{ts,tsx,mts,cts}'];
@@ -30,8 +31,14 @@ export default tseslint.config(
   js.configs.recommended,
   ...typescriptConfigs,
   {
+    plugins: { '@stylistic': stylistic },
     rules: {
       curly: ['error', 'all'],
+      '@stylistic/padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: '*', next: 'return' },
+        { blankLine: 'always', prev: 'export', next: 'export' },
+      ],
     },
   },
   {

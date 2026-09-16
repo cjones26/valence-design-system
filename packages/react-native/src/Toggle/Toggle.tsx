@@ -19,6 +19,7 @@ export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
       useNativeDriver: false,
     });
     animation.start();
+
     return () => animation.stop();
   }, [checked, anim, reduceMotion]);
 

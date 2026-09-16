@@ -6,6 +6,7 @@ import { ThemeProvider, useTheme } from './ThemeProvider';
 
 function ThemeReporter() {
   const theme = useTheme();
+
   return <Text>{theme.color_text_primary}</Text>;
 }
 

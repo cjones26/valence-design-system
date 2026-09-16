@@ -14,6 +14,7 @@ const meta: Meta<typeof Card> = {
 
 function TappableCardExample() {
   const [count, setCount] = useState(0);
+
   return (
     <Card title="Pushups" onPress={() => setCount((n) => n + 1)}>
       {`Tap anywhere on the card. Pressed ${count} times.`}
@@ -24,9 +25,11 @@ function TappableCardExample() {
 export const Resting: Story = {
   args: { status: 'resting', title: 'Pushups', children: 'Default appearance.' },
 };
+
 export const Editing: Story = {
   args: { status: 'editing', title: 'Pushups', children: 'Ringed while being edited inline.' },
 };
+
 export const Success: Story = {
   args: {
     status: 'success',
@@ -34,12 +37,15 @@ export const Success: Story = {
     children: 'Filled green when all criteria are met.',
   },
 };
+
 export const Skipped: Story = {
   args: { status: 'skipped', title: 'Pushups', children: 'Faded — does not apply today.' },
 };
+
 export const Error: Story = {
   args: { status: 'error', title: 'Pushups', children: 'Outlined red when a sync fails.' },
 };
+
 export const TappableCard: Story = { render: () => <TappableCardExample /> };
 
 export default meta;

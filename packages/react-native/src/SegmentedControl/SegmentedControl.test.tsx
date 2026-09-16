@@ -12,6 +12,7 @@ const OPTIONS = [
 
 function ControlledSegmentedControl({ disabled }: { disabled?: boolean }) {
   const [value, setValue] = useState('day');
+
   return (
     <>
       <SegmentedControl

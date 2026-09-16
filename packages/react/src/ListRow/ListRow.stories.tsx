@@ -17,6 +17,7 @@ export const Default: Story = {
     trailingIcon: (color) => <Icon name="chevron" size={14} color={color} />,
   },
 };
+
 export const Reordering: Story = {
   args: {
     icon: '💪',
@@ -25,6 +26,7 @@ export const Reordering: Story = {
     trailingIcon: (color) => <Icon name="menu" size={20} color={color} />,
   },
 };
+
 export const Archived: Story = {
   args: { icon: '💪', title: 'Pushups', subtitle: 'Stopped May 9', archived: true },
 };

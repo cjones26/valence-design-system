@@ -6,6 +6,7 @@ import { Radio } from './Radio';
 
 function ControlledRadio({ disabled }: { disabled?: boolean }) {
   const [checked, setChecked] = useState(false);
+
   return (
     <Radio
       label="Notify me"

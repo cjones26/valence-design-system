@@ -15,6 +15,7 @@ function weightStyle(weight: number): Pick<TextStyle, 'fontFamily' | 'fontWeight
   if (weight >= 600) {
     return GEIST.semibold;
   }
+
   return GEIST.regular;
 }
 
@@ -99,6 +100,7 @@ export function Typography({
   ...rest
 }: TypographyProps) {
   const theme = useTheme();
+
   return (
     <Text
       accessibilityRole={accessibilityRole ?? (HEADER_VARIANTS.has(variant) ? 'header' : undefined)}

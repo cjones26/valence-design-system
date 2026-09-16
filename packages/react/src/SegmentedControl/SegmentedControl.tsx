@@ -26,6 +26,7 @@ export function SegmentedControl({
   }
 
   const selectedIndex = options.findIndex((opt) => opt.value === value);
+
   return (
     <div
       className={styles.group}

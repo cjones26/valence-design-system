@@ -10,6 +10,7 @@ const options = [
 
 function ControlledPicker({ disabled }: { disabled?: boolean }) {
   const [value, setValue] = useState('daily');
+
   return (
     <Picker
       label="Frequency"

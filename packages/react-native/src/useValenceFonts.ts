@@ -17,5 +17,6 @@ export function useValenceFonts(): boolean {
     'Geist-Bold': geistBold,
     'GeistMono-SemiBold': geistMonoSemibold,
   });
+
   return loaded;
 }

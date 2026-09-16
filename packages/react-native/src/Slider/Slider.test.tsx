@@ -4,6 +4,7 @@ import { Slider } from './Slider';
 
 jest.mock('@react-native-community/slider', () => {
   const { View } = jest.requireActual('react-native');
+
   return { __esModule: true, default: View };
 });
 

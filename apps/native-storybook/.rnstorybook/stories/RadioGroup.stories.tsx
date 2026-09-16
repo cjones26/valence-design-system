@@ -16,13 +16,16 @@ const options = [
 
 function RadioGroupPlayground() {
   const [value, setValue] = useState('timer');
+
   return <RadioGroup options={options} value={value} onChange={setValue} label="Goal type" />;
 }
 
 export const Default: Story = { args: { options, value: 'timer', label: 'Goal type' } };
+
 export const Disabled: Story = {
   args: { options, value: 'timer', label: 'Goal type', disabled: true },
 };
+
 export const Playground: Story = { render: () => <RadioGroupPlayground /> };
 
 export default meta;

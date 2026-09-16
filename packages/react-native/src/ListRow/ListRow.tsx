@@ -103,5 +103,6 @@ export function ListRow({
       </Pressable>
     );
   }
+
   return <View style={rowStyle}>{content}</View>;
 }

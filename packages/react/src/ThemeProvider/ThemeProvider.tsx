@@ -18,12 +18,14 @@ function toCssVars(theme: ThemeOverride): CSSProperties {
   for (const [key, value] of Object.entries(theme)) {
     vars[`--${key.replace(/_/g, '-')}`] = String(value);
   }
+
   return vars as CSSProperties;
 }
 
 function subscribeToSystemScheme(callback: () => void) {
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   mql.addEventListener('change', callback);
+
   return () => mql.removeEventListener('change', callback);
 }
 

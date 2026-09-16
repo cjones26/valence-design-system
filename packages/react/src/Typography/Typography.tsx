@@ -16,6 +16,7 @@ const DEFAULT_ELEMENT: Partial<Record<TypographyVariant, ElementType>> = {
 
 export function Typography({ variant, children, className, as, ...rest }: TypographyProps) {
   const Element = as ?? DEFAULT_ELEMENT[variant] ?? 'span';
+
   return (
     <Element className={`${styles[variant]} ${className ?? ''}`} {...rest}>
       {children}

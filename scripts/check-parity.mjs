@@ -44,6 +44,7 @@ function getExportedNames(source) {
       }
     }
   }
+
   return names;
 }
 
@@ -65,6 +66,7 @@ function getStoryNames(file) {
   if (!file) {
     return new Set();
   }
+
   return new Set(
     [...readFileSync(file, 'utf8').matchAll(/export const (\w+)/g)].map((match) => match[1]),
   );

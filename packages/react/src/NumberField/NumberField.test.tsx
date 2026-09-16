@@ -18,6 +18,7 @@ function ControlledNumberField({
   disabled?: boolean;
 }) {
   const [value, setValue] = useState(initial);
+
   return (
     <NumberField
       label="Quantity"

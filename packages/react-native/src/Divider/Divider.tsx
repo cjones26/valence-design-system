@@ -4,6 +4,7 @@ import { useTheme } from '../ThemeProvider/ThemeProvider';
 
 export function Divider({ inset = false }: DividerProps) {
   const theme = useTheme();
+
   return (
     <View
       accessibilityRole="none"

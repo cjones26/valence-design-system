@@ -18,6 +18,7 @@ function GroupedRowsExample() {
 export const Default: Story = {
   render: () => <Surface>Cloud backup content</Surface>,
 };
+
 export const GroupedRows: Story = { render: () => <GroupedRowsExample /> };
 
 export default meta;

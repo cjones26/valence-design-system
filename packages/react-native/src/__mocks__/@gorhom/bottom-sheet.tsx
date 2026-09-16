@@ -52,6 +52,7 @@ export const BottomSheetModal = forwardRef<ModalHandle, ModalProps>(function Moc
   if (!visible) {
     return null;
   }
+
   return (
     <View testID="bottom-sheet" {...props}>
       {Backdrop && <Backdrop />}
@@ -65,6 +66,7 @@ export const BottomSheet = forwardRef<ModalHandle, ModalProps>(function MockBott
   _ref,
 ) {
   const visible = index >= 0;
+
   return visible ? (
     <View testID="bottom-sheet" {...props}>
       {Backdrop && <Backdrop onPress={() => props.onChange?.(-1)} />}

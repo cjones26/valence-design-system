@@ -30,6 +30,7 @@ function tokenValue(tokens, path) {
 function parseColor(value) {
   if (value.startsWith('#')) {
     const hex = value.slice(1);
+
     return {
       channels: [0, 2, 4].map((index) => Number.parseInt(hex.slice(index, index + 2), 16)),
       alpha: 1,
@@ -40,6 +41,7 @@ function parseColor(value) {
   if (!values || values.length < 3) {
     throw new Error(`Unsupported color: ${value}`);
   }
+
   return { channels: values.slice(0, 3), alpha: values[3] ?? 1 };
 }
 
@@ -51,6 +53,7 @@ function composite(foreground, background) {
 
 function surface(tokens, path, primarySurface) {
   const color = parseColor(tokenValue(tokens.color, path));
+
   return color.alpha < 1 ? composite(color, primarySurface) : color.channels;
 }
 
@@ -58,12 +61,14 @@ function luminance(channels) {
   const [red, green, blue] = channels
     .map((channel) => channel / 255)
     .map((channel) => (channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4));
+
   return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
 }
 
 function contrast(foreground, background) {
   const foregroundLuminance = luminance(foreground);
   const backgroundLuminance = luminance(background);
+
   return (
     (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
     (Math.min(foregroundLuminance, backgroundLuminance) + 0.05)

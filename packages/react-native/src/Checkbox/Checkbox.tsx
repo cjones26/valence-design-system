@@ -7,6 +7,7 @@ import { Typography } from '../Typography/Typography';
 export function Checkbox({ checked, onChange, disabled, label }: CheckboxProps) {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
+
   return (
     <Pressable
       disabled={isDisabled}

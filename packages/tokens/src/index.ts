@@ -17,7 +17,9 @@ import { theme as indigoPopDark } from './generated/indigo-pop-dark.js';
 import type { ThemeColorKey } from './generated/theme-color-keys.js';
 
 export type Theme = typeof hiVisLight;
+
 export type ThemeMode = 'light' | 'dark';
+
 export type ThemePreset =
   | 'hi-vis'
   | 'sea-glass'
@@ -27,6 +29,7 @@ export type ThemePreset =
   | 'sunset-berry'
   | 'bodega'
   | 'indigo-pop';
+
 // Runtime overrides are restricted to color tokens — see build.mjs's
 // theme-color-keys generator for why.
 export type ThemeOverride = Partial<Pick<Theme, ThemeColorKey>>;

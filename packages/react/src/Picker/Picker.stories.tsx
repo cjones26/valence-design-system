@@ -17,13 +17,16 @@ const options = [
 
 function PickerPlayground() {
   const [value, setValue] = useState('weekly');
+
   return <Picker label="Frequency" options={options} value={value} onChange={setValue} />;
 }
 
 export const Default: Story = { args: { label: 'Frequency', options, value: 'weekly' } };
+
 export const Placeholder: Story = {
   args: { label: 'Frequency', options, value: '', placeholder: 'Choose a frequency' },
 };
+
 export const Error: Story = {
   args: {
     label: 'Frequency',
@@ -34,9 +37,11 @@ export const Error: Story = {
     helperText: 'Choose a frequency.',
   },
 };
+
 export const Disabled: Story = {
   args: { label: 'Frequency', options, value: 'weekly', disabled: true },
 };
+
 export const Playground: Story = { render: () => <PickerPlayground /> };
 
 export default meta;

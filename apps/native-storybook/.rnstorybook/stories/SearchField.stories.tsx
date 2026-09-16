@@ -8,6 +8,7 @@ const meta: Meta<typeof SearchField> = { title: 'Components/SearchField', compon
 
 function SearchExample() {
   const [value, setValue] = useState('');
+
   return (
     <SearchField
       label="Search documentation"
@@ -19,6 +20,7 @@ function SearchExample() {
 }
 
 export const Default: Story = { render: () => <SearchExample /> };
+
 export const Disabled: Story = {
   args: {
     label: 'Search documentation',

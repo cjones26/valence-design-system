@@ -43,6 +43,7 @@ export function Icon({ name, size = 20, color }: IconProps) {
   const theme = useTheme();
   const resolvedColor = color ?? theme.color_text_primary;
   const g = glyphs[name]!;
+
   return (
     <Svg width={size} height={size} viewBox={g.viewBox} fill="none">
       <Path

@@ -9,6 +9,7 @@ const meta: Meta<typeof BottomSheet> = { title: 'Components/BottomSheet', compon
 
 function BottomSheetExample() {
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <Button onPress={() => setOpen(true)}>Choose repeat schedule</Button>

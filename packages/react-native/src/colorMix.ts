@@ -10,6 +10,7 @@ function toRgb(color: string): [number, number, number] {
   if (typeof packed !== 'number') {
     throw new Error(`colorMix: could not parse color "${color}"`);
   }
+
   return [(packed >>> 24) & 0xff, (packed >>> 16) & 0xff, (packed >>> 8) & 0xff];
 }
 
@@ -22,11 +23,13 @@ function toHex(n: number): string {
 /** Mixes `color` toward white by `amount` (0–1) — e.g. a pressed-lighter tint. */
 export function lighten(color: string, amount: number): string {
   const [r, g, b] = toRgb(color);
+
   return `#${toHex(r + (255 - r) * amount)}${toHex(g + (255 - g) * amount)}${toHex(b + (255 - b) * amount)}`;
 }
 
 /** `color` at alpha `a` (0–1), as an rgba() string RN's style values accept. */
 export function alpha(color: string, a: number): string {
   const [r, g, b] = toRgb(color);
+
   return `rgba(${r},${g},${b},${a})`;
 }

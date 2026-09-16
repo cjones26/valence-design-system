@@ -11,7 +11,9 @@ const meta: Meta<typeof StepButton> = {
 };
 
 export const Positive: Story = { args: { label: '+5', tone: 'positive' } };
+
 export const Negative: Story = { args: { label: '−5', tone: 'negative' } };
+
 export const Disabled: Story = { args: { label: '+5', tone: 'positive', disabled: true } };
 
 export default meta;

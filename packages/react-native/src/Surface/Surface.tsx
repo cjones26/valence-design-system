@@ -5,6 +5,7 @@ import { NativeContent } from '../NativeContent';
 
 export function Surface({ children }: SurfaceProps) {
   const theme = useTheme();
+
   return (
     <View
       style={{

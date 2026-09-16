@@ -14,6 +14,7 @@ function formatDuration(totalSeconds: number): string {
   const total = Math.max(0, Math.round(totalSeconds));
   const m = Math.floor(total / 60);
   const s = total % 60;
+
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
@@ -26,6 +27,7 @@ export function DurationPill({ seconds, status = 'paused' }: DurationPillProps) 
   useEffect(() => {
     if (status !== 'live' || reduceMotion) {
       pulse.setValue(1);
+
       return;
     }
     const loop = Animated.loop(
@@ -45,6 +47,7 @@ export function DurationPill({ seconds, status = 'paused' }: DurationPillProps) 
       ]),
     );
     loop.start();
+
     return () => loop.stop();
   }, [status, reduceMotion, pulse]);
 

@@ -10,7 +10,9 @@ const meta: Meta<typeof StatusBadge> = {
 };
 
 export const Success: Story = { args: { status: 'success', children: 'All done' } };
+
 export const Warning: Story = { args: { status: 'warning', children: 'Partial' } };
+
 export const Danger: Story = { args: { status: 'danger', children: 'Missed' } };
 
 export default meta;

@@ -7,6 +7,7 @@ import { DEFAULT_THEME as defaultTheme } from '../ThemeProvider/ThemeProvider';
 
 function PressableCard() {
   const [pressed, setPressed] = useState(false);
+
   return (
     <>
       <Card title="Trip to Tokyo" onPress={() => setPressed(true)} />

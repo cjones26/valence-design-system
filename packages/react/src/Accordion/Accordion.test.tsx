@@ -5,6 +5,7 @@ import { Accordion } from './Accordion';
 
 function AccordionExample() {
   const [expanded, setExpanded] = useState(false);
+
   return (
     <Accordion title="Cloud backup" expanded={expanded} onChange={setExpanded}>
       Backup details

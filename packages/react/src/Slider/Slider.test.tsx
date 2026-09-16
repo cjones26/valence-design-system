@@ -5,6 +5,7 @@ import { Slider } from './Slider';
 
 function ControlledSlider({ disabled }: { disabled?: boolean }) {
   const [value, setValue] = useState(40);
+
   return (
     <Slider
       value={value}

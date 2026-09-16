@@ -17,6 +17,7 @@ export function Spinner({ size = 14, color }: SpinnerProps) {
     if (reduceMotion) {
       spin.stopAnimation();
       spin.setValue(0);
+
       return;
     }
     const loop = Animated.loop(
@@ -28,6 +29,7 @@ export function Spinner({ size = 14, color }: SpinnerProps) {
       }),
     );
     loop.start();
+
     return () => loop.stop();
   }, [reduceMotion, spin]);
 

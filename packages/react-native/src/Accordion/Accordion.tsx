@@ -8,6 +8,7 @@ import { NativeContent } from '../NativeContent';
 
 export function Accordion({ title, expanded, onChange, children }: AccordionProps) {
   const theme = useTheme();
+
   return (
     <View>
       <Pressable

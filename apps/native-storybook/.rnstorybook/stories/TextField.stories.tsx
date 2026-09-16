@@ -11,6 +11,7 @@ const meta: Meta<typeof TextField> = {
 
 function TextFieldPlayground() {
   const [value, setValue] = useState('');
+
   return (
     <TextField
       label="Goal name"
@@ -24,7 +25,9 @@ function TextFieldPlayground() {
 export const Empty: Story = {
   args: { label: 'Goal name', placeholder: 'What do you want to track?' },
 };
+
 export const Filled: Story = { args: { label: 'Goal name', value: 'Pushups' } };
+
 export const Error: Story = {
   args: {
     label: 'Goal name',
@@ -33,7 +36,9 @@ export const Error: Story = {
     helperText: "Goal name can't be empty.",
   },
 };
+
 export const Disabled: Story = { args: { label: 'Goal name', value: 'Pushups', disabled: true } };
+
 export const WithHelper: Story = {
   args: {
     label: 'Goal name',
@@ -41,6 +46,7 @@ export const WithHelper: Story = {
     helperText: 'Shown under the field as supportive text.',
   },
 };
+
 export const Playground: Story = { render: () => <TextFieldPlayground /> };
 
 export default meta;

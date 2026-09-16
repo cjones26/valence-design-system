@@ -6,6 +6,7 @@ import { Chip } from './Chip';
 
 function PressableChip({ disabled }: { disabled?: boolean }) {
   const [pressed, setPressed] = useState(false);
+
   return (
     <>
       <Chip onPress={() => setPressed(true)} disabled={disabled}>

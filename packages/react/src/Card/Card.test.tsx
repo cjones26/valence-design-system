@@ -6,6 +6,7 @@ import { Card } from './Card';
 
 function PressableCard() {
   const [pressed, setPressed] = useState(false);
+
   return (
     <>
       <Card title="Trip to Tokyo" onPress={() => setPressed(true)} />

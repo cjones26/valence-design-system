@@ -6,6 +6,7 @@ import { Toggle } from './Toggle';
 
 function ControlledToggle({ disabled }: { disabled?: boolean }) {
   const [checked, setChecked] = useState(false);
+
   return (
     <>
       <Toggle checked={checked} onChange={setChecked} disabled={disabled} label="Notifications" />

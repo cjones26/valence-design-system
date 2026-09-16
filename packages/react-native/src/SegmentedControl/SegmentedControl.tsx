@@ -36,6 +36,7 @@ export function SegmentedControl({
       useNativeDriver: false,
     });
     animation.start();
+
     return () => animation.stop();
   }, [selectedIndex, anim, reduceMotion]);
 
@@ -88,6 +89,7 @@ export function SegmentedControl({
       )}
       {options.map((opt) => {
         const selected = opt.value === value;
+
         return (
           <Pressable
             key={opt.value}

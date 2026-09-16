@@ -10,6 +10,7 @@ export function DeltaPill({ value, unit = '' }: DeltaPillProps) {
       : valid && value < 0
         ? styles.deltaNegative
         : styles.deltaNeutral;
+
   return (
     <Typography variant="badge" className={`${styles.delta} ${toneClass}`}>
       {valid && value > 0 ? '+' : ''}

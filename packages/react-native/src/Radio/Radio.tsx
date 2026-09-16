@@ -6,6 +6,7 @@ import { Typography } from '../Typography/Typography';
 export function Radio({ checked, onChange, disabled, label }: RadioProps) {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
+
   return (
     <Pressable
       disabled={isDisabled}
