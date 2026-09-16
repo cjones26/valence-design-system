@@ -1,0 +1,26 @@
+{
+  "font": {
+    "family": {
+      "sans": { "value": "\"Geist\", system-ui, sans-serif" },
+      "mono": { "value": "\"Geist Mono\", ui-monospace, monospace" }
+    },
+    "weight": {
+      "regular": { "value": "400" },
+      "semibold": { "value": "600" },
+      "bold": { "value": "700" }
+    }
+  },
+  "type": {
+    "display": { "size": { "value": 28 }, "weight": { "value": 700 }, "tracking": { "value": "-0.025em" } },
+    "title": { "size": { "value": 22 }, "weight": { "value": 700 }, "tracking": { "value": "-0.02em" } },
+    "titleSm": { "size": { "value": 19 }, "weight": { "value": 700 }, "tracking": { "value": "-0.02em" } },
+    "body": { "size": { "value": 14 }, "weight": { "value": 400 }, "tracking": { "value": "-0.005em" } },
+    "bodyLg": { "size": { "value": 15 }, "weight": { "value": 600 }, "tracking": { "value": "-0.01em" } },
+    "meta": { "size": { "value": 11 }, "weight": { "value": 400 }, "tracking": { "value": "0em" } },
+    "eyebrow": { "size": { "value": 11 }, "weight": { "value": 600 }, "tracking": { "value": "0.08em" } },
+    "numeral": { "size": { "value": 18 }, "weight": { "value": 700 }, "tracking": { "value": "-0.02em" } },
+    "label": { "size": { "value": 12 }, "weight": { "value": 600 }, "tracking": { "value": "0em" } },
+    "badge": { "size": { "value": 12 }, "weight": { "value": 700 }, "tracking": { "value": "-0.005em" } },
+    "controlLabel": { "size": { "value": 13 }, "weight": { "value": 600 }, "tracking": { "value": "-0.005em" } }
+  }
+}

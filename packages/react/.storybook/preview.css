@@ -1,0 +1,9 @@
+/* Storybook-preview-only — gives raw, unstyled story content (e.g. the "All
+   Glyphs" story's plain text) a default font. Real components always set
+   their own font-family already, so this must never ship in the published
+   package: index.css is what consuming apps import, and a component
+   library shouldn't reach outside its own components to style a host
+   app's <body>. */
+body {
+  font-family: var(--font-family-sans);
+}

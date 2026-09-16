@@ -1,0 +1,78 @@
+/* A real <input type="range">, restyled — gets keyboard support (arrows,
+   Home/End, Page Up/Down) and ARIA slider semantics for free, instead of
+   hand-rolling role="slider" + keydown handling on a plain div. */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 24px;
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+
+.slider:disabled {
+  cursor: not-allowed;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: var(--spacing-xs);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    to right,
+    var(--color-text-primary) 0%,
+    var(--color-text-primary) var(--valence-slider-pct),
+    var(--color-border-control) var(--valence-slider-pct),
+    var(--color-border-control) 100%
+  );
+}
+.slider::-moz-range-track {
+  height: var(--spacing-xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-border-control);
+}
+.slider::-moz-range-progress {
+  height: var(--spacing-xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-text-primary);
+}
+
+.slider:disabled::-webkit-slider-runnable-track {
+  background: var(--color-border-primary);
+}
+.slider:disabled::-moz-range-track,
+.slider:disabled::-moz-range-progress {
+  background: var(--color-border-primary);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-text-primary);
+  border: 2px solid var(--color-background-raised);
+  box-shadow: 0 1px 4px rgba(var(--color-shadow-tint), 0.18);
+  margin-top: -6px;
+}
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-text-primary);
+  border: 2px solid var(--color-background-raised);
+  box-shadow: 0 1px 4px rgba(var(--color-shadow-tint), 0.18);
+}
+
+.slider:disabled::-webkit-slider-thumb,
+.slider:disabled::-moz-range-thumb {
+  background: var(--color-text-muted);
+}
+
+.slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px var(--color-border-focus);
+}
+.slider:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px var(--color-border-focus);
+}

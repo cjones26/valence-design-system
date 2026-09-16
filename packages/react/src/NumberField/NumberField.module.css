@@ -1,0 +1,67 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-family-sans);
+}
+
+.label {
+  display: block;
+  color: var(--color-text-secondary);
+}
+
+.control {
+  display: inline-flex;
+  align-items: stretch;
+  background: var(--color-background-primary);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+  width: fit-content;
+  min-width: 132px;
+  min-height: 42px;
+  /* Always a real border — see TextField.module.css for why transparent-
+     until-focus left this control with an invisible boundary at rest. */
+  border: 1.5px solid var(--color-border-control);
+  box-sizing: border-box;
+}
+
+.control:focus-within {
+  border-color: var(--color-text-primary);
+  box-shadow: 0 0 0 3px var(--color-border-focus);
+}
+
+.error {
+  border-color: var(--color-action-danger-text);
+}
+
+.disabled {
+  background: var(--color-background-subtle);
+  border-color: var(--color-border-primary);
+  color: var(--color-text-muted);
+}
+
+.sideBtn {
+  min-width: 40px;
+  min-height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  line-height: 1;
+  padding: var(--spacing-xs);
+  flex-shrink: 0;
+}
+.sideBtn:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+}
