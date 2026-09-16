@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 643 472">
 <defs><linearGradient id="vgrad" gradientUnits="userSpaceOnUse" x1="12080.0" y1="640.0" x2="23800.0" y2="18440.0">
 <stop offset="0" stop-color="#1880B5"/><stop offset="1" stop-color="#13DBDF"/></linearGradient>
-<clipPath id="vclip" clipPathUnits="userSpaceOnUse"><polygon points="-408.5,19680.0 28000.0,19680.0 28000.0,-1120.0 11713.2,-1120.0"/></clipPath></defs>
+<clipPath id="vclip" clipPathUnits="userSpaceOnUse"><polygon points="-528.5,19680.0 28000.0,19680.0 28000.0,-1120.0 11593.2,-1120.0"/></clipPath></defs>
 <g transform="translate(0,472) scale(0.025,-0.025)">
 <path fill="url(#vgrad)" clip-path="url(#vclip)" d="M20530 18744 c-30 -7 -129 -16 -220 -20 -132 -6 -172 -11 -200 -26
 -23 -12 -56 -18 -100 -18 -46 0 -76 -6 -103 -20 -23 -12 -56 -20 -87 -20 -31
