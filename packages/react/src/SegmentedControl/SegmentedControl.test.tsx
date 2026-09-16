@@ -13,7 +13,13 @@ function ControlledSegmentedControl({ disabled }: { disabled?: boolean }) {
   const [value, setValue] = useState('day');
   return (
     <>
-      <SegmentedControl label="View" options={OPTIONS} value={value} onChange={setValue} disabled={disabled} />
+      <SegmentedControl
+        label="View"
+        options={OPTIONS}
+        value={value}
+        onChange={setValue}
+        disabled={disabled}
+      />
       <span>selected: {value}</span>
     </>
   );

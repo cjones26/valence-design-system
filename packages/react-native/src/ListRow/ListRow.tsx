@@ -5,10 +5,20 @@ import { GEIST } from '../fonts';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../useReduceMotion';
 
-export function ListRow({ icon, title, subtitle, trailingIcon, archived, grouped, onPress }: ListRowProps) {
+export function ListRow({
+  icon,
+  title,
+  subtitle,
+  trailingIcon,
+  archived,
+  grouped,
+  onPress,
+}: ListRowProps) {
   const theme = useTheme();
   const reduceMotion = useReduceMotion();
-  const accessibleLabel = [title, archived ? 'archived' : undefined, subtitle].filter(Boolean).join(', ');
+  const accessibleLabel = [title, archived ? 'archived' : undefined, subtitle]
+    .filter(Boolean)
+    .join(', ');
 
   const content = (
     <>

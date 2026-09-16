@@ -15,10 +15,18 @@ describe('<BottomSheet />', () => {
   it('renders only while open and closes from the backdrop', async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();
-    const { rerender } = render(<BottomSheet open={false} title="Repeat" onClose={onClose}>Schedule</BottomSheet>);
+    const { rerender } = render(
+      <BottomSheet open={false} title="Repeat" onClose={onClose}>
+        Schedule
+      </BottomSheet>,
+    );
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
-    rerender(<BottomSheet open title="Repeat" onClose={onClose}>Schedule</BottomSheet>);
+    rerender(
+      <BottomSheet open title="Repeat" onClose={onClose}>
+        Schedule
+      </BottomSheet>,
+    );
     const dialog = screen.getByRole('dialog', { name: 'Repeat' });
     await user.click(dialog);
     expect(onClose).toHaveBeenCalledOnce();

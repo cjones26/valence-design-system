@@ -28,13 +28,19 @@ describe('<Chip />', () => {
   it('marks the chip as selected', () => {
     render(<Chip selected>Vegetarian</Chip>);
 
-    expect(screen.getByRole('button', { name: 'Vegetarian' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: 'Vegetarian' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
   });
 
   it('does not mark the chip as selected by default', () => {
     render(<Chip>Vegetarian</Chip>);
 
-    expect(screen.getByRole('button', { name: 'Vegetarian' })).not.toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: 'Vegetarian' })).not.toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
   });
 
   it('invokes onPress when clicked', async () => {

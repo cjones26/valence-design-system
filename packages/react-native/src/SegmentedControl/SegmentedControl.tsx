@@ -5,12 +5,21 @@ import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../useReduceMotion';
 
-export function SegmentedControl({ options, value, onChange, disabled, label }: SegmentedControlProps) {
+export function SegmentedControl({
+  options,
+  value,
+  onChange,
+  disabled,
+  label,
+}: SegmentedControlProps) {
   const theme = useTheme();
 
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
   useEffect(() => {
-    if (hasDuplicateValues) console.error('SegmentedControl: "options" contains duplicate values, which makes selection ambiguous.');
+    if (hasDuplicateValues)
+      console.error(
+        'SegmentedControl: "options" contains duplicate values, which makes selection ambiguous.',
+      );
   }, [hasDuplicateValues]);
 
   const selectedIndex = options.findIndex((opt) => opt.value === value);
@@ -53,7 +62,9 @@ export function SegmentedControl({ options, value, onChange, disabled, label }: 
             ...(I18nManager.isRTL ? { right: 3 } : { left: 3 }),
             width: indicatorWidth,
             borderRadius: theme.radius_control,
-            backgroundColor: disabled ? theme.color_background_subtle : theme.color_background_raised,
+            backgroundColor: disabled
+              ? theme.color_background_subtle
+              : theme.color_background_raised,
             borderWidth: 1,
             borderColor: disabled ? theme.color_border_primary : theme.color_border_control,
             shadowColor: `rgb(${theme.color_shadow_tint})`,
@@ -61,7 +72,14 @@ export function SegmentedControl({ options, value, onChange, disabled, label }: 
             shadowRadius: 6,
             shadowOffset: { width: 0, height: 2 },
             elevation: 2,
-            transform: [{ translateX: Animated.multiply(anim, I18nManager.isRTL ? -indicatorWidth : indicatorWidth) }],
+            transform: [
+              {
+                translateX: Animated.multiply(
+                  anim,
+                  I18nManager.isRTL ? -indicatorWidth : indicatorWidth,
+                ),
+              },
+            ],
           }}
         />
       )}
@@ -88,13 +106,30 @@ export function SegmentedControl({ options, value, onChange, disabled, label }: 
           >
             {opt.icon != null &&
               (typeof opt.icon === 'string' || typeof opt.icon === 'number' ? (
-                <Typography variant="body" style={{ color: disabled ? theme.color_text_muted : theme.color_text_primary }}>
+                <Typography
+                  variant="body"
+                  style={{ color: disabled ? theme.color_text_muted : theme.color_text_primary }}
+                >
                   {opt.icon}
                 </Typography>
-              ) : opt.icon(disabled ? theme.color_text_muted : selected ? theme.color_text_primary : theme.color_text_secondary))}
+              ) : (
+                opt.icon(
+                  disabled
+                    ? theme.color_text_muted
+                    : selected
+                      ? theme.color_text_primary
+                      : theme.color_text_secondary,
+                )
+              ))}
             <Typography
               variant="controlLabel"
-              style={{ color: disabled ? theme.color_text_muted : selected ? theme.color_text_primary : theme.color_text_secondary }}
+              style={{
+                color: disabled
+                  ? theme.color_text_muted
+                  : selected
+                    ? theme.color_text_primary
+                    : theme.color_text_secondary,
+              }}
             >
               {opt.label}
             </Typography>

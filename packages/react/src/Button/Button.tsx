@@ -40,7 +40,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         {children}
       </Typography>
       {loading && (
-        <span style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Spinner size={14} color="currentColor" />
         </span>
       )}

@@ -41,7 +41,11 @@ function getSystemScheme(): ThemeMode {
  * attribute at all would silently match nothing.
  */
 export function ThemeProvider({ preset = 'hi-vis', mode, theme, children }: ThemeProviderProps) {
-  const systemScheme = useSyncExternalStore(subscribeToSystemScheme, getSystemScheme, () => 'light');
+  const systemScheme = useSyncExternalStore(
+    subscribeToSystemScheme,
+    getSystemScheme,
+    () => 'light',
+  );
   const resolvedMode = mode ?? systemScheme;
 
   return (

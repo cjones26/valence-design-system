@@ -10,7 +10,15 @@ const OPTIONS = [
 
 function ControlledRadioGroup({ disabled }: { disabled?: boolean }) {
   const [value, setValue] = useState('a');
-  return <RadioGroup label="Options" options={OPTIONS} value={value} disabled={disabled} onChange={setValue} />;
+  return (
+    <RadioGroup
+      label="Options"
+      options={OPTIONS}
+      value={value}
+      disabled={disabled}
+      onChange={setValue}
+    />
+  );
 }
 
 describe('<RadioGroup />', () => {

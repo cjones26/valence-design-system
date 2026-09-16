@@ -1,13 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
 import { Divider, ListRow, Surface } from '@valence/react-native';
 
-const meta: Meta<typeof Surface> = { title: 'Components/Surface', component: Surface };
-export default meta;
 type Story = StoryObj<typeof Surface>;
 
-export const Default: Story = {
-  render: () => <Surface>Cloud backup content</Surface>,
-};
+const meta: Meta<typeof Surface> = { title: 'Components/Surface', component: Surface };
 
 function GroupedRowsExample() {
   return (
@@ -19,4 +15,9 @@ function GroupedRowsExample() {
   );
 }
 
+export const Default: Story = {
+  render: () => <Surface>Cloud backup content</Surface>,
+};
 export const GroupedRows: Story = { render: () => <GroupedRowsExample /> };
+
+export default meta;

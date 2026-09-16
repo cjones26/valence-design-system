@@ -16,7 +16,9 @@ export function NumberField({
   const safeMin = min != null && Number.isFinite(min) ? min : -Infinity;
   const safeMax = max != null && Number.isFinite(max) ? max : Infinity;
   const rangeInvalid =
-    (min != null && !Number.isFinite(min)) || (max != null && !Number.isFinite(max)) || safeMin > safeMax;
+    (min != null && !Number.isFinite(min)) ||
+    (max != null && !Number.isFinite(max)) ||
+    safeMin > safeMax;
   const fallbackValue = Number.isFinite(safeMin) ? safeMin : Number.isFinite(safeMax) ? safeMax : 0;
   const safeValue = Number.isFinite(value)
     ? rangeInvalid
@@ -25,8 +27,12 @@ export function NumberField({
     : fallbackValue;
 
   useEffect(() => {
-    if (!Number.isFinite(value)) console.error(`NumberField: "value" must be a finite number, got ${value}.`);
-    if (rangeInvalid) console.error(`NumberField: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`);
+    if (!Number.isFinite(value))
+      console.error(`NumberField: "value" must be a finite number, got ${value}.`);
+    if (rangeInvalid)
+      console.error(
+        `NumberField: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`,
+      );
   }, [max, min, rangeInvalid, value]);
 
   const atMin = safeValue <= safeMin;

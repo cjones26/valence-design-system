@@ -30,7 +30,10 @@ function tokenValue(tokens, path) {
 function parseColor(value) {
   if (value.startsWith('#')) {
     const hex = value.slice(1);
-    return { channels: [0, 2, 4].map((index) => Number.parseInt(hex.slice(index, index + 2), 16)), alpha: 1 };
+    return {
+      channels: [0, 2, 4].map((index) => Number.parseInt(hex.slice(index, index + 2), 16)),
+      alpha: 1,
+    };
   }
 
   const values = value.match(/[\d.]+/g)?.map(Number);
@@ -59,8 +62,10 @@ function luminance(channels) {
 function contrast(foreground, background) {
   const foregroundLuminance = luminance(foreground);
   const backgroundLuminance = luminance(background);
-  return (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
-    (Math.min(foregroundLuminance, backgroundLuminance) + 0.05);
+  return (
+    (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
+    (Math.min(foregroundLuminance, backgroundLuminance) + 0.05)
+  );
 }
 
 const failures = [];
@@ -76,10 +81,15 @@ for (const theme of readdirSync(THEMES_DIR)) {
     }
     for (const [foregroundPath, backgroundPath, minimum] of CHECKS) {
       const background = surface(tokens, backgroundPath, primarySurface);
-      const foreground = composite(parseColor(tokenValue(tokens.color, foregroundPath)), background);
+      const foreground = composite(
+        parseColor(tokenValue(tokens.color, foregroundPath)),
+        background,
+      );
       const ratio = contrast(foreground, background);
       if (ratio < minimum) {
-        failures.push(`${theme}/${mode}: ${foregroundPath} on ${backgroundPath} is ${ratio.toFixed(2)}:1; expected ${minimum}:1`);
+        failures.push(
+          `${theme}/${mode}: ${foregroundPath} on ${backgroundPath} is ${ratio.toFixed(2)}:1; expected ${minimum}:1`,
+        );
       }
     }
   }

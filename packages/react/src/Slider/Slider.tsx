@@ -9,8 +9,12 @@ export function Slider({ value, max, min = 0, step = 1, onChange, disabled, labe
   const safeValue = Number.isFinite(value) ? Math.min(safeMax, Math.max(safeMin, value)) : safeMin;
 
   useEffect(() => {
-    if (!Number.isFinite(value)) console.error(`Slider: "value" must be a finite number, got ${value}.`);
-    if (rangeInvalid) console.error(`Slider: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`);
+    if (!Number.isFinite(value))
+      console.error(`Slider: "value" must be a finite number, got ${value}.`);
+    if (rangeInvalid)
+      console.error(
+        `Slider: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`,
+      );
   }, [max, min, rangeInvalid, value]);
 
   const pct = safeMax > safeMin ? ((safeValue - safeMin) / (safeMax - safeMin)) * 100 : 0;

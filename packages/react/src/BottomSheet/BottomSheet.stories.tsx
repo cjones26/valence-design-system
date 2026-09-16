@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BottomSheet } from './BottomSheet';
 import { Button } from '../Button/Button';
 
-const meta: Meta<typeof BottomSheet> = { title: 'Components/BottomSheet', component: BottomSheet };
-export default meta;
 type Story = StoryObj<typeof BottomSheet>;
+
+const meta: Meta<typeof BottomSheet> = { title: 'Components/BottomSheet', component: BottomSheet };
 
 function BottomSheetExample() {
   const [open, setOpen] = useState(false);
@@ -20,3 +20,5 @@ function BottomSheetExample() {
 }
 
 export const Default: Story = { render: () => <BottomSheetExample /> };
+
+export default meta;

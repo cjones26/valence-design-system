@@ -4,7 +4,14 @@ import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Icon } from '../Icon/Icon';
 import { GEIST } from '../fonts';
 
-export function SearchField({ value, placeholder, onChangeText, onSubmit, disabled, label }: SearchFieldProps) {
+export function SearchField({
+  value,
+  placeholder,
+  onChangeText,
+  onSubmit,
+  disabled,
+  label,
+}: SearchFieldProps) {
   const theme = useTheme();
 
   return (

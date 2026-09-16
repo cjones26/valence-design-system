@@ -6,13 +6,13 @@ The web and native components are separate implementations. They share design to
 
 ## Packages
 
-| Package | Purpose |
-| --- | --- |
-| [`@valence/tokens`](./packages/tokens) | Colors, typography, spacing, sizing, shadows, and theme presets |
-| [`@valence/types`](./packages/types) | Shared component prop definitions |
-| [`@valence/react`](./packages/react) | React components and the web Storybook |
-| [`@valence/react-native`](./packages/react-native) | React Native components |
-| [`native-storybook`](./apps/native-storybook) | Expo app for viewing native components on a device or emulator |
+| Package                                            | Purpose                                                         |
+| -------------------------------------------------- | --------------------------------------------------------------- |
+| [`@valence/tokens`](./packages/tokens)             | Colors, typography, spacing, sizing, shadows, and theme presets |
+| [`@valence/types`](./packages/types)               | Shared component prop definitions                               |
+| [`@valence/react`](./packages/react)               | React components and the web Storybook                          |
+| [`@valence/react-native`](./packages/react-native) | React Native components                                         |
+| [`native-storybook`](./apps/native-storybook)      | Expo app for viewing native components on a device or emulator  |
 
 The four `@valence/*` packages are public and MIT licensed. The native Storybook app is private and is not published.
 

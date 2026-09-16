@@ -3,9 +3,9 @@ import { Surface } from './Surface';
 import { ListRow } from '../ListRow/ListRow';
 import { Divider } from '../Divider/Divider';
 
-const meta: Meta<typeof Surface> = { title: 'Components/Surface', component: Surface };
-export default meta;
 type Story = StoryObj<typeof Surface>;
+
+const meta: Meta<typeof Surface> = { title: 'Components/Surface', component: Surface };
 
 export const Default: Story = {
   render: () => (
@@ -24,3 +24,5 @@ export const GroupedRows: Story = {
     </Surface>
   ),
 };
+
+export default meta;

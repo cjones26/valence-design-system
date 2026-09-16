@@ -24,9 +24,19 @@ describe('<Picker />', () => {
 
   it('exposes error guidance to assistive technology', async () => {
     await render(
-      <Picker label="Frequency" options={options} value="" disabled error helperText="Choose a frequency." />,
+      <Picker
+        label="Frequency"
+        options={options}
+        value=""
+        disabled
+        error
+        helperText="Choose a frequency."
+      />,
     );
 
-    expect(screen.getByLabelText('Frequency')).toHaveProp('accessibilityHint', 'Choose a frequency.');
+    expect(screen.getByLabelText('Frequency')).toHaveProp(
+      'accessibilityHint',
+      'Choose a frequency.',
+    );
   });
 });

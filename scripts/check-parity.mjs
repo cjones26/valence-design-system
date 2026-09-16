@@ -24,7 +24,12 @@ function isExported(platform, name) {
 // that's exported but was never added to the registry at all, which the
 // registry-driven checks below can't see since they only look at names the
 // registry already knows about.
-const NON_COMPONENT_EXPORTS = new Set(['ThemeProvider', 'useTheme', 'useValenceFonts', 'TYPOGRAPHY_VARIANTS']);
+const NON_COMPONENT_EXPORTS = new Set([
+  'ThemeProvider',
+  'useTheme',
+  'useValenceFonts',
+  'TYPOGRAPHY_VARIANTS',
+]);
 function getExportedNames(source) {
   const names = new Set();
   const regex = /export\s+(type\s+)?\{([^}]*)\}\s*from/g;
@@ -52,7 +57,9 @@ function findFile(directory, fileName) {
 
 function getStoryNames(file) {
   if (!file) return new Set();
-  return new Set([...readFileSync(file, 'utf8').matchAll(/export const (\w+)/g)].map((match) => match[1]));
+  return new Set(
+    [...readFileSync(file, 'utf8').matchAll(/export const (\w+)/g)].map((match) => match[1]),
+  );
 }
 
 const VALID_STATUS = new Set(['done', 'pending']);
@@ -61,7 +68,9 @@ const failures = [];
 for (const [platform, source] of Object.entries(indexSource)) {
   for (const name of getExportedNames(source)) {
     if (!registry.components[name]) {
-      failures.push(`${name}: exported from ${platform}'s index.ts but has no parity-registry.json entry`);
+      failures.push(
+        `${name}: exported from ${platform}'s index.ts but has no parity-registry.json entry`,
+      );
     }
   }
 }
@@ -72,11 +81,15 @@ for (const [name, platforms] of Object.entries(registry.components)) {
       failures.push(`${name}: invalid or missing status for "${platform}"`);
     }
     if (platforms[platform] === 'done' && !isExported(platform, name)) {
-      failures.push(`${name}: registry says "done" on ${platform}, but it isn't exported from ${platform}'s index.ts`);
+      failures.push(
+        `${name}: registry says "done" on ${platform}, but it isn't exported from ${platform}'s index.ts`,
+      );
     }
   }
   if (platforms.react === 'done' && platforms.reactNative !== 'done') {
-    failures.push(`${name}: released on react but not reactNative (status: ${platforms.reactNative})`);
+    failures.push(
+      `${name}: released on react but not reactNative (status: ${platforms.reactNative})`,
+    );
   }
   if (platforms.reactNative === 'done' && platforms.react !== 'done') {
     failures.push(`${name}: released on reactNative but not react (status: ${platforms.react})`);
@@ -88,13 +101,20 @@ for (const [name, platforms] of Object.entries(registry.components)) {
     if (!findFile(path.join(rootDir, 'packages/react-native/src'), `${name}.test.tsx`)) {
       failures.push(`${name}: done on reactNative but has no platform test`);
     }
-    const webStories = getStoryNames(findFile(path.join(rootDir, 'packages/react/src'), `${name}.stories.tsx`));
+    const webStories = getStoryNames(
+      findFile(path.join(rootDir, 'packages/react/src'), `${name}.stories.tsx`),
+    );
     const nativeStories = getStoryNames(
-      findFile(path.join(rootDir, 'apps/native-storybook/.rnstorybook/stories'), `${name}.stories.tsx`),
+      findFile(
+        path.join(rootDir, 'apps/native-storybook/.rnstorybook/stories'),
+        `${name}.stories.tsx`,
+      ),
     );
     for (const story of new Set([...webStories, ...nativeStories])) {
-      if (!webStories.has(story)) failures.push(`${name}: "${story}" story exists on native but not web`);
-      if (!nativeStories.has(story)) failures.push(`${name}: "${story}" story exists on web but not native`);
+      if (!webStories.has(story))
+        failures.push(`${name}: "${story}" story exists on native but not web`);
+      if (!nativeStories.has(story))
+        failures.push(`${name}: "${story}" story exists on web but not native`);
     }
   }
 }

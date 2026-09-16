@@ -8,7 +8,12 @@ function PressableStepButton({ disabled }: { disabled?: boolean }) {
   const [pressed, setPressed] = useState(false);
   return (
     <>
-      <StepButton label="Log run" tone="positive" disabled={disabled} onPress={() => setPressed(true)} />
+      <StepButton
+        label="Log run"
+        tone="positive"
+        disabled={disabled}
+        onPress={() => setPressed(true)}
+      />
       {pressed && <Text>pressed</Text>}
     </>
   );

@@ -10,7 +10,15 @@ const options = [
 
 function ControlledPicker({ disabled }: { disabled?: boolean }) {
   const [value, setValue] = useState('daily');
-  return <Picker label="Frequency" options={options} value={value} onChange={setValue} disabled={disabled} />;
+  return (
+    <Picker
+      label="Frequency"
+      options={options}
+      value={value}
+      onChange={setValue}
+      disabled={disabled}
+    />
+  );
 }
 
 describe('<Picker />', () => {
@@ -40,7 +48,15 @@ describe('<Picker />', () => {
   });
 
   it('connects error helper text to the control', () => {
-    render(<Picker label="Frequency" options={options} value="" error helperText="Choose a frequency." />);
+    render(
+      <Picker
+        label="Frequency"
+        options={options}
+        value=""
+        error
+        helperText="Choose a frequency."
+      />,
+    );
 
     const picker = screen.getByRole('combobox', { name: 'Frequency' });
     expect(picker).toBeInvalid();

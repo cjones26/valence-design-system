@@ -87,7 +87,13 @@ function variantStyle(variant: TypographyVariant, theme: Theme): TextStyle {
   }
 }
 
-export function Typography({ variant, children, style, accessibilityRole, ...rest }: TypographyProps) {
+export function Typography({
+  variant,
+  children,
+  style,
+  accessibilityRole,
+  ...rest
+}: TypographyProps) {
   const theme = useTheme();
   return (
     <Text

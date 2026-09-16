@@ -2,13 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Icon } from '../Icon/Icon';
 import { ListRow } from './ListRow';
 
+type Story = StoryObj<typeof ListRow>;
+
 const meta: Meta<typeof ListRow> = {
   title: 'Components/ListRow',
   component: ListRow,
 };
-export default meta;
-
-type Story = StoryObj<typeof ListRow>;
 
 export const Default: Story = {
   args: {
@@ -29,3 +28,5 @@ export const Reordering: Story = {
 export const Archived: Story = {
   args: { icon: '💪', title: 'Pushups', subtitle: 'Stopped May 9', archived: true },
 };
+
+export default meta;

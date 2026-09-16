@@ -4,7 +4,14 @@ import { SearchField } from './SearchField';
 
 function SearchExample({ onSubmit }: { onSubmit?: () => void }) {
   const [value, setValue] = useState('');
-  return <SearchField label="Search documentation" value={value} onChangeText={setValue} onSubmit={onSubmit} />;
+  return (
+    <SearchField
+      label="Search documentation"
+      value={value}
+      onChangeText={setValue}
+      onSubmit={onSubmit}
+    />
+  );
 }
 
 describe('<SearchField />', () => {
@@ -24,6 +31,8 @@ describe('<SearchField />', () => {
 
   it('supports a disabled state', async () => {
     await render(<SearchField label="Search documentation" value="" disabled />);
-    expect(screen.getByLabelText('Search documentation')).toHaveProp('accessibilityState', { disabled: true });
+    expect(screen.getByLabelText('Search documentation')).toHaveProp('accessibilityState', {
+      disabled: true,
+    });
   });
 });

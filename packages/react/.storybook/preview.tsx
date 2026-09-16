@@ -4,7 +4,16 @@ import { ThemeProvider } from '../src/ThemeProvider/ThemeProvider';
 import '../src/index.css';
 import './preview.css';
 
-const PRESETS: ThemePreset[] = ['hi-vis', 'sea-glass', 'bauhaus', 'earthy', 'tropical', 'sunset-berry', 'bodega', 'indigo-pop'];
+const PRESETS: ThemePreset[] = [
+  'hi-vis',
+  'sea-glass',
+  'bauhaus',
+  'earthy',
+  'tropical',
+  'sunset-berry',
+  'bodega',
+  'indigo-pop',
+];
 
 const preview: Preview = {
   globalTypes: {
@@ -37,7 +46,9 @@ const preview: Preview = {
   decorators: [
     (Story, context) => (
       <ThemeProvider preset={context.globals.preset} mode={context.globals.mode}>
-        <div style={{ background: 'var(--color-background-primary)', minHeight: '100vh', padding: 16 }}>
+        <div
+          style={{ background: 'var(--color-background-primary)', minHeight: '100vh', padding: 16 }}
+        >
           <Story />
         </div>
       </ThemeProvider>

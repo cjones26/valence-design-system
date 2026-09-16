@@ -70,6 +70,8 @@ describe('<Typography />', () => {
       </Typography>,
     );
 
-    expect(screen.getByRole('heading', { level: 1, name: 'Compact page title' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Compact page title' }),
+    ).toBeInTheDocument();
   });
 });

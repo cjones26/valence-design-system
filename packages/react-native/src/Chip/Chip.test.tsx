@@ -74,11 +74,21 @@ describe('<Chip />', () => {
 
   it('provides the selected foreground color to an icon renderer', async () => {
     await render(
-      <Chip selected onPress={() => undefined} icon={(color) => <Text testID="icon" style={{ color }}>I</Text>}>
+      <Chip
+        selected
+        onPress={() => undefined}
+        icon={(color) => (
+          <Text testID="icon" style={{ color }}>
+            I
+          </Text>
+        )}
+      >
         Vegetarian
       </Chip>,
     );
 
-    expect(screen.getByTestId('icon')).toHaveStyle({ color: DEFAULT_THEME.color_background_primary });
+    expect(screen.getByTestId('icon')).toHaveStyle({
+      color: DEFAULT_THEME.color_background_primary,
+    });
   });
 });

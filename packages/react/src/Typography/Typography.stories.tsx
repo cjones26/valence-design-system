@@ -2,14 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { TYPOGRAPHY_VARIANTS } from '@valence/types';
 import { Typography } from './Typography';
 
+type Story = StoryObj<typeof Typography>;
+
 const meta: Meta<typeof Typography> = {
   title: 'Components/Typography',
   component: Typography,
   argTypes: { variant: { control: 'select', options: TYPOGRAPHY_VARIANTS } },
 };
-export default meta;
-
-type Story = StoryObj<typeof Typography>;
 
 export const Default: Story = { args: { variant: 'body', children: 'The quick brown fox' } };
 
@@ -24,3 +23,5 @@ export const AllVariants: Story = {
     </div>
   ),
 };
+
+export default meta;

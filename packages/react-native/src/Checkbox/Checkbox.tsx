@@ -14,7 +14,12 @@ export function Checkbox({ checked, onChange, disabled, label }: CheckboxProps) 
       accessibilityRole="checkbox"
       accessibilityState={{ checked, disabled: isDisabled }}
       accessibilityLabel={label}
-      style={{ minHeight: theme.control_minimum_target, flexDirection: 'row', alignItems: 'center', gap: theme.spacing_md }}
+      style={{
+        minHeight: theme.control_minimum_target,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: theme.spacing_md,
+      }}
     >
       <View
         style={{
@@ -23,7 +28,11 @@ export function Checkbox({ checked, onChange, disabled, label }: CheckboxProps) 
           borderRadius: theme.radius_sm,
           borderWidth: checked && !isDisabled ? 0 : 1.5,
           borderColor: isDisabled ? theme.color_border_primary : theme.color_border_control,
-          backgroundColor: isDisabled ? theme.color_background_subtle : checked ? theme.color_state_positive : 'transparent',
+          backgroundColor: isDisabled
+            ? theme.color_background_subtle
+            : checked
+              ? theme.color_state_positive
+              : 'transparent',
           alignItems: 'center',
           justifyContent: 'center',
         }}
@@ -40,7 +49,10 @@ export function Checkbox({ checked, onChange, disabled, label }: CheckboxProps) 
           </Svg>
         )}
       </View>
-      <Typography variant="body" style={{ color: isDisabled ? theme.color_text_muted : theme.color_text_primary }}>
+      <Typography
+        variant="body"
+        style={{ color: isDisabled ? theme.color_text_muted : theme.color_text_primary }}
+      >
         {label}
       </Typography>
     </Pressable>

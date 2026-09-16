@@ -6,7 +6,14 @@ import { Radio } from './Radio';
 
 function ControlledRadio({ disabled }: { disabled?: boolean }) {
   const [checked, setChecked] = useState(false);
-  return <Radio label="Notify me" checked={checked} disabled={disabled} onChange={() => setChecked(true)} />;
+  return (
+    <Radio
+      label="Notify me"
+      checked={checked}
+      disabled={disabled}
+      onChange={() => setChecked(true)}
+    />
+  );
 }
 
 describe('<Radio />', () => {

@@ -18,7 +18,15 @@ import type { ThemeColorKey } from './generated/theme-color-keys.js';
 
 export type Theme = typeof hiVisLight;
 export type ThemeMode = 'light' | 'dark';
-export type ThemePreset = 'hi-vis' | 'sea-glass' | 'bauhaus' | 'earthy' | 'tropical' | 'sunset-berry' | 'bodega' | 'indigo-pop';
+export type ThemePreset =
+  | 'hi-vis'
+  | 'sea-glass'
+  | 'bauhaus'
+  | 'earthy'
+  | 'tropical'
+  | 'sunset-berry'
+  | 'bodega'
+  | 'indigo-pop';
 // Runtime overrides are restricted to color tokens — see build.mjs's
 // theme-color-keys generator for why.
 export type ThemeOverride = Partial<Pick<Theme, ThemeColorKey>>;

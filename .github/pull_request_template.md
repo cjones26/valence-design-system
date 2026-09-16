@@ -45,6 +45,7 @@
 <!-- List any focused commands or manual device/browser checks beyond the standard gate. -->
 
 - [ ] `pnpm verify`
+- [ ] Formatting matches `pnpm format:check`
 - [ ] Relevant Storybook stories exercised
 - [ ] Android emulator/device exercised when native behavior changed
 - [ ] iOS exercised when available, or the unverified scope is stated below

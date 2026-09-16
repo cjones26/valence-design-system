@@ -63,7 +63,8 @@ export interface TextFieldProps extends Disableable, Labeled {
   onChangeText?: (text: string) => void;
   onSubmit?: () => void;
   inputMode?: 'text' | 'email' | 'numeric' | 'decimal' | 'tel' | 'url' | 'search' | 'none';
-  autoComplete?: 'off' | 'name' | 'email' | 'username' | 'current-password' | 'new-password' | 'tel' | 'url';
+  autoComplete?:
+    'off' | 'name' | 'email' | 'username' | 'current-password' | 'new-password' | 'tel' | 'url';
   secureTextEntry?: boolean;
   maxLength?: number;
   error?: boolean;

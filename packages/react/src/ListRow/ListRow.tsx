@@ -2,11 +2,23 @@ import type { ListRowProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './ListRow.module.css';
 
-export function ListRow({ icon, title, subtitle, trailingIcon, archived, grouped, onPress }: ListRowProps) {
-  const accessibleLabel = [title, archived ? 'archived' : undefined, subtitle].filter(Boolean).join(', ');
+export function ListRow({
+  icon,
+  title,
+  subtitle,
+  trailingIcon,
+  archived,
+  grouped,
+  onPress,
+}: ListRowProps) {
+  const accessibleLabel = [title, archived ? 'archived' : undefined, subtitle]
+    .filter(Boolean)
+    .join(', ');
 
   return (
-    <div className={`${styles.row} ${archived ? styles.archived : ''} ${grouped ? styles.grouped : ''}`}>
+    <div
+      className={`${styles.row} ${archived ? styles.archived : ''} ${grouped ? styles.grouped : ''}`}
+    >
       {onPress && (
         <button
           type="button"

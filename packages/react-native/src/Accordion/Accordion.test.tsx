@@ -4,7 +4,11 @@ import { Accordion } from './Accordion';
 
 function AccordionExample() {
   const [expanded, setExpanded] = useState(false);
-  return <Accordion title="Cloud backup" expanded={expanded} onChange={setExpanded}>Backup details</Accordion>;
+  return (
+    <Accordion title="Cloud backup" expanded={expanded} onChange={setExpanded}>
+      Backup details
+    </Accordion>
+  );
 }
 
 describe('<Accordion />', () => {
@@ -13,10 +17,14 @@ describe('<Accordion />', () => {
     await render(<AccordionExample />);
     const trigger = screen.getByRole('button', { name: 'Cloud backup' });
 
-    expect(trigger.props.accessibilityState).toEqual(expect.objectContaining({ expanded: false, disabled: false }));
+    expect(trigger.props.accessibilityState).toEqual(
+      expect.objectContaining({ expanded: false, disabled: false }),
+    );
     expect(screen.queryByText('Backup details')).not.toBeOnTheScreen();
     await user.press(trigger);
-    expect(trigger.props.accessibilityState).toEqual(expect.objectContaining({ expanded: true, disabled: false }));
+    expect(trigger.props.accessibilityState).toEqual(
+      expect.objectContaining({ expanded: true, disabled: false }),
+    );
     expect(screen.getByText('Backup details')).toBeOnTheScreen();
   });
 

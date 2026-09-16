@@ -10,7 +10,11 @@ describe('<BottomSheet />', () => {
   it('renders while open and closes from the backdrop', async () => {
     const user = userEvent.setup();
     const onClose = jest.fn();
-    await render(<BottomSheet open title="Repeat" onClose={onClose}>Schedule</BottomSheet>);
+    await render(
+      <BottomSheet open title="Repeat" onClose={onClose}>
+        Schedule
+      </BottomSheet>,
+    );
 
     expect(screen.getByText('Schedule')).toBeOnTheScreen();
     await user.press(screen.getByRole('button', { name: 'Close sheet' }));
@@ -18,7 +22,11 @@ describe('<BottomSheet />', () => {
   });
 
   it('configures scrolling, safe-area bounds, and keyboard handling', async () => {
-    await render(<BottomSheet open title="Repeat" onClose={() => {}}>Schedule</BottomSheet>);
+    await render(
+      <BottomSheet open title="Repeat" onClose={() => {}}>
+        Schedule
+      </BottomSheet>,
+    );
 
     const sheet = await screen.findByTestId('bottom-sheet');
     expect(sheet).toHaveProp('enableDynamicSizing', true);
@@ -33,17 +41,29 @@ describe('<BottomSheet />', () => {
 
   it('dismisses when the controlled open prop becomes false', async () => {
     const onClose = jest.fn();
-    const { rerender } = await render(<BottomSheet open title="Repeat" onClose={onClose}>Schedule</BottomSheet>);
+    const { rerender } = await render(
+      <BottomSheet open title="Repeat" onClose={onClose}>
+        Schedule
+      </BottomSheet>,
+    );
     expect(await screen.findByText('Schedule')).toBeOnTheScreen();
 
-    await rerender(<BottomSheet open={false} title="Repeat" onClose={onClose}>Schedule</BottomSheet>);
+    await rerender(
+      <BottomSheet open={false} title="Repeat" onClose={onClose}>
+        Schedule
+      </BottomSheet>,
+    );
     await waitFor(() => expect(screen.queryByText('Schedule')).not.toBeOnTheScreen());
     expect(onClose).not.toHaveBeenCalled();
   });
 
   it('requests closure after a swipe dismissal', async () => {
     const onClose = jest.fn();
-    await render(<BottomSheet open title="Repeat" onClose={onClose}>Schedule</BottomSheet>);
+    await render(
+      <BottomSheet open title="Repeat" onClose={onClose}>
+        Schedule
+      </BottomSheet>,
+    );
 
     const sheet = await screen.findByTestId('bottom-sheet');
     sheet.props.onChange(-1);

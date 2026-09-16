@@ -5,7 +5,16 @@ import { Slider } from './Slider';
 
 function ControlledSlider({ disabled }: { disabled?: boolean }) {
   const [value, setValue] = useState(40);
-  return <Slider value={value} min={0} max={100} onChange={setValue} label="Volume" disabled={disabled} />;
+  return (
+    <Slider
+      value={value}
+      min={0}
+      max={100}
+      onChange={setValue}
+      label="Volume"
+      disabled={disabled}
+    />
+  );
 }
 
 describe('<Slider />', () => {
@@ -53,7 +62,9 @@ describe('<Slider />', () => {
     render(<Slider value={NaN} min={0} max={100} label="Volume" />);
 
     expect(screen.getByRole('slider', { name: 'Volume' })).toHaveValue('0');
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"value" must be a finite number'));
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining('"value" must be a finite number'),
+    );
     errorSpy.mockRestore();
   });
 

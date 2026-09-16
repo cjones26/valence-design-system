@@ -12,7 +12,9 @@ const typescriptConfigs = tseslint.configs.recommended.map((config) => ({
   files: config.files ?? typescriptFiles,
 }));
 const reactRecommendedRules = Object.fromEntries(
-  Object.entries(react.configs.recommended.rules).filter(([name]) => name !== 'react/react-in-jsx-scope'),
+  Object.entries(react.configs.recommended.rules).filter(
+    ([name]) => name !== 'react/react-in-jsx-scope',
+  ),
 );
 
 export default tseslint.config(

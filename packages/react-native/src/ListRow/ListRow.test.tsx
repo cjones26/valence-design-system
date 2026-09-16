@@ -64,7 +64,9 @@ describe('<ListRow />', () => {
   it('includes archived state in the accessible name when pressable', async () => {
     await render(<ListRow title="Groceries" subtitle="Due Friday" archived onPress={() => {}} />);
 
-    expect(screen.getByRole('button', { name: 'Groceries, archived, Due Friday' })).toBeOnTheScreen();
+    expect(
+      screen.getByRole('button', { name: 'Groceries, archived, Due Friday' }),
+    ).toBeOnTheScreen();
   });
 
   it('does not strike through the title when not archived', async () => {
@@ -74,9 +76,16 @@ describe('<ListRow />', () => {
   });
 
   it('renders a presentation-only trailing icon', async () => {
-    await render(<ListRow title="Groceries" trailingIcon={() => <View accessibilityLabel="Decorative icon" />} />);
+    await render(
+      <ListRow
+        title="Groceries"
+        trailingIcon={() => <View accessibilityLabel="Decorative icon" />}
+      />,
+    );
 
-    const iconSlot = screen.getByLabelText('Decorative icon', { includeHiddenElements: true }).parent;
+    const iconSlot = screen.getByLabelText('Decorative icon', {
+      includeHiddenElements: true,
+    }).parent;
     expect(iconSlot).toHaveProp('pointerEvents', 'none');
     expect(iconSlot).toHaveProp('accessibilityElementsHidden', true);
     expect(iconSlot).toHaveProp('importantForAccessibility', 'no-hide-descendants');
@@ -86,6 +95,8 @@ describe('<ListRow />', () => {
     await render(<ListRow grouped title="Cloud backup" />);
 
     expect(screen.getByText('Cloud backup').parent?.parent).toHaveStyle({ borderRadius: 0 });
-    expect(screen.getByText('Cloud backup').parent?.parent).not.toHaveStyle({ boxShadow: expect.any(String) });
+    expect(screen.getByText('Cloud backup').parent?.parent).not.toHaveStyle({
+      boxShadow: expect.any(String),
+    });
   });
 });

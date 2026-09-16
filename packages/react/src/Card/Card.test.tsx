@@ -54,7 +54,14 @@ describe('<Card />', () => {
   });
 
   it('does not add status to an explicit actionLabel', () => {
-    render(<Card title="Trip to Tokyo" status="success" actionLabel="View trip details" onPress={() => {}} />);
+    render(
+      <Card
+        title="Trip to Tokyo"
+        status="success"
+        actionLabel="View trip details"
+        onPress={() => {}}
+      />,
+    );
 
     expect(screen.getByRole('button', { name: 'View trip details' })).toBeInTheDocument();
   });
@@ -83,7 +90,9 @@ describe('<Card />', () => {
       </Card>,
     );
 
-    await expect(user.click(screen.getByRole('button', { name: 'Cancel' }))).rejects.toThrow(/pointer-events: none/);
+    await expect(user.click(screen.getByRole('button', { name: 'Cancel' }))).rejects.toThrow(
+      /pointer-events: none/,
+    );
   });
 
   it('renders a non-text element child directly instead of wrapping it in Typography', () => {
@@ -109,6 +118,8 @@ describe('<Card />', () => {
       </Card>,
     );
 
-    expect(screen.getByRole('button', { name: 'Trip to Tokyo, Departs Friday' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Trip to Tokyo, Departs Friday' }),
+    ).toBeInTheDocument();
   });
 });

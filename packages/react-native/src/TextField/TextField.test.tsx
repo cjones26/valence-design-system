@@ -49,7 +49,10 @@ describe('<TextField />', () => {
   it('exposes the helper text to assistive tech via accessibilityHint', async () => {
     await render(<TextField label="Name" value="" error helperText="Name is required" />);
 
-    expect(screen.getByLabelText('Name')).toHaveProp('accessibilityHint', 'Invalid. Name is required');
+    expect(screen.getByLabelText('Name')).toHaveProp(
+      'accessibilityHint',
+      'Invalid. Name is required',
+    );
   });
 
   it('keeps the accessible name unchanged when invalid', async () => {
@@ -60,7 +63,9 @@ describe('<TextField />', () => {
   });
 
   it('announces the invalid state when the field becomes invalid', async () => {
-    const announceSpy = jest.spyOn(AccessibilityInfo, 'announceForAccessibility').mockImplementation(() => {});
+    const announceSpy = jest
+      .spyOn(AccessibilityInfo, 'announceForAccessibility')
+      .mockImplementation(() => {});
 
     const { rerender } = await render(<TextField label="Name" value="" />);
     announceSpy.mockClear();

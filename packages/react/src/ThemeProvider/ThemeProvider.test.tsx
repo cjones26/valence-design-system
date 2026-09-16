@@ -44,7 +44,9 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(screen.getByText('content').parentElement).toHaveStyle({ '--color-text-primary': '#123456' });
+    expect(screen.getByText('content').parentElement).toHaveStyle({
+      '--color-text-primary': '#123456',
+    });
   });
 
   it('defaults the preset attribute to hi-vis when not provided', () => {

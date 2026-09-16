@@ -13,7 +13,12 @@ export function Radio({ checked, onChange, disabled, label }: RadioProps) {
       accessibilityRole="radio"
       accessibilityState={{ checked, disabled: isDisabled }}
       accessibilityLabel={label}
-      style={{ minHeight: theme.control_minimum_target, flexDirection: 'row', alignItems: 'center', gap: theme.spacing_md }}
+      style={{
+        minHeight: theme.control_minimum_target,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: theme.spacing_md,
+      }}
     >
       <View
         style={{
@@ -21,16 +26,30 @@ export function Radio({ checked, onChange, disabled, label }: RadioProps) {
           height: 24,
           borderRadius: theme.radius_pill,
           borderWidth: 1.5,
-          borderColor: isDisabled ? theme.color_border_primary : checked ? theme.color_text_primary : theme.color_border_control,
+          borderColor: isDisabled
+            ? theme.color_border_primary
+            : checked
+              ? theme.color_text_primary
+              : theme.color_border_control,
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
         {checked && (
-          <View style={{ width: 12, height: 12, borderRadius: theme.radius_pill, backgroundColor: isDisabled ? theme.color_text_muted : theme.color_text_primary }} />
+          <View
+            style={{
+              width: 12,
+              height: 12,
+              borderRadius: theme.radius_pill,
+              backgroundColor: isDisabled ? theme.color_text_muted : theme.color_text_primary,
+            }}
+          />
         )}
       </View>
-      <Typography variant="body" style={{ color: isDisabled ? theme.color_text_muted : theme.color_text_primary }}>
+      <Typography
+        variant="body"
+        style={{ color: isDisabled ? theme.color_text_muted : theme.color_text_primary }}
+      >
         {label}
       </Typography>
     </Pressable>

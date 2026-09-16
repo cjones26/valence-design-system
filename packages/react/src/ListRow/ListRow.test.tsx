@@ -58,7 +58,9 @@ describe('<ListRow />', () => {
   it('includes archived state in the accessible name when pressable', () => {
     render(<ListRow title="Groceries" subtitle="Due Friday" archived onPress={() => {}} />);
 
-    expect(screen.getByRole('button', { name: 'Groceries, archived, Due Friday' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Groceries, archived, Due Friday' }),
+    ).toBeInTheDocument();
   });
 
   it('does not strike through the title when not archived', () => {

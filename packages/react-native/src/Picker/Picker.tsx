@@ -28,7 +28,9 @@ export function Picker({
           minHeight: theme.control_field_height,
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundColor: isDisabled ? theme.color_background_subtle : theme.color_background_primary,
+          backgroundColor: isDisabled
+            ? theme.color_background_subtle
+            : theme.color_background_primary,
           borderWidth: 1.5,
           borderColor: isDisabled ? theme.color_border_primary : borderColor,
           borderRadius: theme.radius_control,
@@ -54,7 +56,10 @@ export function Picker({
         </NativePicker>
       </View>
       {helperText && (
-        <Typography variant="meta" style={{ color: error ? theme.color_action_danger_text : theme.color_text_secondary }}>
+        <Typography
+          variant="meta"
+          style={{ color: error ? theme.color_action_danger_text : theme.color_text_secondary }}
+        >
           {helperText}
         </Typography>
       )}

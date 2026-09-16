@@ -55,7 +55,14 @@ describe('<Card />', () => {
   });
 
   it('does not add status to an explicit actionLabel', async () => {
-    await render(<Card title="Trip to Tokyo" status="success" actionLabel="View trip details" onPress={() => {}} />);
+    await render(
+      <Card
+        title="Trip to Tokyo"
+        status="success"
+        actionLabel="View trip details"
+        onPress={() => {}}
+      />,
+    );
 
     expect(screen.getByRole('button', { name: 'View trip details' })).toBeOnTheScreen();
   });
@@ -96,7 +103,9 @@ describe('<Card />', () => {
   it('uses the default theme text color for content by default', async () => {
     await render(<Card title="Trip to Tokyo">Departs Friday</Card>);
 
-    expect(screen.getByText('Departs Friday')).toHaveStyle({ color: defaultTheme.color_text_primary });
+    expect(screen.getByText('Departs Friday')).toHaveStyle({
+      color: defaultTheme.color_text_primary,
+    });
   });
 
   it('uses the on-positive text color for content when status is success', async () => {
@@ -106,7 +115,9 @@ describe('<Card />', () => {
       </Card>,
     );
 
-    expect(screen.getByText('Departs Friday')).toHaveStyle({ color: defaultTheme.color_text_on_positive });
+    expect(screen.getByText('Departs Friday')).toHaveStyle({
+      color: defaultTheme.color_text_on_positive,
+    });
   });
 
   it('uses the primary text color for content when status is error', async () => {
@@ -116,25 +127,33 @@ describe('<Card />', () => {
       </Card>,
     );
 
-    expect(screen.getByText('Departs Friday')).toHaveStyle({ color: defaultTheme.color_text_primary });
+    expect(screen.getByText('Departs Friday')).toHaveStyle({
+      color: defaultTheme.color_text_primary,
+    });
   });
 
   it('uses the secondary text color for the title by default', async () => {
     await render(<Card title="Trip to Tokyo" />);
 
-    expect(screen.getByText('Trip to Tokyo')).toHaveStyle({ color: defaultTheme.color_text_secondary });
+    expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
+      color: defaultTheme.color_text_secondary,
+    });
   });
 
   it('uses the on-positive text color for the title when status is success', async () => {
     await render(<Card title="Trip to Tokyo" status="success" />);
 
-    expect(screen.getByText('Trip to Tokyo')).toHaveStyle({ color: defaultTheme.color_text_on_positive });
+    expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
+      color: defaultTheme.color_text_on_positive,
+    });
   });
 
   it('uses the secondary text color for the title when status is error', async () => {
     await render(<Card title="Trip to Tokyo" status="error" />);
 
-    expect(screen.getByText('Trip to Tokyo')).toHaveStyle({ color: defaultTheme.color_text_secondary });
+    expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
+      color: defaultTheme.color_text_secondary,
+    });
   });
 
   it('renders a non-text element child directly instead of wrapping it in Text', async () => {

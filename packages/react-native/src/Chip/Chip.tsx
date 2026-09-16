@@ -12,11 +12,16 @@ export function Chip({ selected, disabled, icon, onPress, children }: ChipProps)
 
   function background(pressed: boolean): string {
     if (isDisabled) return theme.color_background_subtle;
-    if (selected) return pressed ? lighten(theme.color_text_primary, 0.2) : theme.color_text_primary;
+    if (selected)
+      return pressed ? lighten(theme.color_text_primary, 0.2) : theme.color_text_primary;
     return pressed ? theme.color_border_primary : theme.color_background_raised;
   }
 
-  const fg = isDisabled ? theme.color_text_muted : selected ? theme.color_background_primary : theme.color_text_primary;
+  const fg = isDisabled
+    ? theme.color_text_muted
+    : selected
+      ? theme.color_background_primary
+      : theme.color_text_primary;
 
   return (
     <Pressable
@@ -34,7 +39,11 @@ export function Chip({ selected, disabled, icon, onPress, children }: ChipProps)
         borderRadius: theme.radius_pill,
         backgroundColor: background(pressed),
         borderWidth: 1,
-        borderColor: isDisabled ? theme.color_border_primary : selected ? 'transparent' : theme.color_border_control,
+        borderColor: isDisabled
+          ? theme.color_border_primary
+          : selected
+            ? 'transparent'
+            : theme.color_border_control,
         transform: [{ scale: pressed && !isDisabled && !reduceMotion ? 0.96 : 1 }],
       })}
     >
@@ -44,7 +53,9 @@ export function Chip({ selected, disabled, icon, onPress, children }: ChipProps)
             <Typography variant="label" style={{ color: fg }}>
               {icon}
             </Typography>
-          ) : icon(fg)}
+          ) : (
+            icon(fg)
+          )}
         </View>
       )}
       <Typography variant="label" style={{ color: fg }}>

@@ -18,7 +18,15 @@ function ControlledNumberField({
 }) {
   const [value, setValue] = useState(initial);
   return (
-    <NumberField label="Quantity" value={value} min={min} max={max} step={step} disabled={disabled} onChange={setValue} />
+    <NumberField
+      label="Quantity"
+      value={value}
+      min={min}
+      max={max}
+      step={step}
+      disabled={disabled}
+      onChange={setValue}
+    />
   );
 }
 
@@ -120,7 +128,9 @@ describe('<NumberField />', () => {
     await render(<NumberField label="Quantity" value={NaN} />);
 
     expect(screen.getByText('0')).toBeOnTheScreen();
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"value" must be a finite number'));
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining('"value" must be a finite number'),
+    );
     errorSpy.mockRestore();
   });
 

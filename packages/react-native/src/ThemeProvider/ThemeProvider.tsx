@@ -1,6 +1,12 @@
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
-import { themes, type Theme, type ThemeMode, type ThemeOverride, type ThemePreset } from '@valence/tokens';
+import {
+  themes,
+  type Theme,
+  type ThemeMode,
+  type ThemeOverride,
+  type ThemePreset,
+} from '@valence/tokens';
 
 const DEFAULT_PRESET: ThemePreset = 'hi-vis';
 
@@ -19,7 +25,12 @@ export interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export function ThemeProvider({ preset = DEFAULT_PRESET, mode, theme, children }: ThemeProviderProps) {
+export function ThemeProvider({
+  preset = DEFAULT_PRESET,
+  mode,
+  theme,
+  children,
+}: ThemeProviderProps) {
   const systemScheme = useColorScheme();
   const resolvedMode: ThemeMode = mode ?? (systemScheme === 'dark' ? 'dark' : 'light');
 

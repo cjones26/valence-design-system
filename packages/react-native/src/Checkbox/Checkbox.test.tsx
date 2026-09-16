@@ -5,7 +5,9 @@ import { Checkbox } from './Checkbox';
 
 function ControlledCheckbox({ disabled }: { disabled?: boolean }) {
   const [checked, setChecked] = useState(false);
-  return <Checkbox checked={checked} onChange={setChecked} disabled={disabled} label="Accept terms" />;
+  return (
+    <Checkbox checked={checked} onChange={setChecked} disabled={disabled} label="Accept terms" />
+  );
 }
 
 describe('<Checkbox />', () => {

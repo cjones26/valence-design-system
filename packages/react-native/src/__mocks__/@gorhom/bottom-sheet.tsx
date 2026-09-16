@@ -1,5 +1,17 @@
-import { forwardRef, useImperativeHandle, useState, type ComponentType, type ReactNode } from 'react';
-import { Pressable, View, type AccessibilityRole, type StyleProp, type ViewStyle } from 'react-native';
+import {
+  forwardRef,
+  useImperativeHandle,
+  useState,
+  type ComponentType,
+  type ReactNode,
+} from 'react';
+import {
+  Pressable,
+  View,
+  type AccessibilityRole,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 
 interface BackdropProps {
   accessibilityLabel?: string;
@@ -61,8 +73,18 @@ export const BottomSheet = forwardRef<ModalHandle, ModalProps>(function MockBott
 
 export default BottomSheet;
 
-export function BottomSheetBackdrop({ onPress, accessibilityLabel, accessibilityRole }: BackdropProps) {
-  return <Pressable onPress={onPress} accessibilityLabel={accessibilityLabel} accessibilityRole={accessibilityRole} />;
+export function BottomSheetBackdrop({
+  onPress,
+  accessibilityLabel,
+  accessibilityRole,
+}: BackdropProps) {
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole={accessibilityRole}
+    />
+  );
 }
 
 export function BottomSheetScrollView({

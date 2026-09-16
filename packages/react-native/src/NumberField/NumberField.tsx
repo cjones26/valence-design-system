@@ -4,12 +4,23 @@ import type { NumberFieldProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 
-export function NumberField({ value, min, max, step = 1, onChange, disabled, error, label }: NumberFieldProps) {
+export function NumberField({
+  value,
+  min,
+  max,
+  step = 1,
+  onChange,
+  disabled,
+  error,
+  label,
+}: NumberFieldProps) {
   const theme = useTheme();
   const safeMin = min != null && Number.isFinite(min) ? min : -Infinity;
   const safeMax = max != null && Number.isFinite(max) ? max : Infinity;
   const rangeInvalid =
-    (min != null && !Number.isFinite(min)) || (max != null && !Number.isFinite(max)) || safeMin > safeMax;
+    (min != null && !Number.isFinite(min)) ||
+    (max != null && !Number.isFinite(max)) ||
+    safeMin > safeMax;
   const fallbackValue = Number.isFinite(safeMin) ? safeMin : Number.isFinite(safeMax) ? safeMax : 0;
   const safeValue = Number.isFinite(value)
     ? rangeInvalid
@@ -18,8 +29,12 @@ export function NumberField({ value, min, max, step = 1, onChange, disabled, err
     : fallbackValue;
 
   useEffect(() => {
-    if (!Number.isFinite(value)) console.error(`NumberField: "value" must be a finite number, got ${value}.`);
-    if (rangeInvalid) console.error(`NumberField: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`);
+    if (!Number.isFinite(value))
+      console.error(`NumberField: "value" must be a finite number, got ${value}.`);
+    if (rangeInvalid)
+      console.error(
+        `NumberField: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`,
+      );
   }, [max, min, rangeInvalid, value]);
 
   const atMin = safeValue <= safeMin;
@@ -39,7 +54,9 @@ export function NumberField({ value, min, max, step = 1, onChange, disabled, err
         style={{
           flexDirection: 'row',
           alignItems: 'stretch',
-          backgroundColor: disabled ? theme.color_background_subtle : theme.color_background_primary,
+          backgroundColor: disabled
+            ? theme.color_background_subtle
+            : theme.color_background_primary,
           borderRadius: theme.radius_control,
           overflow: 'hidden',
           minWidth: 148,
@@ -53,17 +70,29 @@ export function NumberField({ value, min, max, step = 1, onChange, disabled, err
           accessibilityLabel={`Decrease ${label}`}
           accessibilityRole="button"
           onPress={() => onChange?.(Math.max(safeMin, safeValue - effectiveStep))}
-          style={{ width: theme.control_minimum_target, alignItems: 'center', justifyContent: 'center' }}
+          style={{
+            width: theme.control_minimum_target,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
           <Typography
             variant="numeral"
-            style={{ color: atMin || disabled || stepInvalid ? theme.color_text_muted : theme.color_text_secondary }}
+            style={{
+              color:
+                atMin || disabled || stepInvalid
+                  ? theme.color_text_muted
+                  : theme.color_text_secondary,
+            }}
           >
             −
           </Typography>
         </Pressable>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Typography variant="numeral" style={{ color: disabled ? theme.color_text_muted : theme.color_text_primary }}>
+          <Typography
+            variant="numeral"
+            style={{ color: disabled ? theme.color_text_muted : theme.color_text_primary }}
+          >
             {safeValue}
           </Typography>
         </View>
@@ -72,11 +101,20 @@ export function NumberField({ value, min, max, step = 1, onChange, disabled, err
           accessibilityLabel={`Increase ${label}`}
           accessibilityRole="button"
           onPress={() => onChange?.(Math.min(safeMax, safeValue + effectiveStep))}
-          style={{ width: theme.control_minimum_target, alignItems: 'center', justifyContent: 'center' }}
+          style={{
+            width: theme.control_minimum_target,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
           <Typography
             variant="numeral"
-            style={{ color: atMax || disabled || stepInvalid ? theme.color_text_muted : theme.color_text_secondary }}
+            style={{
+              color:
+                atMax || disabled || stepInvalid
+                  ? theme.color_text_muted
+                  : theme.color_text_secondary,
+            }}
           >
             +
           </Typography>

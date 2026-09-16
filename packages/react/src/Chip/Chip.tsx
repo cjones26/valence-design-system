@@ -11,7 +11,11 @@ export function Chip({ selected, disabled, icon, onPress, children }: ChipProps)
       aria-pressed={selected}
       onClick={onPress}
     >
-      {icon != null && <span className={styles.icon}>{typeof icon === 'function' ? icon('currentColor') : icon}</span>}
+      {icon != null && (
+        <span className={styles.icon}>
+          {typeof icon === 'function' ? icon('currentColor') : icon}
+        </span>
+      )}
       <Typography variant="label">{children}</Typography>
     </button>
   );

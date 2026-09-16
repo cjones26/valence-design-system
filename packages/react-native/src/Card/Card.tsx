@@ -10,9 +10,13 @@ export function Card({ status = 'resting', title, actionLabel, onPress, children
   const theme = useTheme();
   const [pressed, setPressed] = useState(false);
   const reduceMotion = useReduceMotion();
-  const describedChildren = typeof children === 'string' || typeof children === 'number' ? children : undefined;
+  const describedChildren =
+    typeof children === 'string' || typeof children === 'number' ? children : undefined;
   const computedActionLabel =
-    actionLabel ?? [title, status !== 'resting' ? status : undefined, describedChildren].filter(Boolean).join(', ');
+    actionLabel ??
+    [title, status !== 'resting' ? status : undefined, describedChildren]
+      .filter(Boolean)
+      .join(', ');
 
   const background =
     status === 'success'
@@ -21,8 +25,7 @@ export function Card({ status = 'resting', title, actionLabel, onPress, children
         ? alpha(theme.color_text_primary, 0.04)
         : theme.color_background_raised;
 
-  const contentColor =
-    status === 'success' ? theme.color_text_on_positive : undefined;
+  const contentColor = status === 'success' ? theme.color_text_on_positive : undefined;
 
   const titleColor = contentColor ?? theme.color_text_secondary;
 
@@ -64,7 +67,10 @@ export function Card({ status = 'resting', title, actionLabel, onPress, children
         </Typography>
         {children != null &&
           (describedChildren != null ? (
-            <Typography variant="body" style={{ lineHeight: 22, ...(contentColor && { color: contentColor }) }}>
+            <Typography
+              variant="body"
+              style={{ lineHeight: 22, ...(contentColor && { color: contentColor }) }}
+            >
               {describedChildren}
             </Typography>
           ) : (

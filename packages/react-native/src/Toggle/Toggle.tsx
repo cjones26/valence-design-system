@@ -13,7 +13,11 @@ export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
   const reduceMotion = useReduceMotion();
 
   useEffect(() => {
-    const animation = Animated.timing(anim, { toValue: checked ? 1 : 0, duration: reduceMotion ? 0 : 180, useNativeDriver: false });
+    const animation = Animated.timing(anim, {
+      toValue: checked ? 1 : 0,
+      duration: reduceMotion ? 0 : 180,
+      useNativeDriver: false,
+    });
     animation.start();
     return () => animation.stop();
   }, [checked, anim, reduceMotion]);
@@ -24,7 +28,10 @@ export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
       ? [theme.color_background_subtle, alpha(theme.color_state_positive, 0.16)]
       : [theme.color_border_primary, theme.color_state_positive],
   });
-  const thumbTranslate = anim.interpolate({ inputRange: [0, 1], outputRange: [0, I18nManager.isRTL ? -20 : 20] });
+  const thumbTranslate = anim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, I18nManager.isRTL ? -20 : 20],
+  });
 
   return (
     <Pressable
@@ -33,7 +40,12 @@ export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
       accessibilityRole="switch"
       accessibilityState={{ checked, disabled: isDisabled }}
       accessibilityLabel={label}
-      style={{ minHeight: theme.control_minimum_target, flexDirection: 'row', alignItems: 'center', gap: theme.spacing_md }}
+      style={{
+        minHeight: theme.control_minimum_target,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: theme.spacing_md,
+      }}
     >
       <Animated.View
         style={{
@@ -62,7 +74,10 @@ export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
           }}
         />
       </Animated.View>
-      <Typography variant="body" style={{ color: isDisabled ? theme.color_text_muted : theme.color_text_primary }}>
+      <Typography
+        variant="body"
+        style={{ color: isDisabled ? theme.color_text_muted : theme.color_text_primary }}
+      >
         {label}
       </Typography>
     </Pressable>

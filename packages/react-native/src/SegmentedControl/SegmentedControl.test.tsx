@@ -14,7 +14,13 @@ function ControlledSegmentedControl({ disabled }: { disabled?: boolean }) {
   const [value, setValue] = useState('day');
   return (
     <>
-      <SegmentedControl label="View" options={OPTIONS} value={value} onChange={setValue} disabled={disabled} />
+      <SegmentedControl
+        label="View"
+        options={OPTIONS}
+        value={value}
+        onChange={setValue}
+        disabled={disabled}
+      />
       <Text>selected: {value}</Text>
     </>
   );
@@ -53,7 +59,17 @@ describe('<SegmentedControl />', () => {
     await render(
       <SegmentedControl
         label="View"
-        options={[{ value: 'day', label: 'Day', icon: (color) => <Text testID="icon" style={{ color }}>I</Text> }]}
+        options={[
+          {
+            value: 'day',
+            label: 'Day',
+            icon: (color) => (
+              <Text testID="icon" style={{ color }}>
+                I
+              </Text>
+            ),
+          },
+        ]}
         value="day"
         disabled
       />,

@@ -2,7 +2,8 @@ import type { ElementType, HTMLAttributes } from 'react';
 import type { TypographyProps as SharedTypographyProps, TypographyVariant } from '@valence/types';
 import styles from './Typography.module.css';
 
-export interface TypographyProps extends SharedTypographyProps, Omit<HTMLAttributes<HTMLElement>, 'children'> {
+export interface TypographyProps
+  extends SharedTypographyProps, Omit<HTMLAttributes<HTMLElement>, 'children'> {
   /** Overrides the element rendered for a heading-shaped variant (display/title/titleSm default to h1/h2/h3). */
   as?: ElementType;
 }

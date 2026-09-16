@@ -31,7 +31,9 @@ export function BottomSheet({ open, title, onClose, children }: BottomSheetProps
     >
       <div className={styles.sheet}>
         <div className={styles.handle} aria-hidden="true" />
-        <Typography id={titleId} variant="titleSm">{title}</Typography>
+        <Typography id={titleId} variant="titleSm">
+          {title}
+        </Typography>
         <div className={styles.content}>{children}</div>
       </div>
     </dialog>

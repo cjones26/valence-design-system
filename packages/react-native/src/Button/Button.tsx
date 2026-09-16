@@ -23,13 +23,40 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
   const theme = useTheme();
   const [focused, setFocused] = useState(false);
   const reduceMotion = useReduceMotion();
-  const GEOMETRY: Record<ButtonKind, { minHeight: number; paddingHorizontal: number; borderRadius: number }> = {
-    primary: { minHeight: theme.control_minimum_target, paddingHorizontal: theme.spacing_lg, borderRadius: theme.radius_control },
-    secondary: { minHeight: theme.control_minimum_target, paddingHorizontal: theme.spacing_lg, borderRadius: theme.radius_control },
-    ghost: { minHeight: theme.control_minimum_target, paddingHorizontal: theme.spacing_md, borderRadius: theme.radius_control },
-    danger: { minHeight: theme.control_minimum_target, paddingHorizontal: theme.spacing_lg, borderRadius: theme.radius_control },
-    dangerConfirm: { minHeight: theme.control_minimum_target, paddingHorizontal: theme.spacing_lg, borderRadius: theme.radius_control },
-    pill: { minHeight: theme.control_minimum_target, paddingHorizontal: 14, borderRadius: theme.radius_pill },
+  const GEOMETRY: Record<
+    ButtonKind,
+    { minHeight: number; paddingHorizontal: number; borderRadius: number }
+  > = {
+    primary: {
+      minHeight: theme.control_minimum_target,
+      paddingHorizontal: theme.spacing_lg,
+      borderRadius: theme.radius_control,
+    },
+    secondary: {
+      minHeight: theme.control_minimum_target,
+      paddingHorizontal: theme.spacing_lg,
+      borderRadius: theme.radius_control,
+    },
+    ghost: {
+      minHeight: theme.control_minimum_target,
+      paddingHorizontal: theme.spacing_md,
+      borderRadius: theme.radius_control,
+    },
+    danger: {
+      minHeight: theme.control_minimum_target,
+      paddingHorizontal: theme.spacing_lg,
+      borderRadius: theme.radius_control,
+    },
+    dangerConfirm: {
+      minHeight: theme.control_minimum_target,
+      paddingHorizontal: theme.spacing_lg,
+      borderRadius: theme.radius_control,
+    },
+    pill: {
+      minHeight: theme.control_minimum_target,
+      paddingHorizontal: 14,
+      borderRadius: theme.radius_pill,
+    },
   };
   const geo = GEOMETRY[kind];
   const isUnavailable = disabled || !onPress;
@@ -40,14 +67,30 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
       switch (kind) {
         case 'primary':
         case 'pill':
-          return { bg: alpha(theme.color_text_primary, 0.12), fg: theme.color_text_muted, border: theme.color_border_primary };
+          return {
+            bg: alpha(theme.color_text_primary, 0.12),
+            fg: theme.color_text_muted,
+            border: theme.color_border_primary,
+          };
         case 'dangerConfirm':
-          return { bg: alpha(theme.color_text_primary, 0.04), fg: theme.color_text_muted, border: theme.color_border_primary };
+          return {
+            bg: alpha(theme.color_text_primary, 0.04),
+            fg: theme.color_text_muted,
+            border: theme.color_border_primary,
+          };
         case 'secondary':
         case 'danger':
-          return { bg: alpha(theme.color_text_primary, 0.04), fg: theme.color_text_muted, border: theme.color_border_primary };
+          return {
+            bg: alpha(theme.color_text_primary, 0.04),
+            fg: theme.color_text_muted,
+            border: theme.color_border_primary,
+          };
         default:
-          return { bg: alpha(theme.color_text_primary, 0.04), fg: theme.color_text_muted, border: theme.color_border_primary };
+          return {
+            bg: alpha(theme.color_text_primary, 0.04),
+            fg: theme.color_text_muted,
+            border: theme.color_border_primary,
+          };
       }
     }
     switch (kind) {
@@ -106,16 +149,33 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
           transform: [{ scale: pressed && !isDisabled && !reduceMotion ? 0.97 : 1 }],
           borderWidth: 1,
           borderColor: c.border ?? 'transparent',
-          ...(focused && { outlineWidth: 3, outlineColor: theme.color_border_focus, outlineStyle: 'solid' }),
+          ...(focused && {
+            outlineWidth: 3,
+            outlineColor: theme.color_border_focus,
+            outlineStyle: 'solid',
+          }),
         };
         return style;
       }}
     >
-      <Typography variant={TEXT_VARIANT[kind]} style={{ color: colors(false).fg, opacity: loading ? 0 : 1 }}>
+      <Typography
+        variant={TEXT_VARIANT[kind]}
+        style={{ color: colors(false).fg, opacity: loading ? 0 : 1 }}
+      >
         {children}
       </Typography>
       {loading && (
-        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Spinner size={14} color={colors(false).fg} />
         </View>
       )}

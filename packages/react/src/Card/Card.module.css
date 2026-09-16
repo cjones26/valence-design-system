@@ -57,7 +57,9 @@
 }
 
 .editing {
-  box-shadow: inset 0 0 0 2px var(--color-text-primary), var(--elevation);
+  box-shadow:
+    inset 0 0 0 2px var(--color-text-primary),
+    var(--elevation);
 }
 
 .success {
@@ -72,7 +74,9 @@
 .error {
   background: var(--color-background-raised);
   color: var(--color-text-primary);
-  box-shadow: 0 0 0 1.5px var(--color-action-danger), var(--elevation);
+  box-shadow:
+    0 0 0 1.5px var(--color-action-danger),
+    var(--elevation);
 }
 
 @media (prefers-reduced-motion: reduce) {

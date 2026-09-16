@@ -3,13 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react-native';
 import { TYPOGRAPHY_VARIANTS } from '@valence/types';
 import { Typography } from '@valence/react-native';
 
+type Story = StoryObj<typeof Typography>;
+
 const meta: Meta<typeof Typography> = {
   title: 'Components/Typography',
   component: Typography,
 };
-export default meta;
-
-type Story = StoryObj<typeof Typography>;
 
 export const Default: Story = { args: { variant: 'body', children: 'The quick brown fox' } };
 
@@ -24,3 +23,5 @@ export const AllVariants: Story = {
     </View>
   ),
 };
+
+export default meta;

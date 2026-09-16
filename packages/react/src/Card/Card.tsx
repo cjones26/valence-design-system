@@ -11,13 +11,22 @@ const STATUS_CLASS: Record<NonNullable<CardProps['status']>, string> = {
 };
 
 export function Card({ status = 'resting', title, actionLabel, onPress, children }: CardProps) {
-  const describedChildren = typeof children === 'string' || typeof children === 'number' ? children : undefined;
+  const describedChildren =
+    typeof children === 'string' || typeof children === 'number' ? children : undefined;
   const computedActionLabel =
-    actionLabel ?? [title, status !== 'resting' ? status : undefined, describedChildren].filter(Boolean).join(', ');
+    actionLabel ??
+    [title, status !== 'resting' ? status : undefined, describedChildren]
+      .filter(Boolean)
+      .join(', ');
   return (
     <div className={`${styles.card} ${STATUS_CLASS[status] ?? ''}`}>
       {onPress && (
-        <button type="button" className={styles.actionOverlay} aria-label={computedActionLabel} onClick={onPress} />
+        <button
+          type="button"
+          className={styles.actionOverlay}
+          aria-label={computedActionLabel}
+          onClick={onPress}
+        />
       )}
       <div className={styles.content} inert={Boolean(onPress)}>
         <Typography variant="eyebrow" className={styles.title}>

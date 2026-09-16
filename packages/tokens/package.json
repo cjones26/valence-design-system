@@ -19,7 +19,9 @@
     "./css": "./dist/css/tokens.css",
     "./fonts/*": "./dist/fonts/*"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "node build.mjs && tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit"

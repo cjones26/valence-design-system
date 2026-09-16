@@ -64,7 +64,9 @@ export const TextField = forwardRef<TextInput, TextFieldProps>(function TextFiel
         accessibilityHint={error ? `Invalid. ${helperText ?? ''}`.trim() : helperText}
         accessibilityState={{ disabled: Boolean(disabled) }}
         style={{
-          backgroundColor: disabled ? theme.color_background_subtle : theme.color_background_primary,
+          backgroundColor: disabled
+            ? theme.color_background_subtle
+            : theme.color_background_primary,
           borderRadius: theme.radius_control,
           paddingVertical: 14,
           paddingHorizontal: theme.spacing_md,
@@ -80,7 +82,10 @@ export const TextField = forwardRef<TextInput, TextFieldProps>(function TextFiel
         }}
       />
       {helperText && (
-        <Typography variant="meta" style={{ color: error ? theme.color_action_danger_text : theme.color_text_secondary }}>
+        <Typography
+          variant="meta"
+          style={{ color: error ? theme.color_action_danger_text : theme.color_text_secondary }}
+        >
           {helperText}
         </Typography>
       )}

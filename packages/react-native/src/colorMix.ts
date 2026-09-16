@@ -14,7 +14,9 @@ function toRgb(color: string): [number, number, number] {
 }
 
 function toHex(n: number): string {
-  return Math.max(0, Math.min(255, Math.round(n))).toString(16).padStart(2, '0');
+  return Math.max(0, Math.min(255, Math.round(n)))
+    .toString(16)
+    .padStart(2, '0');
 }
 
 /** Mixes `color` toward white by `amount` (0–1) — e.g. a pressed-lighter tint. */
