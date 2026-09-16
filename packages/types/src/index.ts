@@ -11,8 +11,6 @@ type Disableable = { disabled?: boolean };
 // typecheck rather than shipping unlabeled.
 type Labeled = { label: string };
 
-// ── Button ──────────────────────────────────────────────────────────────
-
 export type ButtonKind = 'primary' | 'secondary' | 'ghost' | 'danger' | 'dangerConfirm' | 'pill';
 
 export interface ButtonProps extends Pressable, Disableable {
@@ -22,22 +20,16 @@ export interface ButtonProps extends Pressable, Disableable {
   children: ReactNode;
 }
 
-// ── StepButton ──────────────────────────────────────────────────────────
-
 export interface StepButtonProps extends Pressable, Disableable {
   label: string;
   tone: 'positive' | 'negative';
 }
-
-// ── Chip ────────────────────────────────────────────────────────────────
 
 export interface ChipProps extends Pressable, Disableable {
   selected?: boolean;
   icon?: IconSlot;
   children: ReactNode;
 }
-
-// ── Pills (read-only audit markers — no interaction) ───────────────────
 
 export interface DeltaPillProps {
   /** Rendered with neutral styling when 0, rather than positive/negative tone. */
@@ -54,8 +46,6 @@ export interface StatusBadgeProps {
   status: 'success' | 'warning' | 'danger';
   children: ReactNode;
 }
-
-// ── Form fields ─────────────────────────────────────────────────────────
 
 export interface TextFieldProps extends Disableable, Labeled {
   value: string;
@@ -146,8 +136,6 @@ export interface SegmentedControlProps extends Disableable, Labeled {
   onChange?: (value: string) => void;
 }
 
-// ── Surfaces ────────────────────────────────────────────────────────────
-
 export interface CardProps extends Pressable {
   status?: 'resting' | 'editing' | 'success' | 'skipped' | 'error';
   title: string;
@@ -194,8 +182,6 @@ export interface ListRowProps extends Pressable {
   grouped?: boolean;
 }
 
-// ── Slider ──────────────────────────────────────────────────────────────
-
 export interface SliderProps extends Disableable, Labeled {
   value: number;
   max: number;
@@ -210,14 +196,10 @@ export interface ProgressBarProps extends Labeled {
   max?: number;
 }
 
-// ── Spinner ─────────────────────────────────────────────────────────────
-
 export interface SpinnerProps {
   size?: number;
   color?: string;
 }
-
-// ── Icon ────────────────────────────────────────────────────────────────
 
 export type IconName =
   | 'back'
@@ -259,8 +241,6 @@ export interface IconProps {
 }
 
 export type IconSlot = string | number | ((color: string) => ReactNode);
-
-// ── Typography ──────────────────────────────────────────────────────────
 
 export type TypographyVariant =
   | 'display'

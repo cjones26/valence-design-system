@@ -3,9 +3,6 @@ import { Radio } from '@valence/react-native';
 
 type Story = StoryObj<typeof Radio>;
 
-// Mutual exclusivity across multiple Radios is RadioGroup's job (see
-// Components/RadioGroup) — these stories cover Radio's own states in
-// isolation.
 const meta: Meta<typeof Radio> = {
   title: 'Components/Radio',
   component: Radio,

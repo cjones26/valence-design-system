@@ -1,6 +1,3 @@
-// Fails CI if any component is marked "done" on one platform without the
-// other — enforces component availability and Storybook state parity.
-// Shared props remain enforced by @valence/types and platform tests.
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';

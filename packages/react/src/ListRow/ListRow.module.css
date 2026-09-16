@@ -64,7 +64,6 @@
 .body {
   flex: 1;
   min-width: 0;
-  /* .title/.subtitle are inline <span>s — stack them explicitly. */
   display: flex;
   flex-direction: column;
   gap: 2px;
