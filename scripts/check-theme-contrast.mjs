@@ -37,7 +37,9 @@ function parseColor(value) {
   }
 
   const values = value.match(/[\d.]+/g)?.map(Number);
-  if (!values || values.length < 3) throw new Error(`Unsupported color: ${value}`);
+  if (!values || values.length < 3) {
+    throw new Error(`Unsupported color: ${value}`);
+  }
   return { channels: values.slice(0, 3), alpha: values[3] ?? 1 };
 }
 

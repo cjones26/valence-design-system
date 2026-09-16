@@ -43,7 +43,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function T
         readOnly={!onChangeText}
         onChange={(e) => onChangeText?.(e.target.value)}
         onKeyDown={(event) => {
-          if (event.key === 'Enter') onSubmit?.();
+          if (event.key === 'Enter') {
+            onSubmit?.();
+          }
         }}
         aria-invalid={error || undefined}
         aria-describedby={helperText ? helperId : undefined}

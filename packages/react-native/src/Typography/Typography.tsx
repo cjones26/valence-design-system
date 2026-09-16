@@ -9,8 +9,12 @@ export interface TypographyProps extends SharedTypographyProps, Omit<TextProps, 
 const HEADER_VARIANTS = new Set<TypographyVariant>(['display', 'title', 'titleSm']);
 
 function weightStyle(weight: number): Pick<TextStyle, 'fontFamily' | 'fontWeight'> {
-  if (weight >= 700) return GEIST.bold;
-  if (weight >= 600) return GEIST.semibold;
+  if (weight >= 700) {
+    return GEIST.bold;
+  }
+  if (weight >= 600) {
+    return GEIST.semibold;
+  }
   return GEIST.regular;
 }
 

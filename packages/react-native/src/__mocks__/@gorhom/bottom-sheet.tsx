@@ -49,7 +49,9 @@ export const BottomSheetModal = forwardRef<ModalHandle, ModalProps>(function Moc
     present: () => setVisible(true),
     dismiss: () => setVisible(false),
   }));
-  if (!visible) return null;
+  if (!visible) {
+    return null;
+  }
   return (
     <View testID="bottom-sheet" {...props}>
       {Backdrop && <Backdrop />}

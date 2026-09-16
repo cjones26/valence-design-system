@@ -30,6 +30,11 @@ export default tseslint.config(
   js.configs.recommended,
   ...typescriptConfigs,
   {
+    rules: {
+      curly: ['error', 'all'],
+    },
+  },
+  {
     files: ['**/*.mjs', '**/*.cjs', '**/build.mjs', 'scripts/**/*.js', '**/metro.config.js'],
     languageOptions: { globals: { ...nodeGlobals, module: 'writable', require: 'readonly' } },
   },

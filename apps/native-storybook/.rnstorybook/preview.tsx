@@ -24,8 +24,11 @@ function ValenceDecorator({ children }: { children: React.ReactNode }) {
   const fontsLoaded = useValenceFonts();
   const [preset, setPreset] = useState<ThemePreset>('hi-vis');
   const [mode, setMode] = useState<ThemeMode>('light');
-  if (!fontsLoaded) return null;
   const theme = themes[preset][mode];
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -50,7 +53,9 @@ function ValenceDecorator({ children }: { children: React.ReactNode }) {
                   value={preset}
                   onChange={(value) => {
                     const nextPreset = PRESETS.find((option) => option === value);
-                    if (nextPreset) setPreset(nextPreset);
+                    if (nextPreset) {
+                      setPreset(nextPreset);
+                    }
                   }}
                 />
               </View>

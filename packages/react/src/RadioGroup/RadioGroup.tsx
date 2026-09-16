@@ -10,10 +10,11 @@ export function RadioGroup({ options, value, onChange, disabled, label }: RadioG
 
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
   useEffect(() => {
-    if (hasDuplicateValues)
+    if (hasDuplicateValues) {
       console.error(
         'RadioGroup: "options" contains duplicate values, which makes selection ambiguous.',
       );
+    }
   }, [hasDuplicateValues]);
 
   return (

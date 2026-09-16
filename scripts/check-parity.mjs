@@ -34,10 +34,14 @@ function getExportedNames(source) {
   const names = new Set();
   const regex = /export\s+(type\s+)?\{([^}]*)\}\s*from/g;
   for (const match of source.matchAll(regex)) {
-    if (match[1]) continue;
+    if (match[1]) {
+      continue;
+    }
     for (const raw of match[2].split(',')) {
       const name = raw.trim();
-      if (name && !NON_COMPONENT_EXPORTS.has(name)) names.add(name);
+      if (name && !NON_COMPONENT_EXPORTS.has(name)) {
+        names.add(name);
+      }
     }
   }
   return names;
@@ -48,7 +52,9 @@ function findFile(directory, fileName) {
     const entryPath = path.join(directory, entry.name);
     if (entry.isDirectory()) {
       const match = findFile(entryPath, fileName);
-      if (match) return match;
+      if (match) {
+        return match;
+      }
     } else if (entry.name === fileName) {
       return entryPath;
     }
@@ -56,7 +62,9 @@ function findFile(directory, fileName) {
 }
 
 function getStoryNames(file) {
-  if (!file) return new Set();
+  if (!file) {
+    return new Set();
+  }
   return new Set(
     [...readFileSync(file, 'utf8').matchAll(/export const (\w+)/g)].map((match) => match[1]),
   );
@@ -111,10 +119,12 @@ for (const [name, platforms] of Object.entries(registry.components)) {
       ),
     );
     for (const story of new Set([...webStories, ...nativeStories])) {
-      if (!webStories.has(story))
+      if (!webStories.has(story)) {
         failures.push(`${name}: "${story}" story exists on native but not web`);
-      if (!nativeStories.has(story))
+      }
+      if (!nativeStories.has(story)) {
         failures.push(`${name}: "${story}" story exists on web but not native`);
+      }
     }
   }
 }

@@ -8,7 +8,9 @@ import { GEIST } from '../fonts';
 import { useReduceMotion } from '../useReduceMotion';
 
 function formatDuration(totalSeconds: number): string {
-  if (!Number.isFinite(totalSeconds)) return '—:—';
+  if (!Number.isFinite(totalSeconds)) {
+    return '—:—';
+  }
   const total = Math.max(0, Math.round(totalSeconds));
   const m = Math.floor(total / 60);
   const s = total % 60;

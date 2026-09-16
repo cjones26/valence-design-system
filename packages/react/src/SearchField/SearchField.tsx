@@ -26,7 +26,9 @@ export function SearchField({
         readOnly={!onChangeText}
         onChange={(event) => onChangeText?.(event.target.value)}
         onKeyDown={(event) => {
-          if (event.key === 'Enter') onSubmit?.();
+          if (event.key === 'Enter') {
+            onSubmit?.();
+          }
         }}
       />
     </div>

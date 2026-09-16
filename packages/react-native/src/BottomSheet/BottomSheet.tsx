@@ -44,7 +44,9 @@ export function BottomSheet({ open, title, onClose, children }: BottomSheetProps
       handleIndicatorStyle={{ width: 36, height: 4, backgroundColor: theme.color_border_primary }}
       style={{ boxShadow: theme.shadow_overlay }}
       onChange={(index) => {
-        if (index === -1 && open) onClose();
+        if (index === -1 && open) {
+          onClose();
+        }
       }}
     >
       <BottomSheetScrollView

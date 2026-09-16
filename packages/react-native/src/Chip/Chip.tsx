@@ -11,9 +11,12 @@ export function Chip({ selected, disabled, icon, onPress, children }: ChipProps)
   const isDisabled = disabled || !onPress;
 
   function background(pressed: boolean): string {
-    if (isDisabled) return theme.color_background_subtle;
-    if (selected)
+    if (isDisabled) {
+      return theme.color_background_subtle;
+    }
+    if (selected) {
       return pressed ? lighten(theme.color_text_primary, 0.2) : theme.color_text_primary;
+    }
     return pressed ? theme.color_border_primary : theme.color_background_raised;
   }
 

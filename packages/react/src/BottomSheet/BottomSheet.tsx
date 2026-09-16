@@ -9,12 +9,20 @@ export function BottomSheet({ open, title, onClose, children }: BottomSheetProps
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
-    if (!open && dialog.open) dialog.close();
+    if (!dialog) {
+      return;
+    }
+    if (open && !dialog.open) {
+      dialog.showModal();
+    }
+    if (!open && dialog.open) {
+      dialog.close();
+    }
   }, [open]);
 
-  if (!open) return null;
+  if (!open) {
+    return null;
+  }
 
   return (
     <dialog
@@ -26,7 +34,9 @@ export function BottomSheet({ open, title, onClose, children }: BottomSheetProps
         onClose();
       }}
       onPointerDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (event.target === event.currentTarget) {
+          onClose();
+        }
       }}
     >
       <div className={styles.sheet}>

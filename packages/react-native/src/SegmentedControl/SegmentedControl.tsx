@@ -16,10 +16,11 @@ export function SegmentedControl({
 
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
   useEffect(() => {
-    if (hasDuplicateValues)
+    if (hasDuplicateValues) {
       console.error(
         'SegmentedControl: "options" contains duplicate values, which makes selection ambiguous.',
       );
+    }
   }, [hasDuplicateValues]);
 
   const selectedIndex = options.findIndex((opt) => opt.value === value);
@@ -38,7 +39,9 @@ export function SegmentedControl({
     return () => animation.stop();
   }, [selectedIndex, anim, reduceMotion]);
 
-  if (options.length === 0) return null;
+  if (options.length === 0) {
+    return null;
+  }
 
   return (
     <View
