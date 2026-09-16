@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { SegmentedControl } from '@valence/react-native';
+import { Icon, SegmentedControl } from '@valence/react-native';
 
 type Story = StoryObj<typeof SegmentedControl>;
 
@@ -10,9 +10,17 @@ const meta: Meta<typeof SegmentedControl> = {
 };
 
 const options = [
-  { value: 'checkbox', label: 'Checkbox', icon: '☑' },
-  { value: 'time', label: 'Timer', icon: '⏱' },
-  { value: 'count', label: 'Counter', icon: '＋' },
+  {
+    value: 'checkbox',
+    label: 'Checkbox',
+    icon: (color: string) => <Icon name="check" color={color} />,
+  },
+  { value: 'time', label: 'Timer', icon: (color: string) => <Icon name="timer" color={color} /> },
+  {
+    value: 'count',
+    label: 'Counter',
+    icon: (color: string) => <Icon name="counter" color={color} />,
+  },
 ];
 
 function SegmentedControlPlayground() {
