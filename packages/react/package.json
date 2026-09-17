@@ -34,8 +34,8 @@
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "dependencies": {
     "@valence/tokens": "workspace:*",

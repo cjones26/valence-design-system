@@ -1,25 +1,25 @@
-import { forwardRef, useId } from 'react';
+import { useId, type Ref } from 'react';
 import type { TextFieldProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './TextField.module.css';
 
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextField(
-  {
-    value,
-    placeholder,
-    onChangeText,
-    onSubmit,
-    inputMode,
-    autoComplete,
-    secureTextEntry,
-    maxLength,
-    error,
-    disabled,
-    helperText,
-    label,
-  },
+type TextFieldComponentProps = TextFieldProps & { ref?: Ref<HTMLInputElement> };
+
+export const TextField = ({
+  value,
+  placeholder,
+  onChangeText,
+  onSubmit,
+  inputMode,
+  autoComplete,
+  secureTextEntry,
+  maxLength,
+  error,
+  disabled,
+  helperText,
+  label,
   ref,
-) {
+}: TextFieldComponentProps) => {
   const inputId = useId();
   const helperId = useId();
 
@@ -62,4 +62,4 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function T
       )}
     </div>
   );
-});
+};

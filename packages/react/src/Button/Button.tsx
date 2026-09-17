@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import type { Ref } from 'react';
 import type { ButtonKind, ButtonProps, TypographyVariant } from '@valence/types';
 import { Spinner } from '../Spinner/Spinner';
 import { Typography } from '../Typography/Typography';
@@ -22,10 +22,17 @@ const TEXT_VARIANT: Record<ButtonKind, TypographyVariant> = {
   pill: 'badge',
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { kind = 'primary', disabled, loading, type = 'button', onPress, children },
+type ButtonComponentProps = ButtonProps & { ref?: Ref<HTMLButtonElement> };
+
+export const Button = ({
+  kind = 'primary',
+  disabled,
+  loading,
+  type = 'button',
+  onPress,
+  children,
   ref,
-) {
+}: ButtonComponentProps) => {
   return (
     <button
       ref={ref}
@@ -54,4 +61,4 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       )}
     </button>
   );
-});
+};

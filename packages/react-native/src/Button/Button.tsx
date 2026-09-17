@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { useState, type Ref } from 'react';
 import { Pressable, View, type ViewStyle } from 'react-native';
 import type { ButtonProps, ButtonKind, TypographyVariant } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
@@ -16,10 +16,16 @@ const TEXT_VARIANT: Record<ButtonKind, TypographyVariant> = {
   pill: 'badge',
 };
 
-export const Button = forwardRef<View, ButtonProps>(function Button(
-  { kind = 'primary', disabled, loading, onPress, children },
+type ButtonComponentProps = ButtonProps & { ref?: Ref<View> };
+
+export const Button = ({
+  kind = 'primary',
+  disabled,
+  loading,
+  onPress,
+  children,
   ref,
-) {
+}: ButtonComponentProps) => {
   const theme = useTheme();
   const [focused, setFocused] = useState(false);
   const reduceMotion = useReduceMotion();
@@ -150,4 +156,4 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
       )}
     </Pressable>
   );
-});
+};

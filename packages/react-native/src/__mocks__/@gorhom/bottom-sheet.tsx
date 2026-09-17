@@ -1,10 +1,4 @@
-import {
-  forwardRef,
-  useImperativeHandle,
-  useState,
-  type ComponentType,
-  type ReactNode,
-} from 'react';
+import { useImperativeHandle, useState, type ComponentType, type ReactNode, type Ref } from 'react';
 import {
   Pressable,
   View,
@@ -20,6 +14,7 @@ interface BackdropProps {
 }
 
 interface ModalProps {
+  ref?: Ref<ModalHandle>;
   children?: ReactNode;
   backdropComponent?: ComponentType<BackdropProps>;
   enableDynamicSizing?: boolean;
@@ -40,10 +35,12 @@ interface ModalHandle {
   dismiss: () => void;
 }
 
-export const BottomSheetModal = forwardRef<ModalHandle, ModalProps>(function MockBottomSheetModal(
-  { children, backdropComponent: Backdrop, ...props },
+export const BottomSheetModal = ({
+  children,
+  backdropComponent: Backdrop,
   ref,
-) {
+  ...props
+}: ModalProps) => {
   const [visible, setVisible] = useState(false);
   useImperativeHandle(ref, () => ({
     present: () => setVisible(true),
@@ -60,12 +57,15 @@ export const BottomSheetModal = forwardRef<ModalHandle, ModalProps>(function Moc
       {children}
     </View>
   );
-});
+};
 
-export const BottomSheet = forwardRef<ModalHandle, ModalProps>(function MockBottomSheet(
-  { children, index = -1, backdropComponent: Backdrop, ...props },
-  _ref,
-) {
+export const BottomSheet = ({
+  children,
+  index = -1,
+  backdropComponent: Backdrop,
+  ref: _ref,
+  ...props
+}: ModalProps) => {
   const visible = index >= 0;
 
   return visible ? (
@@ -74,7 +74,7 @@ export const BottomSheet = forwardRef<ModalHandle, ModalProps>(function MockBott
       {children}
     </View>
   ) : null;
-});
+};
 
 export default BottomSheet;
 

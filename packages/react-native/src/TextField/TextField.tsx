@@ -1,27 +1,27 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type Ref } from 'react';
 import { AccessibilityInfo, TextInput, View } from 'react-native';
 import type { TextFieldProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { GEIST } from '../fonts';
 import { Typography } from '../Typography/Typography';
 
-export const TextField = forwardRef<TextInput, TextFieldProps>(function TextField(
-  {
-    value,
-    placeholder,
-    onChangeText,
-    onSubmit,
-    inputMode,
-    autoComplete,
-    secureTextEntry,
-    maxLength,
-    error,
-    disabled,
-    helperText,
-    label,
-  },
-  forwardedRef,
-) {
+type TextFieldComponentProps = TextFieldProps & { ref?: Ref<TextInput> };
+
+export const TextField = ({
+  value,
+  placeholder,
+  onChangeText,
+  onSubmit,
+  inputMode,
+  autoComplete,
+  secureTextEntry,
+  maxLength,
+  error,
+  disabled,
+  helperText,
+  label,
+  ref,
+}: TextFieldComponentProps) => {
   const theme = useTheme();
   const [focused, setFocused] = useState(false);
   const wasInvalid = useRef(false);
@@ -48,7 +48,7 @@ export const TextField = forwardRef<TextInput, TextFieldProps>(function TextFiel
         {label}
       </Typography>
       <TextInput
-        ref={forwardedRef}
+        ref={ref}
         value={value}
         placeholder={placeholder}
         placeholderTextColor={theme.color_text_secondary}
@@ -92,4 +92,4 @@ export const TextField = forwardRef<TextInput, TextFieldProps>(function TextFiel
       )}
     </View>
   );
-});
+};
