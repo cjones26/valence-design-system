@@ -6,6 +6,8 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import stylistic from '@stylistic/eslint-plugin';
 import awaitPadding from './eslint-rules/await-padding.js';
+import functionConstPadding from './eslint-rules/function-const-padding.js';
+import jestMockPadding from './eslint-rules/jest-mock-padding.js';
 import userEventSetup from './eslint-rules/user-event-setup.js';
 
 const nodeGlobals = { console: 'readonly', process: 'readonly', __dirname: 'readonly' };
@@ -37,6 +39,8 @@ export default tseslint.config(
       local: {
         rules: {
           'await-padding': awaitPadding,
+          'function-const-padding': functionConstPadding,
+          'jest-mock-padding': jestMockPadding,
           'user-event-setup': userEventSetup,
         },
       },
@@ -44,6 +48,8 @@ export default tseslint.config(
     rules: {
       curly: ['error', 'all'],
       'local/await-padding': 'error',
+      'local/function-const-padding': 'error',
+      'local/jest-mock-padding': 'error',
       '@stylistic/padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },

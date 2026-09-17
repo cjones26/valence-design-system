@@ -2,6 +2,7 @@ import { render, screen, userEvent, waitFor } from '@testing-library/react-nativ
 import { BottomSheet } from './BottomSheet';
 
 jest.mock('@gorhom/bottom-sheet');
+
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ top: 24, right: 0, bottom: 34, left: 0 }),
 }));

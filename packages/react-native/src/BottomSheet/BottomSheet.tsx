@@ -14,6 +14,7 @@ export function BottomSheet({ open, title, onClose, children }: BottomSheetProps
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const { height } = useWindowDimensions();
+
   const renderBackdrop = (props: BottomSheetBackdropProps) => (
     <BottomSheetBackdrop
       {...props}
