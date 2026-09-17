@@ -23,42 +23,9 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
   const theme = useTheme();
   const [focused, setFocused] = useState(false);
   const reduceMotion = useReduceMotion();
-  const GEOMETRY: Record<
-    ButtonKind,
-    { minHeight: number; paddingHorizontal: number; borderRadius: number }
-  > = {
-    primary: {
-      minHeight: theme.control_minimum_target,
-      paddingHorizontal: theme.spacing_lg,
-      borderRadius: theme.radius_control,
-    },
-    secondary: {
-      minHeight: theme.control_minimum_target,
-      paddingHorizontal: theme.spacing_lg,
-      borderRadius: theme.radius_control,
-    },
-    ghost: {
-      minHeight: theme.control_minimum_target,
-      paddingHorizontal: theme.spacing_md,
-      borderRadius: theme.radius_control,
-    },
-    danger: {
-      minHeight: theme.control_minimum_target,
-      paddingHorizontal: theme.spacing_lg,
-      borderRadius: theme.radius_control,
-    },
-    dangerConfirm: {
-      minHeight: theme.control_minimum_target,
-      paddingHorizontal: theme.spacing_lg,
-      borderRadius: theme.radius_control,
-    },
-    pill: {
-      minHeight: theme.control_minimum_target,
-      paddingHorizontal: 14,
-      borderRadius: theme.radius_pill,
-    },
-  };
-  const geo = GEOMETRY[kind];
+  const paddingHorizontal =
+    kind === 'pill' ? 14 : kind === 'ghost' ? theme.spacing_md : theme.spacing_lg;
+  const borderRadius = kind === 'pill' ? theme.radius_pill : theme.radius_control;
   const isUnavailable = disabled || !onPress;
   const isDisabled = isUnavailable || loading;
 
@@ -137,10 +104,10 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
       style={({ pressed }) => {
         const c = colors(pressed);
         const style: ViewStyle = {
-          minHeight: geo.minHeight,
+          minHeight: theme.control_minimum_target,
           paddingVertical: theme.spacing_sm,
-          paddingHorizontal: geo.paddingHorizontal,
-          borderRadius: geo.borderRadius,
+          paddingHorizontal,
+          borderRadius,
           backgroundColor: c.bg,
           alignItems: 'center',
           justifyContent: 'center',
