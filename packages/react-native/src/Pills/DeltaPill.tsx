@@ -7,7 +7,6 @@ import { Typography } from '../Typography/Typography';
 export const DeltaPill = ({ value, unit = '' }: DeltaPillProps) => {
   const theme = useTheme();
   const valid = Number.isFinite(value);
-
   let background: string;
   let foreground: string;
 

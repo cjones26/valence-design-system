@@ -36,11 +36,8 @@ export const TextField = ({
 
   // Always a real border — field bg matches the page bg, so transparent
   // left it with zero visible boundary at rest.
-  const borderColor = error
-    ? theme.color_action_danger_text
-    : focused
-      ? theme.color_text_primary
-      : theme.color_border_control;
+  const focusedBorder = focused ? theme.color_text_primary : theme.color_border_control;
+  const borderColor = error ? theme.color_action_danger_text : focusedBorder;
 
   return (
     <View style={{ gap: 6 }}>

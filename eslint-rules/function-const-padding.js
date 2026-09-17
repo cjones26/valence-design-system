@@ -8,6 +8,10 @@ function definesFunction(statement) {
   );
 }
 
+function containsAwait(statement, sourceCode) {
+  return sourceCode.getTokens(statement).some((token) => token.value === 'await');
+}
+
 const functionConstPadding = {
   meta: {
     type: 'layout',
@@ -16,6 +20,7 @@ const functionConstPadding = {
     messages: {
       before: 'Expected a blank line before this function-valued const.',
       after: 'Expected a blank line after this function-valued const.',
+      grouped: 'Unexpected blank line between non-function variables.',
       order: 'Declare non-function variables before function-valued constants.',
     },
   },
@@ -23,6 +28,38 @@ const functionConstPadding = {
     return {
       VariableDeclaration(node) {
         if (!definesFunction(node)) {
+          const statements = node.parent.body ?? node.parent.consequent;
+
+          if (!Array.isArray(statements)) {
+            return;
+          }
+
+          const index = statements.indexOf(node);
+          const previous = statements[index - 1];
+          const sourceCode = context.sourceCode;
+
+          if (
+            previous?.type === 'VariableDeclaration' &&
+            !definesFunction(previous) &&
+            !containsAwait(previous, sourceCode) &&
+            !containsAwait(node, sourceCode) &&
+            node.loc.start.line - previous.loc.end.line > 1
+          ) {
+            const between = sourceCode.text.slice(previous.range[1], node.range[0]);
+
+            if (between.trim() === '') {
+              context.report({
+                node,
+                messageId: 'grouped',
+                fix: (fixer) =>
+                  fixer.replaceTextRange(
+                    [previous.range[1], node.range[0]],
+                    `\n${' '.repeat(node.loc.start.column)}`,
+                  ),
+              });
+            }
+          }
+
           return;
         }
 

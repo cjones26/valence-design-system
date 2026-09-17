@@ -19,7 +19,6 @@ export const ListRow = ({
   const accessibleLabel = [title, archived ? 'archived' : undefined, subtitle]
     .filter(Boolean)
     .join(', ');
-
   const content = (
     <>
       {icon != null && (
@@ -75,7 +74,6 @@ export const ListRow = ({
       )}
     </>
   );
-
   const rowStyle: ViewStyle = {
     backgroundColor: theme.color_background_raised,
     borderRadius: grouped ? 0 : 14,

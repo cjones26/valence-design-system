@@ -7,7 +7,6 @@ import { useTheme } from '../ThemeProvider/ThemeProvider';
 
 export const RadioGroup = ({ options, value, onChange, disabled, label }: RadioGroupProps) => {
   const theme = useTheme();
-
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
   useEffect(() => {
     if (hasDuplicateValues) {

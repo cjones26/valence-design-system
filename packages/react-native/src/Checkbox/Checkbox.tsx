@@ -7,6 +7,7 @@ import { Typography } from '../Typography/Typography';
 export const Checkbox = ({ checked, onChange, disabled, label }: CheckboxProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
+  const activeBackground = checked ? theme.color_state_positive : 'transparent';
 
   return (
     <Pressable
@@ -29,11 +30,7 @@ export const Checkbox = ({ checked, onChange, disabled, label }: CheckboxProps) 
           borderRadius: theme.radius_sm,
           borderWidth: checked && !isDisabled ? 0 : 1.5,
           borderColor: isDisabled ? theme.color_border_primary : theme.color_border_control,
-          backgroundColor: isDisabled
-            ? theme.color_background_subtle
-            : checked
-              ? theme.color_state_positive
-              : 'transparent',
+          backgroundColor: isDisabled ? theme.color_background_subtle : activeBackground,
           alignItems: 'center',
           justifyContent: 'center',
         }}

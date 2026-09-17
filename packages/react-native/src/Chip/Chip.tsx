@@ -9,11 +9,10 @@ export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps)
   const theme = useTheme();
   const reduceMotion = useReduceMotion();
   const isDisabled = disabled || !onPress;
-  const fg = isDisabled
-    ? theme.color_text_muted
-    : selected
-      ? theme.color_background_primary
-      : theme.color_text_primary;
+  const enabledForeground = selected ? theme.color_background_primary : theme.color_text_primary;
+  const fg = isDisabled ? theme.color_text_muted : enabledForeground;
+  const enabledBorder = selected ? 'transparent' : theme.color_border_control;
+  const borderColor = isDisabled ? theme.color_border_primary : enabledBorder;
 
   const background = (pressed: boolean): string => {
     if (isDisabled) {
@@ -43,11 +42,7 @@ export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps)
         borderRadius: theme.radius_pill,
         backgroundColor: background(pressed),
         borderWidth: 1,
-        borderColor: isDisabled
-          ? theme.color_border_primary
-          : selected
-            ? 'transparent'
-            : theme.color_border_control,
+        borderColor,
         transform: [{ scale: pressed && !isDisabled && !reduceMotion ? 0.96 : 1 }],
       })}
     >

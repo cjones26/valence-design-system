@@ -8,7 +8,6 @@ const meta: Meta<typeof RadioGroup> = {
   title: 'Components/RadioGroup',
   component: RadioGroup,
 };
-
 const options = [
   { value: 'timer', label: 'Timer' },
   { value: 'checkbox', label: 'Checkbox' },

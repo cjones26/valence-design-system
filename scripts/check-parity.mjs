@@ -4,7 +4,6 @@ import path from 'node:path';
 
 const rootDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const registry = JSON.parse(readFileSync(path.join(rootDir, 'parity-registry.json'), 'utf8'));
-
 const INDEX_FILE = {
   react: path.join(rootDir, 'packages/react/src/index.ts'),
   reactNative: path.join(rootDir, 'packages/react-native/src/index.ts'),

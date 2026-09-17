@@ -53,12 +53,14 @@ export const DurationPill = ({ seconds, status = 'paused' }: DurationPillProps) 
     return () => loop.stop();
   }, [status, reduceMotion, pulse]);
 
+  const activeColors =
+    status === 'live'
+      ? { bg: alpha(theme.color_state_yellow, 0.22), fg: theme.color_text_primary }
+      : { bg: alpha(theme.color_text_primary, 0.06), fg: theme.color_text_secondary };
   const { bg, fg } =
     status === 'completed'
       ? { bg: alpha(theme.color_state_positive, 0.16), fg: theme.color_text_primary }
-      : status === 'live'
-        ? { bg: alpha(theme.color_state_yellow, 0.22), fg: theme.color_text_primary }
-        : { bg: alpha(theme.color_text_primary, 0.06), fg: theme.color_text_secondary };
+      : activeColors;
 
   return (
     <Animated.View

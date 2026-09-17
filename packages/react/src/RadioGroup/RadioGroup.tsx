@@ -7,7 +7,6 @@ import styles from './RadioGroup.module.css';
 export const RadioGroup = ({ options, value, onChange, disabled, label }: RadioGroupProps) => {
   const name = useId();
   const labelId = useId();
-
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
   useEffect(() => {
     if (hasDuplicateValues) {

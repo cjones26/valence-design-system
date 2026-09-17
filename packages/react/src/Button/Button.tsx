@@ -12,7 +12,6 @@ const KIND_CLASS: Record<ButtonKind, string> = {
   dangerConfirm: styles.dangerConfirm ?? '',
   pill: styles.pill ?? '',
 };
-
 const TEXT_VARIANT: Record<ButtonKind, TypographyVariant> = {
   primary: 'controlLabel',
   secondary: 'controlLabel',

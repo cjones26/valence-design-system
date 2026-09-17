@@ -33,7 +33,6 @@ export const ThemeProvider = ({
 }: ThemeProviderProps) => {
   const systemScheme = useColorScheme();
   const resolvedMode: ThemeMode = mode ?? (systemScheme === 'dark' ? 'dark' : 'light');
-
   const value = useMemo(
     () => ({ ...themes[preset][resolvedMode], ...theme }) as Theme,
     [preset, resolvedMode, theme],

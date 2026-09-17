@@ -29,8 +29,8 @@ export const Button = ({
   const theme = useTheme();
   const [focused, setFocused] = useState(false);
   const reduceMotion = useReduceMotion();
-  const paddingHorizontal =
-    kind === 'pill' ? 14 : kind === 'ghost' ? theme.spacing_md : theme.spacing_lg;
+  const standardPadding = kind === 'ghost' ? theme.spacing_md : theme.spacing_lg;
+  const paddingHorizontal = kind === 'pill' ? 14 : standardPadding;
   const borderRadius = kind === 'pill' ? theme.radius_pill : theme.radius_control;
   const isUnavailable = disabled || !onPress;
   const isDisabled = isUnavailable || loading;

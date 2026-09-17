@@ -1,5 +1,4 @@
 const { withStorybook } = require('@storybook/react-native/withStorybook');
-
 const { getDefaultConfig } = require('expo/metro-config');
 
 /** @type {import('expo/metro-config').MetroConfig} */

@@ -13,7 +13,6 @@ export const SegmentedControl = ({
   label,
 }: SegmentedControlProps) => {
   const theme = useTheme();
-
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
   useEffect(() => {
     if (hasDuplicateValues) {
@@ -89,6 +88,9 @@ export const SegmentedControl = ({
       )}
       {options.map((opt) => {
         const selected = opt.value === value;
+        const selectedColor = selected ? theme.color_text_primary : theme.color_text_secondary;
+        const contentColor = disabled ? theme.color_text_muted : selectedColor;
+        const iconTextColor = disabled ? theme.color_text_muted : theme.color_text_primary;
 
         return (
           <Pressable
@@ -111,31 +113,13 @@ export const SegmentedControl = ({
           >
             {opt.icon != null &&
               (typeof opt.icon === 'string' || typeof opt.icon === 'number' ? (
-                <Typography
-                  variant="body"
-                  style={{ color: disabled ? theme.color_text_muted : theme.color_text_primary }}
-                >
+                <Typography variant="body" style={{ color: iconTextColor }}>
                   {opt.icon}
                 </Typography>
               ) : (
-                opt.icon(
-                  disabled
-                    ? theme.color_text_muted
-                    : selected
-                      ? theme.color_text_primary
-                      : theme.color_text_secondary,
-                )
+                opt.icon(contentColor)
               ))}
-            <Typography
-              variant="controlLabel"
-              style={{
-                color: disabled
-                  ? theme.color_text_muted
-                  : selected
-                    ? theme.color_text_primary
-                    : theme.color_text_secondary,
-              }}
-            >
+            <Typography variant="controlLabel" style={{ color: contentColor }}>
               {opt.label}
             </Typography>
           </Pressable>

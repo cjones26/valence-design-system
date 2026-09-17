@@ -8,7 +8,6 @@ const meta: Meta<typeof Picker> = {
   title: 'Components/Picker',
   component: Picker,
 };
-
 const options = [
   { value: 'daily', label: 'Daily' },
   { value: 'weekly', label: 'Weekly' },

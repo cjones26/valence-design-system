@@ -17,7 +17,6 @@ const PRESETS: ThemePreset[] = [
   'bodega',
   'indigo-pop',
 ];
-
 const PRESET_OPTIONS = PRESETS.map((value) => ({ value, label: value }));
 
 const ValenceDecorator = ({ children }: { children: React.ReactNode }) => {

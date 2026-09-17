@@ -17,24 +17,19 @@ export const Card = ({ status = 'resting', title, actionLabel, onPress, children
     [title, status !== 'resting' ? status : undefined, describedChildren]
       .filter(Boolean)
       .join(', ');
-
-  const background =
-    status === 'success'
-      ? theme.color_state_positive
-      : status === 'skipped'
-        ? alpha(theme.color_text_primary, 0.04)
-        : theme.color_background_raised;
-
+  const restingBackground =
+    status === 'skipped' ? alpha(theme.color_text_primary, 0.04) : theme.color_background_raised;
+  const background = status === 'success' ? theme.color_state_positive : restingBackground;
   const contentColor = status === 'success' ? theme.color_text_on_positive : undefined;
-
   const titleColor = contentColor ?? theme.color_text_secondary;
-
+  const restingShadow =
+    status === 'error'
+      ? `0 0 0 1.5px ${theme.color_action_danger}, ${theme.shadow_surface}`
+      : theme.shadow_surface;
   const boxShadow =
     status === 'editing'
       ? `inset 0 0 0 2px ${theme.color_text_primary}, ${theme.shadow_surface}`
-      : status === 'error'
-        ? `0 0 0 1.5px ${theme.color_action_danger}, ${theme.shadow_surface}`
-        : theme.shadow_surface;
+      : restingShadow;
 
   return (
     <View

@@ -11,7 +11,6 @@ export const SegmentedControl = ({
   label,
 }: SegmentedControlProps) => {
   const name = useId();
-
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
   useEffect(() => {
     if (hasDuplicateValues) {

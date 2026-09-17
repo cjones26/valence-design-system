@@ -19,12 +19,10 @@ export const NumberField = ({
     (min != null && !Number.isFinite(min)) ||
     (max != null && !Number.isFinite(max)) ||
     safeMin > safeMax;
-  const fallbackValue = Number.isFinite(safeMin) ? safeMin : Number.isFinite(safeMax) ? safeMax : 0;
-  const safeValue = Number.isFinite(value)
-    ? rangeInvalid
-      ? value
-      : Math.min(safeMax, Math.max(safeMin, value))
-    : fallbackValue;
+  const finiteMaxFallback = Number.isFinite(safeMax) ? safeMax : 0;
+  const fallbackValue = Number.isFinite(safeMin) ? safeMin : finiteMaxFallback;
+  const boundedValue = rangeInvalid ? value : Math.min(safeMax, Math.max(safeMin, value));
+  const safeValue = Number.isFinite(value) ? boundedValue : fallbackValue;
 
   useEffect(() => {
     if (!Number.isFinite(value)) {

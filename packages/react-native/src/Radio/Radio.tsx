@@ -6,6 +6,8 @@ import { Typography } from '../Typography/Typography';
 export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
+  const activeBorder = checked ? theme.color_text_primary : theme.color_border_control;
+  const borderColor = isDisabled ? theme.color_border_primary : activeBorder;
 
   return (
     <Pressable
@@ -27,11 +29,7 @@ export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
           height: 24,
           borderRadius: theme.radius_pill,
           borderWidth: 1.5,
-          borderColor: isDisabled
-            ? theme.color_border_primary
-            : checked
-              ? theme.color_text_primary
-              : theme.color_border_control,
+          borderColor,
           alignItems: 'center',
           justifyContent: 'center',
         }}

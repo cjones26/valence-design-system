@@ -49,6 +49,7 @@ export default tseslint.config(
     },
     rules: {
       curly: ['error', 'all'],
+      'no-nested-ternary': 'error',
       'local/await-padding': 'error',
       'local/function-const-padding': 'error',
       'local/if-statement-padding': 'error',

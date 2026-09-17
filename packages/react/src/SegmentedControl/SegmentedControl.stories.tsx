@@ -9,7 +9,6 @@ const meta: Meta<typeof SegmentedControl> = {
   title: 'Components/SegmentedControl',
   component: SegmentedControl,
 };
-
 const options = [
   {
     value: 'checkbox',

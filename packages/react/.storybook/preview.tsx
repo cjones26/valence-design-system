@@ -14,7 +14,6 @@ const PRESETS: ThemePreset[] = [
   'bodega',
   'indigo-pop',
 ];
-
 const preview: Preview = {
   globalTypes: {
     preset: {
