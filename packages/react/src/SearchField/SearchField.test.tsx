@@ -17,12 +17,14 @@ function SearchExample({ onSubmit }: { onSubmit?: () => void }) {
 }
 
 describe('<SearchField />', () => {
+  const user = userEvent.setup();
+
   it('updates through keyboard input and submits with Enter', async () => {
-    const user = userEvent.setup();
     const onSubmit = vi.fn();
     render(<SearchExample onSubmit={onSubmit} />);
 
     const input = screen.getByRole('searchbox', { name: 'Search documentation' });
+
     await user.type(input, 'backup{Enter}');
 
     expect(input).toHaveValue('backup');
@@ -31,6 +33,7 @@ describe('<SearchField />', () => {
 
   it('supports a disabled state', () => {
     render(<SearchField label="Search documentation" value="" disabled />);
+
     expect(screen.getByRole('searchbox')).toBeDisabled();
   });
 });

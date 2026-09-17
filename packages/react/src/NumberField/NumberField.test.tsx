@@ -111,9 +111,11 @@ describe('<NumberField />', () => {
     render(<ControlledNumberField initial={3} step={-1} />);
 
     await user.click(screen.getByLabelText('Increase Quantity'));
+
     expect(screen.getByText('4')).toBeInTheDocument();
 
     await user.click(screen.getByLabelText('Decrease Quantity'));
+
     expect(screen.getByText('3')).toBeInTheDocument();
   });
 
@@ -143,9 +145,11 @@ describe('<NumberField />', () => {
 
     render(<NumberField label="Quantity" value={3} min={10} max={0} />);
 
-    expect(screen.getByText('3')).toBeInTheDocument();
-    expect(screen.getByLabelText('Decrease Quantity')).toBeDisabled();
-    expect(screen.getByLabelText('Increase Quantity')).toBeDisabled();
+    expect({
+      value: screen.getByText('3').textContent,
+      decreaseDisabled: screen.getByLabelText('Decrease Quantity').hasAttribute('disabled'),
+      increaseDisabled: screen.getByLabelText('Increase Quantity').hasAttribute('disabled'),
+    }).toEqual({ value: '3', decreaseDisabled: true, increaseDisabled: true });
     expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"min" (10) and "max" (0)'));
     errorSpy.mockRestore();
   });

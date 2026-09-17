@@ -70,12 +70,20 @@ describe('<ListRow />', () => {
     expect(screen.getByText('Groceries')).not.toHaveStyle({ textDecoration: 'line-through' });
   });
 
-  it('renders a presentation-only trailing icon', () => {
+  it('hides the trailing icon from assistive technology', () => {
     render(<ListRow title="Groceries" trailingIcon={() => <svg aria-label="Decorative icon" />} />);
 
     const iconSlot = screen.getByLabelText('Decorative icon').parentElement;
+
     expect(iconSlot).toHaveAttribute('aria-hidden', 'true');
     expect(iconSlot).toHaveAttribute('inert');
+  });
+
+  it('prevents the trailing icon from intercepting pointer input', () => {
+    render(<ListRow title="Groceries" trailingIcon={() => <svg aria-label="Decorative icon" />} />);
+
+    const iconSlot = screen.getByLabelText('Decorative icon').parentElement;
+
     expect(iconSlot).toHaveStyle({ pointerEvents: 'none' });
   });
 

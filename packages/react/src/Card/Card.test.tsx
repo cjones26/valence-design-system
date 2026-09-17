@@ -79,6 +79,7 @@ describe('<Card />', () => {
     render(<PressableCard />);
 
     screen.getByRole('button').focus();
+
     await user.keyboard('{Enter}');
 
     expect(screen.getByText('pressed')).toBeInTheDocument();

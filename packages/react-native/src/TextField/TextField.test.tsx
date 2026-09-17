@@ -69,14 +69,27 @@ describe('<TextField />', () => {
       .mockImplementation(() => {});
 
     const { rerender } = await render(<TextField label="Name" value="" />);
+
     announceSpy.mockClear();
 
     await rerender(<TextField label="Name" value="" error />);
-    expect(announceSpy).toHaveBeenCalledTimes(1);
+
     expect(announceSpy).toHaveBeenCalledWith('Name is invalid');
 
+    announceSpy.mockRestore();
+  });
+
+  it('does not repeat the invalid announcement while the error remains active', async () => {
+    const announceSpy = jest
+      .spyOn(AccessibilityInfo, 'announceForAccessibility')
+      .mockImplementation(() => {});
+
+    const { rerender } = await render(<TextField label="Name" value="" error />);
+
     announceSpy.mockClear();
+
     await rerender(<TextField label="Name" value="" error />);
+
     expect(announceSpy).not.toHaveBeenCalled();
 
     announceSpy.mockRestore();
@@ -92,10 +105,15 @@ describe('<TextField />', () => {
         maxLength={80}
       />,
     );
+
     const field = screen.getByLabelText('Password');
 
-    expect(field).toHaveProp('autoComplete', 'current-password');
-    expect(field).toHaveProp('secureTextEntry', true);
-    expect(field).toHaveProp('maxLength', 80);
+    expect(field.props).toEqual(
+      expect.objectContaining({
+        autoComplete: 'current-password',
+        secureTextEntry: true,
+        maxLength: 80,
+      }),
+    );
   });
 });

@@ -70,6 +70,7 @@ describe('<SegmentedControl />', () => {
     render(<ControlledSegmentedControl />);
 
     screen.getByRole('radio', { name: 'Day' }).focus();
+
     await user.keyboard('{ArrowRight}');
 
     expect(screen.getByRole('radio', { name: 'Week' })).toHaveFocus();

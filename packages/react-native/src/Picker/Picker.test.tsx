@@ -15,6 +15,7 @@ describe('<Picker />', () => {
 
   it('reports native value changes', async () => {
     const onChange = jest.fn();
+
     await render(<Picker label="Frequency" options={options} value="daily" onChange={onChange} />);
 
     fireEvent(screen.getByLabelText('Frequency'), 'valueChange', 'weekly');

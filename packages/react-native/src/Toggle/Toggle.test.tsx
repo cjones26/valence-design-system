@@ -16,6 +16,8 @@ function ControlledToggle({ disabled }: { disabled?: boolean }) {
 }
 
 describe('<Toggle />', () => {
+  const user = userEvent.setup();
+
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -23,8 +25,6 @@ describe('<Toggle />', () => {
   afterAll(() => {
     jest.useRealTimers();
   });
-
-  const user = userEvent.setup();
 
   it('renders with an accessible name', async () => {
     await render(<Toggle checked={false} label="Notifications" />);
@@ -74,10 +74,13 @@ describe('<Toggle />', () => {
 
   it('reflects the checked state without warning, with and without reduced motion', async () => {
     await render(<Toggle checked label="Notifications" />);
+
     expect(screen.getByRole('switch', { name: 'Notifications' })).toBeChecked();
 
     jest.spyOn(AccessibilityInfo, 'isReduceMotionEnabled').mockResolvedValueOnce(true);
+
     await render(<Toggle checked label="Notifications" />);
+
     expect(screen.getAllByRole('switch', { name: 'Notifications' }).length).toBeGreaterThan(0);
 
     jest.restoreAllMocks();

@@ -5,6 +5,8 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import stylistic from '@stylistic/eslint-plugin';
+import awaitPadding from './eslint-rules/await-padding.js';
+import userEventSetup from './eslint-rules/user-event-setup.js';
 
 const nodeGlobals = { console: 'readonly', process: 'readonly', __dirname: 'readonly' };
 const typescriptFiles = ['**/*.{ts,tsx,mts,cts}'];
@@ -17,7 +19,6 @@ const reactRecommendedRules = Object.fromEntries(
     ([name]) => name !== 'react/react-in-jsx-scope',
   ),
 );
-
 export default tseslint.config(
   {
     ignores: [
@@ -31,15 +32,28 @@ export default tseslint.config(
   js.configs.recommended,
   ...typescriptConfigs,
   {
-    plugins: { '@stylistic': stylistic },
+    plugins: {
+      '@stylistic': stylistic,
+      local: {
+        rules: {
+          'await-padding': awaitPadding,
+          'user-event-setup': userEventSetup,
+        },
+      },
+    },
     rules: {
       curly: ['error', 'all'],
+      'local/await-padding': 'error',
       '@stylistic/padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },
         { blankLine: 'always', prev: 'export', next: 'export' },
       ],
     },
+  },
+  {
+    files: ['**/*.test.{ts,tsx}'],
+    rules: { 'local/user-event-setup': 'error' },
   },
   {
     files: ['**/*.mjs', '**/*.cjs', '**/build.mjs', 'scripts/**/*.js', '**/metro.config.js'],

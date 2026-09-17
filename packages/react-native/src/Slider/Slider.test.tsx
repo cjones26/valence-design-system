@@ -17,6 +17,7 @@ describe('<Slider />', () => {
 
   it('forwards native value changes through the shared onChange callback', async () => {
     const onChange = jest.fn();
+
     await render(<Slider value={40} min={0} max={100} onChange={onChange} label="Volume" />);
 
     fireEvent(screen.getByLabelText('Volume'), 'valueChange', 65);
@@ -66,8 +67,12 @@ describe('<Slider />', () => {
     await render(<Slider value={5} min={10} max={0} label="Volume" />);
 
     const slider = screen.getByLabelText('Volume');
-    expect(slider).toBeDisabled();
-    expect(slider).toHaveAccessibilityValue({ min: 0, max: 0, now: 0 });
+    expect(slider.props).toEqual(
+      expect.objectContaining({
+        disabled: true,
+        accessibilityValue: { min: 0, max: 0, now: 0 },
+      }),
+    );
     expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"min" (10) and "max" (0)'));
     errorSpy.mockRestore();
   });

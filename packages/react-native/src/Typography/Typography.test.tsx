@@ -13,6 +13,7 @@ describe('<Typography />', () => {
 
   it('renders long content in full', async () => {
     const longText = 'A '.repeat(200).trim();
+
     await render(<Typography variant="body">{longText}</Typography>);
 
     expect(screen.getByText(longText)).toBeOnTheScreen();
@@ -68,9 +69,11 @@ describe('<Typography />', () => {
       </>,
     );
 
-    expect(screen.getByRole('header', { name: 'Display' })).toBeOnTheScreen();
-    expect(screen.getByRole('header', { name: 'Title' })).toBeOnTheScreen();
-    expect(screen.getByRole('header', { name: 'Title sm' })).toBeOnTheScreen();
+    expect(screen.getAllByRole('header').map((heading) => heading.props.children)).toEqual([
+      'Display',
+      'Title',
+      'Title sm',
+    ]);
   });
 
   it('does not default a non-heading variant to accessibilityRole header', async () => {

@@ -16,14 +16,19 @@ function SearchExample({ onSubmit }: { onSubmit?: () => void }) {
 }
 
 describe('<SearchField />', () => {
+  const user = userEvent.setup();
+
   it('updates through keyboard input and submits', async () => {
-    const user = userEvent.setup();
     const onSubmit = jest.fn();
+
     await render(<SearchExample onSubmit={onSubmit} />);
+
     const input = screen.getByLabelText('Search documentation');
 
     await user.type(input, 'backup');
+
     await user.press(input);
+
     input.props.onSubmitEditing();
 
     expect(input).toHaveProp('value', 'backup');
@@ -32,6 +37,7 @@ describe('<SearchField />', () => {
 
   it('supports a disabled state', async () => {
     await render(<SearchField label="Search documentation" value="" disabled />);
+
     expect(screen.getByLabelText('Search documentation')).toHaveProp('accessibilityState', {
       disabled: true,
     });

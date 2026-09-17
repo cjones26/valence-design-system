@@ -97,6 +97,7 @@ async function buildVariant(preset, mode) {
       },
     },
   });
+
   await sd.buildAllPlatforms();
 }
 
@@ -123,6 +124,7 @@ StyleDictionary.registerFormat({
       .join(' | ')};\n`;
   },
 });
+
 await new StyleDictionary({
   source: ['tokens/shared/**/*.json', 'tokens/themes/hi-vis/light/**/*.json'],
   platforms: {
@@ -148,9 +150,12 @@ async function buildDefault(mode, selector, destination) {
       },
     },
   });
+
   await sd.buildAllPlatforms();
 }
+
 await buildDefault('light', ':root', 'default-light.css');
+
 await buildDefault('dark', '[data-theme="dark"]', 'default-dark.css');
 
 const combined = [

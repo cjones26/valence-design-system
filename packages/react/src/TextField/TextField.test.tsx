@@ -69,10 +69,13 @@ describe('<TextField />', () => {
         maxLength={80}
       />,
     );
+
     const field = screen.getByLabelText('Email');
 
-    expect(field).toHaveAttribute('inputmode', 'email');
-    expect(field).toHaveAttribute('autocomplete', 'email');
-    expect(field).toHaveAttribute('maxlength', '80');
+    expect({
+      inputMode: field.getAttribute('inputmode'),
+      autoComplete: field.getAttribute('autocomplete'),
+      maxLength: field.getAttribute('maxlength'),
+    }).toEqual({ inputMode: 'email', autoComplete: 'email', maxLength: '80' });
   });
 });

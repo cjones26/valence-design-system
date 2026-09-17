@@ -110,9 +110,11 @@ describe('<NumberField />', () => {
     await render(<ControlledNumberField initial={3} step={-1} />);
 
     await user.press(screen.getByLabelText('Increase Quantity'));
+
     expect(screen.getByText('4')).toBeOnTheScreen();
 
     await user.press(screen.getByLabelText('Decrease Quantity'));
+
     expect(screen.getByText('3')).toBeOnTheScreen();
   });
 
@@ -149,9 +151,13 @@ describe('<NumberField />', () => {
 
     await render(<NumberField label="Quantity" value={3} min={10} max={0} />);
 
-    expect(screen.getByText('3')).toBeOnTheScreen();
-    expect(screen.getByLabelText('Decrease Quantity')).toBeDisabled();
-    expect(screen.getByLabelText('Increase Quantity')).toBeDisabled();
+    expect({
+      value: screen.getByText('3').props.children,
+      decreaseDisabled:
+        screen.getByLabelText('Decrease Quantity').props.accessibilityState.disabled,
+      increaseDisabled:
+        screen.getByLabelText('Increase Quantity').props.accessibilityState.disabled,
+    }).toEqual({ value: 3, decreaseDisabled: true, increaseDisabled: true });
     expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"min" (10) and "max" (0)'));
     errorSpy.mockRestore();
   });

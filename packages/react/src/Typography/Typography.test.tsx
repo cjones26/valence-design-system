@@ -58,9 +58,16 @@ describe('<Typography />', () => {
       </>,
     );
 
-    expect(screen.getByRole('heading', { level: 1, name: 'Display' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'Title' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 3, name: 'Title sm' })).toBeInTheDocument();
+    expect(
+      screen.getAllByRole('heading').map((heading) => ({
+        level: Number(heading.tagName.slice(1)),
+        name: heading.textContent,
+      })),
+    ).toEqual([
+      { level: 1, name: 'Display' },
+      { level: 2, name: 'Title' },
+      { level: 3, name: 'Title sm' },
+    ]);
   });
 
   it('lets as override the default heading level', () => {

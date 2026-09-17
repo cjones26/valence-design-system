@@ -23,9 +23,15 @@ describe('<Slider />', () => {
     render(<Slider value={40} min={0} max={100} label="Volume" />);
 
     const slider = screen.getByRole('slider', { name: 'Volume' });
-    expect(slider).toHaveValue('40');
-    expect(slider).toHaveAttribute('min', '0');
-    expect(slider).toHaveAttribute('max', '100');
+    expect({
+      value: slider.getAttribute('value'),
+      min: slider.getAttribute('min'),
+      max: slider.getAttribute('max'),
+    }).toEqual({
+      value: '40',
+      min: '0',
+      max: '100',
+    });
   });
 
   it('invokes onChange when the value changes', () => {
@@ -46,9 +52,15 @@ describe('<Slider />', () => {
     render(<Slider value={5} min={5} max={5} label="Fixed" />);
 
     const slider = screen.getByRole('slider', { name: 'Fixed' });
-    expect(slider).toHaveValue('5');
-    expect(slider).toHaveAttribute('min', '5');
-    expect(slider).toHaveAttribute('max', '5');
+    expect({
+      value: slider.getAttribute('value'),
+      min: slider.getAttribute('min'),
+      max: slider.getAttribute('max'),
+    }).toEqual({
+      value: '5',
+      min: '5',
+      max: '5',
+    });
   });
 
   it('passes step through to the input', () => {
@@ -75,10 +87,12 @@ describe('<Slider />', () => {
     render(<Slider value={5} min={10} max={0} label="Volume" />);
 
     const slider = screen.getByRole('slider', { name: 'Volume' });
-    expect(slider).toBeDisabled();
-    expect(slider).toHaveValue('0');
-    expect(slider).toHaveAttribute('min', '0');
-    expect(slider).toHaveAttribute('max', '0');
+    expect({
+      disabled: slider.hasAttribute('disabled'),
+      value: slider.getAttribute('value'),
+      min: slider.getAttribute('min'),
+      max: slider.getAttribute('max'),
+    }).toEqual({ disabled: true, value: '0', min: '0', max: '0' });
     expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"min" (10) and "max" (0)'));
     errorSpy.mockRestore();
   });

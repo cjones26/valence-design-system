@@ -18,6 +18,8 @@ function PressableButton({ disabled, loading }: { disabled?: boolean; loading?: 
 }
 
 describe('<Button />', () => {
+  const user = userEvent.setup();
+
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -25,8 +27,6 @@ describe('<Button />', () => {
   afterAll(() => {
     jest.useRealTimers();
   });
-
-  const user = userEvent.setup();
 
   it('renders with an accessible name', async () => {
     await render(<Button>Save</Button>);

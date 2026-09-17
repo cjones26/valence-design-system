@@ -13,16 +13,26 @@ function AccordionExample() {
 }
 
 describe('<Accordion />', () => {
-  it('exposes state and toggles its content', async () => {
-    const user = userEvent.setup();
+  const user = userEvent.setup();
+
+  it('starts collapsed with its content hidden', async () => {
     await render(<AccordionExample />);
+
     const trigger = screen.getByRole('button', { name: 'Cloud backup' });
 
     expect(trigger.props.accessibilityState).toEqual(
       expect.objectContaining({ expanded: false, disabled: false }),
     );
     expect(screen.queryByText('Backup details')).not.toBeOnTheScreen();
+  });
+
+  it('expands and reveals its content when pressed', async () => {
+    await render(<AccordionExample />);
+
+    const trigger = screen.getByRole('button', { name: 'Cloud backup' });
+
     await user.press(trigger);
+
     expect(trigger.props.accessibilityState).toEqual(
       expect.objectContaining({ expanded: true, disabled: false }),
     );

@@ -87,9 +87,13 @@ describe('<ListRow />', () => {
     const iconSlot = screen.getByLabelText('Decorative icon', {
       includeHiddenElements: true,
     }).parent;
-    expect(iconSlot).toHaveProp('pointerEvents', 'none');
-    expect(iconSlot).toHaveProp('accessibilityElementsHidden', true);
-    expect(iconSlot).toHaveProp('importantForAccessibility', 'no-hide-descendants');
+    expect(iconSlot?.props).toEqual(
+      expect.objectContaining({
+        pointerEvents: 'none',
+        accessibilityElementsHidden: true,
+        importantForAccessibility: 'no-hide-descendants',
+      }),
+    );
   });
 
   it('removes standalone elevation when grouped inside a Surface', async () => {

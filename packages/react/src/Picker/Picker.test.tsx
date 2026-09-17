@@ -23,6 +23,8 @@ function ControlledPicker({ disabled }: { disabled?: boolean }) {
 }
 
 describe('<Picker />', () => {
+  const user = userEvent.setup();
+
   it('exposes its label, options, and selected value', () => {
     render(<Picker label="Frequency" options={options} value="weekly" />);
 
@@ -31,7 +33,6 @@ describe('<Picker />', () => {
   });
 
   it('changes the selected value using native select behavior', async () => {
-    const user = userEvent.setup();
     render(<ControlledPicker />);
 
     await user.selectOptions(screen.getByRole('combobox', { name: 'Frequency' }), 'weekly');
@@ -40,7 +41,6 @@ describe('<Picker />', () => {
   });
 
   it('cannot change when disabled', async () => {
-    const user = userEvent.setup();
     render(<ControlledPicker disabled />);
 
     await user.selectOptions(screen.getByRole('combobox', { name: 'Frequency' }), 'weekly');

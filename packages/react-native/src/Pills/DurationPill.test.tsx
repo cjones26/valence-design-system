@@ -6,10 +6,13 @@ import { DurationPill } from './DurationPill';
 describe('<DurationPill />', () => {
   it('renders the live status without warning, with and without reduced motion', async () => {
     await render(<DurationPill seconds={30} status="live" />);
+
     expect(screen.getByText('0:30')).toBeOnTheScreen();
 
     jest.spyOn(AccessibilityInfo, 'isReduceMotionEnabled').mockResolvedValueOnce(true);
+
     await render(<DurationPill seconds={30} status="live" />);
+
     expect(screen.getAllByText('0:30').length).toBeGreaterThan(0);
 
     jest.restoreAllMocks();

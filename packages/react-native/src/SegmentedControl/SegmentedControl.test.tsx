@@ -104,10 +104,13 @@ describe('<SegmentedControl />', () => {
 
   it('marks the current value as checked without warning, with and without reduced motion', async () => {
     await render(<SegmentedControl label="View" options={OPTIONS} value="week" />);
+
     expect(screen.getByRole('radio', { name: 'Week' })).toBeChecked();
 
     jest.spyOn(AccessibilityInfo, 'isReduceMotionEnabled').mockResolvedValueOnce(true);
+
     await render(<SegmentedControl label="View" options={OPTIONS} value="week" />);
+
     expect(screen.getAllByRole('radio', { name: 'Week' }).length).toBeGreaterThan(0);
 
     jest.restoreAllMocks();
