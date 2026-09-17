@@ -1,0 +1,30 @@
+{
+  "components": {
+    "Button": { "react": "done", "reactNative": "done" },
+    "StepButton": { "react": "done", "reactNative": "done" },
+    "Chip": { "react": "done", "reactNative": "done" },
+    "DeltaPill": { "react": "done", "reactNative": "done" },
+    "DurationPill": { "react": "done", "reactNative": "done" },
+    "StatusBadge": { "react": "done", "reactNative": "done" },
+    "TextField": { "react": "done", "reactNative": "done" },
+    "SearchField": { "react": "done", "reactNative": "done" },
+    "Picker": { "react": "done", "reactNative": "done" },
+    "NumberField": { "react": "done", "reactNative": "done" },
+    "Toggle": { "react": "done", "reactNative": "done" },
+    "Radio": { "react": "done", "reactNative": "done" },
+    "RadioGroup": { "react": "done", "reactNative": "done" },
+    "Checkbox": { "react": "done", "reactNative": "done" },
+    "SegmentedControl": { "react": "done", "reactNative": "done" },
+    "Card": { "react": "done", "reactNative": "done" },
+    "Surface": { "react": "done", "reactNative": "done" },
+    "Divider": { "react": "done", "reactNative": "done" },
+    "Accordion": { "react": "done", "reactNative": "done" },
+    "BottomSheet": { "react": "done", "reactNative": "done" },
+    "ListRow": { "react": "done", "reactNative": "done" },
+    "Slider": { "react": "done", "reactNative": "done" },
+    "ProgressBar": { "react": "done", "reactNative": "done" },
+    "Spinner": { "react": "done", "reactNative": "done" },
+    "Icon": { "react": "done", "reactNative": "done" },
+    "Typography": { "react": "done", "reactNative": "done" }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "valence-design-system",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Valence Software's public design system — React and React Native, built as fully separate implementations with enforced parity.",
+  "license": "MIT",
+  "author": "Charles Jones <charlie.l.jones@gmail.com>",
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "eslint .",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
+    "storybook": "pnpm --filter @valence/react storybook",
+    "storybook:android": "pnpm --dir apps/native-storybook android",
+    "storybook:ios": "pnpm --dir apps/native-storybook ios",
+    "check-parity": "node ./scripts/check-parity.mjs",
+    "check-contrast": "node ./scripts/check-theme-contrast.mjs",
+    "verify": "pnpm format:check && pnpm check-parity && pnpm check-contrast && pnpm check-audit && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build && pnpm --filter native-storybook verify-bundle",
+    "check-audit": "node ./scripts/check-production-audit.mjs",
+    "commitlint": "commitlint",
+    "changeset": "changeset",
+    "release": "pnpm verify && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.7",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@eslint/js": "^9.38.0",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^9.38.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "prettier": "^3.9.6",
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0"
+  }
+}

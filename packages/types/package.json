@@ -1,0 +1,29 @@
+{
+  "name": "@valence/types",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cjones26/valence-design-system.git",
+    "directory": "packages/types"
+  },
+  "version": "0.1.0",
+  "description": "Canonical component prop contracts shared by @valence/react and @valence/react-native.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "react": "^19.2.0",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,75 @@
+.delta {
+  display: inline-block;
+  padding: var(--spacing-xs) 10px;
+  border-radius: var(--radius-pill);
+  font-variant-numeric: tabular-nums;
+}
+.deltaPositive {
+  background: color-mix(in srgb, var(--color-state-positive) 16%, transparent);
+  color: var(--color-text-primary);
+}
+.deltaNegative {
+  background: color-mix(in srgb, var(--color-state-red) 14%, transparent);
+  color: var(--color-text-primary);
+}
+.deltaNeutral {
+  background: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+  color: var(--color-text-secondary);
+}
+
+.duration {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--type-eyebrow-size) / 16 * 1rem);
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+.durationPaused {
+  background: color-mix(in srgb, var(--color-text-primary) 6%, transparent);
+  color: var(--color-text-secondary);
+}
+.durationCompleted {
+  background: color-mix(in srgb, var(--color-state-positive) 16%, transparent);
+  color: var(--color-text-primary);
+}
+.durationLive {
+  background: color-mix(in srgb, var(--color-state-yellow) 22%, transparent);
+  color: var(--color-text-primary);
+  animation: valence-pulse 1.4s ease-in-out infinite;
+}
+@keyframes valence-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .durationLive {
+    animation: none;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px var(--spacing-md);
+  border-radius: var(--radius-pill);
+}
+.badgeSuccess {
+  background: var(--color-state-positive);
+  color: var(--color-text-on-positive);
+}
+.badgeWarning {
+  background: var(--color-state-yellow);
+  color: var(--color-text-on-yellow);
+}
+.badgeDanger {
+  background: var(--color-state-red-strong);
+  color: var(--color-text-on-danger);
+}

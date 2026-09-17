@@ -1,0 +1,40 @@
+/* A relative path, not `@import '@valence/tokens/css'` — postcss-import
+   (used directly by the Rollup build, see rollup.config.mjs, and delegated
+   to by Vite for Storybook's dev server) doesn't resolve package.json
+   "exports" subpaths, only real filesystem paths. Both the package build and
+   Storybook point at the same file via the pnpm workspace symlink, so this
+   form works for both without being resolver-dependent. */
+@import '../../tokens/dist/css/tokens.css';
+
+/* @font-face descriptors sit outside the normal CSS cascade, so custom
+   properties don't resolve inside them (verified: all three registered as
+   the same "normal" weight, making them indistinguishable to font
+   matching) — these need literal weight numbers, not var(--font-weight-*). */
+@font-face {
+  font-family: 'Geist';
+  src: url('../../tokens/dist/fonts/Geist-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('../../tokens/dist/fonts/Geist-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('../../tokens/dist/fonts/Geist-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../../tokens/dist/fonts/GeistMono-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

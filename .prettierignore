@@ -1,0 +1,7 @@
+**/coverage/
+**/dist/
+**/node_modules/
+**/storybook-static/
+**/.rnstorybook/storybook.requires.ts
+**/src/generated/
+pnpm-lock.yaml

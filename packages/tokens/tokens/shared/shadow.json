@@ -1,0 +1,15 @@
+{
+  "color": {
+    "shadow": {
+      "tint": { "value": "15, 42, 58" }
+    }
+  },
+  "shadow": {
+    "surface": {
+      "value": "0 1px 0 rgba(15, 42, 58, 0.04), 0 6px 22px rgba(15, 42, 58, 0.05)"
+    },
+    "overlay": {
+      "value": "0 12px 40px rgba(0, 0, 0, 0.18)"
+    }
+  }
+}
