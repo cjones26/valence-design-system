@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Animated, Easing, Text } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import type { DurationPillProps } from '@valence/types';
@@ -7,7 +7,7 @@ import { alpha } from '../colorMix';
 import { GEIST } from '../fonts';
 import { useReduceMotion } from '../useReduceMotion';
 
-function formatDuration(totalSeconds: number): string {
+const formatDuration = (totalSeconds: number): string => {
   if (!Number.isFinite(totalSeconds)) {
     return '—:—';
   }
@@ -16,11 +16,11 @@ function formatDuration(totalSeconds: number): string {
   const s = total % 60;
 
   return `${m}:${String(s).padStart(2, '0')}`;
-}
+};
 
-export function DurationPill({ seconds, status = 'paused' }: DurationPillProps) {
+export const DurationPill = ({ seconds, status = 'paused' }: DurationPillProps) => {
   const theme = useTheme();
-  const pulse = useRef(new Animated.Value(1)).current;
+  const [pulse] = useState(() => new Animated.Value(1));
   const reduceMotion = useReduceMotion();
   const duration = formatDuration(seconds);
 
@@ -87,4 +87,4 @@ export function DurationPill({ seconds, status = 'paused' }: DurationPillProps) 
       </Text>
     </Animated.View>
   );
-}
+};

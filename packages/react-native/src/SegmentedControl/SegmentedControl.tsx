@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Animated, I18nManager, Pressable, View, type LayoutChangeEvent } from 'react-native';
 import type { SegmentedControlProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../useReduceMotion';
 
-export function SegmentedControl({
+export const SegmentedControl = ({
   options,
   value,
   onChange,
   disabled,
   label,
-}: SegmentedControlProps) {
+}: SegmentedControlProps) => {
   const theme = useTheme();
 
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
@@ -24,7 +24,7 @@ export function SegmentedControl({
   }, [hasDuplicateValues]);
 
   const selectedIndex = options.findIndex((opt) => opt.value === value);
-  const anim = useRef(new Animated.Value(Math.max(0, selectedIndex))).current;
+  const [anim] = useState(() => new Animated.Value(Math.max(0, selectedIndex)));
   const [groupWidth, setGroupWidth] = useState(0);
   const indicatorWidth = options.length > 0 ? (groupWidth - 6) / options.length : 0;
   const reduceMotion = useReduceMotion();
@@ -143,4 +143,4 @@ export function SegmentedControl({
       })}
     </View>
   );
-}
+};

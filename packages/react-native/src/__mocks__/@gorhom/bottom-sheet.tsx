@@ -77,11 +77,11 @@ export const BottomSheet = forwardRef<ModalHandle, ModalProps>(function MockBott
 
 export default BottomSheet;
 
-export function BottomSheetBackdrop({
+export const BottomSheetBackdrop = ({
   onPress,
   accessibilityLabel,
   accessibilityRole,
-}: BackdropProps) {
+}: BackdropProps) => {
   return (
     <Pressable
       onPress={onPress}
@@ -89,14 +89,14 @@ export function BottomSheetBackdrop({
       accessibilityRole={accessibilityRole}
     />
   );
-}
+};
 
-export function BottomSheetScrollView({
+export const BottomSheetScrollView = ({
   children,
   contentContainerStyle,
 }: {
   children?: ReactNode;
   contentContainerStyle?: StyleProp<ViewStyle>;
-}) {
+}) => {
   return <View style={contentContainerStyle}>{children}</View>;
-}
+};

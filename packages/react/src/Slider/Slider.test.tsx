@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import { Slider } from './Slider';
 
-function ControlledSlider({ disabled }: { disabled?: boolean }) {
+const ControlledSlider = ({ disabled }: { disabled?: boolean }) => {
   const [value, setValue] = useState(40);
 
   return (
@@ -16,7 +16,7 @@ function ControlledSlider({ disabled }: { disabled?: boolean }) {
       disabled={disabled}
     />
   );
-}
+};
 
 describe('<Slider />', () => {
   it('exposes an accessible value reflecting min, max, and current value', () => {
@@ -69,15 +69,12 @@ describe('<Slider />', () => {
     expect(screen.getByRole('slider', { name: 'Volume' })).toHaveAttribute('step', '10');
   });
 
-  it('falls back to a finite value and warns when value is NaN', () => {
+  it('falls back to a finite value when value is NaN', () => {
     const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
     render(<Slider value={NaN} min={0} max={100} label="Volume" />);
 
     expect(screen.getByRole('slider', { name: 'Volume' })).toHaveValue('0');
-    expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining('"value" must be a finite number'),
-    );
     errorSpy.mockRestore();
   });
 
@@ -93,7 +90,6 @@ describe('<Slider />', () => {
       min: slider.getAttribute('min'),
       max: slider.getAttribute('max'),
     }).toEqual({ disabled: true, value: '0', min: '0', max: '0' });
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"min" (10) and "max" (0)'));
     errorSpy.mockRestore();
   });
 

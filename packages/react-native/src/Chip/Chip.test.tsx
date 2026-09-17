@@ -5,7 +5,7 @@ import { Text } from 'react-native';
 import { Chip } from './Chip';
 import { DEFAULT_THEME } from '../ThemeProvider/ThemeProvider';
 
-function PressableChip({ disabled }: { disabled?: boolean }) {
+const PressableChip = ({ disabled }: { disabled?: boolean }) => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -16,7 +16,7 @@ function PressableChip({ disabled }: { disabled?: boolean }) {
       {pressed && <Text>pressed</Text>}
     </>
   );
-}
+};
 
 describe('<Chip />', () => {
   const user = userEvent.setup();
@@ -79,7 +79,7 @@ describe('<Chip />', () => {
         selected
         onPress={() => undefined}
         icon={(color) => (
-          <Text testID="icon" style={{ color }}>
+          <Text accessibilityLabel="Chip icon" style={{ color }}>
             I
           </Text>
         )}
@@ -88,7 +88,7 @@ describe('<Chip />', () => {
       </Chip>,
     );
 
-    expect(screen.getByTestId('icon')).toHaveStyle({
+    expect(screen.getByLabelText('Chip icon')).toHaveStyle({
       color: DEFAULT_THEME.color_background_primary,
     });
   });

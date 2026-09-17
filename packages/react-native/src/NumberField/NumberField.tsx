@@ -4,7 +4,7 @@ import type { NumberFieldProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 
-export function NumberField({
+export const NumberField = ({
   value,
   min,
   max,
@@ -13,7 +13,7 @@ export function NumberField({
   disabled,
   error,
   label,
-}: NumberFieldProps) {
+}: NumberFieldProps) => {
   const theme = useTheme();
   const safeMin = min != null && Number.isFinite(min) ? min : -Infinity;
   const safeMax = max != null && Number.isFinite(max) ? max : Infinity;
@@ -124,4 +124,4 @@ export function NumberField({
       </View>
     </View>
   );
-}
+};

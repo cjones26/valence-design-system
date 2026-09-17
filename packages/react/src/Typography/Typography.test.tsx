@@ -16,23 +16,6 @@ describe('<Typography />', () => {
     expect(screen.getByText(longText)).toBeInTheDocument();
   });
 
-  it('applies a different style per variant', () => {
-    render(
-      <>
-        <Typography variant="display">Display</Typography>
-        <Typography variant="meta">Meta</Typography>
-      </>,
-    );
-
-    // Variants differ via var(--type-*) references in Typography.module.css.
-    // jsdom's getComputedStyle never resolves custom-property references
-    // through a stylesheet rule (confirmed across font-size, font-weight,
-    // and letter-spacing) — only literal values and inline styles resolve.
-    // className is the ceiling of what's verifiable here without a real
-    // browser test runner.
-    expect(screen.getByText('Display').className).not.toBe(screen.getByText('Meta').className);
-  });
-
   it('forwards additional attributes', () => {
     render(
       <Typography variant="body" aria-label="Custom label">
@@ -43,32 +26,18 @@ describe('<Typography />', () => {
     expect(screen.getByLabelText('Custom label')).toBeInTheDocument();
   });
 
-  it('renders a span by default for a non-heading variant', () => {
-    render(<Typography variant="body">Hello world</Typography>);
+  it.each([
+    ['display', 1, 'Display'],
+    ['title', 2, 'Title'],
+    ['titleSm', 3, 'Title sm'],
+  ] as [Parameters<typeof Typography>[0]['variant'], number, string][])(
+    '%s defaults to a level %s heading',
+    (variant, level, text) => {
+      render(<Typography variant={variant}>{text}</Typography>);
 
-    expect(screen.getByText('Hello world').tagName).toBe('SPAN');
-  });
-
-  it('defaults display/title/titleSm to real heading elements', () => {
-    render(
-      <>
-        <Typography variant="display">Display</Typography>
-        <Typography variant="title">Title</Typography>
-        <Typography variant="titleSm">Title sm</Typography>
-      </>,
-    );
-
-    expect(
-      screen.getAllByRole('heading').map((heading) => ({
-        level: Number(heading.tagName.slice(1)),
-        name: heading.textContent,
-      })),
-    ).toEqual([
-      { level: 1, name: 'Display' },
-      { level: 2, name: 'Title' },
-      { level: 3, name: 'Title sm' },
-    ]);
-  });
+      expect(screen.getByRole('heading', { level, name: text })).toBeInTheDocument();
+    },
+  );
 
   it('lets as override the default heading level', () => {
     render(

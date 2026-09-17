@@ -2,7 +2,7 @@ import type { DeltaPillProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './Pills.module.css';
 
-export function DeltaPill({ value, unit = '' }: DeltaPillProps) {
+export const DeltaPill = ({ value, unit = '' }: DeltaPillProps) => {
   const valid = Number.isFinite(value);
   const toneClass =
     valid && value > 0
@@ -18,4 +18,4 @@ export function DeltaPill({ value, unit = '' }: DeltaPillProps) {
       {unit}
     </Typography>
   );
-}
+};

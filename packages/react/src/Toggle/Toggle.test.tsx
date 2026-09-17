@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { Toggle } from './Toggle';
 
-function ControlledToggle({ disabled }: { disabled?: boolean }) {
+const ControlledToggle = ({ disabled }: { disabled?: boolean }) => {
   const [checked, setChecked] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ function ControlledToggle({ disabled }: { disabled?: boolean }) {
       <span>checked: {String(checked)}</span>
     </>
   );
-}
+};
 
 describe('<Toggle />', () => {
   const user = userEvent.setup();

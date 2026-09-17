@@ -1,7 +1,7 @@
 import type { ProgressBarProps } from '@valence/types';
 import styles from './ProgressBar.module.css';
 
-export function ProgressBar({ value, max = 100, label }: ProgressBarProps) {
+export const ProgressBar = ({ value, max = 100, label }: ProgressBarProps) => {
   const safeMax = Number.isFinite(max) && max > 0 ? max : 100;
   const current = Number.isFinite(value) ? Math.min(safeMax, Math.max(0, value)) : 0;
 
@@ -17,4 +17,4 @@ export function ProgressBar({ value, max = 100, label }: ProgressBarProps) {
       <div className={styles.fill} style={{ width: `${(current / safeMax) * 100}%` }} />
     </div>
   );
-}
+};

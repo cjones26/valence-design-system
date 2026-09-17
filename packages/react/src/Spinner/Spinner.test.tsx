@@ -1,11 +1,11 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { Spinner } from './Spinner';
 
 describe('<Spinner />', () => {
   it('renders without crashing', () => {
-    const { container } = render(<Spinner />);
+    render(<Spinner />);
 
-    expect(container.querySelector('svg')).not.toBeNull();
+    expect(screen.getByRole('presentation')).toBeInTheDocument();
   });
 });

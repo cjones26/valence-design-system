@@ -62,6 +62,12 @@ export default tseslint.config(
     rules: { 'local/user-event-setup': 'error' },
   },
   {
+    files: ['**/*.tsx'],
+    rules: {
+      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+    },
+  },
+  {
     files: ['**/*.mjs', '**/*.cjs', '**/build.mjs', 'scripts/**/*.js', '**/metro.config.js'],
     languageOptions: { globals: { ...nodeGlobals, module: 'writable', require: 'readonly' } },
   },
@@ -72,6 +78,12 @@ export default tseslint.config(
       ...reactRecommendedRules,
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
+      'react/function-component-definition': [
+        'error',
+        { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+      ],
+      'react/no-unstable-nested-components': 'error',
+      'react-hooks/capitalized-calls': 'error',
     },
     languageOptions: {
       parserOptions: { ecmaFeatures: { jsx: true } },
@@ -84,6 +96,12 @@ export default tseslint.config(
     rules: {
       ...reactRecommendedRules,
       ...reactHooks.configs.recommended.rules,
+      'react/function-component-definition': [
+        'error',
+        { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+      ],
+      'react/no-unstable-nested-components': 'error',
+      'react-hooks/capitalized-calls': 'error',
     },
     languageOptions: {
       parserOptions: { ecmaFeatures: { jsx: true } },

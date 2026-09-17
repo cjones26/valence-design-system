@@ -6,7 +6,7 @@ import { Typography } from '../Typography/Typography';
 import { GEIST } from '../fonts';
 import { NativeContent } from '../NativeContent';
 
-export function Accordion({ title, expanded, onChange, children }: AccordionProps) {
+export const Accordion = ({ title, expanded, onChange, children }: AccordionProps) => {
   const theme = useTheme();
 
   return (
@@ -40,4 +40,4 @@ export function Accordion({ title, expanded, onChange, children }: AccordionProp
       )}
     </View>
   );
-}
+};

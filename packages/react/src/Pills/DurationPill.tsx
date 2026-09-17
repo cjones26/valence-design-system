@@ -1,7 +1,13 @@
 import type { DurationPillProps } from '@valence/types';
 import styles from './Pills.module.css';
 
-function formatDuration(totalSeconds: number): string {
+const statusClass: Record<NonNullable<DurationPillProps['status']>, string> = {
+  paused: styles.durationPaused ?? '',
+  completed: styles.durationCompleted ?? '',
+  live: styles.durationLive ?? '',
+};
+
+const formatDuration = (totalSeconds: number): string => {
   if (!Number.isFinite(totalSeconds)) {
     return '—:—';
   }
@@ -10,15 +16,9 @@ function formatDuration(totalSeconds: number): string {
   const s = total % 60;
 
   return `${m}:${String(s).padStart(2, '0')}`;
-}
-
-const statusClass: Record<NonNullable<DurationPillProps['status']>, string> = {
-  paused: styles.durationPaused ?? '',
-  completed: styles.durationCompleted ?? '',
-  live: styles.durationLive ?? '',
 };
 
-export function DurationPill({ seconds, status = 'paused' }: DurationPillProps) {
+export const DurationPill = ({ seconds, status = 'paused' }: DurationPillProps) => {
   const duration = formatDuration(seconds);
 
   return (
@@ -33,4 +33,4 @@ export function DurationPill({ seconds, status = 'paused' }: DurationPillProps) 
       {duration}
     </div>
   );
-}
+};

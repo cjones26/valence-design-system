@@ -4,7 +4,7 @@ import { Icon } from '../Icon/Icon';
 import { Typography } from '../Typography/Typography';
 import styles from './Accordion.module.css';
 
-export function Accordion({ title, expanded, onChange, children }: AccordionProps) {
+export const Accordion = ({ title, expanded, onChange, children }: AccordionProps) => {
   const contentId = useId();
   const textContent = typeof children === 'string' || typeof children === 'number';
 
@@ -32,4 +32,4 @@ export function Accordion({ title, expanded, onChange, children }: AccordionProp
       )}
     </div>
   );
-}
+};

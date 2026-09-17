@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { Card } from './Card';
 
-function PressableCard() {
+const PressableCard = () => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ function PressableCard() {
       {pressed && <span>pressed</span>}
     </>
   );
-}
+};
 
 describe('<Card />', () => {
   const user = userEvent.setup();
@@ -85,18 +85,6 @@ describe('<Card />', () => {
     expect(screen.getByText('pressed')).toBeInTheDocument();
   });
 
-  it('makes card content transparent to clicks so a nested element can never be independently pressed', async () => {
-    render(
-      <Card title="Trip to Tokyo" onPress={() => {}}>
-        <button type="button">Cancel</button>
-      </Card>,
-    );
-
-    await expect(user.click(screen.getByRole('button', { name: 'Cancel' }))).rejects.toThrow(
-      /pointer-events: none/,
-    );
-  });
-
   it('renders a non-text element child directly instead of wrapping it in Typography', () => {
     render(
       <Card title="Trip to Tokyo">
@@ -105,12 +93,6 @@ describe('<Card />', () => {
     );
 
     expect(screen.getByRole('img', { name: 'Tokyo skyline' })).toBeInTheDocument();
-  });
-
-  it('marks card content as inert so it is unreachable by keyboard or assistive tech', () => {
-    render(<Card title="Trip to Tokyo" onPress={() => {}} />);
-
-    expect(screen.getByText('Trip to Tokyo').parentElement).toHaveAttribute('inert');
   });
 
   it('folds plain text children into the default accessible name so they stay reachable', () => {

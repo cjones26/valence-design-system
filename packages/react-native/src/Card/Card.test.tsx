@@ -5,7 +5,7 @@ import { Image, Text } from 'react-native';
 import { Card } from './Card';
 import { DEFAULT_THEME as defaultTheme } from '../ThemeProvider/ThemeProvider';
 
-function PressableCard() {
+const PressableCard = () => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ function PressableCard() {
       {pressed && <Text>pressed</Text>}
     </>
   );
-}
+};
 
 describe('<Card />', () => {
   const user = userEvent.setup();
@@ -76,19 +76,11 @@ describe('<Card />', () => {
     expect(screen.getByText('pressed')).toBeOnTheScreen();
   });
 
-  it('makes card content transparent to touch so taps always reach the card action', async () => {
+  it('exposes card content through only the card action', async () => {
     await render(<Card title="Trip to Tokyo" onPress={() => {}} />);
 
-    const content = screen.getByText('Trip to Tokyo', { includeHiddenElements: true }).parent;
-    expect(content).toHaveProp('pointerEvents', 'none');
-  });
-
-  it('hides card content from independent accessibility discovery', async () => {
-    await render(<Card title="Trip to Tokyo" onPress={() => {}} />);
-
-    const content = screen.getByText('Trip to Tokyo', { includeHiddenElements: true }).parent;
-    expect(content).toHaveProp('accessibilityElementsHidden', true);
-    expect(content).toHaveProp('importantForAccessibility', 'no-hide-descendants');
+    expect(screen.queryByText('Trip to Tokyo')).not.toBeOnTheScreen();
+    expect(screen.getByRole('button', { name: 'Trip to Tokyo' })).toBeOnTheScreen();
   });
 
   it('folds plain text children into the default accessible name so they stay reachable', async () => {
@@ -160,10 +152,15 @@ describe('<Card />', () => {
   it('renders a non-text element child directly instead of wrapping it in Text', async () => {
     await render(
       <Card title="Trip to Tokyo">
-        <Image testID="cover-photo" source={{ uri: 'https://example.com/tokyo.jpg' }} />
+        <Image
+          accessible
+          accessibilityRole="image"
+          accessibilityLabel="Tokyo skyline"
+          source={{ uri: 'https://example.com/tokyo.jpg' }}
+        />
       </Card>,
     );
 
-    expect(screen.getByTestId('cover-photo')).toBeOnTheScreen();
+    expect(screen.getByRole('image', { name: 'Tokyo skyline' })).toBeOnTheScreen();
   });
 });

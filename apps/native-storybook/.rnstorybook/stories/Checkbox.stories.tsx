@@ -9,11 +9,11 @@ const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
 };
 
-function CheckboxPlayground() {
+const CheckboxPlayground = () => {
   const [checked, setChecked] = useState(false);
 
   return <Checkbox label="Cardio" checked={checked} onChange={setChecked} />;
-}
+};
 
 export const Unchecked: Story = { args: { label: 'Cardio', checked: false } };
 

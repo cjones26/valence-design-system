@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Animated, Easing } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 import type { SpinnerProps } from '@valence/types';
@@ -7,10 +7,10 @@ import { useReduceMotion } from '../useReduceMotion';
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
-export function Spinner({ size = 14, color }: SpinnerProps) {
+export const Spinner = ({ size = 14, color }: SpinnerProps) => {
   const theme = useTheme();
   const strokeColor = color ?? theme.color_text_primary;
-  const spin = useRef(new Animated.Value(0)).current;
+  const [spin] = useState(() => new Animated.Value(0));
   const reduceMotion = useReduceMotion();
 
   useEffect(() => {
@@ -55,4 +55,4 @@ export function Spinner({ size = 14, color }: SpinnerProps) {
       />
     </AnimatedSvg>
   );
-}
+};

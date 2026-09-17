@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Animated, I18nManager, Pressable } from 'react-native';
 import type { ToggleProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
@@ -6,10 +6,10 @@ import { alpha } from '../colorMix';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../useReduceMotion';
 
-export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
+export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
-  const anim = useRef(new Animated.Value(checked ? 1 : 0)).current;
+  const [anim] = useState(() => new Animated.Value(checked ? 1 : 0));
   const reduceMotion = useReduceMotion();
 
   useEffect(() => {
@@ -83,4 +83,4 @@ export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
       </Typography>
     </Pressable>
   );
-}
+};

@@ -3,7 +3,7 @@ import type { BottomSheetProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './BottomSheet.module.css';
 
-export function BottomSheet({ open, title, onClose, children }: BottomSheetProps) {
+export const BottomSheet = ({ open, title, onClose, children }: BottomSheetProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
 
@@ -48,4 +48,4 @@ export function BottomSheet({ open, title, onClose, children }: BottomSheetProps
       </div>
     </dialog>
   );
-}
+};

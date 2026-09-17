@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { render, screen, userEvent } from '@testing-library/react-native';
 import { SearchField } from './SearchField';
 
-function SearchExample({ onSubmit }: { onSubmit?: () => void }) {
+const SearchExample = ({ onSubmit }: { onSubmit?: () => void }) => {
   const [value, setValue] = useState('');
 
   return (
@@ -13,33 +13,36 @@ function SearchExample({ onSubmit }: { onSubmit?: () => void }) {
       onSubmit={onSubmit}
     />
   );
-}
+};
 
 describe('<SearchField />', () => {
   const user = userEvent.setup();
 
-  it('updates through keyboard input and submits', async () => {
-    const onSubmit = jest.fn();
-
-    await render(<SearchExample onSubmit={onSubmit} />);
+  it('updates through keyboard input', async () => {
+    await render(<SearchExample />);
 
     const input = screen.getByLabelText('Search documentation');
 
     await user.type(input, 'backup');
 
-    await user.press(input);
+    expect(input).toHaveDisplayValue('backup');
+  });
 
-    input.props.onSubmitEditing();
+  it('submits from the keyboard', async () => {
+    const onSubmit = jest.fn();
 
-    expect(input).toHaveProp('value', 'backup');
+    await render(<SearchExample onSubmit={onSubmit} />);
+
+    await user.type(screen.getByLabelText('Search documentation'), 'backup', {
+      submitEditing: true,
+    });
+
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 
   it('supports a disabled state', async () => {
     await render(<SearchField label="Search documentation" value="" disabled />);
 
-    expect(screen.getByLabelText('Search documentation')).toHaveProp('accessibilityState', {
-      disabled: true,
-    });
+    expect(screen.getByLabelText('Search documentation')).toBeDisabled();
   });
 });

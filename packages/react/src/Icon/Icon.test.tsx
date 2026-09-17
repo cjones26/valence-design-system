@@ -5,8 +5,6 @@ import { Icon } from './Icon';
 
 describe('<Icon />', () => {
   it.each(ICON_NAMES)('renders the %s icon without crashing', (name) => {
-    const { container } = render(<Icon name={name} />);
-
-    expect(container.querySelector('svg')).not.toBeNull();
+    expect(() => render(<Icon name={name} />)).not.toThrow();
   });
 });

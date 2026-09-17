@@ -1,7 +1,7 @@
 import type { RadioProps } from '@valence/types';
 import styles from './Radio.module.css';
 
-export function Radio({ checked, onChange, disabled, label, name }: RadioProps) {
+export const Radio = ({ checked, onChange, disabled, label, name }: RadioProps) => {
   return (
     <label className={styles.wrap}>
       <input
@@ -18,4 +18,4 @@ export function Radio({ checked, onChange, disabled, label, name }: RadioProps) 
       <span className={styles.text}>{label}</span>
     </label>
   );
-}
+};

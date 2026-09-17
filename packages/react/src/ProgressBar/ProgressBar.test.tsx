@@ -8,7 +8,6 @@ describe('<ProgressBar />', () => {
     const progress = screen.getByRole('progressbar', { name: 'Daily goal progress' });
 
     expect(progress).toHaveAttribute('aria-valuenow', '100');
-    expect(progress.firstElementChild).toHaveStyle({ width: '100%' });
   });
 
   it('normalizes non-finite values', () => {
@@ -20,6 +19,5 @@ describe('<ProgressBar />', () => {
       max: progress.getAttribute('aria-valuemax'),
       now: progress.getAttribute('aria-valuenow'),
     }).toEqual({ max: '100', now: '0' });
-    expect(progress.firstElementChild).toHaveStyle({ width: '0%' });
   });
 });

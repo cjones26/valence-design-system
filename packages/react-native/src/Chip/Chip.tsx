@@ -5,12 +5,17 @@ import { lighten } from '../colorMix';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../useReduceMotion';
 
-export function Chip({ selected, disabled, icon, onPress, children }: ChipProps) {
+export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps) => {
   const theme = useTheme();
   const reduceMotion = useReduceMotion();
   const isDisabled = disabled || !onPress;
+  const fg = isDisabled
+    ? theme.color_text_muted
+    : selected
+      ? theme.color_background_primary
+      : theme.color_text_primary;
 
-  function background(pressed: boolean): string {
+  const background = (pressed: boolean): string => {
     if (isDisabled) {
       return theme.color_background_subtle;
     }
@@ -19,13 +24,7 @@ export function Chip({ selected, disabled, icon, onPress, children }: ChipProps)
     }
 
     return pressed ? theme.color_border_primary : theme.color_background_raised;
-  }
-
-  const fg = isDisabled
-    ? theme.color_text_muted
-    : selected
-      ? theme.color_background_primary
-      : theme.color_text_primary;
+  };
 
   return (
     <Pressable
@@ -67,4 +66,4 @@ export function Chip({ selected, disabled, icon, onPress, children }: ChipProps)
       </Typography>
     </Pressable>
   );
-}
+};

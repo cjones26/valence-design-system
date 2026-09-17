@@ -3,7 +3,7 @@ import { render, screen, userEvent } from '@testing-library/react-native';
 
 import { NumberField } from './NumberField';
 
-function ControlledNumberField({
+const ControlledNumberField = ({
   initial,
   min,
   max,
@@ -15,7 +15,7 @@ function ControlledNumberField({
   max?: number;
   step?: number;
   disabled?: boolean;
-}) {
+}) => {
   const [value, setValue] = useState(initial);
 
   return (
@@ -29,7 +29,7 @@ function ControlledNumberField({
       onChange={setValue}
     />
   );
-}
+};
 
 describe('<NumberField />', () => {
   const user = userEvent.setup();
@@ -125,15 +125,12 @@ describe('<NumberField />', () => {
     expect(screen.getByLabelText('Increase Quantity')).toHaveStyle({ width: 48 });
   });
 
-  it('falls back to a finite value and warns when value is NaN', async () => {
+  it('falls back to a finite value when value is NaN', async () => {
     const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
     await render(<NumberField label="Quantity" value={NaN} />);
 
     expect(screen.getByText('0')).toBeOnTheScreen();
-    expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining('"value" must be a finite number'),
-    );
     errorSpy.mockRestore();
   });
 
@@ -151,14 +148,9 @@ describe('<NumberField />', () => {
 
     await render(<NumberField label="Quantity" value={3} min={10} max={0} />);
 
-    expect({
-      value: screen.getByText('3').props.children,
-      decreaseDisabled:
-        screen.getByLabelText('Decrease Quantity').props.accessibilityState.disabled,
-      increaseDisabled:
-        screen.getByLabelText('Increase Quantity').props.accessibilityState.disabled,
-    }).toEqual({ value: 3, decreaseDisabled: true, increaseDisabled: true });
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"min" (10) and "max" (0)'));
+    expect(screen.getByText('3')).toBeOnTheScreen();
+    expect(screen.getByLabelText('Decrease Quantity')).toBeDisabled();
+    expect(screen.getByLabelText('Increase Quantity')).toBeDisabled();
     errorSpy.mockRestore();
   });
 

@@ -3,7 +3,7 @@ import type { RadioProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 
-export function Radio({ checked, onChange, disabled, label }: RadioProps) {
+export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
 
@@ -55,4 +55,4 @@ export function Radio({ checked, onChange, disabled, label }: RadioProps) {
       </Typography>
     </Pressable>
   );
-}
+};

@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react-native';
-import { StyleSheet } from 'react-native';
 
 import { Typography } from './Typography';
 import { DEFAULT_THEME as defaultTheme } from '../ThemeProvider/ThemeProvider';
@@ -27,11 +26,8 @@ describe('<Typography />', () => {
       </>,
     );
 
-    const display = screen.getByText('Display');
-    const meta = screen.getByText('Meta');
-    const displaySize = StyleSheet.flatten(display.props.style).fontSize;
-    const metaSize = StyleSheet.flatten(meta.props.style).fontSize;
-    expect(displaySize).toBeGreaterThan(metaSize);
+    expect(screen.getByText('Display')).toHaveStyle({ fontSize: defaultTheme.type_display_size });
+    expect(screen.getByText('Meta')).toHaveStyle({ fontSize: defaultTheme.type_meta_size });
   });
 
   it('defaults to the theme text color', async () => {
@@ -60,21 +56,18 @@ describe('<Typography />', () => {
     expect(screen.getByLabelText('Custom label')).toBeOnTheScreen();
   });
 
-  it('defaults display/title/titleSm to accessibilityRole header', async () => {
-    await render(
-      <>
-        <Typography variant="display">Display</Typography>
-        <Typography variant="title">Title</Typography>
-        <Typography variant="titleSm">Title sm</Typography>
-      </>,
-    );
+  it.each([
+    ['display', 'Display'],
+    ['title', 'Title'],
+    ['titleSm', 'Title sm'],
+  ] as [Parameters<typeof Typography>[0]['variant'], string][])(
+    '%s defaults to a header',
+    async (variant, text) => {
+      await render(<Typography variant={variant}>{text}</Typography>);
 
-    expect(screen.getAllByRole('header').map((heading) => heading.props.children)).toEqual([
-      'Display',
-      'Title',
-      'Title sm',
-    ]);
-  });
+      expect(screen.getByRole('header', { name: text })).toBeOnTheScreen();
+    },
+  );
 
   it('does not default a non-heading variant to accessibilityRole header', async () => {
     await render(<Typography variant="body">Hello world</Typography>);

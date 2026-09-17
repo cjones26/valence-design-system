@@ -9,11 +9,11 @@ const meta: Meta<typeof NumberField> = {
   component: NumberField,
 };
 
-function NumberFieldPlayground() {
+const NumberFieldPlayground = () => {
   const [value, setValue] = useState(40);
 
   return <NumberField label="Pushups" value={value} min={0} max={999} onChange={setValue} />;
-}
+};
 
 export const Default: Story = { args: { label: 'Pushups', value: 40 } };
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { render, screen, userEvent } from '@testing-library/react-native';
 import { Accordion } from './Accordion';
 
-function AccordionExample() {
+const AccordionExample = () => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ function AccordionExample() {
       Backup details
     </Accordion>
   );
-}
+};
 
 describe('<Accordion />', () => {
   const user = userEvent.setup();
@@ -18,11 +18,9 @@ describe('<Accordion />', () => {
   it('starts collapsed with its content hidden', async () => {
     await render(<AccordionExample />);
 
-    const trigger = screen.getByRole('button', { name: 'Cloud backup' });
-
-    expect(trigger.props.accessibilityState).toEqual(
-      expect.objectContaining({ expanded: false, disabled: false }),
-    );
+    expect(
+      screen.getByRole('button', { name: 'Cloud backup', expanded: false, disabled: false }),
+    ).toBeOnTheScreen();
     expect(screen.queryByText('Backup details')).not.toBeOnTheScreen();
   });
 
@@ -33,9 +31,9 @@ describe('<Accordion />', () => {
 
     await user.press(trigger);
 
-    expect(trigger.props.accessibilityState).toEqual(
-      expect.objectContaining({ expanded: true, disabled: false }),
-    );
+    expect(
+      screen.getByRole('button', { name: 'Cloud backup', expanded: true, disabled: false }),
+    ).toBeOnTheScreen();
     expect(screen.getByText('Backup details')).toBeOnTheScreen();
   });
 

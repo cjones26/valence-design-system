@@ -4,7 +4,7 @@ import { Radio } from '../Radio/Radio';
 import { Typography } from '../Typography/Typography';
 import styles from './RadioGroup.module.css';
 
-export function RadioGroup({ options, value, onChange, disabled, label }: RadioGroupProps) {
+export const RadioGroup = ({ options, value, onChange, disabled, label }: RadioGroupProps) => {
   const name = useId();
   const labelId = useId();
 
@@ -36,4 +36,4 @@ export function RadioGroup({ options, value, onChange, disabled, label }: RadioG
       </div>
     </div>
   );
-}
+};

@@ -2,7 +2,7 @@ import type { ListRowProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './ListRow.module.css';
 
-export function ListRow({
+export const ListRow = ({
   icon,
   title,
   subtitle,
@@ -10,7 +10,7 @@ export function ListRow({
   archived,
   grouped,
   onPress,
-}: ListRowProps) {
+}: ListRowProps) => {
   const accessibleLabel = [title, archived ? 'archived' : undefined, subtitle]
     .filter(Boolean)
     .join(', ');
@@ -47,4 +47,4 @@ export function ListRow({
       )}
     </div>
   );
-}
+};

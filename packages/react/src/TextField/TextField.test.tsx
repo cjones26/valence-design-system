@@ -4,11 +4,11 @@ import userEvent from '@testing-library/user-event';
 
 import { TextField } from './TextField';
 
-function ControlledTextField({ disabled }: { disabled?: boolean }) {
+const ControlledTextField = ({ disabled }: { disabled?: boolean }) => {
   const [value, setValue] = useState('');
 
   return <TextField label="Name" value={value} onChangeText={setValue} disabled={disabled} />;
-}
+};
 
 describe('<TextField />', () => {
   const user = userEvent.setup();

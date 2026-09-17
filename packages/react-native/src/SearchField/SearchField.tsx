@@ -4,14 +4,14 @@ import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Icon } from '../Icon/Icon';
 import { GEIST } from '../fonts';
 
-export function SearchField({
+export const SearchField = ({
   value,
   placeholder,
   onChangeText,
   onSubmit,
   disabled,
   label,
-}: SearchFieldProps) {
+}: SearchFieldProps) => {
   const theme = useTheme();
 
   return (
@@ -50,4 +50,4 @@ export function SearchField({
       />
     </View>
   );
-}
+};

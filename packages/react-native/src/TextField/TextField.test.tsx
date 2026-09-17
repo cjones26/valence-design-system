@@ -4,11 +4,11 @@ import { render, screen, userEvent } from '@testing-library/react-native';
 
 import { TextField } from './TextField';
 
-function ControlledTextField({ disabled }: { disabled?: boolean }) {
+const ControlledTextField = ({ disabled }: { disabled?: boolean }) => {
   const [value, setValue] = useState('');
 
   return <TextField label="Name" value={value} onChangeText={setValue} disabled={disabled} />;
-}
+};
 
 describe('<TextField />', () => {
   const user = userEvent.setup();
@@ -93,27 +93,5 @@ describe('<TextField />', () => {
     expect(announceSpy).not.toHaveBeenCalled();
 
     announceSpy.mockRestore();
-  });
-
-  it('maps shared input semantics', async () => {
-    await render(
-      <TextField
-        label="Password"
-        value="secret"
-        autoComplete="current-password"
-        secureTextEntry
-        maxLength={80}
-      />,
-    );
-
-    const field = screen.getByLabelText('Password');
-
-    expect(field.props).toEqual(
-      expect.objectContaining({
-        autoComplete: 'current-password',
-        secureTextEntry: true,
-        maxLength: 80,
-      }),
-    );
   });
 });

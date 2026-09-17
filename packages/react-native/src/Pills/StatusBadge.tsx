@@ -3,7 +3,7 @@ import type { StatusBadgeProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 
-export function StatusBadge({ status, children }: StatusBadgeProps) {
+export const StatusBadge = ({ status, children }: StatusBadgeProps) => {
   const theme = useTheme();
   const { bg, fg } = {
     success: { bg: theme.color_state_positive, fg: theme.color_text_on_positive },
@@ -26,4 +26,4 @@ export function StatusBadge({ status, children }: StatusBadgeProps) {
       </Typography>
     </View>
   );
-}
+};

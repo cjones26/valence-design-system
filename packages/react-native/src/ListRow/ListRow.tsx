@@ -5,7 +5,7 @@ import { GEIST } from '../fonts';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../useReduceMotion';
 
-export function ListRow({
+export const ListRow = ({
   icon,
   title,
   subtitle,
@@ -13,7 +13,7 @@ export function ListRow({
   archived,
   grouped,
   onPress,
-}: ListRowProps) {
+}: ListRowProps) => {
   const theme = useTheme();
   const reduceMotion = useReduceMotion();
   const accessibleLabel = [title, archived ? 'archived' : undefined, subtitle]
@@ -105,4 +105,4 @@ export function ListRow({
   }
 
   return <View style={rowStyle}>{content}</View>;
-}
+};

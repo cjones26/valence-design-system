@@ -12,7 +12,7 @@ const meta: Meta<typeof Card> = {
   },
 };
 
-function TappableCardExample() {
+const TappableCardExample = () => {
   const [count, setCount] = useState(0);
 
   return (
@@ -20,7 +20,7 @@ function TappableCardExample() {
       {`Tap anywhere on the card. Pressed ${count} times.`}
     </Card>
   );
-}
+};
 
 export const Resting: Story = {
   args: { status: 'resting', title: 'Pushups', children: 'Default appearance.' },

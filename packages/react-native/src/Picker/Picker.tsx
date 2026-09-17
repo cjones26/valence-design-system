@@ -4,7 +4,7 @@ import type { PickerProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 
-export function Picker({
+export const Picker = ({
   options,
   value,
   placeholder,
@@ -13,7 +13,7 @@ export function Picker({
   disabled,
   helperText,
   label,
-}: PickerProps) {
+}: PickerProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
   const borderColor = error ? theme.color_action_danger_text : theme.color_border_control;
@@ -65,4 +65,4 @@ export function Picker({
       )}
     </View>
   );
-}
+};

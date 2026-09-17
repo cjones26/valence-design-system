@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SearchField } from './SearchField';
 
-function SearchExample({ onSubmit }: { onSubmit?: () => void }) {
+const SearchExample = ({ onSubmit }: { onSubmit?: () => void }) => {
   const [value, setValue] = useState('');
 
   return (
@@ -14,7 +14,7 @@ function SearchExample({ onSubmit }: { onSubmit?: () => void }) {
       onSubmit={onSubmit}
     />
   );
-}
+};
 
 describe('<SearchField />', () => {
   const user = userEvent.setup();

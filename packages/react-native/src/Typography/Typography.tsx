@@ -8,7 +8,7 @@ export interface TypographyProps extends SharedTypographyProps, Omit<TextProps, 
 
 const HEADER_VARIANTS = new Set<TypographyVariant>(['display', 'title', 'titleSm']);
 
-function weightStyle(weight: number): Pick<TextStyle, 'fontFamily' | 'fontWeight'> {
+const weightStyle = (weight: number): Pick<TextStyle, 'fontFamily' | 'fontWeight'> => {
   if (weight >= 700) {
     return GEIST.bold;
   }
@@ -17,9 +17,9 @@ function weightStyle(weight: number): Pick<TextStyle, 'fontFamily' | 'fontWeight
   }
 
   return GEIST.regular;
-}
+};
 
-function variantStyle(variant: TypographyVariant, theme: Theme): TextStyle {
+const variantStyle = (variant: TypographyVariant, theme: Theme): TextStyle => {
   switch (variant) {
     case 'display':
       return {
@@ -90,15 +90,15 @@ function variantStyle(variant: TypographyVariant, theme: Theme): TextStyle {
         ...weightStyle(theme.type_control_label_weight),
       };
   }
-}
+};
 
-export function Typography({
+export const Typography = ({
   variant,
   children,
   style,
   accessibilityRole,
   ...rest
-}: TypographyProps) {
+}: TypographyProps) => {
   const theme = useTheme();
 
   return (
@@ -110,4 +110,4 @@ export function Typography({
       {children}
     </Text>
   );
-}
+};

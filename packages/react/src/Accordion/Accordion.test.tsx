@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Accordion } from './Accordion';
 
-function AccordionExample() {
+const AccordionExample = () => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function AccordionExample() {
       Backup details
     </Accordion>
   );
-}
+};
 
 describe('<Accordion />', () => {
   const user = userEvent.setup();

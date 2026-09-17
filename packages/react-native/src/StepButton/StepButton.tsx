@@ -5,7 +5,7 @@ import { alpha } from '../colorMix';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../useReduceMotion';
 
-export function StepButton({ label, tone, disabled, onPress }: StepButtonProps) {
+export const StepButton = ({ label, tone, disabled, onPress }: StepButtonProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onPress;
   const reduceMotion = useReduceMotion();
@@ -38,4 +38,4 @@ export function StepButton({ label, tone, disabled, onPress }: StepButtonProps) 
       </Typography>
     </Pressable>
   );
-}
+};

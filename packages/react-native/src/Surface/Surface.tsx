@@ -3,7 +3,7 @@ import type { SurfaceProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { NativeContent } from '../NativeContent';
 
-export function Surface({ children }: SurfaceProps) {
+export const Surface = ({ children }: SurfaceProps) => {
   const theme = useTheme();
 
   return (
@@ -19,4 +19,4 @@ export function Surface({ children }: SurfaceProps) {
       <NativeContent>{children}</NativeContent>
     </View>
   );
-}
+};

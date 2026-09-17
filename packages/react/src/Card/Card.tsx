@@ -10,7 +10,7 @@ const STATUS_CLASS: Record<NonNullable<CardProps['status']>, string> = {
   error: styles.error ?? '',
 };
 
-export function Card({ status = 'resting', title, actionLabel, onPress, children }: CardProps) {
+export const Card = ({ status = 'resting', title, actionLabel, onPress, children }: CardProps) => {
   const describedChildren =
     typeof children === 'string' || typeof children === 'number' ? children : undefined;
   const computedActionLabel =
@@ -44,4 +44,4 @@ export function Card({ status = 'resting', title, actionLabel, onPress, children
       </div>
     </div>
   );
-}
+};

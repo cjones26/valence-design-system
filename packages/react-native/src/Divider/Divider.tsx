@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import type { DividerProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
-export function Divider({ inset = false }: DividerProps) {
+export const Divider = ({ inset = false }: DividerProps) => {
   const theme = useTheme();
 
   return (
@@ -15,4 +15,4 @@ export function Divider({ inset = false }: DividerProps) {
       }}
     />
   );
-}
+};

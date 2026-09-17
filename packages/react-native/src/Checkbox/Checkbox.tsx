@@ -4,7 +4,7 @@ import type { CheckboxProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 
-export function Checkbox({ checked, onChange, disabled, label }: CheckboxProps) {
+export const Checkbox = ({ checked, onChange, disabled, label }: CheckboxProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
 
@@ -58,4 +58,4 @@ export function Checkbox({ checked, onChange, disabled, label }: CheckboxProps) 
       </Typography>
     </Pressable>
   );
-}
+};

@@ -14,7 +14,7 @@ const DEFAULT_ELEMENT: Partial<Record<TypographyVariant, ElementType>> = {
   titleSm: 'h3',
 };
 
-export function Typography({ variant, children, className, as, ...rest }: TypographyProps) {
+export const Typography = ({ variant, children, className, as, ...rest }: TypographyProps) => {
   const Element = as ?? DEFAULT_ELEMENT[variant] ?? 'span';
 
   return (
@@ -22,4 +22,4 @@ export function Typography({ variant, children, className, as, ...rest }: Typogr
       {children}
     </Element>
   );
-}
+};

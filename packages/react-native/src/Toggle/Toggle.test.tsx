@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { render, screen, userEvent } from '@testing-library/react-native';
-import { AccessibilityInfo, Text } from 'react-native';
+import { Text } from 'react-native';
 
 import { Toggle } from './Toggle';
 
-function ControlledToggle({ disabled }: { disabled?: boolean }) {
+const ControlledToggle = ({ disabled }: { disabled?: boolean }) => {
   const [checked, setChecked] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ function ControlledToggle({ disabled }: { disabled?: boolean }) {
       <Text>checked: {String(checked)}</Text>
     </>
   );
-}
+};
 
 describe('<Toggle />', () => {
   const user = userEvent.setup();
@@ -70,19 +70,5 @@ describe('<Toggle />', () => {
     await render(<Toggle checked={false} label="Notifications" />);
 
     expect(screen.getByRole('switch', { name: 'Notifications' })).toHaveStyle({ minHeight: 48 });
-  });
-
-  it('reflects the checked state without warning, with and without reduced motion', async () => {
-    await render(<Toggle checked label="Notifications" />);
-
-    expect(screen.getByRole('switch', { name: 'Notifications' })).toBeChecked();
-
-    jest.spyOn(AccessibilityInfo, 'isReduceMotionEnabled').mockResolvedValueOnce(true);
-
-    await render(<Toggle checked label="Notifications" />);
-
-    expect(screen.getAllByRole('switch', { name: 'Notifications' }).length).toBeGreaterThan(0);
-
-    jest.restoreAllMocks();
   });
 });

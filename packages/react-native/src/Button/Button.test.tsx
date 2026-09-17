@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 
 import { Button } from './Button';
 
-function PressableButton({ disabled, loading }: { disabled?: boolean; loading?: boolean }) {
+const PressableButton = ({ disabled, loading }: { disabled?: boolean; loading?: boolean }) => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ function PressableButton({ disabled, loading }: { disabled?: boolean; loading?: 
       {pressed && <Text>pressed</Text>}
     </>
   );
-}
+};
 
 describe('<Button />', () => {
   const user = userEvent.setup();

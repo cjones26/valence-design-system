@@ -2,7 +2,7 @@ import type { ChipProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './Chip.module.css';
 
-export function Chip({ selected, disabled, icon, onPress, children }: ChipProps) {
+export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps) => {
   return (
     <button
       type="button"
@@ -19,4 +19,4 @@ export function Chip({ selected, disabled, icon, onPress, children }: ChipProps)
       <Typography variant="label">{children}</Typography>
     </button>
   );
-}
+};

@@ -4,7 +4,7 @@ import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { alpha } from '../colorMix';
 import { Typography } from '../Typography/Typography';
 
-export function DeltaPill({ value, unit = '' }: DeltaPillProps) {
+export const DeltaPill = ({ value, unit = '' }: DeltaPillProps) => {
   const theme = useTheme();
   const valid = Number.isFinite(value);
 
@@ -38,4 +38,4 @@ export function DeltaPill({ value, unit = '' }: DeltaPillProps) {
       </Typography>
     </View>
   );
-}
+};

@@ -3,14 +3,14 @@ import type { SearchFieldProps } from '@valence/types';
 import { Icon } from '../Icon/Icon';
 import styles from './SearchField.module.css';
 
-export function SearchField({
+export const SearchField = ({
   value,
   placeholder,
   onChangeText,
   onSubmit,
   disabled,
   label,
-}: SearchFieldProps) {
+}: SearchFieldProps) => {
   const inputId = useId();
 
   return (
@@ -33,4 +33,4 @@ export function SearchField({
       />
     </div>
   );
-}
+};

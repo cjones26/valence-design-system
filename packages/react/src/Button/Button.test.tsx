@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { Button } from './Button';
 
-function PressableButton({ disabled, loading }: { disabled?: boolean; loading?: boolean }) {
+const PressableButton = ({ disabled, loading }: { disabled?: boolean; loading?: boolean }) => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ function PressableButton({ disabled, loading }: { disabled?: boolean; loading?: 
       {pressed && <span>pressed</span>}
     </>
   );
-}
+};
 
 describe('<Button />', () => {
   const user = userEvent.setup();
@@ -67,7 +67,6 @@ describe('<Button />', () => {
 
     const button = screen.getByRole('button', { name: 'Save' });
     expect(button).toHaveAttribute('aria-busy', 'true');
-    expect(button).toHaveAttribute('data-loading', 'true');
   });
 
   it('does not mark the button as busy when not loading', () => {

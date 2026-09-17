@@ -3,7 +3,7 @@ import type { PickerProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './Picker.module.css';
 
-export function Picker({
+export const Picker = ({
   options,
   value,
   placeholder,
@@ -12,7 +12,7 @@ export function Picker({
   disabled,
   helperText,
   label,
-}: PickerProps) {
+}: PickerProps) => {
   const selectId = useId();
   const helperId = useId();
 
@@ -54,4 +54,4 @@ export function Picker({
       )}
     </div>
   );
-}
+};

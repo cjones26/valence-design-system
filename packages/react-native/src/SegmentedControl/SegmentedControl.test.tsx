@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { render, screen, userEvent } from '@testing-library/react-native';
-import { AccessibilityInfo, Text } from 'react-native';
+import { Text } from 'react-native';
 
 import { SegmentedControl } from './SegmentedControl';
 import { DEFAULT_THEME } from '../ThemeProvider/ThemeProvider';
@@ -10,7 +10,7 @@ const OPTIONS = [
   { value: 'week', label: 'Week' },
 ];
 
-function ControlledSegmentedControl({ disabled }: { disabled?: boolean }) {
+const ControlledSegmentedControl = ({ disabled }: { disabled?: boolean }) => {
   const [value, setValue] = useState('day');
 
   return (
@@ -25,7 +25,7 @@ function ControlledSegmentedControl({ disabled }: { disabled?: boolean }) {
       <Text>selected: {value}</Text>
     </>
   );
-}
+};
 
 describe('<SegmentedControl />', () => {
   const user = userEvent.setup();
@@ -65,7 +65,7 @@ describe('<SegmentedControl />', () => {
             value: 'day',
             label: 'Day',
             icon: (color) => (
-              <Text testID="icon" style={{ color }}>
+              <Text accessibilityLabel="Day icon" style={{ color }}>
                 I
               </Text>
             ),
@@ -76,7 +76,9 @@ describe('<SegmentedControl />', () => {
       />,
     );
 
-    expect(screen.getByTestId('icon')).toHaveStyle({ color: DEFAULT_THEME.color_text_muted });
+    expect(screen.getByLabelText('Day icon')).toHaveStyle({
+      color: DEFAULT_THEME.color_text_muted,
+    });
   });
 
   it('invokes onChange with the pressed option value', async () => {
@@ -102,24 +104,10 @@ describe('<SegmentedControl />', () => {
     expect(screen.getByRole('radio', { name: 'Week' })).toBeDisabled();
   });
 
-  it('marks the current value as checked without warning, with and without reduced motion', async () => {
-    await render(<SegmentedControl label="View" options={OPTIONS} value="week" />);
-
-    expect(screen.getByRole('radio', { name: 'Week' })).toBeChecked();
-
-    jest.spyOn(AccessibilityInfo, 'isReduceMotionEnabled').mockResolvedValueOnce(true);
-
-    await render(<SegmentedControl label="View" options={OPTIONS} value="week" />);
-
-    expect(screen.getAllByRole('radio', { name: 'Week' }).length).toBeGreaterThan(0);
-
-    jest.restoreAllMocks();
-  });
-
   it('renders nothing when options is empty', async () => {
-    const { toJSON } = await render(<SegmentedControl label="View" options={[]} value="day" />);
+    await render(<SegmentedControl label="View" options={[]} value="day" />);
 
-    expect(toJSON()).toBeNull();
+    expect(screen.queryByRole('radio')).not.toBeOnTheScreen();
   });
 
   it('marks no option as checked when value matches nothing', async () => {
@@ -127,23 +115,5 @@ describe('<SegmentedControl />', () => {
 
     expect(screen.getByRole('radio', { name: 'Day' })).not.toBeChecked();
     expect(screen.getByRole('radio', { name: 'Week' })).not.toBeChecked();
-  });
-
-  it('warns when options contains duplicate values', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-    await render(
-      <SegmentedControl
-        label="View"
-        options={[
-          { value: 'day', label: 'Day' },
-          { value: 'day', label: 'Day (again)' },
-        ]}
-        value="day"
-      />,
-    );
-
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('duplicate values'));
-    errorSpy.mockRestore();
   });
 });

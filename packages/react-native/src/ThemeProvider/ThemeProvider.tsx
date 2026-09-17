@@ -25,12 +25,12 @@ export interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export function ThemeProvider({
+export const ThemeProvider = ({
   preset = DEFAULT_PRESET,
   mode,
   theme,
   children,
-}: ThemeProviderProps) {
+}: ThemeProviderProps) => {
   const systemScheme = useColorScheme();
   const resolvedMode: ThemeMode = mode ?? (systemScheme === 'dark' ? 'dark' : 'light');
 
@@ -40,8 +40,8 @@ export function ThemeProvider({
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
-}
+};
 
-export function useTheme(): Theme {
+export const useTheme = (): Theme => {
   return useContext(ThemeContext);
-}
+};

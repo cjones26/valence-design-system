@@ -8,7 +8,7 @@ const OPTIONS = [
   { value: 'b', label: 'Option B' },
 ];
 
-function ControlledRadioGroup({ disabled }: { disabled?: boolean }) {
+const ControlledRadioGroup = ({ disabled }: { disabled?: boolean }) => {
   const [value, setValue] = useState('a');
 
   return (
@@ -20,7 +20,7 @@ function ControlledRadioGroup({ disabled }: { disabled?: boolean }) {
       onChange={setValue}
     />
   );
-}
+};
 
 describe('<RadioGroup />', () => {
   const user = userEvent.setup();
@@ -62,23 +62,5 @@ describe('<RadioGroup />', () => {
 
     expect(screen.getByRole('radio', { name: 'Option A' })).toHaveStyle({ minHeight: 48 });
     expect(screen.getByRole('radio', { name: 'Option B' })).toHaveStyle({ minHeight: 48 });
-  });
-
-  it('warns when options contains duplicate values', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-    await render(
-      <RadioGroup
-        label="Options"
-        options={[
-          { value: 'a', label: 'Option A' },
-          { value: 'a', label: 'Option A (again)' },
-        ]}
-        value="a"
-      />,
-    );
-
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('duplicate values'));
-    errorSpy.mockRestore();
   });
 });

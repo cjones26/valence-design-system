@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 
 import { StepButton } from './StepButton';
 
-function PressableStepButton({ disabled }: { disabled?: boolean }) {
+const PressableStepButton = ({ disabled }: { disabled?: boolean }) => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ function PressableStepButton({ disabled }: { disabled?: boolean }) {
       {pressed && <Text>pressed</Text>}
     </>
   );
-}
+};
 
 describe('<StepButton />', () => {
   const user = userEvent.setup();

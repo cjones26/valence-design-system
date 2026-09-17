@@ -9,7 +9,7 @@ const meta: Meta<typeof TextField> = {
   component: TextField,
 };
 
-function TextFieldPlayground() {
+const TextFieldPlayground = () => {
   const [value, setValue] = useState('');
 
   return (
@@ -20,7 +20,7 @@ function TextFieldPlayground() {
       onChangeText={setValue}
     />
   );
-}
+};
 
 export const Empty: Story = {
   args: { label: 'Goal name', placeholder: 'What do you want to track?' },

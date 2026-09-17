@@ -1,7 +1,7 @@
 import type { ToggleProps } from '@valence/types';
 import styles from './Toggle.module.css';
 
-export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
+export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
   return (
     <label className={styles.wrap}>
       <input
@@ -18,4 +18,4 @@ export function Toggle({ checked, onChange, disabled, label }: ToggleProps) {
       <span className={styles.text}>{label}</span>
     </label>
   );
-}
+};

@@ -1,7 +1,7 @@
 import type { CheckboxProps } from '@valence/types';
 import styles from './Checkbox.module.css';
 
-export function Checkbox({ checked, onChange, disabled, label }: CheckboxProps) {
+export const Checkbox = ({ checked, onChange, disabled, label }: CheckboxProps) => {
   return (
     <label className={styles.wrap}>
       <input
@@ -32,4 +32,4 @@ export function Checkbox({ checked, onChange, disabled, label }: CheckboxProps) 
       <span className={styles.text}>{label}</span>
     </label>
   );
-}
+};

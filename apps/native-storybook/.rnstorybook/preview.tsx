@@ -20,7 +20,7 @@ const PRESETS: ThemePreset[] = [
 
 const PRESET_OPTIONS = PRESETS.map((value) => ({ value, label: value }));
 
-function ValenceDecorator({ children }: { children: React.ReactNode }) {
+const ValenceDecorator = ({ children }: { children: React.ReactNode }) => {
   const fontsLoaded = useValenceFonts();
   const [preset, setPreset] = useState<ThemePreset>('hi-vis');
   const [mode, setMode] = useState<ThemeMode>('light');
@@ -84,9 +84,9 @@ function ValenceDecorator({ children }: { children: React.ReactNode }) {
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
-}
+};
 
-const preview: Preview = {
+export default {
   decorators: [
     (Story) => (
       <ValenceDecorator>
@@ -102,6 +102,4 @@ const preview: Preview = {
       },
     },
   },
-};
-
-export default preview;
+} satisfies Preview;

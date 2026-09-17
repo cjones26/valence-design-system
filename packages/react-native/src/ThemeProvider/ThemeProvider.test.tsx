@@ -4,11 +4,11 @@ import { themes } from '@valence/tokens';
 
 import { ThemeProvider, useTheme } from './ThemeProvider';
 
-function ThemeReporter() {
+const ThemeReporter = () => {
   const theme = useTheme();
 
   return <Text>{theme.color_text_primary}</Text>;
-}
+};
 
 describe('<ThemeProvider />', () => {
   it('provides the default preset in light mode by default', async () => {

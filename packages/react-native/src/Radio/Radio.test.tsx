@@ -3,7 +3,7 @@ import { render, screen, userEvent } from '@testing-library/react-native';
 
 import { Radio } from './Radio';
 
-function ControlledRadio({ disabled }: { disabled?: boolean }) {
+const ControlledRadio = ({ disabled }: { disabled?: boolean }) => {
   const [checked, setChecked] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ function ControlledRadio({ disabled }: { disabled?: boolean }) {
       onChange={() => setChecked(true)}
     />
   );
-}
+};
 
 describe('<Radio />', () => {
   const user = userEvent.setup();

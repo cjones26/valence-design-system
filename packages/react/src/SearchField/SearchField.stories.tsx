@@ -6,7 +6,7 @@ type Story = StoryObj<typeof SearchField>;
 
 const meta: Meta<typeof SearchField> = { title: 'Components/SearchField', component: SearchField };
 
-function SearchExample() {
+const SearchExample = () => {
   const [value, setValue] = useState('');
 
   return (
@@ -17,7 +17,7 @@ function SearchExample() {
       onChangeText={setValue}
     />
   );
-}
+};
 
 export const Default: Story = { render: () => <SearchExample /> };
 

@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { Chip } from './Chip';
 
-function PressableChip({ disabled }: { disabled?: boolean }) {
+const PressableChip = ({ disabled }: { disabled?: boolean }) => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ function PressableChip({ disabled }: { disabled?: boolean }) {
       {pressed && <span>pressed</span>}
     </>
   );
-}
+};
 
 describe('<Chip />', () => {
   const user = userEvent.setup();

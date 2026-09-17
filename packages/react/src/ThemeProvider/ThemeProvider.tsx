@@ -13,25 +13,25 @@ export interface ThemeProviderProps {
   children: ReactNode;
 }
 
-function toCssVars(theme: ThemeOverride): CSSProperties {
+const toCssVars = (theme: ThemeOverride): CSSProperties => {
   const vars: Record<string, string> = {};
   for (const [key, value] of Object.entries(theme)) {
     vars[`--${key.replace(/_/g, '-')}`] = String(value);
   }
 
   return vars as CSSProperties;
-}
+};
 
-function subscribeToSystemScheme(callback: () => void) {
+const subscribeToSystemScheme = (callback: () => void) => {
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   mql.addEventListener('change', callback);
 
   return () => mql.removeEventListener('change', callback);
-}
+};
 
-function getSystemScheme(): ThemeMode {
+const getSystemScheme = (): ThemeMode => {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
+};
 
 /**
  * Always renders one wrapper element regardless of which props are given, so
@@ -42,7 +42,7 @@ function getSystemScheme(): ThemeMode {
  * ([data-preset="x"][data-theme="y"]), so a preset with no data-theme
  * attribute at all would silently match nothing.
  */
-export function ThemeProvider({ preset = 'hi-vis', mode, theme, children }: ThemeProviderProps) {
+export const ThemeProvider = ({ preset = 'hi-vis', mode, theme, children }: ThemeProviderProps) => {
   const systemScheme = useSyncExternalStore(
     subscribeToSystemScheme,
     getSystemScheme,
@@ -55,4 +55,4 @@ export function ThemeProvider({ preset = 'hi-vis', mode, theme, children }: Them
       {children}
     </div>
   );
-}
+};

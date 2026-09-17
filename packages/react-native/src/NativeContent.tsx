@@ -1,7 +1,7 @@
 import { Children, Fragment, isValidElement, type ReactNode } from 'react';
 import { Typography } from './Typography/Typography';
 
-export function NativeContent({ children, color }: { children: ReactNode; color?: string }) {
+export const NativeContent = ({ children, color }: { children: ReactNode; color?: string }) => {
   return Children.map(children, (child) => {
     if (typeof child === 'string' || typeof child === 'number') {
       return (
@@ -17,4 +17,4 @@ export function NativeContent({ children, color }: { children: ReactNode; color?
 
     return child;
   });
-}
+};

@@ -6,7 +6,7 @@ import { alpha } from '../colorMix';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../useReduceMotion';
 
-export function Card({ status = 'resting', title, actionLabel, onPress, children }: CardProps) {
+export const Card = ({ status = 'resting', title, actionLabel, onPress, children }: CardProps) => {
   const theme = useTheme();
   const [pressed, setPressed] = useState(false);
   const reduceMotion = useReduceMotion();
@@ -79,4 +79,4 @@ export function Card({ status = 'resting', title, actionLabel, onPress, children
       </View>
     </View>
   );
-}
+};

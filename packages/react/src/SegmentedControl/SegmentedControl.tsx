@@ -3,13 +3,13 @@ import type { SegmentedControlProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './SegmentedControl.module.css';
 
-export function SegmentedControl({
+export const SegmentedControl = ({
   options,
   value,
   onChange,
   disabled,
   label,
-}: SegmentedControlProps) {
+}: SegmentedControlProps) => {
   const name = useId();
 
   const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
@@ -66,4 +66,4 @@ export function SegmentedControl({
       ))}
     </div>
   );
-}
+};

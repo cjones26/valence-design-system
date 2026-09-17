@@ -8,10 +8,10 @@ const statusClass: Record<StatusBadgeProps['status'], string> = {
   danger: styles.badgeDanger ?? '',
 };
 
-export function StatusBadge({ status, children }: StatusBadgeProps) {
+export const StatusBadge = ({ status, children }: StatusBadgeProps) => {
   return (
     <Typography variant="badge" className={`${styles.badge} ${statusClass[status] ?? ''}`}>
       {children}
     </Typography>
   );
-}
+};

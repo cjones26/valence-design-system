@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import type { ProgressBarProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
-export function ProgressBar({ value, max = 100, label }: ProgressBarProps) {
+export const ProgressBar = ({ value, max = 100, label }: ProgressBarProps) => {
   const theme = useTheme();
   const safeMax = Number.isFinite(max) && max > 0 ? max : 100;
   const current = Number.isFinite(value) ? Math.min(safeMax, Math.max(0, value)) : 0;
@@ -30,4 +30,4 @@ export function ProgressBar({ value, max = 100, label }: ProgressBarProps) {
       />
     </View>
   );
-}
+};

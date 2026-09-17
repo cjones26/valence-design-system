@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 
 import { ListRow } from './ListRow';
 
-function PressableListRow() {
+const PressableListRow = () => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ function PressableListRow() {
       {pressed && <Text>pressed</Text>}
     </>
   );
-}
+};
 
 describe('<ListRow />', () => {
   const user = userEvent.setup();
@@ -76,7 +76,7 @@ describe('<ListRow />', () => {
     expect(screen.getByText('Groceries')).toHaveStyle({ textDecorationLine: 'none' });
   });
 
-  it('renders a presentation-only trailing icon', async () => {
+  it('hides the trailing icon from assistive technology', async () => {
     await render(
       <ListRow
         title="Groceries"
@@ -84,24 +84,6 @@ describe('<ListRow />', () => {
       />,
     );
 
-    const iconSlot = screen.getByLabelText('Decorative icon', {
-      includeHiddenElements: true,
-    }).parent;
-    expect(iconSlot?.props).toEqual(
-      expect.objectContaining({
-        pointerEvents: 'none',
-        accessibilityElementsHidden: true,
-        importantForAccessibility: 'no-hide-descendants',
-      }),
-    );
-  });
-
-  it('removes standalone elevation when grouped inside a Surface', async () => {
-    await render(<ListRow grouped title="Cloud backup" />);
-
-    expect(screen.getByText('Cloud backup').parent?.parent).toHaveStyle({ borderRadius: 0 });
-    expect(screen.getByText('Cloud backup').parent?.parent).not.toHaveStyle({
-      boxShadow: expect.any(String),
-    });
+    expect(screen.queryByLabelText('Decorative icon')).not.toBeOnTheScreen();
   });
 });

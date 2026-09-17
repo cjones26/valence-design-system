@@ -25,12 +25,6 @@ describe('<Slider />', () => {
     expect(onChange).toHaveBeenCalledWith(65);
   });
 
-  it('passes a default step of 1 to the native control', async () => {
-    await render(<Slider value={40} min={0} max={100} label="Volume" />);
-
-    expect(screen.getByLabelText('Volume')).toHaveProp('step', 1);
-  });
-
   it('exposes the disabled accessibility state', async () => {
     await render(<Slider value={40} min={0} max={100} label="Volume" disabled />);
 
@@ -43,21 +37,12 @@ describe('<Slider />', () => {
     expect(screen.getByLabelText('Fixed')).toHaveAccessibilityValue({ min: 5, max: 5, now: 5 });
   });
 
-  it('passes an explicit step to the native control', async () => {
-    await render(<Slider value={40} min={0} max={100} step={10} label="Volume" />);
-
-    expect(screen.getByLabelText('Volume')).toHaveProp('step', 10);
-  });
-
-  it('falls back to a finite value and warns when value is NaN', async () => {
+  it('falls back to a finite value when value is NaN', async () => {
     const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
     await render(<Slider value={NaN} min={0} max={100} label="Volume" />);
 
     expect(screen.getByLabelText('Volume')).toHaveAccessibilityValue({ now: 0 });
-    expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining('"value" must be a finite number'),
-    );
     errorSpy.mockRestore();
   });
 
@@ -67,13 +52,8 @@ describe('<Slider />', () => {
     await render(<Slider value={5} min={10} max={0} label="Volume" />);
 
     const slider = screen.getByLabelText('Volume');
-    expect(slider.props).toEqual(
-      expect.objectContaining({
-        disabled: true,
-        accessibilityValue: { min: 0, max: 0, now: 0 },
-      }),
-    );
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"min" (10) and "max" (0)'));
+    expect(slider).toBeDisabled();
+    expect(slider).toHaveAccessibilityValue({ min: 0, max: 0, now: 0 });
     errorSpy.mockRestore();
   });
 

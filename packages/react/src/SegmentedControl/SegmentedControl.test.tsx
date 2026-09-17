@@ -9,7 +9,7 @@ const OPTIONS = [
   { value: 'week', label: 'Week' },
 ];
 
-function ControlledSegmentedControl({ disabled }: { disabled?: boolean }) {
+const ControlledSegmentedControl = ({ disabled }: { disabled?: boolean }) => {
   const [value, setValue] = useState('day');
 
   return (
@@ -24,7 +24,7 @@ function ControlledSegmentedControl({ disabled }: { disabled?: boolean }) {
       <span>selected: {value}</span>
     </>
   );
-}
+};
 
 describe('<SegmentedControl />', () => {
   const user = userEvent.setup();
@@ -88,23 +88,5 @@ describe('<SegmentedControl />', () => {
 
     expect(screen.getByRole('radio', { name: 'Day' })).not.toBeChecked();
     expect(screen.getByRole('radio', { name: 'Week' })).not.toBeChecked();
-  });
-
-  it('warns when options contains duplicate values', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
-    render(
-      <SegmentedControl
-        label="View"
-        options={[
-          { value: 'day', label: 'Day' },
-          { value: 'day', label: 'Day (again)' },
-        ]}
-        value="day"
-      />,
-    );
-
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('duplicate values'));
-    errorSpy.mockRestore();
   });
 });

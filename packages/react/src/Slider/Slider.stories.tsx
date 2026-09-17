@@ -9,11 +9,11 @@ const meta: Meta<typeof Slider> = {
   component: Slider,
 };
 
-function SliderPlayground() {
+const SliderPlayground = () => {
   const [value, setValue] = useState(54);
 
   return <Slider label="Squat hold progress" value={value} max={120} onChange={setValue} />;
-}
+};
 
 export const Rest: Story = { args: { label: 'Squat hold progress', value: 0, max: 120 } };
 

@@ -10,7 +10,7 @@ import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { NativeContent } from '../NativeContent';
 import { Typography } from '../Typography/Typography';
 
-export function BottomSheet({ open, title, onClose, children }: BottomSheetProps) {
+export const BottomSheet = ({ open, title, onClose, children }: BottomSheetProps) => {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const { height } = useWindowDimensions();
@@ -66,4 +66,4 @@ export function BottomSheet({ open, title, onClose, children }: BottomSheetProps
       </BottomSheetScrollView>
     </GorhomBottomSheet>
   );
-}
+};

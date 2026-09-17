@@ -7,7 +7,7 @@ const TONE_CLASS: Record<StepButtonProps['tone'], string> = {
   negative: styles.negative ?? '',
 };
 
-export function StepButton({ label, tone, disabled, onPress }: StepButtonProps) {
+export const StepButton = ({ label, tone, disabled, onPress }: StepButtonProps) => {
   return (
     <button
       type="button"
@@ -18,4 +18,4 @@ export function StepButton({ label, tone, disabled, onPress }: StepButtonProps) 
       <Typography variant="badge">{label}</Typography>
     </button>
   );
-}
+};

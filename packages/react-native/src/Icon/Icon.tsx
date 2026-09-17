@@ -3,7 +3,7 @@ import { ICON_GLYPHS, type IconProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
 // No "currentColor" default here — RN's SVG has no CSS cascade for it.
-export function Icon({ name, size = 20, color }: IconProps) {
+export const Icon = ({ name, size = 20, color }: IconProps) => {
   const theme = useTheme();
   const resolvedColor = color ?? theme.color_text_primary;
   const glyph = ICON_GLYPHS[name];
@@ -20,4 +20,4 @@ export function Icon({ name, size = 20, color }: IconProps) {
       />
     </Svg>
   );
-}
+};

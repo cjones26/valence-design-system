@@ -2,7 +2,15 @@ import { useEffect, type CSSProperties } from 'react';
 import type { SliderProps } from '@valence/types';
 import styles from './Slider.module.css';
 
-export function Slider({ value, max, min = 0, step = 1, onChange, disabled, label }: SliderProps) {
+export const Slider = ({
+  value,
+  max,
+  min = 0,
+  step = 1,
+  onChange,
+  disabled,
+  label,
+}: SliderProps) => {
   const rangeInvalid = !Number.isFinite(min) || !Number.isFinite(max) || min > max;
   const safeMin = rangeInvalid ? 0 : min;
   const safeMax = rangeInvalid ? 0 : max;
@@ -36,4 +44,4 @@ export function Slider({ value, max, min = 0, step = 1, onChange, disabled, labe
       style={{ '--valence-slider-pct': `${pct}%` } as CSSProperties}
     />
   );
-}
+};

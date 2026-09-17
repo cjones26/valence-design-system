@@ -5,7 +5,7 @@ type Story = StoryObj<typeof Surface>;
 
 const meta: Meta<typeof Surface> = { title: 'Components/Surface', component: Surface };
 
-function GroupedRowsExample() {
+const GroupedRowsExample = () => {
   return (
     <Surface>
       <ListRow grouped title="Cloud backup" subtitle="Back up your progress securely" />
@@ -13,7 +13,7 @@ function GroupedRowsExample() {
       <ListRow grouped title="Sync now" />
     </Surface>
   );
-}
+};
 
 export const Default: Story = {
   render: () => <Surface>Cloud backup content</Surface>,

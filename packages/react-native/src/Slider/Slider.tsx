@@ -3,7 +3,15 @@ import { useEffect } from 'react';
 import type { SliderProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
-export function Slider({ value, max, min = 0, step = 1, onChange, disabled, label }: SliderProps) {
+export const Slider = ({
+  value,
+  max,
+  min = 0,
+  step = 1,
+  onChange,
+  disabled,
+  label,
+}: SliderProps) => {
   const theme = useTheme();
   const rangeInvalid = !Number.isFinite(min) || !Number.isFinite(max) || min > max;
   const safeMin = rangeInvalid ? 0 : min;
@@ -43,4 +51,4 @@ export function Slider({ value, max, min = 0, step = 1, onChange, disabled, labe
       style={{ height: theme.control_minimum_target }}
     />
   );
-}
+};

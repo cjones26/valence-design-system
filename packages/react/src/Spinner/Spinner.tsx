@@ -1,7 +1,7 @@
 import type { SpinnerProps } from '@valence/types';
 import styles from './Spinner.module.css';
 
-export function Spinner({ size = 14, color = 'currentColor' }: SpinnerProps) {
+export const Spinner = ({ size = 14, color = 'currentColor' }: SpinnerProps) => {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" className={styles.spin} role="presentation">
       <circle
@@ -22,4 +22,4 @@ export function Spinner({ size = 14, color = 'currentColor' }: SpinnerProps) {
       />
     </svg>
   );
-}
+};

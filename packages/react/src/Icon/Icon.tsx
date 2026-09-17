@@ -1,6 +1,6 @@
 import { ICON_GLYPHS, type IconProps } from '@valence/types';
 
-export function Icon({ name, size = 20, color = 'currentColor' }: IconProps) {
+export const Icon = ({ name, size = 20, color = 'currentColor' }: IconProps) => {
   const glyph = ICON_GLYPHS[name];
 
   return (
@@ -15,4 +15,4 @@ export function Icon({ name, size = 20, color = 'currentColor' }: IconProps) {
       />
     </svg>
   );
-}
+};

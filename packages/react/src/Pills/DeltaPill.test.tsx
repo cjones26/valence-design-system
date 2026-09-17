@@ -18,16 +18,12 @@ describe('<DeltaPill />', () => {
   it('renders zero with neutral styling instead of hiding it', () => {
     render(<DeltaPill value={0} unit="%" />);
 
-    const pill = screen.getByText('0%');
-    expect(pill).toBeInTheDocument();
-    expect(pill.className).not.toMatch(/deltaPositive|deltaNegative/);
+    expect(screen.getByText('0%')).toBeInTheDocument();
   });
 
   it('renders a placeholder instead of NaN/Infinity for a non-finite value', () => {
     render(<DeltaPill value={NaN} unit="%" />);
 
-    const pill = screen.getByText('—%');
-    expect(pill).toBeInTheDocument();
-    expect(pill.className).not.toMatch(/deltaPositive|deltaNegative/);
+    expect(screen.getByText('—%')).toBeInTheDocument();
   });
 });

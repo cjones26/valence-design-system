@@ -15,11 +15,11 @@ const options = [
   { value: 'monthly', label: 'Monthly' },
 ];
 
-function PickerPlayground() {
+const PickerPlayground = () => {
   const [value, setValue] = useState('weekly');
 
   return <Picker label="Frequency" options={options} value={value} onChange={setValue} />;
-}
+};
 
 export const Default: Story = { args: { label: 'Frequency', options, value: 'weekly' } };
 

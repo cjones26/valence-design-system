@@ -8,7 +8,7 @@ const options = [
   { value: 'weekly', label: 'Weekly' },
 ];
 
-function ControlledPicker({ disabled }: { disabled?: boolean }) {
+const ControlledPicker = ({ disabled }: { disabled?: boolean }) => {
   const [value, setValue] = useState('daily');
 
   return (
@@ -20,7 +20,7 @@ function ControlledPicker({ disabled }: { disabled?: boolean }) {
       disabled={disabled}
     />
   );
-}
+};
 
 describe('<Picker />', () => {
   const user = userEvent.setup();

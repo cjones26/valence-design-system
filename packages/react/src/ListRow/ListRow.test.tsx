@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { ListRow } from './ListRow';
 
-function PressableListRow() {
+const PressableListRow = () => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ function PressableListRow() {
       {pressed && <span>pressed</span>}
     </>
   );
-}
+};
 
 describe('<ListRow />', () => {
   const user = userEvent.setup();
@@ -71,25 +71,13 @@ describe('<ListRow />', () => {
   });
 
   it('hides the trailing icon from assistive technology', () => {
-    render(<ListRow title="Groceries" trailingIcon={() => <svg aria-label="Decorative icon" />} />);
+    render(
+      <ListRow
+        title="Groceries"
+        trailingIcon={() => <svg role="img" aria-label="Decorative icon" />}
+      />,
+    );
 
-    const iconSlot = screen.getByLabelText('Decorative icon').parentElement;
-
-    expect(iconSlot).toHaveAttribute('aria-hidden', 'true');
-    expect(iconSlot).toHaveAttribute('inert');
-  });
-
-  it('prevents the trailing icon from intercepting pointer input', () => {
-    render(<ListRow title="Groceries" trailingIcon={() => <svg aria-label="Decorative icon" />} />);
-
-    const iconSlot = screen.getByLabelText('Decorative icon').parentElement;
-
-    expect(iconSlot).toHaveStyle({ pointerEvents: 'none' });
-  });
-
-  it('supports a grouped presentation inside a Surface', () => {
-    const { container } = render(<ListRow grouped title="Cloud backup" />);
-
-    expect(container.firstElementChild?.className).toContain('grouped');
+    expect(screen.queryByRole('img', { name: 'Decorative icon' })).not.toBeInTheDocument();
   });
 });

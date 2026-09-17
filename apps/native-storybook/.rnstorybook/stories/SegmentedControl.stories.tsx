@@ -23,11 +23,11 @@ const options = [
   },
 ];
 
-function SegmentedControlPlayground() {
+const SegmentedControlPlayground = () => {
   const [value, setValue] = useState('time');
 
   return <SegmentedControl options={options} value={value} onChange={setValue} label="Goal type" />;
-}
+};
 
 export const Default: Story = { args: { options, value: 'time', label: 'Goal type' } };
 

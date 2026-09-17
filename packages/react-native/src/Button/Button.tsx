@@ -62,7 +62,7 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
   const isUnavailable = disabled || !onPress;
   const isDisabled = isUnavailable || loading;
 
-  function colors(pressed: boolean): { bg: string; fg: string; border?: string } {
+  const colors = (pressed: boolean): { bg: string; fg: string; border?: string } => {
     if (isUnavailable) {
       switch (kind) {
         case 'primary':
@@ -123,7 +123,7 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
           fg: theme.color_text_on_danger,
         };
     }
-  }
+  };
 
   return (
     <Pressable

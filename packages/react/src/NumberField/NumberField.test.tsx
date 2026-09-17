@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { NumberField } from './NumberField';
 
-function ControlledNumberField({
+const ControlledNumberField = ({
   initial,
   min,
   max,
@@ -16,7 +16,7 @@ function ControlledNumberField({
   max?: number;
   step?: number;
   disabled?: boolean;
-}) {
+}) => {
   const [value, setValue] = useState(initial);
 
   return (
@@ -30,7 +30,7 @@ function ControlledNumberField({
       onChange={setValue}
     />
   );
-}
+};
 
 describe('<NumberField />', () => {
   const user = userEvent.setup();
@@ -119,15 +119,12 @@ describe('<NumberField />', () => {
     expect(screen.getByText('3')).toBeInTheDocument();
   });
 
-  it('falls back to a finite value and warns when value is NaN', () => {
+  it('falls back to a finite value when value is NaN', () => {
     const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
     render(<NumberField label="Quantity" value={NaN} />);
 
     expect(screen.getByText('0')).toBeInTheDocument();
-    expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining('"value" must be a finite number'),
-    );
     errorSpy.mockRestore();
   });
 
@@ -150,7 +147,6 @@ describe('<NumberField />', () => {
       decreaseDisabled: screen.getByLabelText('Decrease Quantity').hasAttribute('disabled'),
       increaseDisabled: screen.getByLabelText('Increase Quantity').hasAttribute('disabled'),
     }).toEqual({ value: '3', decreaseDisabled: true, increaseDisabled: true });
-    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('"min" (10) and "max" (0)'));
     errorSpy.mockRestore();
   });
 

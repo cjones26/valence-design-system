@@ -14,11 +14,11 @@ const options = [
   { value: 'checkbox', label: 'Checkbox' },
 ];
 
-function RadioGroupPlayground() {
+const RadioGroupPlayground = () => {
   const [value, setValue] = useState('timer');
 
   return <RadioGroup options={options} value={value} onChange={setValue} label="Goal type" />;
-}
+};
 
 export const Default: Story = { args: { options, value: 'timer', label: 'Goal type' } };
 

@@ -6,7 +6,7 @@ type Story = StoryObj<typeof Accordion>;
 
 const meta: Meta<typeof Accordion> = { title: 'Components/Accordion', component: Accordion };
 
-function AccordionExample({ initiallyExpanded = false }: { initiallyExpanded?: boolean }) {
+const AccordionExample = ({ initiallyExpanded = false }: { initiallyExpanded?: boolean }) => {
   const [expanded, setExpanded] = useState(initiallyExpanded);
 
   return (
@@ -16,7 +16,7 @@ function AccordionExample({ initiallyExpanded = false }: { initiallyExpanded?: b
       </Accordion>
     </Surface>
   );
-}
+};
 
 export const Default: Story = { render: () => <AccordionExample /> };
 
