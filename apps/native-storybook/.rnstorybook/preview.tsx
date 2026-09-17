@@ -53,6 +53,7 @@ const ValenceDecorator = ({ children }: { children: React.ReactNode }) => {
                   value={preset}
                   onChange={(value) => {
                     const nextPreset = PRESETS.find((option) => option === value);
+
                     if (nextPreset) {
                       setPreset(nextPreset);
                     }

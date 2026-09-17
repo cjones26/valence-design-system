@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react-native';
 
 import { DeltaPill } from './DeltaPill';
-import { DEFAULT_THEME as defaultTheme } from '../ThemeProvider/ThemeProvider';
+import { DEFAULT_THEME } from '../ThemeProvider/ThemeProvider';
 
 describe('<DeltaPill />', () => {
   it('renders a positive delta with a plus sign', async () => {
@@ -19,12 +19,12 @@ describe('<DeltaPill />', () => {
   it('renders zero with neutral styling instead of hiding it', async () => {
     await render(<DeltaPill value={0} unit="%" />);
 
-    expect(screen.getByText('0%')).toHaveStyle({ color: defaultTheme.color_text_secondary });
+    expect(screen.getByText('0%')).toHaveStyle({ color: DEFAULT_THEME.color_text_secondary });
   });
 
   it('renders a placeholder instead of NaN/Infinity for a non-finite value', async () => {
     await render(<DeltaPill value={NaN} unit="%" />);
 
-    expect(screen.getByText('—%')).toHaveStyle({ color: defaultTheme.color_text_secondary });
+    expect(screen.getByText('—%')).toHaveStyle({ color: DEFAULT_THEME.color_text_secondary });
   });
 });

@@ -10,6 +10,7 @@ export const DeltaPill = ({ value, unit = '' }: DeltaPillProps) => {
 
   let background: string;
   let foreground: string;
+
   if (valid && value > 0) {
     background = alpha(theme.color_state_positive, 0.16);
     foreground = theme.color_text_primary;

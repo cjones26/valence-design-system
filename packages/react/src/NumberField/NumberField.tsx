@@ -30,6 +30,7 @@ export const NumberField = ({
     if (!Number.isFinite(value)) {
       console.error(`NumberField: "value" must be a finite number, got ${value}.`);
     }
+
     if (rangeInvalid) {
       console.error(
         `NumberField: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`,

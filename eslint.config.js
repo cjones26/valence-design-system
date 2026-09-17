@@ -7,6 +7,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import stylistic from '@stylistic/eslint-plugin';
 import awaitPadding from './eslint-rules/await-padding.js';
 import functionConstPadding from './eslint-rules/function-const-padding.js';
+import ifStatementPadding from './eslint-rules/if-statement-padding.js';
 import jestMockPadding from './eslint-rules/jest-mock-padding.js';
 import userEventSetup from './eslint-rules/user-event-setup.js';
 
@@ -40,6 +41,7 @@ export default tseslint.config(
         rules: {
           'await-padding': awaitPadding,
           'function-const-padding': functionConstPadding,
+          'if-statement-padding': ifStatementPadding,
           'jest-mock-padding': jestMockPadding,
           'user-event-setup': userEventSetup,
         },
@@ -49,6 +51,7 @@ export default tseslint.config(
       curly: ['error', 'all'],
       'local/await-padding': 'error',
       'local/function-const-padding': 'error',
+      'local/if-statement-padding': 'error',
       'local/jest-mock-padding': 'error',
       '@stylistic/padding-line-between-statements': [
         'error',

@@ -9,12 +9,15 @@ export const BottomSheet = ({ open, title, onClose, children }: BottomSheetProps
 
   useEffect(() => {
     const dialog = dialogRef.current;
+
     if (!dialog) {
       return;
     }
+
     if (open && !dialog.open) {
       dialog.showModal();
     }
+
     if (!open && dialog.open) {
       dialog.close();
     }

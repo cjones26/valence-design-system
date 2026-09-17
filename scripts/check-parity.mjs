@@ -34,8 +34,10 @@ function getExportedNames(source) {
     if (match[1]) {
       continue;
     }
+
     for (const raw of match[2].split(',')) {
       const name = raw.trim();
+
       if (name && !NON_COMPONENT_EXPORTS.has(name)) {
         names.add(name);
       }
@@ -48,8 +50,10 @@ function getExportedNames(source) {
 function findFile(directory, fileName) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
     const entryPath = path.join(directory, entry.name);
+
     if (entry.isDirectory()) {
       const match = findFile(entryPath, fileName);
+
       if (match) {
         return match;
       }
@@ -87,27 +91,33 @@ for (const [name, platforms] of Object.entries(registry.components)) {
     if (!VALID_STATUS.has(platforms[platform])) {
       failures.push(`${name}: invalid or missing status for "${platform}"`);
     }
+
     if (platforms[platform] === 'done' && !isExported(platform, name)) {
       failures.push(
         `${name}: registry says "done" on ${platform}, but it isn't exported from ${platform}'s index.ts`,
       );
     }
   }
+
   if (platforms.react === 'done' && platforms.reactNative !== 'done') {
     failures.push(
       `${name}: released on react but not reactNative (status: ${platforms.reactNative})`,
     );
   }
+
   if (platforms.reactNative === 'done' && platforms.react !== 'done') {
     failures.push(`${name}: released on reactNative but not react (status: ${platforms.react})`);
   }
+
   if (platforms.react === 'done' && platforms.reactNative === 'done') {
     if (!findFile(path.join(rootDir, 'packages/react/src'), `${name}.test.tsx`)) {
       failures.push(`${name}: done on react but has no platform test`);
     }
+
     if (!findFile(path.join(rootDir, 'packages/react-native/src'), `${name}.test.tsx`)) {
       failures.push(`${name}: done on reactNative but has no platform test`);
     }
+
     const webStories = getStoryNames(
       findFile(path.join(rootDir, 'packages/react/src'), `${name}.stories.tsx`),
     );
@@ -121,6 +131,7 @@ for (const [name, platforms] of Object.entries(registry.components)) {
       if (!webStories.has(story)) {
         failures.push(`${name}: "${story}" story exists on native but not web`);
       }
+
       if (!nativeStories.has(story)) {
         failures.push(`${name}: "${story}" story exists on web but not native`);
       }

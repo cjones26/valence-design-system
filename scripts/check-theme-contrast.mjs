@@ -38,6 +38,7 @@ function parseColor(value) {
   }
 
   const values = value.match(/[\d.]+/g)?.map(Number);
+
   if (!values || values.length < 3) {
     throw new Error(`Unsupported color: ${value}`);
   }
@@ -83,9 +84,11 @@ for (const theme of readdirSync(THEMES_DIR)) {
     const primarySurface = parseColor(tokenValue(tokens.color, 'background.primary')).channels;
     const raisedSurface = parseColor(tokenValue(tokens.color, 'background.raised')).channels;
     raisedColors.get(mode).add(tokenValue(tokens.color, 'background.raised'));
+
     if (luminance(raisedSurface) <= luminance(primarySurface)) {
       failures.push(`${theme}/${mode}: background.raised must be lighter than background.primary`);
     }
+
     for (const [foregroundPath, backgroundPath, minimum] of CHECKS) {
       const background = surface(tokens, backgroundPath, primarySurface);
       const foreground = composite(
@@ -93,6 +96,7 @@ for (const theme of readdirSync(THEMES_DIR)) {
         background,
       );
       const ratio = contrast(foreground, background);
+
       if (ratio < minimum) {
         failures.push(
           `${theme}/${mode}: ${foregroundPath} on ${backgroundPath} is ${ratio.toFixed(2)}:1; expected ${minimum}:1`,
@@ -105,6 +109,7 @@ for (const theme of readdirSync(THEMES_DIR)) {
 if (raisedColors.get('light').size !== 1 || !raisedColors.get('light').has('#ffffff')) {
   failures.push('light: background.raised must be #ffffff in every theme');
 }
+
 if (raisedColors.get('dark').size === 1) {
   failures.push('dark: background.raised must retain the hue relationship of each theme canvas');
 }

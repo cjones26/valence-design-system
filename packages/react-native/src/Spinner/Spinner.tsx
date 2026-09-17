@@ -20,6 +20,7 @@ export const Spinner = ({ size = 14, color }: SpinnerProps) => {
 
       return;
     }
+
     const loop = Animated.loop(
       Animated.timing(spin, {
         toValue: 1,

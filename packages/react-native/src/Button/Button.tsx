@@ -60,6 +60,7 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
           };
       }
     }
+
     switch (kind) {
       case 'primary':
       case 'pill':

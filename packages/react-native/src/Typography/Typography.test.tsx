@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react-native';
 
 import { Typography } from './Typography';
-import { DEFAULT_THEME as defaultTheme } from '../ThemeProvider/ThemeProvider';
+import { DEFAULT_THEME } from '../ThemeProvider/ThemeProvider';
 
 describe('<Typography />', () => {
   it('renders its text content', async () => {
@@ -26,14 +26,16 @@ describe('<Typography />', () => {
       </>,
     );
 
-    expect(screen.getByText('Display')).toHaveStyle({ fontSize: defaultTheme.type_display_size });
-    expect(screen.getByText('Meta')).toHaveStyle({ fontSize: defaultTheme.type_meta_size });
+    expect(screen.getByText('Display')).toHaveStyle({ fontSize: DEFAULT_THEME.type_display_size });
+    expect(screen.getByText('Meta')).toHaveStyle({ fontSize: DEFAULT_THEME.type_meta_size });
   });
 
   it('defaults to the theme text color', async () => {
     await render(<Typography variant="body">Hello world</Typography>);
 
-    expect(screen.getByText('Hello world')).toHaveStyle({ color: defaultTheme.color_text_primary });
+    expect(screen.getByText('Hello world')).toHaveStyle({
+      color: DEFAULT_THEME.color_text_primary,
+    });
   });
 
   it('lets an explicit style color override the theme default', async () => {

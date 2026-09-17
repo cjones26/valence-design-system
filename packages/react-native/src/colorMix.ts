@@ -7,6 +7,7 @@ import normalizeColor from '@react-native/normalize-colors';
 
 function toRgb(color: string): [number, number, number] {
   const packed = normalizeColor(color);
+
   if (typeof packed !== 'number') {
     throw new Error(`colorMix: could not parse color "${color}"`);
   }

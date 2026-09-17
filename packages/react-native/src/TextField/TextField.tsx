@@ -30,6 +30,7 @@ export const TextField = forwardRef<TextInput, TextFieldProps>(function TextFiel
     if (error && !wasInvalid.current) {
       AccessibilityInfo.announceForAccessibility(`${label} is invalid`);
     }
+
     wasInvalid.current = Boolean(error);
   }, [error, label]);
 

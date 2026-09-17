@@ -49,6 +49,7 @@ export const BottomSheetModal = forwardRef<ModalHandle, ModalProps>(function Moc
     present: () => setVisible(true),
     dismiss: () => setVisible(false),
   }));
+
   if (!visible) {
     return null;
   }

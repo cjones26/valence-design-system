@@ -19,6 +19,7 @@ export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps)
     if (isDisabled) {
       return theme.color_background_subtle;
     }
+
     if (selected) {
       return pressed ? lighten(theme.color_text_primary, 0.2) : theme.color_text_primary;
     }

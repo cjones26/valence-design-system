@@ -12,6 +12,7 @@ const weightStyle = (weight: number): Pick<TextStyle, 'fontFamily' | 'fontWeight
   if (weight >= 700) {
     return GEIST.bold;
   }
+
   if (weight >= 600) {
     return GEIST.semibold;
   }

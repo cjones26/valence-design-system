@@ -3,7 +3,7 @@ import { render, screen, userEvent } from '@testing-library/react-native';
 import { Image, Text } from 'react-native';
 
 import { Card } from './Card';
-import { DEFAULT_THEME as defaultTheme } from '../ThemeProvider/ThemeProvider';
+import { DEFAULT_THEME } from '../ThemeProvider/ThemeProvider';
 
 const PressableCard = () => {
   const [pressed, setPressed] = useState(false);
@@ -97,7 +97,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo">Departs Friday</Card>);
 
     expect(screen.getByText('Departs Friday')).toHaveStyle({
-      color: defaultTheme.color_text_primary,
+      color: DEFAULT_THEME.color_text_primary,
     });
   });
 
@@ -109,7 +109,7 @@ describe('<Card />', () => {
     );
 
     expect(screen.getByText('Departs Friday')).toHaveStyle({
-      color: defaultTheme.color_text_on_positive,
+      color: DEFAULT_THEME.color_text_on_positive,
     });
   });
 
@@ -121,7 +121,7 @@ describe('<Card />', () => {
     );
 
     expect(screen.getByText('Departs Friday')).toHaveStyle({
-      color: defaultTheme.color_text_primary,
+      color: DEFAULT_THEME.color_text_primary,
     });
   });
 
@@ -129,7 +129,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo" />);
 
     expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
-      color: defaultTheme.color_text_secondary,
+      color: DEFAULT_THEME.color_text_secondary,
     });
   });
 
@@ -137,7 +137,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo" status="success" />);
 
     expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
-      color: defaultTheme.color_text_on_positive,
+      color: DEFAULT_THEME.color_text_on_positive,
     });
   });
 
@@ -145,7 +145,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo" status="error" />);
 
     expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
-      color: defaultTheme.color_text_secondary,
+      color: DEFAULT_THEME.color_text_secondary,
     });
   });
 

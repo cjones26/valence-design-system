@@ -20,6 +20,7 @@ export const Slider = ({
     if (!Number.isFinite(value)) {
       console.error(`Slider: "value" must be a finite number, got ${value}.`);
     }
+
     if (rangeInvalid) {
       console.error(
         `Slider: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`,

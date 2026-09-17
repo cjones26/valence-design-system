@@ -11,6 +11,7 @@ const formatDuration = (totalSeconds: number): string => {
   if (!Number.isFinite(totalSeconds)) {
     return '—:—';
   }
+
   const total = Math.max(0, Math.round(totalSeconds));
   const m = Math.floor(total / 60);
   const s = total % 60;
@@ -30,6 +31,7 @@ export const DurationPill = ({ seconds, status = 'paused' }: DurationPillProps) 
 
       return;
     }
+
     const loop = Animated.loop(
       Animated.sequence([
         Animated.timing(pulse, {
