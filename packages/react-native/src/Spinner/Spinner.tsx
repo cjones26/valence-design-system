@@ -9,7 +9,7 @@ const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
 export const Spinner = ({ size = 14, color }: SpinnerProps) => {
   const theme = useTheme();
-  const strokeColor = color ?? theme.color_text_primary;
+  const strokeColor = color ?? theme.colorTextPrimary;
   const [spin] = useState(() => new Animated.Value(0));
   const reduceMotion = useReduceMotion();
 

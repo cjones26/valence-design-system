@@ -19,12 +19,12 @@ describe('<DeltaPill />', () => {
   it('renders zero with neutral styling instead of hiding it', async () => {
     await render(<DeltaPill value={0} unit="%" />);
 
-    expect(screen.getByText('0%')).toHaveStyle({ color: DEFAULT_THEME.color_text_secondary });
+    expect(screen.getByText('0%')).toHaveStyle({ color: DEFAULT_THEME.colorTextSecondary });
   });
 
   it('renders a placeholder instead of NaN/Infinity for a non-finite value', async () => {
     await render(<DeltaPill value={NaN} unit="%" />);
 
-    expect(screen.getByText('—%')).toHaveStyle({ color: DEFAULT_THEME.color_text_secondary });
+    expect(screen.getByText('—%')).toHaveStyle({ color: DEFAULT_THEME.colorTextSecondary });
   });
 });

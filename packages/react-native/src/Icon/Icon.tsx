@@ -2,10 +2,9 @@ import Svg, { Path } from 'react-native-svg';
 import { ICON_GLYPHS, type IconProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
-// No "currentColor" default here — RN's SVG has no CSS cascade for it.
 export const Icon = ({ name, size = 20, color }: IconProps) => {
   const theme = useTheme();
-  const resolvedColor = color ?? theme.color_text_primary;
+  const resolvedColor = color ?? theme.colorTextPrimary;
   const glyph = ICON_GLYPHS[name];
 
   return (

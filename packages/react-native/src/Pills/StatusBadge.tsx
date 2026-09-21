@@ -6,17 +6,17 @@ import { Typography } from '../Typography/Typography';
 export const StatusBadge = ({ status, children }: StatusBadgeProps) => {
   const theme = useTheme();
   const { bg, fg } = {
-    success: { bg: theme.color_state_positive, fg: theme.color_text_on_positive },
-    warning: { bg: theme.color_state_yellow, fg: theme.color_text_on_yellow },
-    danger: { bg: theme.color_state_red_strong, fg: theme.color_text_on_danger },
+    success: { bg: theme.colorStatePositive, fg: theme.colorTextOnPositive },
+    warning: { bg: theme.colorStateYellow, fg: theme.colorTextOnYellow },
+    danger: { bg: theme.colorStateRedStrong, fg: theme.colorTextOnDanger },
   }[status];
 
   return (
     <View
       style={{
         paddingVertical: 6,
-        paddingHorizontal: theme.spacing_md,
-        borderRadius: theme.radius_pill,
+        paddingHorizontal: theme.spacingMd,
+        borderRadius: theme.radiusPill,
         backgroundColor: bg,
         alignSelf: 'flex-start',
       }}

@@ -18,23 +18,23 @@ export const Card = ({ status = 'resting', title, actionLabel, onPress, children
       .filter(Boolean)
       .join(', ');
   const restingBackground =
-    status === 'skipped' ? alpha(theme.color_text_primary, 0.04) : theme.color_background_raised;
-  const background = status === 'success' ? theme.color_state_positive : restingBackground;
-  const contentColor = status === 'success' ? theme.color_text_on_positive : undefined;
-  const titleColor = contentColor ?? theme.color_text_secondary;
+    status === 'skipped' ? alpha(theme.colorTextPrimary, 0.04) : theme.colorBackgroundRaised;
+  const background = status === 'success' ? theme.colorStatePositive : restingBackground;
+  const contentColor = status === 'success' ? theme.colorTextOnPositive : undefined;
+  const titleColor = contentColor ?? theme.colorTextSecondary;
   const restingShadow =
     status === 'error'
-      ? `0 0 0 1.5px ${theme.color_action_danger}, ${theme.shadow_surface}`
-      : theme.shadow_surface;
+      ? `0 0 0 1.5px ${theme.colorActionDanger}, ${theme.shadowSurface}`
+      : theme.shadowSurface;
   const boxShadow =
     status === 'editing'
-      ? `inset 0 0 0 2px ${theme.color_text_primary}, ${theme.shadow_surface}`
+      ? `inset 0 0 0 2px ${theme.colorTextPrimary}, ${theme.shadowSurface}`
       : restingShadow;
 
   return (
     <View
       style={{
-        borderRadius: theme.radius_lg,
+        borderRadius: theme.radiusLg,
         padding: 14,
         backgroundColor: background,
         boxShadow,

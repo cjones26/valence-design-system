@@ -77,7 +77,7 @@ describe('<SegmentedControl />', () => {
     );
 
     expect(screen.getByLabelText('Day icon')).toHaveStyle({
-      color: DEFAULT_THEME.color_text_muted,
+      color: DEFAULT_THEME.colorTextMuted,
     });
   });
 

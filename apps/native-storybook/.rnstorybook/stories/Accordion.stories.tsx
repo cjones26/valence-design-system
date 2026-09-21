@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Accordion, Surface } from '@valence/react-native';
+import { Accordion, Surface, Typography } from '@valence/react-native';
 
 type Story = StoryObj<typeof Accordion>;
 
@@ -12,7 +12,9 @@ const AccordionExample = ({ initiallyExpanded = false }: { initiallyExpanded?: b
   return (
     <Surface>
       <Accordion title="How does cloud backup work?" expanded={expanded} onChange={setExpanded}>
-        Your progress is encrypted and synchronized automatically.
+        <Typography variant="body">
+          Your progress is encrypted and synchronized automatically.
+        </Typography>
       </Accordion>
     </Surface>
   );

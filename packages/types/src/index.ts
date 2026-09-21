@@ -1,14 +1,7 @@
 import type { ReactNode } from 'react';
 
-// Canonical interaction prop name across both platforms: React DOM has no
-// `onPress`, React Native has no `onClick` — each platform implementation
-// wires this to whatever's native there (click + Enter/Space activation on
-// web, Pressable's onPress on native).
 type Pressable = { onPress?: () => void };
 type Disableable = { disabled?: boolean };
-// Every input-like component requires an accessible name (WCAG 2.1 AA,
-// 4.1.2 Name/Role/Value) — not optional, so a missing label fails to
-// typecheck rather than shipping unlabeled.
 type Labeled = { label: string };
 
 export type ButtonKind = 'primary' | 'secondary' | 'ghost' | 'danger' | 'dangerConfirm' | 'pill';
@@ -110,9 +103,6 @@ export interface RadioOption {
   label: string;
 }
 
-// Grouping (mutual exclusivity) is composed here rather than left to the
-// consumer wiring matching `name`s across independent Radios by hand — see
-// SegmentedControlProps for the same pattern.
 export interface RadioGroupProps extends Disableable, Labeled {
   options: RadioOption[];
   value: string;

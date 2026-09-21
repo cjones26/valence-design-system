@@ -120,26 +120,18 @@ describe('<NumberField />', () => {
   });
 
   it('falls back to a finite value when value is NaN', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
     render(<NumberField label="Quantity" value={NaN} />);
 
     expect(screen.getByText('0')).toBeInTheDocument();
-    errorSpy.mockRestore();
   });
 
   it('uses the minimum as the fallback for a non-finite value', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
     render(<NumberField label="Quantity" value={NaN} min={10} />);
 
     expect(screen.getByText('10')).toBeInTheDocument();
-    errorSpy.mockRestore();
   });
 
   it('preserves a finite value and disables both steppers when the range is invalid', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
     render(<NumberField label="Quantity" value={3} min={10} max={0} />);
 
     expect({
@@ -147,17 +139,13 @@ describe('<NumberField />', () => {
       decreaseDisabled: screen.getByLabelText('Decrease Quantity').hasAttribute('disabled'),
       increaseDisabled: screen.getByLabelText('Increase Quantity').hasAttribute('disabled'),
     }).toEqual({ value: '3', decreaseDisabled: true, increaseDisabled: true });
-    errorSpy.mockRestore();
   });
 
   it('disables both steppers when a bound is non-finite', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
     render(<NumberField label="Quantity" value={3} max={Infinity} />);
 
     expect(screen.getByLabelText('Decrease Quantity')).toBeDisabled();
     expect(screen.getByLabelText('Increase Quantity')).toBeDisabled();
-    errorSpy.mockRestore();
   });
 
   it('gives the steppers a contextual accessible name based on the field label', () => {

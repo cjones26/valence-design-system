@@ -29,9 +29,9 @@ export const Button = ({
   const theme = useTheme();
   const [focused, setFocused] = useState(false);
   const reduceMotion = useReduceMotion();
-  const standardPadding = kind === 'ghost' ? theme.spacing_md : theme.spacing_lg;
+  const standardPadding = kind === 'ghost' ? theme.spacingMd : theme.spacingLg;
   const paddingHorizontal = kind === 'pill' ? 14 : standardPadding;
-  const borderRadius = kind === 'pill' ? theme.radius_pill : theme.radius_control;
+  const borderRadius = kind === 'pill' ? theme.radiusPill : theme.radiusControl;
   const isUnavailable = disabled || !onPress;
   const isDisabled = isUnavailable || loading;
 
@@ -41,28 +41,28 @@ export const Button = ({
         case 'primary':
         case 'pill':
           return {
-            bg: alpha(theme.color_text_primary, 0.12),
-            fg: theme.color_text_muted,
-            border: theme.color_border_primary,
+            bg: alpha(theme.colorTextPrimary, 0.12),
+            fg: theme.colorTextMuted,
+            border: theme.colorBorderPrimary,
           };
         case 'dangerConfirm':
           return {
-            bg: alpha(theme.color_text_primary, 0.04),
-            fg: theme.color_text_muted,
-            border: theme.color_border_primary,
+            bg: alpha(theme.colorTextPrimary, 0.04),
+            fg: theme.colorTextMuted,
+            border: theme.colorBorderPrimary,
           };
         case 'secondary':
         case 'danger':
           return {
-            bg: alpha(theme.color_text_primary, 0.04),
-            fg: theme.color_text_muted,
-            border: theme.color_border_primary,
+            bg: alpha(theme.colorTextPrimary, 0.04),
+            fg: theme.colorTextMuted,
+            border: theme.colorBorderPrimary,
           };
         default:
           return {
-            bg: alpha(theme.color_text_primary, 0.04),
-            fg: theme.color_text_muted,
-            border: theme.color_border_primary,
+            bg: alpha(theme.colorTextPrimary, 0.04),
+            fg: theme.colorTextMuted,
+            border: theme.colorBorderPrimary,
           };
       }
     }
@@ -71,30 +71,30 @@ export const Button = ({
       case 'primary':
       case 'pill':
         return {
-          bg: pressed ? lighten(theme.color_text_primary, 0.2) : theme.color_text_primary,
-          fg: theme.color_background_primary,
+          bg: pressed ? lighten(theme.colorTextPrimary, 0.2) : theme.colorTextPrimary,
+          fg: theme.colorBackgroundPrimary,
         };
       case 'secondary':
         return {
-          bg: pressed ? alpha(theme.color_text_primary, 0.08) : 'transparent',
-          fg: theme.color_text_primary,
-          border: pressed ? theme.color_text_secondary : theme.color_border_primary,
+          bg: pressed ? alpha(theme.colorTextPrimary, 0.08) : 'transparent',
+          fg: theme.colorTextPrimary,
+          border: pressed ? theme.colorTextSecondary : theme.colorBorderPrimary,
         };
       case 'ghost':
         return {
-          bg: pressed ? alpha(theme.color_text_primary, 0.08) : 'transparent',
-          fg: pressed ? theme.color_text_primary : theme.color_text_secondary,
+          bg: pressed ? alpha(theme.colorTextPrimary, 0.08) : 'transparent',
+          fg: pressed ? theme.colorTextPrimary : theme.colorTextSecondary,
         };
       case 'danger':
         return {
-          bg: pressed ? alpha(theme.color_action_danger, 0.1) : 'transparent',
-          fg: theme.color_action_danger_text,
-          border: pressed ? theme.color_action_danger : theme.color_border_primary,
+          bg: pressed ? alpha(theme.colorActionDanger, 0.1) : 'transparent',
+          fg: theme.colorActionDangerText,
+          border: pressed ? theme.colorActionDanger : theme.colorBorderPrimary,
         };
       case 'dangerConfirm':
         return {
-          bg: theme.color_state_red_strong,
-          fg: theme.color_text_on_danger,
+          bg: theme.colorStateRedStrong,
+          fg: theme.colorTextOnDanger,
         };
     }
   };
@@ -111,21 +111,21 @@ export const Button = ({
       style={({ pressed }) => {
         const c = colors(pressed);
         const style: ViewStyle = {
-          minHeight: theme.control_minimum_target,
-          paddingVertical: theme.spacing_sm,
+          minHeight: theme.controlMinimumTarget,
+          paddingVertical: theme.spacingSm,
           paddingHorizontal,
           borderRadius,
           backgroundColor: c.bg,
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'row',
-          gap: theme.spacing_sm,
+          gap: theme.spacingSm,
           transform: [{ scale: pressed && !isDisabled && !reduceMotion ? 0.97 : 1 }],
           borderWidth: 1,
           borderColor: c.border ?? 'transparent',
           ...(focused && {
             outlineWidth: 3,
-            outlineColor: theme.color_border_focus,
+            outlineColor: theme.colorBorderFocus,
             outlineStyle: 'solid',
           }),
         };

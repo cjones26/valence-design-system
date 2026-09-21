@@ -11,22 +11,22 @@ export const DeltaPill = ({ value, unit = '' }: DeltaPillProps) => {
   let foreground: string;
 
   if (valid && value > 0) {
-    background = alpha(theme.color_state_positive, 0.16);
-    foreground = theme.color_text_primary;
+    background = alpha(theme.colorStatePositive, 0.16);
+    foreground = theme.colorTextPrimary;
   } else if (valid && value < 0) {
-    background = alpha(theme.color_state_red, 0.14);
-    foreground = theme.color_text_primary;
+    background = alpha(theme.colorStateRed, 0.14);
+    foreground = theme.colorTextPrimary;
   } else {
-    background = alpha(theme.color_text_primary, 0.1);
-    foreground = theme.color_text_secondary;
+    background = alpha(theme.colorTextPrimary, 0.1);
+    foreground = theme.colorTextSecondary;
   }
 
   return (
     <View
       style={{
-        paddingVertical: theme.spacing_xs,
+        paddingVertical: theme.spacingXs,
         paddingHorizontal: 10,
-        borderRadius: theme.radius_pill,
+        borderRadius: theme.radiusPill,
         backgroundColor: background,
         alignSelf: 'flex-start',
       }}

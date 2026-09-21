@@ -16,7 +16,7 @@ export interface ThemeProviderProps {
 const toCssVars = (theme: ThemeOverride): CSSProperties => {
   const vars: Record<string, string> = {};
   for (const [key, value] of Object.entries(theme)) {
-    vars[`--${key.replace(/_/g, '-')}`] = String(value);
+    vars[`--${key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}`] = String(value);
   }
 
   return vars as CSSProperties;
@@ -33,15 +33,6 @@ const getSystemScheme = (): ThemeMode => {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
-/**
- * Always renders one wrapper element regardless of which props are given, so
- * this subtree's DOM shape doesn't change based on props.
- *
- * data-theme is always resolved to a concrete "light"/"dark" value (never
- * omitted) — the generated preset selectors are compound
- * ([data-preset="x"][data-theme="y"]), so a preset with no data-theme
- * attribute at all would silently match nothing.
- */
 export const ThemeProvider = ({ preset = 'hi-vis', mode, theme, children }: ThemeProviderProps) => {
   const systemScheme = useSyncExternalStore(
     subscribeToSystemScheme,

@@ -97,7 +97,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo">Departs Friday</Card>);
 
     expect(screen.getByText('Departs Friday')).toHaveStyle({
-      color: DEFAULT_THEME.color_text_primary,
+      color: DEFAULT_THEME.colorTextPrimary,
     });
   });
 
@@ -109,7 +109,7 @@ describe('<Card />', () => {
     );
 
     expect(screen.getByText('Departs Friday')).toHaveStyle({
-      color: DEFAULT_THEME.color_text_on_positive,
+      color: DEFAULT_THEME.colorTextOnPositive,
     });
   });
 
@@ -121,7 +121,7 @@ describe('<Card />', () => {
     );
 
     expect(screen.getByText('Departs Friday')).toHaveStyle({
-      color: DEFAULT_THEME.color_text_primary,
+      color: DEFAULT_THEME.colorTextPrimary,
     });
   });
 
@@ -129,7 +129,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo" />);
 
     expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
-      color: DEFAULT_THEME.color_text_secondary,
+      color: DEFAULT_THEME.colorTextSecondary,
     });
   });
 
@@ -137,7 +137,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo" status="success" />);
 
     expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
-      color: DEFAULT_THEME.color_text_on_positive,
+      color: DEFAULT_THEME.colorTextOnPositive,
     });
   });
 
@@ -145,7 +145,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo" status="error" />);
 
     expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
-      color: DEFAULT_THEME.color_text_secondary,
+      color: DEFAULT_THEME.colorTextSecondary,
     });
   });
 

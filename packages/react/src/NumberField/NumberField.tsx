@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import type { NumberFieldProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './NumberField.module.css';
@@ -23,19 +22,6 @@ export const NumberField = ({
   const fallbackValue = Number.isFinite(safeMin) ? safeMin : finiteMaxFallback;
   const boundedValue = rangeInvalid ? value : Math.min(safeMax, Math.max(safeMin, value));
   const safeValue = Number.isFinite(value) ? boundedValue : fallbackValue;
-
-  useEffect(() => {
-    if (!Number.isFinite(value)) {
-      console.error(`NumberField: "value" must be a finite number, got ${value}.`);
-    }
-
-    if (rangeInvalid) {
-      console.error(
-        `NumberField: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`,
-      );
-    }
-  }, [max, min, rangeInvalid, value]);
-
   const atMin = safeValue <= safeMin;
   const atMax = safeValue >= safeMax;
   const effectiveStep = Math.abs(step);

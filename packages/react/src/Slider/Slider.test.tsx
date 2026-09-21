@@ -70,17 +70,12 @@ describe('<Slider />', () => {
   });
 
   it('falls back to a finite value when value is NaN', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
     render(<Slider value={NaN} min={0} max={100} label="Volume" />);
 
     expect(screen.getByRole('slider', { name: 'Volume' })).toHaveValue('0');
-    errorSpy.mockRestore();
   });
 
   it('replaces an invalid range with a disabled fixed control', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
     render(<Slider value={5} min={10} max={0} label="Volume" />);
 
     const slider = screen.getByRole('slider', { name: 'Volume' });
@@ -90,17 +85,13 @@ describe('<Slider />', () => {
       min: slider.getAttribute('min'),
       max: slider.getAttribute('max'),
     }).toEqual({ disabled: true, value: '0', min: '0', max: '0' });
-    errorSpy.mockRestore();
   });
 
   it('contains a non-finite bound in a disabled fixed control', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
     render(<Slider value={5} min={0} max={NaN} label="Volume" />);
 
     const slider = screen.getByRole('slider', { name: 'Volume' });
     expect(slider).toBeDisabled();
     expect(slider).toHaveValue('0');
-    errorSpy.mockRestore();
   });
 });

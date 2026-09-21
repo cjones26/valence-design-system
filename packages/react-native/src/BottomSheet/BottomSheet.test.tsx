@@ -1,5 +1,6 @@
 import { render, screen, userEvent, waitFor } from '@testing-library/react-native';
 import { BottomSheet } from './BottomSheet';
+import { Typography } from '../Typography/Typography';
 
 jest.mock('@gorhom/bottom-sheet');
 
@@ -15,7 +16,7 @@ describe('<BottomSheet />', () => {
 
     await render(
       <BottomSheet open title="Repeat" onClose={onClose}>
-        Schedule
+        <Typography variant="body">Schedule</Typography>
       </BottomSheet>,
     );
 
@@ -29,7 +30,7 @@ describe('<BottomSheet />', () => {
 
     const { rerender } = await render(
       <BottomSheet open title="Repeat" onClose={onClose}>
-        Schedule
+        <Typography variant="body">Schedule</Typography>
       </BottomSheet>,
     );
 
@@ -37,7 +38,7 @@ describe('<BottomSheet />', () => {
 
     await rerender(
       <BottomSheet open={false} title="Repeat" onClose={onClose}>
-        Schedule
+        <Typography variant="body">Schedule</Typography>
       </BottomSheet>,
     );
 

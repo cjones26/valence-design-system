@@ -16,11 +16,7 @@
   padding: 10px var(--spacing-md);
   min-height: 42px;
   box-sizing: border-box;
-  /* Always a real border — field bg matches the page bg, so transparent-
-     until-focus left it with zero visible boundary at rest. */
   border: 1.5px solid var(--color-border-control);
-  /* Not a <Typography> instance — it's the <input> itself, which can't be
-     wrapped — so it references the bodyLg tier's tokens directly instead. */
   font-size: calc(var(--type-body-lg-size) / 16 * 1rem);
   font-weight: var(--type-body-lg-weight);
   letter-spacing: var(--type-body-lg-tracking);

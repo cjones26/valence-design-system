@@ -16,24 +16,22 @@ export const Picker = ({
 }: PickerProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
-  const borderColor = error ? theme.color_action_danger_text : theme.color_border_control;
+  const borderColor = error ? theme.colorActionDangerText : theme.colorBorderControl;
 
   return (
     <View style={{ gap: 6 }}>
-      <Typography variant="label" style={{ color: theme.color_text_secondary }}>
+      <Typography variant="label" style={{ color: theme.colorTextSecondary }}>
         {label}
       </Typography>
       <View
         style={{
-          minHeight: theme.control_field_height,
+          minHeight: theme.controlFieldHeight,
           justifyContent: 'center',
           overflow: 'hidden',
-          backgroundColor: isDisabled
-            ? theme.color_background_subtle
-            : theme.color_background_primary,
+          backgroundColor: isDisabled ? theme.colorBackgroundSubtle : theme.colorBackgroundPrimary,
           borderWidth: 1.5,
-          borderColor: isDisabled ? theme.color_border_primary : borderColor,
-          borderRadius: theme.radius_control,
+          borderColor: isDisabled ? theme.colorBorderPrimary : borderColor,
+          borderRadius: theme.radiusControl,
         }}
       >
         <NativePicker
@@ -43,10 +41,10 @@ export const Picker = ({
           accessibilityLabel={label}
           accessibilityHint={helperText}
           accessibilityState={{ disabled: isDisabled }}
-          dropdownIconColor={isDisabled ? theme.color_text_muted : theme.color_text_primary}
+          dropdownIconColor={isDisabled ? theme.colorTextMuted : theme.colorTextPrimary}
           style={{
-            minHeight: theme.control_field_height,
-            color: isDisabled ? theme.color_text_muted : theme.color_text_primary,
+            minHeight: theme.controlFieldHeight,
+            color: isDisabled ? theme.colorTextMuted : theme.colorTextPrimary,
           }}
         >
           {placeholder && <NativePicker.Item label={placeholder} value="" enabled={false} />}
@@ -58,7 +56,7 @@ export const Picker = ({
       {helperText && (
         <Typography
           variant="meta"
-          style={{ color: error ? theme.color_action_danger_text : theme.color_text_secondary }}
+          style={{ color: error ? theme.colorActionDangerText : theme.colorTextSecondary }}
         >
           {helperText}
         </Typography>

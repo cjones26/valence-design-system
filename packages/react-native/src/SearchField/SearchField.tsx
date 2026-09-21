@@ -18,21 +18,21 @@ export const SearchField = ({
     <View
       style={{
         width: '100%',
-        minHeight: theme.control_field_height,
-        paddingHorizontal: theme.spacing_md,
+        minHeight: theme.controlFieldHeight,
+        paddingHorizontal: theme.spacingMd,
         flexDirection: 'row',
         alignItems: 'center',
-        gap: theme.spacing_sm,
-        backgroundColor: disabled ? theme.color_background_subtle : theme.color_background_raised,
-        borderRadius: theme.radius_control,
-        boxShadow: disabled ? undefined : theme.shadow_surface,
+        gap: theme.spacingSm,
+        backgroundColor: disabled ? theme.colorBackgroundSubtle : theme.colorBackgroundRaised,
+        borderRadius: theme.radiusControl,
+        boxShadow: disabled ? undefined : theme.shadowSurface,
       }}
     >
-      <Icon name="search" size={16} color={theme.color_text_muted} />
+      <Icon name="search" size={16} color={theme.colorTextMuted} />
       <TextInput
         value={value}
         placeholder={placeholder}
-        placeholderTextColor={theme.color_text_muted}
+        placeholderTextColor={theme.colorTextMuted}
         editable={!disabled && Boolean(onChangeText)}
         accessibilityLabel={label}
         accessibilityState={{ disabled: Boolean(disabled) }}
@@ -43,8 +43,8 @@ export const SearchField = ({
           flex: 1,
           alignSelf: 'stretch',
           paddingVertical: 0,
-          color: disabled ? theme.color_text_muted : theme.color_text_primary,
-          fontSize: theme.type_body_lg_size,
+          color: disabled ? theme.colorTextMuted : theme.colorTextPrimary,
+          fontSize: theme.typeBodyLgSize,
           ...GEIST.regular,
         }}
       />

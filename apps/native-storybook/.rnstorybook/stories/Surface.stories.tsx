@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Divider, ListRow, Surface } from '@valence/react-native';
+import { Divider, ListRow, Surface, Typography } from '@valence/react-native';
 
 type Story = StoryObj<typeof Surface>;
 
@@ -16,7 +16,11 @@ const GroupedRowsExample = () => {
 };
 
 export const Default: Story = {
-  render: () => <Surface>Cloud backup content</Surface>,
+  render: () => (
+    <Surface>
+      <Typography variant="body">Cloud backup content</Typography>
+    </Surface>
+  ),
 };
 
 export const GroupedRows: Story = { render: () => <GroupedRowsExample /> };

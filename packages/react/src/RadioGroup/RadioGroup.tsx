@@ -1,4 +1,4 @@
-import { useEffect, useId } from 'react';
+import { useId } from 'react';
 import type { RadioGroupProps } from '@valence/types';
 import { Radio } from '../Radio/Radio';
 import { Typography } from '../Typography/Typography';
@@ -7,14 +7,6 @@ import styles from './RadioGroup.module.css';
 export const RadioGroup = ({ options, value, onChange, disabled, label }: RadioGroupProps) => {
   const name = useId();
   const labelId = useId();
-  const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
-  useEffect(() => {
-    if (hasDuplicateValues) {
-      console.error(
-        'RadioGroup: "options" contains duplicate values, which makes selection ambiguous.',
-      );
-    }
-  }, [hasDuplicateValues]);
 
   return (
     <div className={styles.wrap}>

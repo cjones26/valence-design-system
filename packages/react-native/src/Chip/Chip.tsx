@@ -9,21 +9,21 @@ export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps)
   const theme = useTheme();
   const reduceMotion = useReduceMotion();
   const isDisabled = disabled || !onPress;
-  const enabledForeground = selected ? theme.color_background_primary : theme.color_text_primary;
-  const fg = isDisabled ? theme.color_text_muted : enabledForeground;
-  const enabledBorder = selected ? 'transparent' : theme.color_border_control;
-  const borderColor = isDisabled ? theme.color_border_primary : enabledBorder;
+  const enabledForeground = selected ? theme.colorBackgroundPrimary : theme.colorTextPrimary;
+  const fg = isDisabled ? theme.colorTextMuted : enabledForeground;
+  const enabledBorder = selected ? 'transparent' : theme.colorBorderControl;
+  const borderColor = isDisabled ? theme.colorBorderPrimary : enabledBorder;
 
   const background = (pressed: boolean): string => {
     if (isDisabled) {
-      return theme.color_background_subtle;
+      return theme.colorBackgroundSubtle;
     }
 
     if (selected) {
-      return pressed ? lighten(theme.color_text_primary, 0.2) : theme.color_text_primary;
+      return pressed ? lighten(theme.colorTextPrimary, 0.2) : theme.colorTextPrimary;
     }
 
-    return pressed ? theme.color_border_primary : theme.color_background_raised;
+    return pressed ? theme.colorBorderPrimary : theme.colorBackgroundRaised;
   };
 
   return (
@@ -33,13 +33,13 @@ export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps)
       accessibilityRole="button"
       accessibilityState={{ disabled: isDisabled, selected: Boolean(selected) }}
       style={({ pressed }) => ({
-        minHeight: theme.control_minimum_target,
+        minHeight: theme.controlMinimumTarget,
         flexDirection: 'row',
         alignItems: 'center',
         gap: 6,
         paddingVertical: 6,
-        paddingHorizontal: theme.spacing_md,
-        borderRadius: theme.radius_pill,
+        paddingHorizontal: theme.spacingMd,
+        borderRadius: theme.radiusPill,
         backgroundColor: background(pressed),
         borderWidth: 1,
         borderColor,

@@ -26,8 +26,8 @@ export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
   const trackColor = anim.interpolate({
     inputRange: [0, 1],
     outputRange: isDisabled
-      ? [theme.color_background_subtle, alpha(theme.color_state_positive, 0.16)]
-      : [theme.color_border_primary, theme.color_state_positive],
+      ? [theme.colorBackgroundSubtle, alpha(theme.colorStatePositive, 0.16)]
+      : [theme.colorBorderPrimary, theme.colorStatePositive],
   });
   const thumbTranslate = anim.interpolate({
     inputRange: [0, 1],
@@ -42,20 +42,20 @@ export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
       accessibilityState={{ checked, disabled: isDisabled }}
       accessibilityLabel={label}
       style={{
-        minHeight: theme.control_minimum_target,
+        minHeight: theme.controlMinimumTarget,
         flexDirection: 'row',
         alignItems: 'center',
-        gap: theme.spacing_md,
+        gap: theme.spacingMd,
       }}
     >
       <Animated.View
         style={{
-          width: theme.control_switch_width,
-          height: theme.control_switch_height,
-          borderRadius: theme.radius_pill,
+          width: theme.controlSwitchWidth,
+          height: theme.controlSwitchHeight,
+          borderRadius: theme.radiusPill,
           backgroundColor: trackColor,
           borderWidth: 1,
-          borderColor: isDisabled ? theme.color_border_primary : theme.color_border_control,
+          borderColor: isDisabled ? theme.colorBorderPrimary : theme.colorBorderControl,
           padding: 2,
           justifyContent: 'center',
         }}
@@ -64,9 +64,9 @@ export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
           style={{
             width: 28,
             height: 28,
-            borderRadius: theme.radius_pill,
-            backgroundColor: theme.color_background_raised,
-            shadowColor: `rgb(${theme.color_shadow_tint})`,
+            borderRadius: theme.radiusPill,
+            backgroundColor: theme.colorBackgroundRaised,
+            shadowColor: `rgb(${theme.colorShadowTint})`,
             shadowOpacity: 0.25,
             shadowRadius: 3,
             shadowOffset: { width: 0, height: 1 },
@@ -77,7 +77,7 @@ export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
       </Animated.View>
       <Typography
         variant="body"
-        style={{ color: isDisabled ? theme.color_text_muted : theme.color_text_primary }}
+        style={{ color: isDisabled ? theme.colorTextMuted : theme.colorTextPrimary }}
       >
         {label}
       </Typography>

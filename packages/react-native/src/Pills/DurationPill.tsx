@@ -55,11 +55,11 @@ export const DurationPill = ({ seconds, status = 'paused' }: DurationPillProps) 
 
   const activeColors =
     status === 'live'
-      ? { bg: alpha(theme.color_state_yellow, 0.22), fg: theme.color_text_primary }
-      : { bg: alpha(theme.color_text_primary, 0.06), fg: theme.color_text_secondary };
+      ? { bg: alpha(theme.colorStateYellow, 0.22), fg: theme.colorTextPrimary }
+      : { bg: alpha(theme.colorTextPrimary, 0.06), fg: theme.colorTextSecondary };
   const { bg, fg } =
     status === 'completed'
-      ? { bg: alpha(theme.color_state_positive, 0.16), fg: theme.color_text_primary }
+      ? { bg: alpha(theme.colorStatePositive, 0.16), fg: theme.colorTextPrimary }
       : activeColors;
 
   return (
@@ -69,10 +69,10 @@ export const DurationPill = ({ seconds, status = 'paused' }: DurationPillProps) 
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-        gap: theme.spacing_xs,
+        gap: theme.spacingXs,
         paddingVertical: 2,
-        paddingHorizontal: theme.spacing_sm,
-        borderRadius: theme.radius_pill,
+        paddingHorizontal: theme.spacingSm,
+        borderRadius: theme.radiusPill,
         backgroundColor: bg,
         opacity: status === 'live' ? pulse : 1,
       }}
@@ -82,7 +82,7 @@ export const DurationPill = ({ seconds, status = 'paused' }: DurationPillProps) 
       </Svg>
       <Text
         style={{
-          fontSize: theme.type_eyebrow_size,
+          fontSize: theme.typeEyebrowSize,
           ...GEIST.monoSemibold,
           color: fg,
         }}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { BottomSheet, Button } from '@valence/react-native';
+import { BottomSheet, Button, Typography } from '@valence/react-native';
 
 type Story = StoryObj<typeof BottomSheet>;
 
@@ -13,7 +13,7 @@ const BottomSheetExample = () => {
     <>
       <Button onPress={() => setOpen(true)}>Choose repeat schedule</Button>
       <BottomSheet open={open} title="Repeat" onClose={() => setOpen(false)}>
-        Choose which days this goal repeats.
+        <Typography variant="body">Choose which days this goal repeats.</Typography>
       </BottomSheet>
     </>
   );

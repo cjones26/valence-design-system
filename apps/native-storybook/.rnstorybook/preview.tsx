@@ -33,16 +33,16 @@ const ValenceDecorator = ({ children }: { children: React.ReactNode }) => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <ThemeProvider preset={preset} mode={mode}>
-          <View style={{ flex: 1, backgroundColor: theme.color_background_primary }}>
+          <View style={{ flex: 1, backgroundColor: theme.colorBackgroundPrimary }}>
             <View
               style={{
                 flexDirection: 'row',
                 alignItems: 'flex-end',
                 gap: 8,
                 padding: 8,
-                backgroundColor: theme.color_background_raised,
+                backgroundColor: theme.colorBackgroundRaised,
                 borderBottomWidth: 1,
-                borderBottomColor: theme.color_border_primary,
+                borderBottomColor: theme.colorBorderPrimary,
               }}
             >
               <View style={{ flex: 1 }}>
@@ -64,16 +64,16 @@ const ValenceDecorator = ({ children }: { children: React.ReactNode }) => {
                 accessibilityLabel={`Color mode: ${mode}. Switch to ${mode === 'light' ? 'dark' : 'light'} mode.`}
                 onPress={() => setMode(mode === 'light' ? 'dark' : 'light')}
                 style={{
-                  width: theme.control_field_height,
-                  height: theme.control_field_height,
+                  width: theme.controlFieldHeight,
+                  height: theme.controlFieldHeight,
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderWidth: 1,
-                  borderColor: theme.color_border_control,
-                  borderRadius: theme.radius_control,
+                  borderColor: theme.colorBorderControl,
+                  borderRadius: theme.radiusControl,
                 }}
               >
-                <Text style={{ color: theme.color_text_primary, fontSize: 22 }}>
+                <Text style={{ color: theme.colorTextPrimary, fontSize: 22 }}>
                   {mode === 'light' ? '☀' : '☾'}
                 </Text>
               </Pressable>

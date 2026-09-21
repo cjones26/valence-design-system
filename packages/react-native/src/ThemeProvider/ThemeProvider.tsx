@@ -10,7 +10,6 @@ import {
 
 const DEFAULT_PRESET: ThemePreset = 'hi-vis';
 
-/** The theme a component sees via useTheme() with no wrapping ThemeProvider. */
 export const DEFAULT_THEME: Theme = themes[DEFAULT_PRESET].light;
 
 const ThemeContext = createContext<Theme>(DEFAULT_THEME);

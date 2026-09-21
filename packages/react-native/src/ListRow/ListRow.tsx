@@ -27,7 +27,7 @@ export const ListRow = ({
             width: 38,
             height: 38,
             borderRadius: 11,
-            backgroundColor: theme.color_background_primary,
+            backgroundColor: theme.colorBackgroundPrimary,
             alignItems: 'center',
             justifyContent: 'center',
           }}
@@ -35,7 +35,7 @@ export const ListRow = ({
           {typeof icon === 'string' || typeof icon === 'number' ? (
             <Typography variant="body">{icon}</Typography>
           ) : (
-            icon(theme.color_text_primary)
+            icon(theme.colorTextPrimary)
           )}
         </View>
       )}
@@ -44,14 +44,14 @@ export const ListRow = ({
           variant="body"
           style={{
             ...GEIST.bold,
-            color: theme.color_text_primary,
+            color: theme.colorTextPrimary,
             textDecorationLine: archived ? 'line-through' : 'none',
           }}
         >
           {title}
         </Typography>
         {subtitle && (
-          <Typography variant="meta" style={{ color: theme.color_text_secondary, marginTop: 2 }}>
+          <Typography variant="meta" style={{ color: theme.colorTextSecondary, marginTop: 2 }}>
             {subtitle}
           </Typography>
         )}
@@ -64,26 +64,26 @@ export const ListRow = ({
           importantForAccessibility="no-hide-descendants"
         >
           {typeof trailingIcon === 'string' || typeof trailingIcon === 'number' ? (
-            <Typography variant="body" style={{ color: theme.color_text_secondary }}>
+            <Typography variant="body" style={{ color: theme.colorTextSecondary }}>
               {trailingIcon}
             </Typography>
           ) : (
-            trailingIcon(theme.color_text_secondary)
+            trailingIcon(theme.colorTextSecondary)
           )}
         </View>
       )}
     </>
   );
   const rowStyle: ViewStyle = {
-    backgroundColor: theme.color_background_raised,
+    backgroundColor: theme.colorBackgroundRaised,
     borderRadius: grouped ? 0 : 14,
-    paddingVertical: theme.spacing_md,
+    paddingVertical: theme.spacingMd,
     paddingHorizontal: 14,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: theme.spacing_md,
+    gap: theme.spacingMd,
     opacity: archived ? 0.55 : 1,
-    boxShadow: grouped ? undefined : theme.shadow_surface,
+    boxShadow: grouped ? undefined : theme.shadowSurface,
   };
 
   if (onPress) {

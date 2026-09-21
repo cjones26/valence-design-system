@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { render, screen, userEvent } from '@testing-library/react-native';
 import { Accordion } from './Accordion';
+import { Typography } from '../Typography/Typography';
 
 const AccordionExample = () => {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <Accordion title="Cloud backup" expanded={expanded} onChange={setExpanded}>
-      Backup details
+      <Typography variant="body">Backup details</Typography>
     </Accordion>
   );
 };
@@ -35,16 +36,5 @@ describe('<Accordion />', () => {
       screen.getByRole('button', { name: 'Cloud backup', expanded: true, disabled: false }),
     ).toBeOnTheScreen();
     expect(screen.getByText('Backup details')).toBeOnTheScreen();
-  });
-
-  it('renders primitive content nested in fragments and arrays', async () => {
-    await render(
-      <Accordion title="Cloud backup" expanded onChange={() => undefined}>
-        <>{['Backup', ' details']}</>
-      </Accordion>,
-    );
-
-    expect(screen.getByText('Backup')).toBeOnTheScreen();
-    expect(screen.getByText(' details')).toBeOnTheScreen();
   });
 });

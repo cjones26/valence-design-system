@@ -11,7 +11,7 @@ export const Divider = ({ inset = false }: DividerProps) => {
       style={{
         height: 1,
         marginHorizontal: inset ? 14 : 0,
-        backgroundColor: theme.color_border_divider,
+        backgroundColor: theme.colorBorderDivider,
       }}
     />
   );

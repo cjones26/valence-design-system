@@ -9,9 +9,9 @@ export const StepButton = ({ label, tone, disabled, onPress }: StepButtonProps) 
   const theme = useTheme();
   const isDisabled = disabled || !onPress;
   const reduceMotion = useReduceMotion();
-  const base = tone === 'positive' ? theme.color_state_positive : theme.color_state_red;
+  const base = tone === 'positive' ? theme.colorStatePositive : theme.colorStateRed;
   const baseAlpha = tone === 'positive' ? 0.16 : 0.14;
-  const fg = isDisabled ? theme.color_text_muted : theme.color_text_primary;
+  const fg = isDisabled ? theme.colorTextMuted : theme.colorTextPrimary;
 
   return (
     <Pressable
@@ -20,17 +20,17 @@ export const StepButton = ({ label, tone, disabled, onPress }: StepButtonProps) 
       accessibilityRole="button"
       accessibilityState={{ disabled: isDisabled }}
       style={({ pressed }) => ({
-        minHeight: theme.control_minimum_target,
-        paddingVertical: theme.spacing_sm,
-        paddingHorizontal: theme.spacing_md,
-        borderRadius: theme.radius_control,
+        minHeight: theme.controlMinimumTarget,
+        paddingVertical: theme.spacingSm,
+        paddingHorizontal: theme.spacingMd,
+        borderRadius: theme.radiusControl,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: isDisabled
-          ? alpha(theme.color_text_primary, 0.04)
+          ? alpha(theme.colorTextPrimary, 0.04)
           : alpha(base, pressed ? 0.32 : baseAlpha),
         transform: [{ scale: pressed && !isDisabled && !reduceMotion ? 0.95 : 1 }],
-        ...(isDisabled && { borderWidth: 1, borderColor: theme.color_border_primary }),
+        ...(isDisabled && { borderWidth: 1, borderColor: theme.colorBorderPrimary }),
       })}
     >
       <Typography variant="badge" style={{ color: fg }}>

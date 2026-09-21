@@ -1,8 +1,3 @@
-// RN has no CSS color-mix() — these do the same job at render time. Colors
-// are parsed via RN's own color-normalization package (the same one behind
-// RN's built-in processColor), so a theme override given as hex, rgb()/
-// rgba(), hsl(), or a CSS named color all work, not just the 6-digit hex
-// the token pipeline itself always emits.
 import normalizeColor from '@react-native/normalize-colors';
 
 function toRgb(color: string): [number, number, number] {
@@ -21,14 +16,12 @@ function toHex(n: number): string {
     .padStart(2, '0');
 }
 
-/** Mixes `color` toward white by `amount` (0–1) — e.g. a pressed-lighter tint. */
 export function lighten(color: string, amount: number): string {
   const [r, g, b] = toRgb(color);
 
   return `#${toHex(r + (255 - r) * amount)}${toHex(g + (255 - g) * amount)}${toHex(b + (255 - b) * amount)}`;
 }
 
-/** `color` at alpha `a` (0–1), as an rgba() string RN's style values accept. */
 export function alpha(color: string, a: number): string {
   const [r, g, b] = toRgb(color);
 

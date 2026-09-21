@@ -10,9 +10,6 @@
   cursor: not-allowed;
 }
 
-/* Visually hidden but still focusable/announced — the standard accessible
-   custom-control pattern: real semantics on a real input, custom visuals
-   on a styled sibling. */
 .input {
   position: absolute;
   width: 1px;

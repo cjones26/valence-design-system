@@ -19,8 +19,6 @@
   width: fit-content;
   min-width: 132px;
   min-height: 42px;
-  /* Always a real border — see TextField.module.css for why transparent-
-     until-focus left this control with an invisible boundary at rest. */
   border: 1.5px solid var(--color-border-control);
   box-sizing: border-box;
 }

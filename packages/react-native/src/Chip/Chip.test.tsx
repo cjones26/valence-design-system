@@ -89,7 +89,7 @@ describe('<Chip />', () => {
     );
 
     expect(screen.getByLabelText('Chip icon')).toHaveStyle({
-      color: DEFAULT_THEME.color_background_primary,
+      color: DEFAULT_THEME.colorBackgroundPrimary,
     });
   });
 });

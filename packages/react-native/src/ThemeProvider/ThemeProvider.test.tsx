@@ -7,7 +7,7 @@ import { ThemeProvider, useTheme } from './ThemeProvider';
 const ThemeReporter = () => {
   const theme = useTheme();
 
-  return <Text>{theme.color_text_primary}</Text>;
+  return <Text>{theme.colorTextPrimary}</Text>;
 };
 
 describe('<ThemeProvider />', () => {
@@ -18,7 +18,7 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(screen.getByText(themes['hi-vis'].light.color_text_primary)).toBeOnTheScreen();
+    expect(screen.getByText(themes['hi-vis'].light.colorTextPrimary)).toBeOnTheScreen();
   });
 
   it('provides the requested preset', async () => {
@@ -28,7 +28,7 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(screen.getByText(themes.bauhaus.light.color_text_primary)).toBeOnTheScreen();
+    expect(screen.getByText(themes.bauhaus.light.colorTextPrimary)).toBeOnTheScreen();
   });
 
   it('provides dark mode tokens when mode is dark', async () => {
@@ -38,12 +38,12 @@ describe('<ThemeProvider />', () => {
       </ThemeProvider>,
     );
 
-    expect(screen.getByText(themes['hi-vis'].dark.color_text_primary)).toBeOnTheScreen();
+    expect(screen.getByText(themes['hi-vis'].dark.colorTextPrimary)).toBeOnTheScreen();
   });
 
   it('applies token overrides on top of the preset', async () => {
     await render(
-      <ThemeProvider mode="light" theme={{ color_text_primary: '#123456' }}>
+      <ThemeProvider mode="light" theme={{ colorTextPrimary: '#123456' }}>
         <ThemeReporter />
       </ThemeProvider>,
     );
@@ -54,6 +54,6 @@ describe('<ThemeProvider />', () => {
   it('falls back to the default theme outside a provider', async () => {
     await render(<ThemeReporter />);
 
-    expect(screen.getByText(themes['hi-vis'].light.color_text_primary)).toBeOnTheScreen();
+    expect(screen.getByText(themes['hi-vis'].light.colorTextPrimary)).toBeOnTheScreen();
   });
 });

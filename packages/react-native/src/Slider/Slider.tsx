@@ -1,5 +1,4 @@
 import NativeSlider from '@react-native-community/slider';
-import { useEffect } from 'react';
 import type { SliderProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
@@ -20,18 +19,6 @@ export const Slider = ({
   const safeStep = Number.isFinite(step) && step > 0 ? step : 1;
   const isDisabled = Boolean(disabled || rangeInvalid || !onChange);
 
-  useEffect(() => {
-    if (!Number.isFinite(value)) {
-      console.error(`Slider: "value" must be a finite number, got ${value}.`);
-    }
-
-    if (rangeInvalid) {
-      console.error(
-        `Slider: "min" (${min}) and "max" (${max}) must be finite and min must not exceed max.`,
-      );
-    }
-  }, [max, min, rangeInvalid, value]);
-
   return (
     <NativeSlider
       value={safeValue}
@@ -44,12 +31,12 @@ export const Slider = ({
       accessibilityRole="adjustable"
       accessibilityValue={{ min: safeMin, max: safeMax, now: safeValue }}
       accessibilityState={{ disabled: isDisabled }}
-      minimumTrackTintColor={isDisabled ? theme.color_border_primary : theme.color_text_primary}
-      maximumTrackTintColor={isDisabled ? theme.color_border_primary : theme.color_border_control}
-      thumbTintColor={isDisabled ? theme.color_text_muted : theme.color_text_primary}
-      thumbSize={theme.control_slider_handle}
+      minimumTrackTintColor={isDisabled ? theme.colorBorderPrimary : theme.colorTextPrimary}
+      maximumTrackTintColor={isDisabled ? theme.colorBorderPrimary : theme.colorBorderControl}
+      thumbTintColor={isDisabled ? theme.colorTextMuted : theme.colorTextPrimary}
+      thumbSize={theme.controlSliderHandle}
       tapToSeek
-      style={{ height: theme.control_minimum_target }}
+      style={{ height: theme.controlMinimumTarget }}
     />
   );
 };

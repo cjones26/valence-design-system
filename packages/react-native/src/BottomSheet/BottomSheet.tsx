@@ -7,7 +7,6 @@ import GorhomBottomSheet, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { BottomSheetProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
-import { NativeContent } from '../NativeContent';
 import { Typography } from '../Typography/Typography';
 
 export const BottomSheet = ({ open, title, onClose, children }: BottomSheetProps) => {
@@ -41,9 +40,9 @@ export const BottomSheet = ({ open, title, onClose, children }: BottomSheetProps
       android_keyboardInputMode="adjustResize"
       enableBlurKeyboardOnGesture
       backdropComponent={renderBackdrop}
-      backgroundStyle={{ backgroundColor: theme.color_background_primary }}
-      handleIndicatorStyle={{ width: 36, height: 4, backgroundColor: theme.color_border_primary }}
-      style={{ boxShadow: theme.shadow_overlay }}
+      backgroundStyle={{ backgroundColor: theme.colorBackgroundPrimary }}
+      handleIndicatorStyle={{ width: 36, height: 4, backgroundColor: theme.colorBorderPrimary }}
+      style={{ boxShadow: theme.shadowOverlay }}
       onChange={(index) => {
         if (index === -1 && open) {
           onClose();
@@ -58,11 +57,7 @@ export const BottomSheet = ({ open, title, onClose, children }: BottomSheetProps
         keyboardShouldPersistTaps="handled"
       >
         <Typography variant="titleSm">{title}</Typography>
-        {children != null && (
-          <View style={{ marginTop: theme.spacing_md }}>
-            <NativeContent>{children}</NativeContent>
-          </View>
-        )}
+        {children != null && <View style={{ marginTop: theme.spacingMd }}>{children}</View>}
       </BottomSheetScrollView>
     </GorhomBottomSheet>
   );

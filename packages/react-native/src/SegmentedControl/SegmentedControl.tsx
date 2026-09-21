@@ -13,15 +13,6 @@ export const SegmentedControl = ({
   label,
 }: SegmentedControlProps) => {
   const theme = useTheme();
-  const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
-  useEffect(() => {
-    if (hasDuplicateValues) {
-      console.error(
-        'SegmentedControl: "options" contains duplicate values, which makes selection ambiguous.',
-      );
-    }
-  }, [hasDuplicateValues]);
-
   const selectedIndex = options.findIndex((opt) => opt.value === value);
   const [anim] = useState(() => new Animated.Value(Math.max(0, selectedIndex)));
   const [groupWidth, setGroupWidth] = useState(0);
@@ -49,10 +40,10 @@ export const SegmentedControl = ({
       accessibilityLabel={label}
       onLayout={(e: LayoutChangeEvent) => setGroupWidth(e.nativeEvent.layout.width)}
       style={{
-        minHeight: theme.control_minimum_target,
+        minHeight: theme.controlMinimumTarget,
         flexDirection: 'row',
-        backgroundColor: theme.color_background_primary,
-        borderRadius: theme.radius_md,
+        backgroundColor: theme.colorBackgroundPrimary,
+        borderRadius: theme.radiusMd,
         padding: 3,
       }}
     >
@@ -64,13 +55,11 @@ export const SegmentedControl = ({
             bottom: 3,
             ...(I18nManager.isRTL ? { right: 3 } : { left: 3 }),
             width: indicatorWidth,
-            borderRadius: theme.radius_control,
-            backgroundColor: disabled
-              ? theme.color_background_subtle
-              : theme.color_background_raised,
+            borderRadius: theme.radiusControl,
+            backgroundColor: disabled ? theme.colorBackgroundSubtle : theme.colorBackgroundRaised,
             borderWidth: 1,
-            borderColor: disabled ? theme.color_border_primary : theme.color_border_control,
-            shadowColor: `rgb(${theme.color_shadow_tint})`,
+            borderColor: disabled ? theme.colorBorderPrimary : theme.colorBorderControl,
+            shadowColor: `rgb(${theme.colorShadowTint})`,
             shadowOpacity: 0.1,
             shadowRadius: 6,
             shadowOffset: { width: 0, height: 2 },
@@ -88,9 +77,9 @@ export const SegmentedControl = ({
       )}
       {options.map((opt) => {
         const selected = opt.value === value;
-        const selectedColor = selected ? theme.color_text_primary : theme.color_text_secondary;
-        const contentColor = disabled ? theme.color_text_muted : selectedColor;
-        const iconTextColor = disabled ? theme.color_text_muted : theme.color_text_primary;
+        const selectedColor = selected ? theme.colorTextPrimary : theme.colorTextSecondary;
+        const contentColor = disabled ? theme.colorTextMuted : selectedColor;
+        const iconTextColor = disabled ? theme.colorTextMuted : theme.colorTextPrimary;
 
         return (
           <Pressable
@@ -100,7 +89,7 @@ export const SegmentedControl = ({
             accessibilityRole="radio"
             accessibilityState={{ checked: selected, disabled: Boolean(disabled) }}
             style={{
-              minHeight: theme.control_minimum_target,
+              minHeight: theme.controlMinimumTarget,
               flex: 1,
               flexDirection: 'row',
               alignItems: 'center',
@@ -108,7 +97,7 @@ export const SegmentedControl = ({
               gap: 5,
               paddingVertical: 10,
               paddingHorizontal: 6,
-              borderRadius: theme.radius_control,
+              borderRadius: theme.radiusControl,
             }}
           >
             {opt.icon != null &&

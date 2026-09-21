@@ -24,71 +24,71 @@ const variantStyle = (variant: TypographyVariant, theme: Theme): TextStyle => {
   switch (variant) {
     case 'display':
       return {
-        fontSize: theme.type_display_size,
-        letterSpacing: theme.type_display_size * theme.type_display_tracking,
-        ...weightStyle(theme.type_display_weight),
+        fontSize: theme.typeDisplaySize,
+        letterSpacing: theme.typeDisplaySize * theme.typeDisplayTracking,
+        ...weightStyle(theme.typeDisplayWeight),
       };
     case 'title':
       return {
-        fontSize: theme.type_title_size,
-        letterSpacing: theme.type_title_size * theme.type_title_tracking,
-        ...weightStyle(theme.type_title_weight),
+        fontSize: theme.typeTitleSize,
+        letterSpacing: theme.typeTitleSize * theme.typeTitleTracking,
+        ...weightStyle(theme.typeTitleWeight),
       };
     case 'titleSm':
       return {
-        fontSize: theme.type_title_sm_size,
-        letterSpacing: theme.type_title_sm_size * theme.type_title_sm_tracking,
-        ...weightStyle(theme.type_title_sm_weight),
+        fontSize: theme.typeTitleSmSize,
+        letterSpacing: theme.typeTitleSmSize * theme.typeTitleSmTracking,
+        ...weightStyle(theme.typeTitleSmWeight),
       };
     case 'body':
       return {
-        fontSize: theme.type_body_size,
-        letterSpacing: theme.type_body_size * theme.type_body_tracking,
-        ...weightStyle(theme.type_body_weight),
+        fontSize: theme.typeBodySize,
+        letterSpacing: theme.typeBodySize * theme.typeBodyTracking,
+        ...weightStyle(theme.typeBodyWeight),
       };
     case 'bodyLg':
       return {
-        fontSize: theme.type_body_lg_size,
-        letterSpacing: theme.type_body_lg_size * theme.type_body_lg_tracking,
-        ...weightStyle(theme.type_body_lg_weight),
+        fontSize: theme.typeBodyLgSize,
+        letterSpacing: theme.typeBodyLgSize * theme.typeBodyLgTracking,
+        ...weightStyle(theme.typeBodyLgWeight),
       };
     case 'meta':
       return {
-        fontSize: theme.type_meta_size,
-        letterSpacing: theme.type_meta_size * theme.type_meta_tracking,
-        ...weightStyle(theme.type_meta_weight),
+        fontSize: theme.typeMetaSize,
+        letterSpacing: theme.typeMetaSize * theme.typeMetaTracking,
+        ...weightStyle(theme.typeMetaWeight),
       };
     case 'eyebrow':
       return {
-        fontSize: theme.type_eyebrow_size,
-        letterSpacing: theme.type_eyebrow_size * theme.type_eyebrow_tracking,
+        fontSize: theme.typeEyebrowSize,
+        letterSpacing: theme.typeEyebrowSize * theme.typeEyebrowTracking,
         textTransform: 'uppercase',
-        ...weightStyle(theme.type_eyebrow_weight),
+        ...weightStyle(theme.typeEyebrowWeight),
       };
     case 'numeral':
       return {
-        fontSize: theme.type_numeral_size,
-        letterSpacing: theme.type_numeral_size * theme.type_numeral_tracking,
+        fontSize: theme.typeNumeralSize,
+        letterSpacing: theme.typeNumeralSize * theme.typeNumeralTracking,
         fontVariant: ['tabular-nums'],
-        ...weightStyle(theme.type_numeral_weight),
+        ...weightStyle(theme.typeNumeralWeight),
       };
     case 'label':
       return {
-        fontSize: theme.type_label_size,
-        letterSpacing: theme.type_label_size * theme.type_label_tracking,
-        ...weightStyle(theme.type_label_weight),
+        fontSize: theme.typeLabelSize,
+        letterSpacing: theme.typeLabelSize * theme.typeLabelTracking,
+        ...weightStyle(theme.typeLabelWeight),
       };
     case 'badge':
       return {
-        fontSize: theme.type_badge_size,
-        letterSpacing: theme.type_badge_size * theme.type_badge_tracking,
-        ...weightStyle(theme.type_badge_weight),
+        fontSize: theme.typeBadgeSize,
+        letterSpacing: theme.typeBadgeSize * theme.typeBadgeTracking,
+        ...weightStyle(theme.typeBadgeWeight),
       };
     case 'controlLabel':
       return {
-        fontSize: theme.type_control_label_size,
-        letterSpacing: theme.type_control_label_size * theme.type_control_label_tracking,
-        ...weightStyle(theme.type_control_label_weight),
+        fontSize: theme.typeControlLabelSize,
+        letterSpacing: theme.typeControlLabelSize * theme.typeControlLabelTracking,
+        ...weightStyle(theme.typeControlLabelWeight),
       };
   }
 };
@@ -105,7 +105,7 @@ export const Typography = ({
   return (
     <Text
       accessibilityRole={accessibilityRole ?? (HEADER_VARIANTS.has(variant) ? 'header' : undefined)}
-      style={[{ color: theme.color_text_primary }, variantStyle(variant, theme), style]}
+      style={[{ color: theme.colorTextPrimary }, variantStyle(variant, theme), style]}
       {...rest}
     >
       {children}

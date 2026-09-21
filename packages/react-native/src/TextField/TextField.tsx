@@ -34,21 +34,19 @@ export const TextField = ({
     wasInvalid.current = Boolean(error);
   }, [error, label]);
 
-  // Always a real border — field bg matches the page bg, so transparent
-  // left it with zero visible boundary at rest.
-  const focusedBorder = focused ? theme.color_text_primary : theme.color_border_control;
-  const borderColor = error ? theme.color_action_danger_text : focusedBorder;
+  const focusedBorder = focused ? theme.colorTextPrimary : theme.colorBorderControl;
+  const borderColor = error ? theme.colorActionDangerText : focusedBorder;
 
   return (
     <View style={{ gap: 6 }}>
-      <Typography variant="label" style={{ color: theme.color_text_secondary }}>
+      <Typography variant="label" style={{ color: theme.colorTextSecondary }}>
         {label}
       </Typography>
       <TextInput
         ref={ref}
         value={value}
         placeholder={placeholder}
-        placeholderTextColor={theme.color_text_secondary}
+        placeholderTextColor={theme.colorTextSecondary}
         editable={!disabled && Boolean(onChangeText)}
         inputMode={inputMode}
         autoComplete={autoComplete}
@@ -62,27 +60,23 @@ export const TextField = ({
         accessibilityHint={error ? `Invalid. ${helperText ?? ''}`.trim() : helperText}
         accessibilityState={{ disabled: Boolean(disabled) }}
         style={{
-          backgroundColor: disabled
-            ? theme.color_background_subtle
-            : theme.color_background_primary,
-          borderRadius: theme.radius_control,
+          backgroundColor: disabled ? theme.colorBackgroundSubtle : theme.colorBackgroundPrimary,
+          borderRadius: theme.radiusControl,
           paddingVertical: 14,
-          paddingHorizontal: theme.spacing_md,
-          minHeight: theme.control_field_height,
+          paddingHorizontal: theme.spacingMd,
+          minHeight: theme.controlFieldHeight,
           borderWidth: 1.5,
-          borderColor: disabled ? theme.color_border_primary : borderColor,
-          // Not a <Typography> instance — it's the TextInput itself, which
-          // can't be wrapped — so it references the bodyLg tier directly.
-          fontSize: theme.type_body_lg_size,
-          letterSpacing: theme.type_body_lg_size * theme.type_body_lg_tracking,
+          borderColor: disabled ? theme.colorBorderPrimary : borderColor,
+          fontSize: theme.typeBodyLgSize,
+          letterSpacing: theme.typeBodyLgSize * theme.typeBodyLgTracking,
           ...GEIST.semibold,
-          color: disabled ? theme.color_text_muted : theme.color_text_primary,
+          color: disabled ? theme.colorTextMuted : theme.colorTextPrimary,
         }}
       />
       {helperText && (
         <Typography
           variant="meta"
-          style={{ color: error ? theme.color_action_danger_text : theme.color_text_secondary }}
+          style={{ color: error ? theme.colorActionDangerText : theme.colorTextSecondary }}
         >
           {helperText}
         </Typography>

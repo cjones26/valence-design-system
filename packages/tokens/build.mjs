@@ -88,7 +88,7 @@ async function buildVariant(preset, mode) {
       ts: {
         transforms: [
           'attribute/cti',
-          'name/snake',
+          'name/camel',
           'valence/strip-unit',
           'valence/native-type-scale',
         ],
@@ -129,7 +129,7 @@ await new StyleDictionary({
   source: ['tokens/shared/**/*.json', 'tokens/themes/hi-vis/light/**/*.json'],
   platforms: {
     ts: {
-      transforms: ['attribute/cti', 'name/snake', 'valence/strip-unit'],
+      transforms: ['attribute/cti', 'name/camel', 'valence/strip-unit'],
       buildPath: 'src/generated/',
       files: [{ destination: 'theme-color-keys.ts', format: 'typescript/color-keys' }],
     },

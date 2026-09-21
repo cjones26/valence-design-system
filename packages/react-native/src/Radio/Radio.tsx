@@ -6,8 +6,8 @@ import { Typography } from '../Typography/Typography';
 export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
-  const activeBorder = checked ? theme.color_text_primary : theme.color_border_control;
-  const borderColor = isDisabled ? theme.color_border_primary : activeBorder;
+  const activeBorder = checked ? theme.colorTextPrimary : theme.colorBorderControl;
+  const borderColor = isDisabled ? theme.colorBorderPrimary : activeBorder;
 
   return (
     <Pressable
@@ -17,17 +17,17 @@ export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
       accessibilityState={{ checked, disabled: isDisabled }}
       accessibilityLabel={label}
       style={{
-        minHeight: theme.control_minimum_target,
+        minHeight: theme.controlMinimumTarget,
         flexDirection: 'row',
         alignItems: 'center',
-        gap: theme.spacing_md,
+        gap: theme.spacingMd,
       }}
     >
       <View
         style={{
           width: 24,
           height: 24,
-          borderRadius: theme.radius_pill,
+          borderRadius: theme.radiusPill,
           borderWidth: 1.5,
           borderColor,
           alignItems: 'center',
@@ -39,15 +39,15 @@ export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
             style={{
               width: 12,
               height: 12,
-              borderRadius: theme.radius_pill,
-              backgroundColor: isDisabled ? theme.color_text_muted : theme.color_text_primary,
+              borderRadius: theme.radiusPill,
+              backgroundColor: isDisabled ? theme.colorTextMuted : theme.colorTextPrimary,
             }}
           />
         )}
       </View>
       <Typography
         variant="body"
-        style={{ color: isDisabled ? theme.color_text_muted : theme.color_text_primary }}
+        style={{ color: isDisabled ? theme.colorTextMuted : theme.colorTextPrimary }}
       >
         {label}
       </Typography>

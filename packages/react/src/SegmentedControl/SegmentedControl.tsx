@@ -1,4 +1,4 @@
-import { useEffect, useId, type CSSProperties } from 'react';
+import { useId, type CSSProperties } from 'react';
 import type { SegmentedControlProps } from '@valence/types';
 import { Typography } from '../Typography/Typography';
 import styles from './SegmentedControl.module.css';
@@ -11,14 +11,6 @@ export const SegmentedControl = ({
   label,
 }: SegmentedControlProps) => {
   const name = useId();
-  const hasDuplicateValues = new Set(options.map((opt) => opt.value)).size !== options.length;
-  useEffect(() => {
-    if (hasDuplicateValues) {
-      console.error(
-        'SegmentedControl: "options" contains duplicate values, which makes selection ambiguous.',
-      );
-    }
-  }, [hasDuplicateValues]);
 
   if (options.length === 0) {
     return null;

@@ -126,42 +126,30 @@ describe('<NumberField />', () => {
   });
 
   it('falls back to a finite value when value is NaN', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
     await render(<NumberField label="Quantity" value={NaN} />);
 
     expect(screen.getByText('0')).toBeOnTheScreen();
-    errorSpy.mockRestore();
   });
 
   it('uses the minimum as the fallback for a non-finite value', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
     await render(<NumberField label="Quantity" value={NaN} min={10} />);
 
     expect(screen.getByText('10')).toBeOnTheScreen();
-    errorSpy.mockRestore();
   });
 
   it('preserves a finite value and disables both steppers when the range is invalid', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
     await render(<NumberField label="Quantity" value={3} min={10} max={0} />);
 
     expect(screen.getByText('3')).toBeOnTheScreen();
     expect(screen.getByLabelText('Decrease Quantity')).toBeDisabled();
     expect(screen.getByLabelText('Increase Quantity')).toBeDisabled();
-    errorSpy.mockRestore();
   });
 
   it('disables both steppers when a bound is non-finite', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
     await render(<NumberField label="Quantity" value={3} max={Infinity} />);
 
     expect(screen.getByLabelText('Decrease Quantity')).toBeDisabled();
     expect(screen.getByLabelText('Increase Quantity')).toBeDisabled();
-    errorSpy.mockRestore();
   });
 
   it('gives the steppers a contextual accessible name based on the field label', async () => {

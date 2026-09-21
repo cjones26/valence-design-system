@@ -1,6 +1,3 @@
-/* A real <input type="range">, restyled — gets keyboard support (arrows,
-   Home/End, Page Up/Down) and ARIA slider semantics for free, instead of
-   hand-rolling role="slider" + keydown handling on a plain div. */
 .slider {
   -webkit-appearance: none;
   appearance: none;

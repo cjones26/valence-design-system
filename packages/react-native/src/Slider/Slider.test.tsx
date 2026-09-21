@@ -38,33 +38,24 @@ describe('<Slider />', () => {
   });
 
   it('falls back to a finite value when value is NaN', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
     await render(<Slider value={NaN} min={0} max={100} label="Volume" />);
 
     expect(screen.getByLabelText('Volume')).toHaveAccessibilityValue({ now: 0 });
-    errorSpy.mockRestore();
   });
 
   it('replaces an invalid range with a disabled fixed control', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
     await render(<Slider value={5} min={10} max={0} label="Volume" />);
 
     const slider = screen.getByLabelText('Volume');
     expect(slider).toBeDisabled();
     expect(slider).toHaveAccessibilityValue({ min: 0, max: 0, now: 0 });
-    errorSpy.mockRestore();
   });
 
   it('contains a non-finite bound in a disabled fixed control', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
     await render(<Slider value={5} min={0} max={NaN} label="Volume" />);
 
     const slider = screen.getByLabelText('Volume');
     expect(slider).toBeDisabled();
     expect(slider).toHaveAccessibilityValue({ min: 0, max: 0, now: 0 });
-    errorSpy.mockRestore();
   });
 });

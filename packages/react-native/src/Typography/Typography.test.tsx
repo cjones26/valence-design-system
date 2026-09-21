@@ -26,15 +26,15 @@ describe('<Typography />', () => {
       </>,
     );
 
-    expect(screen.getByText('Display')).toHaveStyle({ fontSize: DEFAULT_THEME.type_display_size });
-    expect(screen.getByText('Meta')).toHaveStyle({ fontSize: DEFAULT_THEME.type_meta_size });
+    expect(screen.getByText('Display')).toHaveStyle({ fontSize: DEFAULT_THEME.typeDisplaySize });
+    expect(screen.getByText('Meta')).toHaveStyle({ fontSize: DEFAULT_THEME.typeMetaSize });
   });
 
   it('defaults to the theme text color', async () => {
     await render(<Typography variant="body">Hello world</Typography>);
 
     expect(screen.getByText('Hello world')).toHaveStyle({
-      color: DEFAULT_THEME.color_text_primary,
+      color: DEFAULT_THEME.colorTextPrimary,
     });
   });
 
