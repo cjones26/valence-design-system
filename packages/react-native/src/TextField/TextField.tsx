@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type Ref } from 'react';
 import { AccessibilityInfo, TextInput, View } from 'react-native';
 import type { TextFieldProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
-import { GEIST } from '../fonts';
+import { GEIST } from '../foundations/fonts';
 import { Typography } from '../Typography/Typography';
 
 type TextFieldComponentProps = TextFieldProps & { ref?: Ref<TextInput> };

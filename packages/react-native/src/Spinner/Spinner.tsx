@@ -3,7 +3,7 @@ import { Animated, Easing } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 import type { SpinnerProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
-import { useReduceMotion } from '../useReduceMotion';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 

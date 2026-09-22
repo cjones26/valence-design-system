@@ -2,7 +2,7 @@ import { TextInput, View } from 'react-native';
 import type { SearchFieldProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Icon } from '../Icon/Icon';
-import { GEIST } from '../fonts';
+import { GEIST } from '../foundations/fonts';
 
 export const SearchField = ({
   value,

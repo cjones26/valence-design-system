@@ -15,11 +15,8 @@ export const DEFAULT_THEME: Theme = themes[DEFAULT_PRESET].light;
 const ThemeContext = createContext<Theme>(DEFAULT_THEME);
 
 export interface ThemeProviderProps {
-  /** Selects one of the built-in presets. Defaults to 'hi-vis' for each provider. */
   preset?: ThemePreset;
-  /** Defaults to the OS color scheme (react-native's useColorScheme). */
   mode?: ThemeMode;
-  /** Color token overrides for this subtree — e.g. a client's brand colors. */
   theme?: ThemeOverride;
   children: ReactNode;
 }

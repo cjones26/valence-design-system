@@ -3,7 +3,7 @@ import type { AccordionProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Icon } from '../Icon/Icon';
 import { Typography } from '../Typography/Typography';
-import { GEIST } from '../fonts';
+import { GEIST } from '../foundations/fonts';
 
 export const Accordion = ({ title, expanded, onChange, children }: AccordionProps) => {
   const theme = useTheme();

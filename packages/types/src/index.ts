@@ -176,7 +176,6 @@ export interface SliderProps extends Disableable, Labeled {
   value: number;
   max: number;
   min?: number;
-  /** Increment size. Defaults to 1 on both platforms. */
   step?: number;
   onChange?: (value: number) => void;
 }

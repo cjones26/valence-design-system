@@ -2,13 +2,8 @@ import { useSyncExternalStore, type ReactNode, type CSSProperties } from 'react'
 import type { ThemeMode, ThemeOverride, ThemePreset } from '@valence/tokens';
 
 export interface ThemeProviderProps {
-  /** Selects one of the built-in presets via data-preset. Defaults to 'hi-vis' for each provider. */
   preset?: ThemePreset;
-  /** Forces light/dark mode for this subtree via data-theme. Omit to resolve
-   * from the OS/browser color-scheme preference (matching native's
-   * useColorScheme() behavior). */
   mode?: ThemeMode;
-  /** Color token overrides for this subtree — e.g. a client's brand colors. */
   theme?: ThemeOverride;
   children: ReactNode;
 }

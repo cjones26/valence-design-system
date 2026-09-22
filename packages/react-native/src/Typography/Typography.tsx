@@ -2,7 +2,7 @@ import { Text, type TextProps, type TextStyle } from 'react-native';
 import type { Theme } from '@valence/tokens';
 import type { TypographyProps as SharedTypographyProps, TypographyVariant } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
-import { GEIST } from '../fonts';
+import { GEIST } from '../foundations/fonts';
 
 export interface TypographyProps extends SharedTypographyProps, Omit<TextProps, 'children'> {}
 

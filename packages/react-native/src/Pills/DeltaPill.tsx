@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import type { DeltaPillProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
-import { alpha } from '../colorMix';
+import { alpha } from '../color/colorMix';
 import { Typography } from '../Typography/Typography';
 
 export const DeltaPill = ({ value, unit = '' }: DeltaPillProps) => {

@@ -17,15 +17,15 @@
       "default": "./dist/index.js"
     },
     "./useValenceFonts": {
-      "types": "./dist/useValenceFonts.d.ts",
-      "default": "./dist/useValenceFonts.js"
+      "types": "./dist/hooks/useValenceFonts.d.ts",
+      "default": "./dist/hooks/useValenceFonts.js"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "jest",
     "test:coverage": "jest --coverage"

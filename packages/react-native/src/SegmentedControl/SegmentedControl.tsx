@@ -3,7 +3,7 @@ import { Animated, I18nManager, Pressable, View, type LayoutChangeEvent } from '
 import type { SegmentedControlProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
-import { useReduceMotion } from '../useReduceMotion';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 
 export const SegmentedControl = ({
   options,

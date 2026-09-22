@@ -3,9 +3,9 @@ import { Animated, Easing, Text } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import type { DurationPillProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
-import { alpha } from '../colorMix';
-import { GEIST } from '../fonts';
-import { useReduceMotion } from '../useReduceMotion';
+import { alpha } from '../color/colorMix';
+import { useReduceMotion } from '../hooks/useReduceMotion';
+import { GEIST } from '../foundations/fonts';
 
 const formatDuration = (totalSeconds: number): string => {
   if (!Number.isFinite(totalSeconds)) {

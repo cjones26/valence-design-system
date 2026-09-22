@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Animated, I18nManager, Pressable } from 'react-native';
 import type { ToggleProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
-import { alpha } from '../colorMix';
+import { alpha } from '../color/colorMix';
 import { Typography } from '../Typography/Typography';
-import { useReduceMotion } from '../useReduceMotion';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 
 export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
   const theme = useTheme();

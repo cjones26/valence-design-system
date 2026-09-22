@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import type { CardProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
-import { alpha } from '../colorMix';
+import { alpha } from '../color/colorMix';
 import { Typography } from '../Typography/Typography';
-import { useReduceMotion } from '../useReduceMotion';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 
 export const Card = ({ status = 'resting', title, actionLabel, onPress, children }: CardProps) => {
   const theme = useTheme();
