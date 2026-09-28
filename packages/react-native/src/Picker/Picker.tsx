@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Picker as NativePicker } from '@react-native-picker/picker';
 import { View } from 'react-native';
 import type { PickerProps } from '@valence/types';
@@ -15,8 +16,21 @@ export const Picker = ({
   label,
 }: PickerProps) => {
   const theme = useTheme();
+  const [focused, setFocused] = useState(false);
   const isDisabled = disabled || !onChange;
-  const borderColor = error ? theme.colorActionDangerText : theme.colorBorderControl;
+  let borderColor = theme.colorBorderControl;
+
+  if (focused) {
+    borderColor = theme.colorBorderFocus;
+  }
+
+  if (error) {
+    borderColor = theme.colorActionDangerText;
+  }
+
+  if (isDisabled) {
+    borderColor = theme.colorBorderPrimary;
+  }
 
   return (
     <View style={{ gap: 6 }}>
@@ -30,7 +44,7 @@ export const Picker = ({
           overflow: 'hidden',
           backgroundColor: isDisabled ? theme.colorBackgroundSubtle : theme.colorBackgroundPrimary,
           borderWidth: 1.5,
-          borderColor: isDisabled ? theme.colorBorderPrimary : borderColor,
+          borderColor,
           borderRadius: theme.radiusControl,
         }}
       >
@@ -38,6 +52,8 @@ export const Picker = ({
           selectedValue={value}
           enabled={!isDisabled}
           onValueChange={(nextValue) => onChange?.(String(nextValue))}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           accessibilityLabel={label}
           accessibilityHint={helperText}
           accessibilityState={{ disabled: isDisabled }}

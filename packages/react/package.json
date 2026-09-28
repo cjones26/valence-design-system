@@ -38,6 +38,7 @@
     "react-dom": ">=19"
   },
   "dependencies": {
+    "@radix-ui/react-select": "^2.3.7",
     "@valence/tokens": "workspace:*",
     "@valence/types": "workspace:*"
   },

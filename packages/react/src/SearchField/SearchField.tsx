@@ -1,7 +1,5 @@
-import { useId } from 'react';
 import type { SearchFieldProps } from '@valence/types';
-import { Icon } from '../Icon/Icon';
-import styles from './SearchField.module.css';
+import { TextField } from '../TextField/TextField';
 
 export const SearchField = ({
   value,
@@ -11,26 +9,16 @@ export const SearchField = ({
   disabled,
   label,
 }: SearchFieldProps) => {
-  const inputId = useId();
-
   return (
-    <div className={`${styles.wrap} ${disabled ? styles.disabled : ''}`}>
-      <Icon name="search" size={16} />
-      <input
-        id={inputId}
-        type="search"
-        aria-label={label}
-        value={value ?? ''}
-        placeholder={placeholder}
-        disabled={disabled}
-        readOnly={!onChangeText}
-        onChange={(event) => onChangeText?.(event.target.value)}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter') {
-            onSubmit?.();
-          }
-        }}
-      />
-    </div>
+    <TextField
+      variant="search"
+      value={value}
+      placeholder={placeholder}
+      onChangeText={onChangeText}
+      onSubmit={onSubmit}
+      inputMode="search"
+      disabled={disabled}
+      label={label}
+    />
   );
 };

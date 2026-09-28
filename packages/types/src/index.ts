@@ -41,6 +41,7 @@ export interface StatusBadgeProps {
 }
 
 export interface TextFieldProps extends Disableable, Labeled {
+  variant?: 'default' | 'search';
   value: string;
   placeholder?: string;
   onChangeText?: (text: string) => void;

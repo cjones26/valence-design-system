@@ -5,6 +5,7 @@ dist/
 .DS_Store
 storybook-static/
 coverage/
+packages/tokens/src/generated/
 .env
 .env.local
 .grill/

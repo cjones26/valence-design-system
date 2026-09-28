@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
+import { View } from 'react-native';
 import { Divider, ListRow, Surface, Typography } from '@valence/react-native';
 
 type Story = StoryObj<typeof Surface>;
@@ -18,7 +19,9 @@ const GroupedRowsExample = () => {
 export const Default: Story = {
   render: () => (
     <Surface>
-      <Typography variant="body">Cloud backup content</Typography>
+      <View style={{ padding: 14 }}>
+        <Typography variant="body">Cloud backup content</Typography>
+      </View>
     </Surface>
   ),
 };

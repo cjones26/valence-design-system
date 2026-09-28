@@ -25,27 +25,42 @@ const ControlledPicker = ({ disabled }: { disabled?: boolean }) => {
 describe('<Picker />', () => {
   const user = userEvent.setup();
 
-  it('exposes its label, options, and selected value', () => {
+  it('exposes its label and selected value', () => {
     render(<Picker label="Frequency" options={options} value="weekly" />);
 
-    expect(screen.getByRole('combobox', { name: 'Frequency' })).toHaveValue('weekly');
+    expect(screen.getByRole('combobox', { name: 'Frequency' })).toHaveTextContent('Weekly');
+  });
+
+  it('shows its options when opened', async () => {
+    render(<ControlledPicker />);
+
+    await user.tab();
+
+    await user.keyboard('{Enter}');
+
     expect(screen.getAllByRole('option')).toHaveLength(2);
   });
 
-  it('changes the selected value using native select behavior', async () => {
+  it('changes the selected value', async () => {
     render(<ControlledPicker />);
 
-    await user.selectOptions(screen.getByRole('combobox', { name: 'Frequency' }), 'weekly');
+    await user.tab();
 
-    expect(screen.getByRole('combobox', { name: 'Frequency' })).toHaveValue('weekly');
+    await user.keyboard('{Enter}');
+
+    await user.keyboard('{ArrowDown}{Enter}');
+
+    expect(screen.getByRole('combobox', { name: 'Frequency' })).toHaveTextContent('Weekly');
   });
 
-  it('cannot change when disabled', async () => {
+  it('cannot open when disabled', async () => {
     render(<ControlledPicker disabled />);
 
-    await user.selectOptions(screen.getByRole('combobox', { name: 'Frequency' }), 'weekly');
+    await user.tab();
 
-    expect(screen.getByRole('combobox', { name: 'Frequency' })).toHaveValue('daily');
+    await user.keyboard('{Enter}');
+
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 
   it('connects error helper text to the control', () => {

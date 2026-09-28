@@ -10,7 +10,14 @@ import postcssUrl from 'postcss-url';
 // unconditionally base64-inlines every CSS asset with no way to opt out.
 export default {
   input: 'src/index.ts',
-  external: ['react', 'react-dom', 'react/jsx-runtime', '@valence/tokens', '@valence/types'],
+  external: [
+    'react',
+    'react-dom',
+    'react/jsx-runtime',
+    '@radix-ui/react-select',
+    '@valence/tokens',
+    '@valence/types',
+  ],
   output: {
     file: 'dist/index.js',
     format: 'es',

@@ -3,11 +3,13 @@ import { AccessibilityInfo, TextInput, View } from 'react-native';
 import type { TextFieldProps } from '@valence/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { GEIST } from '../foundations/fonts';
+import { Icon } from '../Icon/Icon';
 import { Typography } from '../Typography/Typography';
 
 type TextFieldComponentProps = TextFieldProps & { ref?: Ref<TextInput> };
 
 export const TextField = ({
+  variant = 'default',
   value,
   placeholder,
   onChangeText,
@@ -25,6 +27,7 @@ export const TextField = ({
   const theme = useTheme();
   const [focused, setFocused] = useState(false);
   const wasInvalid = useRef(false);
+  const isSearch = variant === 'search';
 
   useEffect(() => {
     if (error && !wasInvalid.current) {
@@ -34,45 +37,73 @@ export const TextField = ({
     wasInvalid.current = Boolean(error);
   }, [error, label]);
 
-  const focusedBorder = focused ? theme.colorTextPrimary : theme.colorBorderControl;
-  const borderColor = error ? theme.colorActionDangerText : focusedBorder;
+  let borderColor = isSearch ? 'transparent' : theme.colorBorderControl;
+  let backgroundColor = isSearch ? theme.colorBackgroundRaised : theme.colorBackgroundPrimary;
+
+  if (focused) {
+    borderColor = theme.colorBorderFocus;
+  }
+
+  if (error) {
+    borderColor = theme.colorActionDangerText;
+  }
+
+  if (disabled) {
+    backgroundColor = theme.colorBackgroundSubtle;
+    borderColor = theme.colorBorderPrimary;
+  }
 
   return (
     <View style={{ gap: 6 }}>
-      <Typography variant="label" style={{ color: theme.colorTextSecondary }}>
-        {label}
-      </Typography>
-      <TextInput
-        ref={ref}
-        value={value}
-        placeholder={placeholder}
-        placeholderTextColor={theme.colorTextSecondary}
-        editable={!disabled && Boolean(onChangeText)}
-        inputMode={inputMode}
-        autoComplete={autoComplete}
-        secureTextEntry={secureTextEntry}
-        maxLength={maxLength}
-        onSubmitEditing={onSubmit}
-        onChangeText={onChangeText}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        accessibilityLabel={label}
-        accessibilityHint={error ? `Invalid. ${helperText ?? ''}`.trim() : helperText}
-        accessibilityState={{ disabled: Boolean(disabled) }}
+      {!isSearch && (
+        <Typography variant="label" style={{ color: theme.colorTextSecondary }}>
+          {label}
+        </Typography>
+      )}
+      <View
         style={{
-          backgroundColor: disabled ? theme.colorBackgroundSubtle : theme.colorBackgroundPrimary,
+          backgroundColor,
           borderRadius: theme.radiusControl,
-          paddingVertical: 14,
           paddingHorizontal: theme.spacingMd,
           minHeight: theme.controlFieldHeight,
           borderWidth: 1.5,
-          borderColor: disabled ? theme.colorBorderPrimary : borderColor,
-          fontSize: theme.typeBodyLgSize,
-          letterSpacing: theme.typeBodyLgSize * theme.typeBodyLgTracking,
-          ...GEIST.semibold,
-          color: disabled ? theme.colorTextMuted : theme.colorTextPrimary,
+          borderColor,
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: theme.spacingSm,
+          boxShadow: isSearch && !disabled ? theme.shadowSurface : undefined,
         }}
-      />
+      >
+        {isSearch && <Icon name="search" size={16} color={theme.colorTextMuted} />}
+        <TextInput
+          ref={ref}
+          value={value}
+          placeholder={placeholder}
+          placeholderTextColor={isSearch ? theme.colorTextMuted : theme.colorTextSecondary}
+          editable={!disabled && Boolean(onChangeText)}
+          inputMode={inputMode}
+          autoComplete={autoComplete}
+          secureTextEntry={secureTextEntry}
+          maxLength={maxLength}
+          returnKeyType={isSearch ? 'search' : undefined}
+          onSubmitEditing={onSubmit}
+          onChangeText={onChangeText}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          accessibilityLabel={label}
+          accessibilityHint={error ? `Invalid. ${helperText ?? ''}`.trim() : helperText}
+          accessibilityState={{ disabled: Boolean(disabled) }}
+          style={{
+            flex: 1,
+            alignSelf: 'stretch',
+            paddingVertical: 14,
+            fontSize: theme.typeBodyLgSize,
+            letterSpacing: theme.typeBodyLgSize * theme.typeBodyLgTracking,
+            ...(isSearch ? GEIST.regular : GEIST.semibold),
+            color: disabled ? theme.colorTextMuted : theme.colorTextPrimary,
+          }}
+        />
+      </View>
       {helperText && (
         <Typography
           variant="meta"

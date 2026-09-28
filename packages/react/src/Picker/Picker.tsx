@@ -1,5 +1,7 @@
 import { useId } from 'react';
+import * as Select from '@radix-ui/react-select';
 import type { PickerProps } from '@valence/types';
+import { Icon } from '../Icon/Icon';
 import { Typography } from '../Typography/Typography';
 import styles from './Picker.module.css';
 
@@ -23,26 +25,31 @@ export const Picker = ({
           {label}
         </Typography>
       </label>
-      <select
-        id={selectId}
-        className={`${styles.select} ${error ? styles.error : ''}`}
-        value={value}
-        disabled={disabled || !onChange}
-        onChange={(event) => onChange?.(event.target.value)}
-        aria-invalid={error || undefined}
-        aria-describedby={helperText ? helperId : undefined}
-      >
-        {placeholder && (
-          <option value="" disabled>
-            {placeholder}
-          </option>
-        )}
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      <Select.Root value={value} disabled={disabled || !onChange} onValueChange={onChange}>
+        <Select.Trigger
+          id={selectId}
+          className={`${styles.trigger} ${error ? styles.error : ''}`}
+          aria-invalid={error || undefined}
+          aria-describedby={helperText ? helperId : undefined}
+        >
+          <Select.Value placeholder={placeholder} />
+          <Select.Icon className={styles.chevron}>
+            <Icon name="chevron" size={14} />
+          </Select.Icon>
+        </Select.Trigger>
+        <Select.Content className={styles.content} position="popper" sideOffset={4}>
+          <Select.Viewport className={styles.viewport}>
+            {options.map((option) => (
+              <Select.Item className={styles.item} key={option.value} value={option.value}>
+                <Select.ItemText>{option.label}</Select.ItemText>
+                <Select.ItemIndicator className={styles.indicator}>
+                  <Icon name="check" size={14} />
+                </Select.ItemIndicator>
+              </Select.Item>
+            ))}
+          </Select.Viewport>
+        </Select.Content>
+      </Select.Root>
       {helperText && (
         <Typography
           variant="meta"
