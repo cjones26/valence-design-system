@@ -1,9 +1,3 @@
-// This import is what makes the Rollup build (see rollup.config.mjs)
-// collect tokens.css + @font-face content into dist/index.css at all —
-// rollup-plugin-postcss extracts CSS into its own file and drops the
-// JS-level import from the output, so it doesn't auto-load for consumers;
-// they must import '@valence/react/index.css' themselves (see package.json
-// "exports").
 import './index.css';
 
 export { ThemeProvider } from './ThemeProvider/ThemeProvider';
