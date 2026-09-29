@@ -56,7 +56,7 @@ export const TextField = ({
   return (
     <View style={{ gap: 6 }}>
       {!isSearch && (
-        <Typography variant="label" style={{ color: theme.colorTextSecondary }}>
+        <Typography variant="label" style={{ color: theme.colorTextPrimary }}>
           {label}
         </Typography>
       )}

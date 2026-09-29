@@ -34,7 +34,7 @@ export const Picker = ({
 
   return (
     <View style={{ gap: 6 }}>
-      <Typography variant="label" style={{ color: theme.colorTextSecondary }}>
+      <Typography variant="label" style={{ color: theme.colorTextPrimary }}>
         {label}
       </Typography>
       <View

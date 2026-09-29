@@ -7,7 +7,7 @@
 
 .label {
   display: block;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }
 
 .control {
