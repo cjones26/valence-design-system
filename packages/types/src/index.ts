@@ -25,7 +25,6 @@ export interface ChipProps extends Pressable, Disableable {
 }
 
 export interface DeltaPillProps {
-  /** Rendered with neutral styling when 0, rather than positive/negative tone. */
   value: number;
   unit?: string;
 }
@@ -93,9 +92,6 @@ export interface ToggleProps extends Disableable, Labeled {
 export interface RadioProps extends Disableable, Labeled {
   checked: boolean;
   onChange?: () => void;
-  /** Web-only: maps to the HTML radio input's `name` attribute for native
-   * keyboard grouping. Native ignores this — grouping there comes from
-   * controlled state instead. */
   name?: string;
 }
 
@@ -130,13 +126,7 @@ export interface SegmentedControlProps extends Disableable, Labeled {
 export interface CardProps extends Pressable {
   status?: 'resting' | 'editing' | 'success' | 'skipped' | 'error';
   title: string;
-  /** Non-text elements render directly on native — normal RN composition
-   * rules apply, so raw text nested in an array/fragment still needs its
-   * own Text/Typography wrapper; this isn't a Card-specific constraint. */
   children?: ReactNode;
-  /** Accessible name for the Card's primary action. Defaults to title, plus
-   * the children when they're plain text — the content is otherwise hidden
-   * from assistive tech, so this is how that text stays reachable. */
   actionLabel?: string;
 }
 
@@ -166,10 +156,8 @@ export interface ListRowProps extends Pressable {
   icon?: IconSlot;
   title: string;
   subtitle?: string;
-  /** Presentation-only icon displayed at the end of the row. */
   trailingIcon?: IconSlot;
   archived?: boolean;
-  /** Removes standalone radius and elevation when rendered inside a Surface. */
   grouped?: boolean;
 }
 

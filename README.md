@@ -54,7 +54,7 @@ Run the complete local check before opening a pull request:
 pnpm verify
 ```
 
-This runs the parity and theme contrast checks, audits dependencies used by published packages, lints and type-checks the workspace, enforces test coverage, builds every package, and creates an Android production bundle.
+This runs the parity and theme contrast checks, audits production dependencies for critical advisories, lints and type-checks the workspace, enforces test coverage, builds every package, and creates an Android production bundle.
 
 The individual commands are also available:
 
@@ -71,7 +71,7 @@ pnpm build
 
 ## Platform parity
 
-Components are listed in [`parity-registry.json`](./parity-registry.json). A component marked as complete must be exported, tested, and represented in Storybook on both platforms.
+The parity check compares the public exports, tests, and Storybook stories on both platforms.
 
 Both implementations use the prop definitions from `@valence/types`. This keeps their public APIs aligned while allowing the internal code to remain platform-specific.
 

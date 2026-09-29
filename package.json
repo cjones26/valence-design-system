@@ -24,7 +24,7 @@
     "check-parity": "node ./scripts/check-parity.mjs",
     "check-contrast": "node ./scripts/check-theme-contrast.mjs",
     "verify": "pnpm format:check && pnpm check-parity && pnpm check-contrast && pnpm check-audit && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build && pnpm --filter native-storybook verify-bundle",
-    "check-audit": "node ./scripts/check-production-audit.mjs",
+    "check-audit": "pnpm audit --prod --audit-level critical",
     "commitlint": "commitlint",
     "changeset": "changeset",
     "release": "pnpm verify && changeset publish"

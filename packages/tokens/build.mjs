@@ -1,5 +1,3 @@
-// The native theme object has no Style Dictionary built-in format, so it's
-// produced by the custom format registered below.
 import StyleDictionary from 'style-dictionary';
 import { cpSync, mkdirSync, readdirSync, rmSync, writeFileSync, readFileSync } from 'node:fs';
 
@@ -15,9 +13,6 @@ const PRESETS = [
 ];
 const MODES = ['light', 'dark'];
 
-// Clear owned output before regenerating — otherwise a renamed/removed
-// preset or font leaves its old file orphaned, and since dist/ ships in
-// full to npm, that orphan publishes forever.
 rmSync('./src/generated', { recursive: true, force: true });
 rmSync('./dist', { recursive: true, force: true });
 mkdirSync('./src/generated', { recursive: true });
@@ -26,14 +21,6 @@ for (const file of readdirSync('./fonts')) {
   cpSync(`./fonts/${file}`, `./dist/fonts/${file}`);
 }
 
-// Dimension tokens are authored with CSS units (the DTCG convention) so the
-// css platform can pass them through unchanged. Native has no unit syntax —
-// RN dimensions are unitless dp, and letterSpacing is unitless points — so
-// this transform strips the suffix back to a plain number for the ts
-// platform only. `em` tracking values become a bare em-fraction; the
-// Text-rendering components multiply by their own fontSize at render time
-// to get RN's absolute letterSpacing (the same thing the browser does
-// implicitly for CSS em units).
 StyleDictionary.registerTransform({
   name: 'valence/strip-unit',
   type: 'value',
@@ -41,10 +28,6 @@ StyleDictionary.registerTransform({
   transform: (token) => parseFloat(token.value),
 });
 
-// Native renders the type scale slightly larger than web, anchored on
-// body: 14 -> 16 (matching Material's default body-text size) and applied
-// as one ratio to every type.*.size token, so the scale's relative
-// hierarchy stays intact rather than each tier being picked by hand.
 const NATIVE_TYPE_SCALE = 16 / 14;
 StyleDictionary.registerTransform({
   name: 'valence/native-type-scale',
@@ -107,11 +90,6 @@ for (const preset of PRESETS) {
   }
 }
 
-// Runtime theme overrides are only safe for color tokens — non-color
-// dimensions need units on web (e.g. `8px`) that a raw override value can't
-// supply. Key names are identical across every preset/mode, so any one of
-// them is enough to derive the list; `attribute/cti` sets `category` from
-// each token's top-level JSON key (color.json's is "color").
 StyleDictionary.registerFormat({
   name: 'typescript/color-keys',
   format: ({ dictionary }) => {
@@ -136,9 +114,6 @@ await new StyleDictionary({
   },
 }).buildAllPlatforms();
 
-// hi-vis (the default preset) also gets bare `:root` / `[data-theme="dark"]`
-// selectors with no `data-preset` needed, so a consumer that sets a mode but
-// never picks a preset still gets a themed page instead of unstyled content.
 async function buildDefault(mode, selector, destination) {
   const sd = new StyleDictionary({
     source: [`tokens/shared/**/*.json`, `tokens/themes/hi-vis/${mode}/**/*.json`],

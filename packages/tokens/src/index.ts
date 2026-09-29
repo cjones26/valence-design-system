@@ -30,8 +30,6 @@ export type ThemePreset =
   | 'bodega'
   | 'indigo-pop';
 
-// Runtime overrides are restricted to color tokens — see build.mjs's
-// theme-color-keys generator for why.
 export type ThemeOverride = Partial<Pick<Theme, ThemeColorKey>>;
 
 export const themes: Record<ThemePreset, Record<ThemeMode, Theme>> = {
