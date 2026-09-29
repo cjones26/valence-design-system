@@ -21,10 +21,10 @@ export const Card = ({ status = 'resting', title, actionLabel, onPress, children
     status === 'skipped' ? alpha(theme.colorTextPrimary, 0.04) : theme.colorBackgroundRaised;
   const background = status === 'success' ? theme.colorStatePositive : restingBackground;
   const contentColor = status === 'success' ? theme.colorTextOnPositive : undefined;
-  const titleColor = contentColor ?? theme.colorTextSecondary;
+  const titleColor = contentColor ?? theme.colorTextReadable;
   const restingShadow =
     status === 'error'
-      ? `0 0 0 1.5px ${theme.colorActionDanger}, ${theme.shadowSurface}`
+      ? `0 0 0 1.5px ${theme.colorActionDangerText}, ${theme.shadowSurface}`
       : theme.shadowSurface;
   const boxShadow =
     status === 'editing'

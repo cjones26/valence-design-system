@@ -78,7 +78,7 @@ export const Button = ({
         return {
           bg: pressed ? alpha(theme.colorTextPrimary, 0.08) : 'transparent',
           fg: theme.colorTextPrimary,
-          border: pressed ? theme.colorTextSecondary : theme.colorBorderPrimary,
+          border: pressed ? theme.colorTextSecondary : theme.colorBorderControl,
         };
       case 'ghost':
         return {
@@ -87,9 +87,9 @@ export const Button = ({
         };
       case 'danger':
         return {
-          bg: pressed ? alpha(theme.colorActionDanger, 0.1) : 'transparent',
+          bg: 'transparent',
           fg: theme.colorActionDangerText,
-          border: pressed ? theme.colorActionDanger : theme.colorBorderPrimary,
+          border: pressed ? theme.colorActionDangerText : theme.colorBorderControl,
         };
       case 'dangerConfirm':
         return {

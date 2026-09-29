@@ -51,7 +51,7 @@ export const ListRow = ({
           {title}
         </Typography>
         {subtitle && (
-          <Typography variant="meta" style={{ color: theme.colorTextSecondary, marginTop: 2 }}>
+          <Typography variant="meta" style={{ color: theme.colorTextReadable, marginTop: 2 }}>
             {subtitle}
           </Typography>
         )}
@@ -82,7 +82,6 @@ export const ListRow = ({
     flexDirection: 'row',
     alignItems: 'center',
     gap: theme.spacingMd,
-    opacity: archived ? 0.55 : 1,
     boxShadow: grouped ? undefined : theme.shadowSurface,
   };
 

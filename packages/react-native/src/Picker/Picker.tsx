@@ -72,7 +72,7 @@ export const Picker = ({
       {helperText && (
         <Typography
           variant="meta"
-          style={{ color: error ? theme.colorActionDangerText : theme.colorTextSecondary }}
+          style={{ color: error ? theme.colorActionDangerText : theme.colorTextReadable }}
         >
           {helperText}
         </Typography>

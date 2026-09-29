@@ -56,7 +56,7 @@ export const DurationPill = ({ seconds, status = 'paused' }: DurationPillProps) 
   const activeColors =
     status === 'live'
       ? { bg: alpha(theme.colorStateYellow, 0.22), fg: theme.colorTextPrimary }
-      : { bg: alpha(theme.colorTextPrimary, 0.06), fg: theme.colorTextSecondary };
+      : { bg: alpha(theme.colorTextPrimary, 0.06), fg: theme.colorTextReadable };
   const { bg, fg } =
     status === 'completed'
       ? { bg: alpha(theme.colorStatePositive, 0.16), fg: theme.colorTextPrimary }

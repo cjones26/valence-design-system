@@ -18,7 +18,7 @@ export const DeltaPill = ({ value, unit = '' }: DeltaPillProps) => {
     foreground = theme.colorTextPrimary;
   } else {
     background = alpha(theme.colorTextPrimary, 0.1);
-    foreground = theme.colorTextSecondary;
+    foreground = theme.colorTextPrimary;
   }
 
   return (

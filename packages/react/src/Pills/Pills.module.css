@@ -14,7 +14,7 @@
 }
 .deltaNeutral {
   background: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }
 
 .duration {
@@ -30,7 +30,7 @@
 }
 .durationPaused {
   background: color-mix(in srgb, var(--color-text-primary) 6%, transparent);
-  color: var(--color-text-secondary);
+  color: var(--color-text-readable);
 }
 .durationCompleted {
   background: color-mix(in srgb, var(--color-state-positive) 16%, transparent);

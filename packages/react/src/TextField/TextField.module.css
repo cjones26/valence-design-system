@@ -104,7 +104,7 @@
 
 .helper {
   display: block;
-  color: var(--color-text-secondary);
+  color: var(--color-text-readable);
   line-height: 1.4;
 }
 .helperError {

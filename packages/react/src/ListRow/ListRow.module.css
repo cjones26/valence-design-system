@@ -40,10 +40,6 @@
   box-shadow: 0 0 0 3px var(--color-border-focus);
 }
 
-.archived {
-  opacity: 0.55;
-}
-
 .grouped {
   border-radius: 0;
   box-shadow: none;
@@ -80,7 +76,7 @@
 }
 
 .subtitle {
-  color: var(--color-text-secondary);
+  color: var(--color-text-readable);
 }
 
 .trailingIcon {

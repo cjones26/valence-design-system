@@ -129,7 +129,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo" />);
 
     expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
-      color: DEFAULT_THEME.colorTextSecondary,
+      color: DEFAULT_THEME.colorTextReadable,
     });
   });
 
@@ -145,7 +145,7 @@ describe('<Card />', () => {
     await render(<Card title="Trip to Tokyo" status="error" />);
 
     expect(screen.getByText('Trip to Tokyo')).toHaveStyle({
-      color: DEFAULT_THEME.colorTextSecondary,
+      color: DEFAULT_THEME.colorTextReadable,
     });
   });
 

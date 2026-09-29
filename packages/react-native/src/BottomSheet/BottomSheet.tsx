@@ -41,7 +41,7 @@ export const BottomSheet = ({ open, title, onClose, children }: BottomSheetProps
       enableBlurKeyboardOnGesture
       backdropComponent={renderBackdrop}
       backgroundStyle={{ backgroundColor: theme.colorBackgroundPrimary }}
-      handleIndicatorStyle={{ width: 36, height: 4, backgroundColor: theme.colorBorderPrimary }}
+      handleIndicatorStyle={{ width: 36, height: 4, backgroundColor: theme.colorBorderControl }}
       style={{ boxShadow: theme.shadowOverlay }}
       onChange={(index) => {
         if (index === -1 && open) {

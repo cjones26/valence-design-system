@@ -43,7 +43,7 @@
 
 .title {
   display: block;
-  color: var(--color-text-secondary);
+  color: var(--color-text-readable);
   margin: 0 0 2px;
 }
 
@@ -75,7 +75,7 @@
   background: var(--color-background-raised);
   color: var(--color-text-primary);
   box-shadow:
-    0 0 0 1.5px var(--color-action-danger),
+    0 0 0 1.5px var(--color-action-danger-text),
     var(--elevation);
 }
 
