@@ -1,0 +1,181 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-family-sans);
+}
+
+.label {
+  color: var(--color-text-primary);
+}
+
+.controlRow,
+.group {
+  display: flex;
+  align-items: center;
+}
+
+.controlRow {
+  gap: 6px;
+}
+
+.group {
+  flex: 1;
+  min-width: 0;
+  min-height: 42px;
+  box-sizing: border-box;
+  background: var(--color-background-primary);
+  border: 1.5px solid var(--color-border-control);
+  border-radius: var(--radius-control);
+  color: var(--color-text-primary);
+}
+
+.group[data-focus-within],
+.group[data-open] {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 1px var(--color-border-focus);
+}
+
+.wrap[data-invalid] .group {
+  border-color: var(--color-action-danger-text);
+}
+
+.wrap[data-invalid] .group[data-focus-within],
+.wrap[data-invalid] .group[data-open] {
+  box-shadow: 0 0 0 1px var(--color-action-danger-text);
+}
+
+.wrap[data-disabled] .group {
+  background: var(--color-background-subtle);
+  border-color: var(--color-border-primary);
+  color: var(--color-text-muted);
+}
+
+.input {
+  display: flex;
+  flex: 1;
+  padding: 10px 0 10px var(--spacing-md);
+  font-size: calc(var(--type-body-lg-size) / 16 * 1rem);
+}
+
+.segment {
+  border-radius: 3px;
+  outline: none;
+}
+
+.segment[data-placeholder] {
+  color: var(--color-text-secondary);
+}
+
+.segment[data-focused] {
+  background: var(--color-background-subtle);
+  box-shadow: 0 0 0 1px var(--color-border-focus);
+}
+
+.trigger,
+.clear,
+.navigation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-control);
+  color: currentColor;
+}
+
+.trigger:focus-visible,
+.clear:focus-visible,
+.navigation:focus-visible,
+.cell:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+.clear {
+  color: var(--color-text-secondary);
+}
+
+.popover {
+  z-index: 1000;
+  padding: var(--spacing-md);
+  background: var(--color-background-raised);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-overlay);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+}
+
+.dialog {
+  outline: none;
+}
+
+.calendarHeader {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.heading {
+  margin: 0;
+  font-size: calc(var(--type-body-lg-size) / 16 * 1rem);
+  text-align: center;
+}
+
+.navigation {
+  transform: rotate(180deg);
+}
+
+.next {
+  transform: none;
+}
+
+.grid {
+  border-collapse: collapse;
+}
+
+.weekday {
+  width: 40px;
+  height: 32px;
+  color: var(--color-text-secondary);
+  font-size: calc(var(--type-meta-size) / 16 * 1rem);
+  font-weight: var(--type-meta-weight);
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  cursor: default;
+  text-align: center;
+}
+
+.cell[data-hovered] {
+  background: var(--color-background-subtle);
+}
+
+.cell[data-selected] {
+  background: var(--color-text-primary);
+  color: var(--color-background-primary);
+}
+
+.cell[data-disabled],
+.cell[data-outside-month] {
+  color: var(--color-text-muted);
+}
+
+.helper {
+  color: var(--color-text-readable);
+  font-size: calc(var(--type-meta-size) / 16 * 1rem);
+  line-height: 1.4;
+}
+
+.helperError {
+  color: var(--color-action-danger-text);
+}

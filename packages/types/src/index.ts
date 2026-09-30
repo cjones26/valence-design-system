@@ -75,6 +75,18 @@ export interface PickerProps extends Disableable, Labeled {
   helperText?: string;
 }
 
+export type DatePickerValue = `${number}-${number}-${number}`;
+
+export interface DatePickerProps extends Disableable, Labeled {
+  value: DatePickerValue | null;
+  onChange?: (value: DatePickerValue | null) => void;
+  min?: DatePickerValue;
+  max?: DatePickerValue;
+  required?: boolean;
+  error?: boolean;
+  helperText?: string;
+}
+
 export interface NumberFieldProps extends Disableable, Labeled {
   value: number;
   min?: number;
