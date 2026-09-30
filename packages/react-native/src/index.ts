@@ -20,6 +20,8 @@ export { SearchField } from './SearchField/SearchField';
 
 export { Picker } from './Picker/Picker';
 
+export { DatePicker } from './DatePicker/DatePicker';
+
 export { NumberField } from './NumberField/NumberField';
 
 export { Toggle } from './Toggle/Toggle';
@@ -70,6 +72,8 @@ export type {
   SearchFieldProps,
   PickerProps,
   PickerOption,
+  DatePickerProps,
+  DatePickerValue,
   NumberFieldProps,
   ToggleProps,
   RadioProps,

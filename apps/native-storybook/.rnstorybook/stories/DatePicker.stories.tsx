@@ -1,0 +1,46 @@
+import { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-native';
+import { DatePicker, type DatePickerValue } from '@valencesoftwareio/react-native';
+
+type Story = StoryObj<typeof DatePicker>;
+
+const meta: Meta<typeof DatePicker> = {
+  title: 'Components/DatePicker',
+  component: DatePicker,
+};
+
+const DatePickerPlayground = () => {
+  const [value, setValue] = useState<DatePickerValue | null>('2026-09-30');
+
+  return <DatePicker label="Due date" value={value} onChange={setValue} />;
+};
+
+export const Default: Story = { args: { label: 'Due date', value: '2026-09-30' } };
+
+export const Empty: Story = { args: { label: 'Due date', value: null } };
+
+export const Constrained: Story = {
+  args: {
+    label: 'Due date',
+    value: '2026-09-30',
+    min: '2026-09-15',
+    max: '2026-10-15',
+  },
+};
+
+export const Error: Story = {
+  args: {
+    label: 'Due date',
+    value: null,
+    error: true,
+    helperText: 'Choose a due date.',
+  },
+};
+
+export const Disabled: Story = {
+  args: { label: 'Due date', value: '2026-09-30', disabled: true },
+};
+
+export const Playground: Story = { render: () => <DatePickerPlayground /> };
+
+export default meta;

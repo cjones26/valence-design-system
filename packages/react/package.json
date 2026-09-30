@@ -42,9 +42,11 @@
     "react-dom": ">=19"
   },
   "dependencies": {
+    "@internationalized/date": "^3.12.4",
     "@radix-ui/react-select": "^2.3.7",
     "@valencesoftwareio/tokens": "workspace:*",
-    "@valencesoftwareio/types": "workspace:*"
+    "@valencesoftwareio/types": "workspace:*",
+    "react-aria-components": "^1.21.1"
   },
   "devDependencies": {
     "@storybook/react-vite": "^10.6.0",
