@@ -5,3 +5,4 @@
 **/.rnstorybook/storybook.requires.ts
 **/src/generated/
 pnpm-lock.yaml
+CHANGELOG.md
