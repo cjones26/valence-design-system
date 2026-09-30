@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
 import { View } from 'react-native';
-import { Divider, ListRow, Surface, Typography } from '@valence/react-native';
+import { Divider, ListRow, Surface, Typography } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Surface>;
 

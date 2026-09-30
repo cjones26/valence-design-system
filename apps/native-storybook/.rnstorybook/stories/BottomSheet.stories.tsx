@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { BottomSheet, Button, Typography } from '@valence/react-native';
+import { BottomSheet, Button, Typography } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof BottomSheet>;
 

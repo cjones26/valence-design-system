@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Picker, ThemeProvider } from '@valence/react-native';
-import { useValenceFonts } from '@valence/react-native/useValenceFonts';
-import { themes, type ThemeMode, type ThemePreset } from '@valence/tokens';
+import { Picker, ThemeProvider } from '@valencesoftwareio/react-native';
+import { useValenceFonts } from '@valencesoftwareio/react-native/useValenceFonts';
+import { themes, type ThemeMode, type ThemePreset } from '@valencesoftwareio/tokens';
 
 const PRESETS: ThemePreset[] = [
   'hi-vis',

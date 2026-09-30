@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Icon, ListRow } from '@valence/react-native';
+import { Icon, ListRow } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof ListRow>;
 

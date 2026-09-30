@@ -6,7 +6,7 @@ import {
   type ThemeMode,
   type ThemeOverride,
   type ThemePreset,
-} from '@valence/tokens';
+} from '@valencesoftwareio/tokens';
 
 const DEFAULT_PRESET: ThemePreset = 'hi-vis';
 

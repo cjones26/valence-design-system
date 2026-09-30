@@ -1,5 +1,5 @@
 import { Pressable, View } from 'react-native';
-import type { RadioProps } from '@valence/types';
+import type { RadioProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 

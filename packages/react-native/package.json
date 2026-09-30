@@ -1,5 +1,5 @@
 {
-  "name": "@valence/react-native",
+  "name": "@valencesoftwareio/react-native",
   "repository": {
     "type": "git",
     "url": "https://github.com/cjones26/valence-design-system.git",
@@ -8,6 +8,10 @@
   "version": "0.1.0",
   "description": "Valence design system — React Native components.",
   "license": "MIT",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -49,8 +53,8 @@
   },
   "dependencies": {
     "@react-native/normalize-colors": ">=0.74.0",
-    "@valence/tokens": "workspace:*",
-    "@valence/types": "workspace:*"
+    "@valencesoftwareio/tokens": "workspace:*",
+    "@valencesoftwareio/types": "workspace:*"
   },
   "devDependencies": {
     "@gorhom/bottom-sheet": "^5.2.14",

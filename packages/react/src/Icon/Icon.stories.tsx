@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ICON_NAMES } from '@valence/types';
+import { ICON_NAMES } from '@valencesoftwareio/types';
 import { Icon } from './Icon';
 
 type Story = StoryObj<typeof Icon>;

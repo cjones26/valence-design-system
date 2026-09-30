@@ -1,4 +1,4 @@
-import type { CheckboxProps } from '@valence/types';
+import type { CheckboxProps } from '@valencesoftwareio/types';
 import styles from './Checkbox.module.css';
 
 export const Checkbox = ({ checked, onChange, disabled, label }: CheckboxProps) => {

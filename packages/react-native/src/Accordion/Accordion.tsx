@@ -1,5 +1,5 @@
 import { Pressable, View } from 'react-native';
-import type { AccordionProps } from '@valence/types';
+import type { AccordionProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Icon } from '../Icon/Icon';
 import { Typography } from '../Typography/Typography';

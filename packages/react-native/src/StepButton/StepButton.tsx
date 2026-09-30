@@ -1,5 +1,5 @@
 import { Pressable } from 'react-native';
-import type { StepButtonProps } from '@valence/types';
+import type { StepButtonProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { alpha } from '../color/colorMix';
 import { Typography } from '../Typography/Typography';

@@ -56,7 +56,7 @@ export { Typography } from './Typography/Typography';
 
 export type { TypographyProps } from './Typography/Typography';
 
-export { TYPOGRAPHY_VARIANTS } from '@valence/types';
+export { TYPOGRAPHY_VARIANTS } from '@valencesoftwareio/types';
 
 export type {
   ButtonProps,
@@ -91,4 +91,4 @@ export type {
   IconName,
   IconSlot,
   TypographyVariant,
-} from '@valence/types';
+} from '@valencesoftwareio/types';

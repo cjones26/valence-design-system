@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import type { CardProps } from '@valence/types';
+import type { CardProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { alpha } from '../color/colorMix';
 import { Typography } from '../Typography/Typography';

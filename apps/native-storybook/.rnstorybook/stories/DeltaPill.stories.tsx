@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { DeltaPill } from '@valence/react-native';
+import { DeltaPill } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof DeltaPill>;
 

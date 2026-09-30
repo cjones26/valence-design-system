@@ -1,4 +1,4 @@
-import type { CardProps } from '@valence/types';
+import type { CardProps } from '@valencesoftwareio/types';
 import { Typography } from '../Typography/Typography';
 import styles from './Card.module.css';
 

@@ -1,4 +1,4 @@
-import type { StepButtonProps } from '@valence/types';
+import type { StepButtonProps } from '@valencesoftwareio/types';
 import { Typography } from '../Typography/Typography';
 import styles from './StepButton.module.css';
 

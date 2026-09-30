@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react-native';
 import { Text } from 'react-native';
-import { themes } from '@valence/tokens';
+import { themes } from '@valencesoftwareio/tokens';
 
 import { ThemeProvider, useTheme } from './ThemeProvider';
 

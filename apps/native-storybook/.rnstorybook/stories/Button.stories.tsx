@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Button } from '@valence/react-native';
+import { Button } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Button>;
 

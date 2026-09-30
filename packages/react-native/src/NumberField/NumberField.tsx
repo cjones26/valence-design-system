@@ -1,5 +1,5 @@
 import { Pressable, View } from 'react-native';
-import type { NumberFieldProps } from '@valence/types';
+import type { NumberFieldProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 

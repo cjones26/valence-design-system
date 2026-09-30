@@ -1,5 +1,5 @@
 import { useSyncExternalStore, type ReactNode, type CSSProperties } from 'react';
-import type { ThemeMode, ThemeOverride, ThemePreset } from '@valence/tokens';
+import type { ThemeMode, ThemeOverride, ThemePreset } from '@valencesoftwareio/tokens';
 
 export interface ThemeProviderProps {
   preset?: ThemePreset;

@@ -1,4 +1,4 @@
-import { ICON_GLYPHS, type IconProps } from '@valence/types';
+import { ICON_GLYPHS, type IconProps } from '@valencesoftwareio/types';
 
 export const Icon = ({ name, size = 20, color = 'currentColor' }: IconProps) => {
   const glyph = ICON_GLYPHS[name];

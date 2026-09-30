@@ -1,13 +1,17 @@
 {
-  "name": "@valence/types",
+  "name": "@valencesoftwareio/types",
   "repository": {
     "type": "git",
     "url": "https://github.com/cjones26/valence-design-system.git",
     "directory": "packages/types"
   },
   "version": "0.1.0",
-  "description": "Canonical component prop contracts shared by @valence/react and @valence/react-native.",
+  "description": "Canonical component prop contracts shared by @valencesoftwareio/react and @valencesoftwareio/react-native.",
   "license": "MIT",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

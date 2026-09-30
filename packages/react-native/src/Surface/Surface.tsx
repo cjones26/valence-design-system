@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import type { SurfaceProps } from '@valence/types';
+import type { SurfaceProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
 export const Surface = ({ children }: SurfaceProps) => {

@@ -1,6 +1,9 @@
 import { Text, type TextProps, type TextStyle } from 'react-native';
-import type { Theme } from '@valence/tokens';
-import type { TypographyProps as SharedTypographyProps, TypographyVariant } from '@valence/types';
+import type { Theme } from '@valencesoftwareio/tokens';
+import type {
+  TypographyProps as SharedTypographyProps,
+  TypographyVariant,
+} from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { GEIST } from '../foundations/fonts';
 

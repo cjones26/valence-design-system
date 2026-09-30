@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Animated, I18nManager, Pressable, View, type LayoutChangeEvent } from 'react-native';
-import type { SegmentedControlProps } from '@valence/types';
+import type { SegmentedControlProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 import { useReduceMotion } from '../hooks/useReduceMotion';

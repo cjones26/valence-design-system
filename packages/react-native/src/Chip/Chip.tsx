@@ -1,5 +1,5 @@
 import { Pressable, View } from 'react-native';
-import type { ChipProps } from '@valence/types';
+import type { ChipProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { lighten } from '../color/colorMix';
 import { Typography } from '../Typography/Typography';

@@ -1,13 +1,13 @@
-# @valence/react-native
+# @valencesoftwareio/react-native
 
-This is the React Native half of the Valence design system: a genuinely separate codebase from `@valence/react` that shares the design tokens and the `@valence/types` prop contracts with it. Components use platform-native behavior where it materially improves reliability, while Valence owns their public contracts, theming, and visual treatment.
+This is the React Native half of the Valence design system: a genuinely separate codebase from `@valencesoftwareio/react` that shares the design tokens and the `@valencesoftwareio/types` prop contracts with it. Components use platform-native behavior where it materially improves reliability, while Valence owns their public contracts, theming, and visual treatment.
 
 ## Fonts
 
-The real Geist font files live in `@valence/tokens`'s `fonts/` directory, and this package loads them via `expo-font`. Call `useValenceFonts()` from your app's root and don't render your actual UI until it resolves to `true` — native has no font-fallback swap the way web's `font-display: swap` gives it one, so until the fonts finish loading, text renders silently in the OS's system font, with no error or warning to catch it. Gating the render on this hook is what makes that guaranteed rather than incidental:
+The real Geist font files live in `@valencesoftwareio/tokens`'s `fonts/` directory, and this package loads them via `expo-font`. Call `useValenceFonts()` from your app's root and don't render your actual UI until it resolves to `true` — native has no font-fallback swap the way web's `font-display: swap` gives it one, so until the fonts finish loading, text renders silently in the OS's system font, with no error or warning to catch it. Gating the render on this hook is what makes that guaranteed rather than incidental:
 
 ```tsx
-import { useValenceFonts } from '@valence/react-native/useValenceFonts';
+import { useValenceFonts } from '@valencesoftwareio/react-native/useValenceFonts';
 
 function App() {
   const fontsLoaded = useValenceFonts();

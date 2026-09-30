@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Animated, I18nManager, Pressable } from 'react-native';
-import type { ToggleProps } from '@valence/types';
+import type { ToggleProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { alpha } from '../color/colorMix';
 import { Typography } from '../Typography/Typography';

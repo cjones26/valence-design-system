@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Chip } from '@valence/react-native';
+import { Chip } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Chip>;
 

@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import type { StatusBadgeProps } from '@valence/types';
+import type { StatusBadgeProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 

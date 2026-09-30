@@ -1,4 +1,4 @@
-import type { DividerProps } from '@valence/types';
+import type { DividerProps } from '@valencesoftwareio/types';
 import styles from './Divider.module.css';
 
 export const Divider = ({ inset = false }: DividerProps) => {

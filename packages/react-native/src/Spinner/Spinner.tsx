@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Animated, Easing } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
-import type { SpinnerProps } from '@valence/types';
+import type { SpinnerProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { useReduceMotion } from '../hooks/useReduceMotion';
 

@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { TYPOGRAPHY_VARIANTS } from '@valence/types';
-import { Typography } from '@valence/react-native';
+import { TYPOGRAPHY_VARIANTS } from '@valencesoftwareio/types';
+import { Typography } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Typography>;
 

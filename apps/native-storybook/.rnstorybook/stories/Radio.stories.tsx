@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Radio } from '@valence/react-native';
+import { Radio } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Radio>;
 

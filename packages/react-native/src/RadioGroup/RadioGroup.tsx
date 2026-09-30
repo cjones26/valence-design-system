@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import type { RadioGroupProps } from '@valence/types';
+import type { RadioGroupProps } from '@valencesoftwareio/types';
 import { Radio } from '../Radio/Radio';
 import { Typography } from '../Typography/Typography';
 import { useTheme } from '../ThemeProvider/ThemeProvider';

@@ -1,4 +1,4 @@
-import type { ProgressBarProps } from '@valence/types';
+import type { ProgressBarProps } from '@valencesoftwareio/types';
 import styles from './ProgressBar.module.css';
 
 export const ProgressBar = ({ value, max = 100, label }: ProgressBarProps) => {

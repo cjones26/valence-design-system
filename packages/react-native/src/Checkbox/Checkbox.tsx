@@ -1,6 +1,6 @@
 import { Pressable, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
-import type { CheckboxProps } from '@valence/types';
+import type { CheckboxProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 

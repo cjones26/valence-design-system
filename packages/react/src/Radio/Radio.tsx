@@ -1,4 +1,4 @@
-import type { RadioProps } from '@valence/types';
+import type { RadioProps } from '@valencesoftwareio/types';
 import styles from './Radio.module.css';
 
 export const Radio = ({ checked, onChange, disabled, label, name }: RadioProps) => {

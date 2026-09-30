@@ -1,4 +1,4 @@
-import type { DeltaPillProps } from '@valence/types';
+import type { DeltaPillProps } from '@valencesoftwareio/types';
 import { Typography } from '../Typography/Typography';
 import styles from './Pills.module.css';
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { StatusBadge } from '@valence/react-native';
+import { StatusBadge } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof StatusBadge>;
 

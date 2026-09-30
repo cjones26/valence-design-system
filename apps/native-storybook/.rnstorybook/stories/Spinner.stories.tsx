@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Spinner } from '@valence/react-native';
+import { Spinner } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Spinner>;
 

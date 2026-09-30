@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Picker as NativePicker } from '@react-native-picker/picker';
 import { View } from 'react-native';
-import type { PickerProps } from '@valence/types';
+import type { PickerProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 

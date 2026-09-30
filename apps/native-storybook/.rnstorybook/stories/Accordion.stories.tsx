@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Accordion, Surface, Typography } from '@valence/react-native';
+import { Accordion, Surface, Typography } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Accordion>;
 
