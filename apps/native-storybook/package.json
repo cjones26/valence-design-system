@@ -35,8 +35,8 @@
   },
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "REACT_NATIVE_PACKAGER_HOSTNAME=127.0.0.1 expo start --android",
+    "ios": "REACT_NATIVE_PACKAGER_HOSTNAME=127.0.0.1 expo start --ios",
     "web": "expo start --web",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "verify-bundle": "expo export --platform android"
