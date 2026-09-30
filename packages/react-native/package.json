@@ -52,7 +52,7 @@
     }
   },
   "dependencies": {
-    "@react-native/normalize-colors": ">=0.74.0",
+    "@react-native/normalize-colors": ">=0.87.1",
     "@valencesoftwareio/tokens": "workspace:*",
     "@valencesoftwareio/types": "workspace:*"
   },
