@@ -1,5 +1,5 @@
 import { useId, type Ref } from 'react';
-import type { TextFieldProps } from '@valence/types';
+import type { TextFieldProps } from '@valencesoftwareio/types';
 import { Icon } from '../Icon/Icon';
 import { Typography } from '../Typography/Typography';
 import styles from './TextField.module.css';

@@ -1,5 +1,8 @@
 import type { ElementType, HTMLAttributes } from 'react';
-import type { TypographyProps as SharedTypographyProps, TypographyVariant } from '@valence/types';
+import type {
+  TypographyProps as SharedTypographyProps,
+  TypographyVariant,
+} from '@valencesoftwareio/types';
 import styles from './Typography.module.css';
 
 export interface TypographyProps

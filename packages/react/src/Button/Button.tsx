@@ -1,5 +1,5 @@
 import type { Ref } from 'react';
-import type { ButtonKind, ButtonProps, TypographyVariant } from '@valence/types';
+import type { ButtonKind, ButtonProps, TypographyVariant } from '@valencesoftwareio/types';
 import { Spinner } from '../Spinner/Spinner';
 import { Typography } from '../Typography/Typography';
 import styles from './Button.module.css';

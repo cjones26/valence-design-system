@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type Ref } from 'react';
 import { AccessibilityInfo, TextInput, View } from 'react-native';
-import type { TextFieldProps } from '@valence/types';
+import type { TextFieldProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { GEIST } from '../foundations/fonts';
 import { Icon } from '../Icon/Icon';

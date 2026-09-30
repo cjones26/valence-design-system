@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { ICON_NAMES } from '@valence/types';
+import { ICON_NAMES } from '@valencesoftwareio/types';
 
 import { Icon } from './Icon';
 

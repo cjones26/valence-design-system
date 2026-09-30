@@ -1,4 +1,4 @@
-import type { SpinnerProps } from '@valence/types';
+import type { SpinnerProps } from '@valencesoftwareio/types';
 import styles from './Spinner.module.css';
 
 export const Spinner = ({ size = 14, color = 'currentColor' }: SpinnerProps) => {

@@ -17,7 +17,7 @@
 
 - [ ] React implementation updated
 - [ ] React Native implementation updated
-- [ ] Shared `@valence/types` contract remains accurate
+- [ ] Shared `@valencesoftwareio/types` contract remains accurate
 - [ ] `parity-registry.json` and matching stories/tests are updated
 - [ ] Platform-specific behavior is documented
 - [ ] Not applicable — no component or public-contract impact

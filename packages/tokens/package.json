@@ -1,13 +1,17 @@
 {
-  "name": "@valence/tokens",
+  "name": "@valencesoftwareio/tokens",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cjones26/valence-design-system.git",
+    "url": "https://github.com/valencesoftwareio/valence-design-system.git",
     "directory": "packages/tokens"
   },
   "version": "0.1.0",
   "description": "Valence design tokens — color, typography, spacing, radius. Compiled by Style Dictionary to CSS custom properties (web) and a typed theme object (native).",
   "license": "MIT",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "type": "module",
   "main": "./dist/js/index.js",
   "types": "./dist/js/index.d.ts",

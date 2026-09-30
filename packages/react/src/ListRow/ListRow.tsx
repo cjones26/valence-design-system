@@ -1,4 +1,4 @@
-import type { ListRowProps } from '@valence/types';
+import type { ListRowProps } from '@valencesoftwareio/types';
 import { Typography } from '../Typography/Typography';
 import styles from './ListRow.module.css';
 

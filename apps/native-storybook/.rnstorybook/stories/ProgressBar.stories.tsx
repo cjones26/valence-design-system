@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { ProgressBar } from '@valence/react-native';
+import { ProgressBar } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof ProgressBar>;
 

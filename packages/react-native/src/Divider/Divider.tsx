@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import type { DividerProps } from '@valence/types';
+import type { DividerProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
 export const Divider = ({ inset = false }: DividerProps) => {

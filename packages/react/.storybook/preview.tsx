@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react-vite';
-import type { ThemePreset } from '@valence/tokens';
+import type { ThemePreset } from '@valencesoftwareio/tokens';
 import { ThemeProvider } from '../src/ThemeProvider/ThemeProvider';
 import '../src/index.css';
 import './preview.css';

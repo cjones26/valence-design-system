@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { TYPOGRAPHY_VARIANTS } from '@valence/types';
+import { TYPOGRAPHY_VARIANTS } from '@valencesoftwareio/types';
 import { Typography } from './Typography';
 
 type Story = StoryObj<typeof Typography>;

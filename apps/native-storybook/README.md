@@ -1,12 +1,12 @@
 # native-storybook
 
-This app hosts `@storybook/react-native` on a real device or emulator, giving `@valence/react-native`'s components a real running environment to be checked against. It's a verification harness for that package, kept unpublished.
+This app hosts `@storybook/react-native` on a real device or emulator, giving `@valencesoftwareio/react-native`'s components a real running environment to be checked against. It's a verification harness for that package, kept unpublished.
 
 ```bash
 pnpm android
 ```
 
-Stories live under `.rnstorybook/stories/`, one file per component, mirroring the coverage in `@valence/react`'s own Storybook so the two catalogs stay easy to compare side by side.
+Stories live under `.rnstorybook/stories/`, one file per component, mirroring the coverage in `@valencesoftwareio/react`'s own Storybook so the two catalogs stay easy to compare side by side.
 
 ## How this gets verified in CI
 

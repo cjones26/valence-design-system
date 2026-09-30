@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import type { DeltaPillProps } from '@valence/types';
+import type { DeltaPillProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { alpha } from '../color/colorMix';
 import { Typography } from '../Typography/Typography';

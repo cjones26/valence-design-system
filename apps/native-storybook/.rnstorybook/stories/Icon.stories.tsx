@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { ICON_NAMES } from '@valence/types';
-import { Icon } from '@valence/react-native';
+import { ICON_NAMES } from '@valencesoftwareio/types';
+import { Icon } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Icon>;
 

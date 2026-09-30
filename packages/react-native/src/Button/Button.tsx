@@ -1,6 +1,6 @@
 import { useState, type Ref } from 'react';
 import { Pressable, View, type ViewStyle } from 'react-native';
-import type { ButtonProps, ButtonKind, TypographyVariant } from '@valence/types';
+import type { ButtonProps, ButtonKind, TypographyVariant } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { lighten, alpha } from '../color/colorMix';
 import { Spinner } from '../Spinner/Spinner';

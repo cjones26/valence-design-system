@@ -10,8 +10,8 @@ export default {
     'react-dom',
     'react/jsx-runtime',
     '@radix-ui/react-select',
-    '@valence/tokens',
-    '@valence/types',
+    '@valencesoftwareio/tokens',
+    '@valencesoftwareio/types',
   ],
   output: {
     file: 'dist/index.js',

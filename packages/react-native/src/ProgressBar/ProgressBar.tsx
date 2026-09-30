@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import type { ProgressBarProps } from '@valence/types';
+import type { ProgressBarProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
 export const ProgressBar = ({ value, max = 100, label }: ProgressBarProps) => {

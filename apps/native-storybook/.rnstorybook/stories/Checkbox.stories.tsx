@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Checkbox } from '@valence/react-native';
+import { Checkbox } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Checkbox>;
 

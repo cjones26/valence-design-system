@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import * as Select from '@radix-ui/react-select';
-import type { PickerProps } from '@valence/types';
+import type { PickerProps } from '@valencesoftwareio/types';
 import { Icon } from '../Icon/Icon';
 import { Typography } from '../Typography/Typography';
 import styles from './Picker.module.css';

@@ -1,13 +1,17 @@
 {
-  "name": "@valence/react",
+  "name": "@valencesoftwareio/react",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cjones26/valence-design-system.git",
+    "url": "https://github.com/valencesoftwareio/valence-design-system.git",
     "directory": "packages/react"
   },
   "version": "0.1.0",
   "description": "Valence design system — React (web) components.",
   "license": "MIT",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -39,8 +43,8 @@
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.3.7",
-    "@valence/tokens": "workspace:*",
-    "@valence/types": "workspace:*"
+    "@valencesoftwareio/tokens": "workspace:*",
+    "@valencesoftwareio/types": "workspace:*"
   },
   "devDependencies": {
     "@storybook/react-vite": "^10.6.0",

@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import type { AccordionProps } from '@valence/types';
+import type { AccordionProps } from '@valencesoftwareio/types';
 import { Icon } from '../Icon/Icon';
 import { Typography } from '../Typography/Typography';
 import styles from './Accordion.module.css';

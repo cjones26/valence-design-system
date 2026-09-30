@@ -1,4 +1,4 @@
-import type { NumberFieldProps } from '@valence/types';
+import type { NumberFieldProps } from '@valencesoftwareio/types';
 import { Typography } from '../Typography/Typography';
 import styles from './NumberField.module.css';
 

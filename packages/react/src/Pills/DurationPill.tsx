@@ -1,4 +1,4 @@
-import type { DurationPillProps } from '@valence/types';
+import type { DurationPillProps } from '@valencesoftwareio/types';
 import styles from './Pills.module.css';
 
 const statusClass: Record<NonNullable<DurationPillProps['status']>, string> = {

@@ -6,15 +6,15 @@ The web and native components are separate implementations. They share design to
 
 ## Packages
 
-| Package                                            | Purpose                                                         |
-| -------------------------------------------------- | --------------------------------------------------------------- |
-| [`@valence/tokens`](./packages/tokens)             | Colors, typography, spacing, sizing, shadows, and theme presets |
-| [`@valence/types`](./packages/types)               | Shared component prop definitions                               |
-| [`@valence/react`](./packages/react)               | React components and the web Storybook                          |
-| [`@valence/react-native`](./packages/react-native) | React Native components                                         |
-| [`native-storybook`](./apps/native-storybook)      | Expo app for viewing native components on a device or emulator  |
+| Package                                                      | Purpose                                                         |
+| ------------------------------------------------------------ | --------------------------------------------------------------- |
+| [`@valencesoftwareio/tokens`](./packages/tokens)             | Colors, typography, spacing, sizing, shadows, and theme presets |
+| [`@valencesoftwareio/types`](./packages/types)               | Shared component prop definitions                               |
+| [`@valencesoftwareio/react`](./packages/react)               | React components and the web Storybook                          |
+| [`@valencesoftwareio/react-native`](./packages/react-native) | React Native components                                         |
+| [`native-storybook`](./apps/native-storybook)                | Expo app for viewing native components on a device or emulator  |
 
-The four `@valence/*` packages are public and MIT licensed. The native Storybook app is private and is not published.
+The four `@valencesoftwareio/*` packages are private and published through GitHub Packages. The native Storybook app is not published.
 
 ## Setup
 
@@ -73,7 +73,7 @@ pnpm build
 
 The parity check compares the public exports, tests, and Storybook stories on both platforms.
 
-Both implementations use the prop definitions from `@valence/types`. This keeps their public APIs aligned while allowing the internal code to remain platform-specific.
+Both implementations use the prop definitions from `@valencesoftwareio/types`. This keeps their public APIs aligned while allowing the internal code to remain platform-specific.
 
 The parity check does not prove that two components behave identically. Interaction and accessibility still need to be reviewed on both platforms.
 
@@ -85,7 +85,7 @@ Theme tokens are maintained in `packages/tokens/tokens`. The token build produce
 
 ## Fonts
 
-Geist font files are stored in `@valence/tokens/fonts`. The web package registers them through CSS. Native applications load them with the `useValenceFonts()` hook from `@valence/react-native`.
+Geist font files are stored in `@valencesoftwareio/tokens/fonts`. The web package registers them through CSS. Native applications load them with the `useValenceFonts()` hook from `@valencesoftwareio/react-native`.
 
 The native type scale is slightly larger than the web scale. This is intentional and accounts for normal phone viewing distance. Web font sizes use `rem` so browser text-size preferences continue to work.
 

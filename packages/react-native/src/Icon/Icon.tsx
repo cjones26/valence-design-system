@@ -1,5 +1,5 @@
 import Svg, { Path } from 'react-native-svg';
-import { ICON_GLYPHS, type IconProps } from '@valence/types';
+import { ICON_GLYPHS, type IconProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 
 export const Icon = ({ name, size = 20, color }: IconProps) => {

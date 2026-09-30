@@ -1,5 +1,5 @@
 import { Pressable, View, type ViewStyle } from 'react-native';
-import type { ListRowProps } from '@valence/types';
+import type { ListRowProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { GEIST } from '../foundations/fonts';
 import { Typography } from '../Typography/Typography';

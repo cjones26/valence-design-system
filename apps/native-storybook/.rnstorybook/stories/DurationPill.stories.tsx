@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { DurationPill } from '@valence/react-native';
+import { DurationPill } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof DurationPill>;
 

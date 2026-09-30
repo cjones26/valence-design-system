@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Animated, Easing, Text } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
-import type { DurationPillProps } from '@valence/types';
+import type { DurationPillProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { alpha } from '../color/colorMix';
 import { useReduceMotion } from '../hooks/useReduceMotion';

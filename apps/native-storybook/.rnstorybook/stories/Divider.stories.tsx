@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Divider } from '@valence/react-native';
+import { Divider } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Divider>;
 

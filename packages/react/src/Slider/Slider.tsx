@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import type { SliderProps } from '@valence/types';
+import type { SliderProps } from '@valencesoftwareio/types';
 import styles from './Slider.module.css';
 
 export const Slider = ({

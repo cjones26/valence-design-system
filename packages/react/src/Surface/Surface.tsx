@@ -1,4 +1,4 @@
-import type { SurfaceProps } from '@valence/types';
+import type { SurfaceProps } from '@valencesoftwareio/types';
 import styles from './Surface.module.css';
 
 export const Surface = ({ children }: SurfaceProps) => {

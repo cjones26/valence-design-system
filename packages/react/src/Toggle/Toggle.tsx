@@ -1,4 +1,4 @@
-import type { ToggleProps } from '@valence/types';
+import type { ToggleProps } from '@valencesoftwareio/types';
 import styles from './Toggle.module.css';
 
 export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
