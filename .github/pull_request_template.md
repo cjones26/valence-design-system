@@ -18,7 +18,7 @@
 - [ ] React implementation updated
 - [ ] React Native implementation updated
 - [ ] Shared `@valencesoftwareio/types` contract remains accurate
-- [ ] `parity-registry.json` and matching stories/tests are updated
+- [ ] Matching stories and tests are updated
 - [ ] Platform-specific behavior is documented
 - [ ] Not applicable — no component or public-contract impact
 
@@ -52,9 +52,15 @@
 
 ## Release impact
 
-- [ ] Changeset added for published-package changes
-- [ ] Public API or migration notes are documented
-- [ ] No release impact
+<!-- Select one. Patch, minor, and major releases require a Changeset. -->
+
+- [ ] Patch: backward-compatible fix
+- [ ] Minor: backward-compatible feature
+- [ ] Major: breaking change
+- [ ] None: no published-package change
+
+- [ ] Changeset added when required
+- [ ] Public API or migration notes are documented when required
 
 ## Risks and follow-up
 
