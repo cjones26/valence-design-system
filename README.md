@@ -91,10 +91,4 @@ The native type scale is slightly larger than the web scale. This is intentional
 
 ## Releases
 
-Published package changes need a Changeset:
-
-```bash
-pnpm changeset
-```
-
-Choose the affected packages and the appropriate version change. After the change reaches `main`, the release workflow updates package versions and publishes them to npm.
+Package versions are managed together. Conventional pull request titles set the release type: `fix:` for patch, `feat:` for minor, and `!` for major. Release Please prepares the version and changelog pull request automatically.

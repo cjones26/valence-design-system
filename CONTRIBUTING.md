@@ -8,20 +8,16 @@ request, run `pnpm verify`.
 The four published packages use the same version. A release updates and
 publishes all four together.
 
-Choose the release impact in the pull request template. Package changes require
-a Changeset:
+The pull request title determines the release:
 
-```sh
-pnpm changeset
-```
+- `fix:` creates a patch release.
+- `feat:` creates a minor release.
+- `feat!:` and other titles containing `!` create a major release.
+- `docs:`, `test:`, `chore:`, `build:`, and `ci:` do not create a release.
 
-Select any affected package and choose the release type. Because the packages
-are a fixed group, Changesets applies the highest selected release type to the
-whole group. Use a short summary that will make sense in the changelog.
+Use a clear title because it is also used in the changelog. Pull requests are
+squash merged so the validated title becomes the commit on `main`.
 
-After the pull request merges, the release workflow opens or updates a Version
-Packages pull request. That pull request contains the version and changelog
-changes. Merging it publishes the packages to GitHub Packages after CI passes.
-
-Documentation, Storybook, test, and repository tooling changes do not need a
-Changeset unless they change a published package.
+After a releasable pull request merges, Release Please opens or updates a
+release pull request containing the shared version and changelog changes.
+Merging it publishes all four packages to GitHub Packages after CI passes.
