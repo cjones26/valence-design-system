@@ -1,0 +1,15 @@
+.spin {
+  animation: valence-spin 0.9s linear infinite;
+}
+
+@keyframes valence-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+}

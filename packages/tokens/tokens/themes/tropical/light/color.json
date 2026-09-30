@@ -1,0 +1,83 @@
+{
+  "color": {
+    "background": {
+      "primary": {
+        "value": "#fff4d6"
+      },
+      "raised": {
+        "value": "#ffffff"
+      },
+      "subtle": {
+        "value": "rgba(14,42,62,0.04)"
+      }
+    },
+    "text": {
+      "primary": {
+        "value": "#0e2a3e"
+      },
+      "secondary": {
+        "value": "rgba(14,42,62,0.67)"
+      },
+      "muted": {
+        "value": "rgba(14,42,62,0.52)"
+      },
+      "readable": {
+        "value": "rgba(14,42,62,0.72)"
+      },
+      "onPositive": {
+        "value": "#0a1a10"
+      },
+      "onDanger": {
+        "value": "#ffffff"
+      },
+      "onYellow": {
+        "value": "#1a1a08"
+      }
+    },
+    "border": {
+      "primary": {
+        "value": "rgba(14,42,62,0.32)"
+      },
+      "divider": {
+        "value": "rgba(14,42,62,0.1)"
+      },
+      "muted": {
+        "value": "rgba(14,42,62,0.4)"
+      },
+      "strong": {
+        "value": "#0e2a3e"
+      },
+      "focus": {
+        "value": "#0e2a3e"
+      },
+      "control": {
+        "value": "rgba(14,42,62,0.55)"
+      }
+    },
+    "state": {
+      "positive": {
+        "value": "#15a651"
+      },
+      "positiveStrong": {
+        "value": "#118541"
+      },
+      "yellow": {
+        "value": "#ff9d00"
+      },
+      "red": {
+        "value": "#e83f5b"
+      },
+      "redStrong": {
+        "value": "#ba3249"
+      }
+    },
+    "action": {
+      "danger": {
+        "value": "#e83f5b"
+      },
+      "dangerText": {
+        "value": "#cc3750"
+      }
+    }
+  }
+}

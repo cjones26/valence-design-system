@@ -1,0 +1,9 @@
+{
+  "control": {
+    "minimumTarget": { "value": "48px" },
+    "fieldHeight": { "value": "56px" },
+    "sliderHandle": { "value": "20px" },
+    "switchWidth": { "value": "52px" },
+    "switchHeight": { "value": "32px" }
+  }
+}

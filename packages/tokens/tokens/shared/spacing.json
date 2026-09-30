@@ -1,0 +1,18 @@
+{
+  "spacing": {
+    "xs": { "value": "4px" },
+    "sm": { "value": "8px" },
+    "md": { "value": "12px" },
+    "lg": { "value": "16px" },
+    "xl": { "value": "20px" },
+    "2xl": { "value": "28px" }
+  },
+  "radius": {
+    "sm": { "value": "8px" },
+    "md": { "value": "12px" },
+    "lg": { "value": "16px" },
+    "xl": { "value": "22px" },
+    "control": { "value": "10px" },
+    "pill": { "value": "999px" }
+  }
+}

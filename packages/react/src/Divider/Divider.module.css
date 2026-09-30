@@ -1,0 +1,8 @@
+.divider {
+  height: 1px;
+  background: var(--color-border-divider);
+}
+
+.inset {
+  margin: 0 14px;
+}

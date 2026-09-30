@@ -1,0 +1,72 @@
+.display,
+.title,
+.titleSm,
+.body,
+.bodyLg,
+.meta,
+.eyebrow,
+.numeral,
+.label,
+.badge,
+.controlLabel {
+  font-family: var(--font-family-sans);
+  margin: 0;
+}
+
+.display {
+  font-size: calc(var(--type-display-size) / 16 * 1rem);
+  font-weight: var(--type-display-weight);
+  letter-spacing: var(--type-display-tracking);
+}
+.title {
+  font-size: calc(var(--type-title-size) / 16 * 1rem);
+  font-weight: var(--type-title-weight);
+  letter-spacing: var(--type-title-tracking);
+}
+.titleSm {
+  font-size: calc(var(--type-title-sm-size) / 16 * 1rem);
+  font-weight: var(--type-title-sm-weight);
+  letter-spacing: var(--type-title-sm-tracking);
+}
+.body {
+  font-size: calc(var(--type-body-size) / 16 * 1rem);
+  font-weight: var(--type-body-weight);
+  letter-spacing: var(--type-body-tracking);
+}
+.bodyLg {
+  font-size: calc(var(--type-body-lg-size) / 16 * 1rem);
+  font-weight: var(--type-body-lg-weight);
+  letter-spacing: var(--type-body-lg-tracking);
+}
+.meta {
+  font-size: calc(var(--type-meta-size) / 16 * 1rem);
+  font-weight: var(--type-meta-weight);
+  letter-spacing: var(--type-meta-tracking);
+}
+.eyebrow {
+  font-size: calc(var(--type-eyebrow-size) / 16 * 1rem);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+}
+.numeral {
+  font-size: calc(var(--type-numeral-size) / 16 * 1rem);
+  font-weight: var(--type-numeral-weight);
+  letter-spacing: var(--type-numeral-tracking);
+  font-variant-numeric: tabular-nums;
+}
+.label {
+  font-size: calc(var(--type-label-size) / 16 * 1rem);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+}
+.badge {
+  font-size: calc(var(--type-badge-size) / 16 * 1rem);
+  font-weight: var(--type-badge-weight);
+  letter-spacing: var(--type-badge-tracking);
+}
+.controlLabel {
+  font-size: calc(var(--type-control-label-size) / 16 * 1rem);
+  font-weight: var(--type-control-label-weight);
+  letter-spacing: var(--type-control-label-tracking);
+}

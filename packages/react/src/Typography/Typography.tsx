@@ -1,0 +1,24 @@
+import type { ElementType, HTMLAttributes } from 'react';
+import type { TypographyProps as SharedTypographyProps, TypographyVariant } from '@valence/types';
+import styles from './Typography.module.css';
+
+export interface TypographyProps
+  extends SharedTypographyProps, Omit<HTMLAttributes<HTMLElement>, 'children'> {
+  as?: ElementType;
+}
+
+const DEFAULT_ELEMENT: Partial<Record<TypographyVariant, ElementType>> = {
+  display: 'h1',
+  title: 'h2',
+  titleSm: 'h3',
+};
+
+export const Typography = ({ variant, children, className, as, ...rest }: TypographyProps) => {
+  const Element = as ?? DEFAULT_ELEMENT[variant] ?? 'span';
+
+  return (
+    <Element className={`${styles[variant]} ${className ?? ''}`} {...rest}>
+      {children}
+    </Element>
+  );
+};
