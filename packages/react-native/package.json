@@ -61,7 +61,7 @@
     "@react-native-community/slider": "^5.0.1",
     "@react-native-picker/picker": "^2.11.4",
     "@react-native/babel-preset": "^0.86.3",
-    "@react-native/jest-preset": "^0.86.3",
+    "@react-native/jest-preset": "^0.87.1",
     "@testing-library/react-native": "^14.0.1",
     "@types/jest": "^30.0.0",
     "@types/react": "^19.2.0",
