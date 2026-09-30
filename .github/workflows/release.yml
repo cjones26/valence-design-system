@@ -47,8 +47,12 @@ jobs:
         if: steps.release.outputs.prs_created == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_BRANCH: ${{ fromJSON(steps.release.outputs.pr).headBranchName }}
-        run: gh workflow run ci.yml --ref "$RELEASE_BRANCH"
+          RELEASE_PULL_REQUESTS: ${{ steps.release.outputs.prs }}
+        run: |
+          release_branch=$(jq -r '.[0].headBranchName // empty' <<< "$RELEASE_PULL_REQUESTS")
+          if [ -n "$release_branch" ]; then
+            gh workflow run ci.yml --ref "$release_branch"
+          fi
 
       - name: Publish packages
         if: steps.release.outputs.release_created == 'true'
