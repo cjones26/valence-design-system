@@ -15,6 +15,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository_owner == 'valencesoftwareio' }}
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       contents: write
       packages: write
       pull-requests: write
@@ -36,8 +37,21 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm verify
 
-      - uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+      - name: Prepare release
+        id: release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         with:
-          publish-script: pnpm exec changeset publish
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run CI for release pull request
+        if: steps.release.outputs.prs_created == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_BRANCH: ${{ fromJSON(steps.release.outputs.pr).headBranchName }}
+        run: gh workflow run ci.yml --ref "$RELEASE_BRANCH"
+
+      - name: Publish packages
+        if: steps.release.outputs.release_created == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm publish:packages

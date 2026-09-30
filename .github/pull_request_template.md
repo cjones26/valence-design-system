@@ -52,14 +52,9 @@
 
 ## Release impact
 
-<!-- Select one. Patch, minor, and major releases require a Changeset. -->
+<!-- The PR title determines the release: fix = patch, feat = minor, ! = major. -->
 
-- [ ] Patch: backward-compatible fix
-- [ ] Minor: backward-compatible feature
-- [ ] Major: breaking change
-- [ ] None: no published-package change
-
-- [ ] Changeset added when required
+- [ ] The PR title reflects the intended release impact
 - [ ] Public API or migration notes are documented when required
 
 ## Risks and follow-up
