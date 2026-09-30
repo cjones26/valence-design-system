@@ -4,6 +4,14 @@
   "commit": false,
   "access": "restricted",
   "baseBranch": "main",
+  "fixed": [
+    [
+      "@valencesoftwareio/react",
+      "@valencesoftwareio/react-native",
+      "@valencesoftwareio/tokens",
+      "@valencesoftwareio/types"
+    ]
+  ],
   "updateInternalDependencies": "patch",
   "ignore": []
 }
