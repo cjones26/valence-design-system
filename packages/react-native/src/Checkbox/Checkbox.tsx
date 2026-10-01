@@ -7,7 +7,7 @@ import { Typography } from '../Typography/Typography';
 export const Checkbox = ({ checked, onChange, disabled, label }: CheckboxProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
-  const activeBackground = checked ? theme.colorControlChecked : 'transparent';
+  const activeBackground = checked ? theme.colorStatePositive : 'transparent';
 
   return (
     <Pressable
@@ -39,7 +39,7 @@ export const Checkbox = ({ checked, onChange, disabled, label }: CheckboxProps) 
           <Svg width={16} height={16} viewBox="0 0 16 16" fill="none">
             <Path
               d="M3 8l3.5 3.5L13 4.5"
-              stroke={isDisabled ? theme.colorTextMuted : theme.colorTextOnControlChecked}
+              stroke={isDisabled ? theme.colorTextMuted : theme.colorTextOnPositive}
               strokeWidth={2.2}
               strokeLinecap="round"
               strokeLinejoin="round"

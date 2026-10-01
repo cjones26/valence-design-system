@@ -71,8 +71,8 @@ export const Button = ({
       case 'primary':
       case 'pill':
         return {
-          bg: pressed ? lighten(theme.colorActionPrimary, 0.2) : theme.colorActionPrimary,
-          fg: theme.colorTextOnActionPrimary,
+          bg: pressed ? lighten(theme.colorTextPrimary, 0.2) : theme.colorTextPrimary,
+          fg: theme.colorBackgroundPrimary,
         };
       case 'secondary':
         return {

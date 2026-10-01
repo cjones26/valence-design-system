@@ -165,8 +165,8 @@
 }
 
 .cell[data-selected] {
-  background: var(--color-control-selected);
-  color: var(--color-text-on-control-selected);
+  background: var(--color-text-primary);
+  color: var(--color-background-primary);
 }
 
 .cell[data-today] {

@@ -166,8 +166,8 @@ export const DatePicker = ({
     textDisabledColor: theme.colorTextMuted,
     textInactiveColor: theme.colorTextMuted,
     todayTextColor: theme.colorTextPrimary,
-    selectedDayBackgroundColor: theme.colorControlSelected,
-    selectedDayTextColor: theme.colorTextOnControlSelected,
+    selectedDayBackgroundColor: theme.colorTextPrimary,
+    selectedDayTextColor: theme.colorBackgroundPrimary,
     arrowColor: theme.colorTextPrimary,
     disabledArrowColor: theme.colorTextMuted,
     textDayFontFamily: GEIST.regular.fontFamily,
@@ -184,7 +184,7 @@ export const DatePicker = ({
         justifyContent: 'center',
       },
       selected: {
-        backgroundColor: theme.colorControlSelected,
+        backgroundColor: theme.colorTextPrimary,
         borderRadius: 22,
       },
       today: {

@@ -10,7 +10,7 @@ export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
   const [dotScale] = useState(() => new Animated.Value(checked ? 1 : 0));
   const reduceMotion = useReduceMotion();
   const isDisabled = disabled || !onChange;
-  const activeBorder = checked ? theme.colorControlSelected : theme.colorBorderControl;
+  const activeBorder = checked ? theme.colorTextPrimary : theme.colorBorderControl;
   const borderColor = isDisabled ? theme.colorBorderPrimary : activeBorder;
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
             width: 12,
             height: 12,
             borderRadius: theme.radiusPill,
-            backgroundColor: isDisabled ? theme.colorTextMuted : theme.colorControlSelected,
+            backgroundColor: isDisabled ? theme.colorTextMuted : theme.colorTextPrimary,
             transform: [{ scale: dotScale }],
           }}
         />
