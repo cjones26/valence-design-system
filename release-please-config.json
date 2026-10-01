@@ -3,7 +3,7 @@
   "release-type": "node",
   "bootstrap-sha": "a419bfbbeeb958f66d5b11b225bd06c7dff5960f",
   "include-component-in-tag": false,
-  "pull-request-title-pattern": "chore: release ${version}",
+  "pull-request-title-pattern": "chore${scope}: release${component} ${version}",
   "pull-request-header": "Prepare the next design system release.",
   "pull-request-footer": "",
   "packages": {
