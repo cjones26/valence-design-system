@@ -41,4 +41,5 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test:coverage
       - run: pnpm build
+      - run: pnpm --filter @valencesoftwareio/react build-storybook
       - run: pnpm --filter native-storybook run verify-bundle
