@@ -117,7 +117,6 @@ const configureCalendarLocale = () => {
     monthNamesShort: months.map((date) => shortMonth.format(date)),
     dayNames: days.map((date) => longDay.format(date)),
     dayNamesShort: days.map((date) => shortDay.format(date)),
-    today: new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }).format(0, 'day'),
   };
 
   LocaleConfig.defaultLocale = locale;
