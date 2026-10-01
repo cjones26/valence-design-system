@@ -14,6 +14,7 @@ export const SegmentedControl = ({
 }: SegmentedControlProps) => {
   const theme = useTheme();
   const selectedIndex = options.findIndex((opt) => opt.value === value);
+  const isDisabled = Boolean(disabled || !onChange);
   const [anim] = useState(() => new Animated.Value(Math.max(0, selectedIndex)));
   const [groupWidth, setGroupWidth] = useState(0);
   const indicatorWidth = options.length > 0 ? (groupWidth - 6) / options.length : 0;
@@ -56,9 +57,9 @@ export const SegmentedControl = ({
             ...(I18nManager.isRTL ? { right: 3 } : { left: 3 }),
             width: indicatorWidth,
             borderRadius: theme.radiusControl,
-            backgroundColor: disabled ? theme.colorBackgroundSubtle : theme.colorBackgroundRaised,
+            backgroundColor: isDisabled ? theme.colorBackgroundSubtle : theme.colorBackgroundRaised,
             borderWidth: 1,
-            borderColor: disabled ? theme.colorBorderPrimary : theme.colorBorderControl,
+            borderColor: isDisabled ? theme.colorBorderPrimary : theme.colorBorderControl,
             shadowColor: `rgb(${theme.colorShadowTint})`,
             shadowOpacity: 0.1,
             shadowRadius: 6,
@@ -78,16 +79,16 @@ export const SegmentedControl = ({
       {options.map((opt) => {
         const selected = opt.value === value;
         const selectedColor = selected ? theme.colorTextPrimary : theme.colorTextSecondary;
-        const contentColor = disabled ? theme.colorTextMuted : selectedColor;
-        const iconTextColor = disabled ? theme.colorTextMuted : theme.colorTextPrimary;
+        const contentColor = isDisabled ? theme.colorTextMuted : selectedColor;
+        const iconTextColor = isDisabled ? theme.colorTextMuted : theme.colorTextPrimary;
 
         return (
           <Pressable
             key={opt.value}
-            disabled={disabled || !onChange}
+            disabled={isDisabled}
             onPress={() => onChange?.(opt.value)}
             accessibilityRole="radio"
-            accessibilityState={{ checked: selected, disabled: Boolean(disabled) }}
+            accessibilityState={{ checked: selected, disabled: isDisabled }}
             style={{
               minHeight: theme.controlMinimumTarget,
               flex: 1,

@@ -16,7 +16,7 @@ describe('<DatePicker />', () => {
   it('opens an accessible calendar', async () => {
     render(<ControlledDatePicker />);
 
-    await user.click(screen.getByRole('button', { name: /Open Due date calendar/ }));
+    await user.click(screen.getByRole('spinbutton', { name: /month, Due date/ }));
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
   });

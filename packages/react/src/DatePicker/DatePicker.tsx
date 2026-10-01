@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { parseDate } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
 import {
@@ -50,11 +51,20 @@ export const DatePicker = ({
   helperText,
   label,
 }: DatePickerProps) => {
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
+  const [open, setOpen] = useState(false);
   const isDisabled = Boolean(disabled || !onChange);
   const canClear = Boolean(value && onChange && !required && !disabled);
 
+  const openCalendar = () => {
+    if (!isDisabled) {
+      setOpen(true);
+    }
+  };
+
   return (
     <AriaDatePicker
+      ref={setPortalContainer}
       className={styles.wrap}
       value={value ? parseDate(value) : null}
       minValue={min ? parseDate(min) : undefined}
@@ -62,6 +72,8 @@ export const DatePicker = ({
       isDisabled={isDisabled}
       isRequired={required}
       isInvalid={error}
+      isOpen={open}
+      onOpenChange={setOpen}
       onChange={(date) => onChange?.(date ? toDatePickerValue(date) : null)}
     >
       <Label className={styles.label}>
@@ -71,7 +83,7 @@ export const DatePicker = ({
         </Typography>
       </Label>
       <div className={styles.controlRow}>
-        <Group className={styles.group}>
+        <Group className={styles.group} onClickCapture={openCalendar}>
           <DateInput className={styles.input}>
             {(segment) => <DateSegment className={styles.segment} segment={segment} />}
           </DateInput>
@@ -95,7 +107,11 @@ export const DatePicker = ({
           {helperText}
         </Text>
       )}
-      <Popover className={styles.popover} placement="bottom start">
+      <Popover
+        className={styles.popover}
+        placement="bottom start"
+        UNSTABLE_portalContainer={portalContainer ?? undefined}
+      >
         <Dialog className={styles.dialog}>
           <Calendar>
             <header className={styles.calendarHeader}>

@@ -1,16 +1,27 @@
 import { useState } from 'react';
-import DateTimePicker, {
-  DateTimePickerAndroid,
-  type DateTimePickerEvent,
-} from '@react-native-community/datetimepicker';
-import { Modal, Platform, Pressable, View } from 'react-native';
+import { Calendar, LocaleConfig } from 'react-native-calendars';
+import type { CalendarProps, DateData } from 'react-native-calendars';
+import { Modal, Pressable, View } from 'react-native';
 import type { DatePickerProps, DatePickerValue } from '@valencesoftwareio/types';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { GEIST } from '../foundations/fonts';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
 
 const DATE_VALUE_PATTERN = /^(\d{4})-(\d{2})-(\d{2})$/;
+
+type CalendarTheme = NonNullable<CalendarProps['theme']>;
+type MarkedDates = NonNullable<CalendarProps['markedDates']>;
+
+interface CalendarStyleOverrides {
+  'stylesheet.day.basic': {
+    base: object;
+    selected: object;
+    today: object;
+    text: object;
+  };
+}
 
 const isDatePickerValue = (value: string): value is DatePickerValue => {
   return DATE_VALUE_PATTERN.test(value);
@@ -49,7 +60,7 @@ const serializeValue = (date: Date): DatePickerValue => {
   return value;
 };
 
-const initialDate = (
+const initialValue = (
   value: DatePickerValue | null,
   min?: DatePickerValue,
   max?: DatePickerValue,
@@ -64,7 +75,7 @@ const initialDate = (
     date = parseValue(max);
   }
 
-  return date;
+  return serializeValue(date);
 };
 
 const formatValue = (value: DatePickerValue) => {
@@ -74,6 +85,44 @@ const formatValue = (value: DatePickerValue) => {
     day: 'numeric',
   }).format(parseValue(value));
 };
+
+const toDatePickerValue = (date: DateData): DatePickerValue => {
+  if (!isDatePickerValue(date.dateString)) {
+    throw new RangeError(`Unsupported date value: ${date.dateString}`);
+  }
+
+  return date.dateString;
+};
+
+const getMarkedDates = (value: DatePickerValue): MarkedDates => {
+  return {
+    [value]: {
+      selected: true,
+      accessibilityLabel: `${formatValue(value)}, selected`,
+    },
+  };
+};
+
+const configureCalendarLocale = () => {
+  const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+  const longMonth = new Intl.DateTimeFormat(locale, { month: 'long', timeZone: 'UTC' });
+  const shortMonth = new Intl.DateTimeFormat(locale, { month: 'short', timeZone: 'UTC' });
+  const longDay = new Intl.DateTimeFormat(locale, { weekday: 'long', timeZone: 'UTC' });
+  const shortDay = new Intl.DateTimeFormat(locale, { weekday: 'short', timeZone: 'UTC' });
+  const months = Array.from({ length: 12 }, (_, month) => new Date(Date.UTC(2020, month, 1)));
+  const days = Array.from({ length: 7 }, (_, day) => new Date(Date.UTC(2020, 0, 5 + day)));
+
+  LocaleConfig.locales[locale] = {
+    monthNames: months.map((date) => longMonth.format(date)),
+    monthNamesShort: months.map((date) => shortMonth.format(date)),
+    dayNames: days.map((date) => longDay.format(date)),
+    dayNamesShort: days.map((date) => shortDay.format(date)),
+  };
+
+  LocaleConfig.defaultLocale = locale;
+};
+
+configureCalendarLocale();
 
 export const DatePicker = ({
   value,
@@ -89,7 +138,7 @@ export const DatePicker = ({
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [focused, setFocused] = useState(false);
-  const [draftDate, setDraftDate] = useState(() => initialDate(value, min, max));
+  const [draftValue, setDraftValue] = useState(() => initialValue(value, min, max));
   const isDisabled = Boolean(disabled || !onChange);
   const canClear = Boolean(value && onChange && !required && !disabled);
   const displayedValue = value ? formatValue(value) : 'Select date';
@@ -108,37 +157,61 @@ export const DatePicker = ({
     borderColor = theme.colorBorderPrimary;
   }
 
-  const handleNativeChange = (_event: DateTimePickerEvent, date?: Date) => {
-    if (date) {
-      setDraftDate(date);
-    }
+  const calendarTheme: CalendarTheme & CalendarStyleOverrides = {
+    calendarBackground: theme.colorBackgroundRaised,
+    backgroundColor: theme.colorBackgroundRaised,
+    monthTextColor: theme.colorTextPrimary,
+    dayTextColor: theme.colorTextPrimary,
+    textSectionTitleColor: theme.colorTextSecondary,
+    textDisabledColor: theme.colorTextMuted,
+    textInactiveColor: theme.colorTextMuted,
+    todayTextColor: theme.colorTextPrimary,
+    selectedDayBackgroundColor: theme.colorTextPrimary,
+    selectedDayTextColor: theme.colorBackgroundPrimary,
+    arrowColor: theme.colorTextPrimary,
+    disabledArrowColor: theme.colorTextMuted,
+    textDayFontFamily: GEIST.regular.fontFamily,
+    textMonthFontFamily: GEIST.semibold.fontFamily,
+    textDayHeaderFontFamily: GEIST.semibold.fontFamily,
+    textDayFontSize: theme.typeBodySize,
+    textMonthFontSize: theme.typeBodyLgSize,
+    textDayHeaderFontSize: theme.typeMetaSize,
+    'stylesheet.day.basic': {
+      base: {
+        width: 44,
+        height: 44,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      selected: {
+        backgroundColor: theme.colorTextPrimary,
+        borderRadius: 22,
+      },
+      today: {
+        borderWidth: 1,
+        borderColor: theme.colorBorderControl,
+        borderRadius: 22,
+      },
+      text: {
+        marginTop: 0,
+        color: theme.colorTextPrimary,
+        fontFamily: GEIST.regular.fontFamily,
+        fontSize: theme.typeBodySize,
+      },
+    },
   };
 
   const openPicker = () => {
-    const nextDate = initialDate(value, min, max);
-
-    if (Platform.OS === 'android') {
-      DateTimePickerAndroid.open({
-        value: nextDate,
-        minimumDate: min ? parseValue(min) : undefined,
-        maximumDate: max ? parseValue(max) : undefined,
-        mode: 'date',
-        onChange: (event, date) => {
-          if (event.type === 'set' && date) {
-            onChange?.(serializeValue(date));
-          }
-        },
-      });
-
-      return;
-    }
-
-    setDraftDate(nextDate);
+    setDraftValue(initialValue(value, min, max));
     setOpen(true);
   };
 
+  const selectDate = (date: DateData) => {
+    setDraftValue(toDatePickerValue(date));
+  };
+
   const commitDate = () => {
-    onChange?.(serializeValue(draftDate));
+    onChange?.(draftValue);
     setOpen(false);
   };
 
@@ -207,13 +280,8 @@ export const DatePicker = ({
           {helperText}
         </Typography>
       )}
-      {Platform.OS === 'ios' && (
-        <Modal
-          transparent
-          animationType="fade"
-          visible={open}
-          onRequestClose={() => setOpen(false)}
-        >
+      {open && (
+        <Modal transparent animationType="fade" onRequestClose={() => setOpen(false)}>
           <Pressable
             accessible={false}
             onPress={() => setOpen(false)}
@@ -229,22 +297,32 @@ export const DatePicker = ({
               accessibilityViewIsModal
               onPress={(event) => event.stopPropagation()}
               style={{
+                width: '100%',
+                maxWidth: 440,
+                alignSelf: 'center',
                 padding: theme.spacingLg,
                 gap: theme.spacingMd,
                 backgroundColor: theme.colorBackgroundRaised,
                 borderWidth: 1,
                 borderColor: theme.colorBorderPrimary,
                 borderRadius: theme.radiusControl,
+                elevation: 12,
+                shadowColor: '#000000',
+                shadowOffset: { width: 0, height: 12 },
+                shadowOpacity: 0.18,
+                shadowRadius: 20,
               }}
             >
               <Typography variant="titleSm">{label}</Typography>
-              <DateTimePicker
-                value={draftDate}
-                minimumDate={min ? parseValue(min) : undefined}
-                maximumDate={max ? parseValue(max) : undefined}
-                mode="date"
-                display="inline"
-                onChange={handleNativeChange}
+              <Calendar
+                current={draftValue}
+                minDate={min}
+                maxDate={max}
+                markedDates={getMarkedDates(draftValue)}
+                theme={calendarTheme}
+                enableSwipeMonths
+                onDayPress={selectDate}
+                style={{ backgroundColor: theme.colorBackgroundRaised }}
               />
               <View
                 style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: theme.spacingSm }}

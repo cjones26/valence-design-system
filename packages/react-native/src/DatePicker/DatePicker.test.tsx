@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { render, screen, userEvent } from '@testing-library/react-native';
-import { Platform } from 'react-native';
 import type { DatePickerValue } from '@valencesoftwareio/types';
 import { DatePicker } from './DatePicker';
-
-jest.mock('@react-native-community/datetimepicker');
 
 const ControlledDatePicker = ({ disabled }: { disabled?: boolean }) => {
   const [value, setValue] = useState<DatePickerValue | null>('2026-09-30');
@@ -16,26 +12,12 @@ const ControlledDatePicker = ({ disabled }: { disabled?: boolean }) => {
 describe('<DatePicker />', () => {
   const user = userEvent.setup();
 
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
-  it('opens the system date picker', async () => {
+  it('opens the calendar', async () => {
     await render(<ControlledDatePicker />);
 
     await user.press(screen.getByRole('button', { name: 'Due date' }));
 
-    expect(screen.getByRole('button', { name: 'Native date picker' })).toBeOnTheScreen();
-  });
-
-  it('opens the Android system dialog', async () => {
-    jest.replaceProperty(Platform, 'OS', 'android');
-
-    await render(<ControlledDatePicker />);
-
-    await user.press(screen.getByRole('button', { name: 'Due date' }));
-
-    expect(DateTimePickerAndroid.open).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole('button', { name: /Sep 30, 2026, selected/ })).toBeOnTheScreen();
   });
 
   it('commits the selected date', async () => {
@@ -43,12 +25,12 @@ describe('<DatePicker />', () => {
 
     await user.press(screen.getByRole('button', { name: 'Due date' }));
 
-    await user.press(screen.getByRole('button', { name: 'Native date picker' }));
+    await user.press(screen.getByRole('button', { name: /29 September 2026/ }));
 
     await user.press(screen.getByRole('button', { name: 'Done' }));
 
     expect(screen.getByRole('button', { name: 'Due date' })).toHaveAccessibilityValue({
-      text: 'Oct 15, 2026',
+      text: 'Sep 29, 2026',
     });
   });
 
@@ -65,7 +47,7 @@ describe('<DatePicker />', () => {
 
     await user.press(screen.getByRole('button', { name: 'Due date' }));
 
-    expect(screen.queryByRole('button', { name: 'Native date picker' })).not.toBeOnTheScreen();
+    expect(screen.queryByRole('button', { name: 'Done' })).not.toBeOnTheScreen();
   });
 
   it('exposes error guidance to assistive technology', async () => {

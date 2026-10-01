@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 import type { NumberFieldProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
@@ -14,6 +15,7 @@ export const NumberField = ({
   label,
 }: NumberFieldProps) => {
   const theme = useTheme();
+  const [focused, setFocused] = useState(false);
   const safeMin = min != null && Number.isFinite(min) ? min : -Infinity;
   const safeMax = max != null && Number.isFinite(max) ? max : Infinity;
   const rangeInvalid =
@@ -28,7 +30,15 @@ export const NumberField = ({
   const atMax = safeValue >= safeMax;
   const effectiveStep = Math.abs(step);
   const stepInvalid = !Number.isFinite(effectiveStep) || effectiveStep === 0;
-  const borderColor = error ? theme.colorActionDangerText : theme.colorBorderControl;
+  let borderColor = focused ? theme.colorBorderFocus : theme.colorBorderControl;
+
+  if (error) {
+    borderColor = theme.colorActionDangerText;
+  }
+
+  if (disabled) {
+    borderColor = theme.colorBorderPrimary;
+  }
 
   return (
     <View style={{ gap: 6 }}>
@@ -45,13 +55,15 @@ export const NumberField = ({
           minWidth: 148,
           minHeight: theme.controlMinimumTarget,
           borderWidth: 1.5,
-          borderColor: disabled ? theme.colorBorderPrimary : borderColor,
+          borderColor,
         }}
       >
         <Pressable
           disabled={disabled || rangeInvalid || atMin || stepInvalid || !onChange}
           accessibilityLabel={`Decrease ${label}`}
           accessibilityRole="button"
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           onPress={() => onChange?.(Math.max(safeMin, safeValue - effectiveStep))}
           style={{
             width: theme.controlMinimumTarget,
@@ -81,6 +93,8 @@ export const NumberField = ({
           disabled={disabled || rangeInvalid || atMax || stepInvalid || !onChange}
           accessibilityLabel={`Increase ${label}`}
           accessibilityRole="button"
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           onPress={() => onChange?.(Math.min(safeMax, safeValue + effectiveStep))}
           style={{
             width: theme.controlMinimumTarget,

@@ -36,7 +36,6 @@
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": ">=5",
-    "@react-native-community/datetimepicker": ">=9",
     "@react-native-community/slider": ">=5",
     "@react-native-picker/picker": "^2.11.4",
     "expo-font": ">=12",
@@ -55,11 +54,11 @@
   "dependencies": {
     "@react-native/normalize-colors": ">=0.74.0",
     "@valencesoftwareio/tokens": "workspace:*",
-    "@valencesoftwareio/types": "workspace:*"
+    "@valencesoftwareio/types": "workspace:*",
+    "react-native-calendars": "^1.1314.0"
   },
   "devDependencies": {
     "@gorhom/bottom-sheet": "^5.2.14",
-    "@react-native-community/datetimepicker": "9.1.0",
     "@react-native-community/slider": "^5.0.1",
     "@react-native-picker/picker": "^2.11.4",
     "@react-native/babel-preset": "^0.86.3",
