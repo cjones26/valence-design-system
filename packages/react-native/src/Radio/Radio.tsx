@@ -1,13 +1,29 @@
-import { Pressable, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Animated, Pressable, View } from 'react-native';
 import type { RadioProps } from '@valencesoftwareio/types';
 import { useTheme } from '../ThemeProvider/ThemeProvider';
 import { Typography } from '../Typography/Typography';
+import { useReduceMotion } from '../hooks/useReduceMotion';
 
 export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
   const theme = useTheme();
+  const [dotScale] = useState(() => new Animated.Value(checked ? 1 : 0));
+  const reduceMotion = useReduceMotion();
   const isDisabled = disabled || !onChange;
   const activeBorder = checked ? theme.colorControlSelected : theme.colorBorderControl;
   const borderColor = isDisabled ? theme.colorBorderPrimary : activeBorder;
+
+  useEffect(() => {
+    const animation = Animated.timing(dotScale, {
+      toValue: checked ? 1 : 0,
+      duration: reduceMotion ? 0 : 120,
+      useNativeDriver: true,
+    });
+
+    animation.start();
+
+    return () => animation.stop();
+  }, [checked, dotScale, reduceMotion]);
 
   return (
     <Pressable
@@ -34,16 +50,15 @@ export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
           justifyContent: 'center',
         }}
       >
-        {checked && (
-          <View
-            style={{
-              width: 12,
-              height: 12,
-              borderRadius: theme.radiusPill,
-              backgroundColor: isDisabled ? theme.colorTextMuted : theme.colorControlSelected,
-            }}
-          />
-        )}
+        <Animated.View
+          style={{
+            width: 12,
+            height: 12,
+            borderRadius: theme.radiusPill,
+            backgroundColor: isDisabled ? theme.colorTextMuted : theme.colorControlSelected,
+            transform: [{ scale: dotScale }],
+          }}
+        />
       </View>
       <Typography
         variant="body"
