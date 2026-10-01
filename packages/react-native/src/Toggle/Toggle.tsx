@@ -26,8 +26,8 @@ export const Toggle = ({ checked, onChange, disabled, label }: ToggleProps) => {
   const trackColor = anim.interpolate({
     inputRange: [0, 1],
     outputRange: isDisabled
-      ? [theme.colorBackgroundSubtle, alpha(theme.colorStatePositive, 0.16)]
-      : [theme.colorBorderPrimary, theme.colorStatePositive],
+      ? [theme.colorBackgroundSubtle, alpha(theme.colorControlChecked, 0.16)]
+      : [theme.colorBorderPrimary, theme.colorControlChecked],
   });
   const thumbTranslate = anim.interpolate({
     inputRange: [0, 1],

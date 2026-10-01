@@ -6,7 +6,7 @@ import { Typography } from '../Typography/Typography';
 export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
   const theme = useTheme();
   const isDisabled = disabled || !onChange;
-  const activeBorder = checked ? theme.colorTextPrimary : theme.colorBorderControl;
+  const activeBorder = checked ? theme.colorControlSelected : theme.colorBorderControl;
   const borderColor = isDisabled ? theme.colorBorderPrimary : activeBorder;
 
   return (
@@ -40,7 +40,7 @@ export const Radio = ({ checked, onChange, disabled, label }: RadioProps) => {
               width: 12,
               height: 12,
               borderRadius: theme.radiusPill,
-              backgroundColor: isDisabled ? theme.colorTextMuted : theme.colorTextPrimary,
+              backgroundColor: isDisabled ? theme.colorTextMuted : theme.colorControlSelected,
             }}
           />
         )}

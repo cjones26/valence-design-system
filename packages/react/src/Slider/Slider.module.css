@@ -17,8 +17,8 @@
   border-radius: var(--radius-pill);
   background: linear-gradient(
     to right,
-    var(--color-text-primary) 0%,
-    var(--color-text-primary) var(--valence-slider-pct),
+    var(--color-indicator-active) 0%,
+    var(--color-indicator-active) var(--valence-slider-pct),
     var(--color-border-control) var(--valence-slider-pct),
     var(--color-border-control) 100%
   );
@@ -31,7 +31,7 @@
 .slider::-moz-range-progress {
   height: var(--spacing-xs);
   border-radius: var(--radius-pill);
-  background: var(--color-text-primary);
+  background: var(--color-indicator-active);
 }
 
 .slider:disabled::-webkit-slider-runnable-track {
@@ -48,7 +48,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--color-text-primary);
+  background: var(--color-indicator-active);
   border: 2px solid var(--color-background-raised);
   box-shadow: 0 1px 4px rgba(var(--color-shadow-tint), 0.18);
   margin-top: -6px;
@@ -57,7 +57,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--color-text-primary);
+  background: var(--color-indicator-active);
   border: 2px solid var(--color-background-raised);
   box-shadow: 0 1px 4px rgba(var(--color-shadow-tint), 0.18);
 }

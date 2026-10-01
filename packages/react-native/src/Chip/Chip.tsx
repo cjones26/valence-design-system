@@ -9,7 +9,7 @@ export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps)
   const theme = useTheme();
   const reduceMotion = useReduceMotion();
   const isDisabled = disabled || !onPress;
-  const enabledForeground = selected ? theme.colorBackgroundPrimary : theme.colorTextPrimary;
+  const enabledForeground = selected ? theme.colorTextOnControlSelected : theme.colorTextPrimary;
   const fg = isDisabled ? theme.colorTextMuted : enabledForeground;
   const enabledBorder = selected ? 'transparent' : theme.colorBorderControl;
   const borderColor = isDisabled ? theme.colorBorderPrimary : enabledBorder;
@@ -20,7 +20,7 @@ export const Chip = ({ selected, disabled, icon, onPress, children }: ChipProps)
     }
 
     if (selected) {
-      return pressed ? lighten(theme.colorTextPrimary, 0.2) : theme.colorTextPrimary;
+      return pressed ? lighten(theme.colorControlSelected, 0.2) : theme.colorControlSelected;
     }
 
     return pressed ? theme.colorBorderPrimary : theme.colorBackgroundRaised;

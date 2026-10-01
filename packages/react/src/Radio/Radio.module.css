@@ -35,7 +35,7 @@
 }
 
 .input:checked + .dot {
-  border-color: var(--color-text-primary);
+  border-color: var(--color-control-selected);
 }
 
 .input:disabled + .dot {
@@ -56,7 +56,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--color-text-primary);
+  background: var(--color-control-selected);
   transform: scale(0);
   transition: transform 0.12s;
 }

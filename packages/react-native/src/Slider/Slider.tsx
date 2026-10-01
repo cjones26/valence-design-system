@@ -31,9 +31,9 @@ export const Slider = ({
       accessibilityRole="adjustable"
       accessibilityValue={{ min: safeMin, max: safeMax, now: safeValue }}
       accessibilityState={{ disabled: isDisabled }}
-      minimumTrackTintColor={isDisabled ? theme.colorBorderPrimary : theme.colorTextPrimary}
+      minimumTrackTintColor={isDisabled ? theme.colorBorderPrimary : theme.colorIndicatorActive}
       maximumTrackTintColor={isDisabled ? theme.colorBorderPrimary : theme.colorBorderControl}
-      thumbTintColor={isDisabled ? theme.colorTextMuted : theme.colorTextPrimary}
+      thumbTintColor={isDisabled ? theme.colorTextMuted : theme.colorIndicatorActive}
       thumbSize={theme.controlSliderHandle}
       tapToSeek
       style={{ height: theme.controlMinimumTarget }}

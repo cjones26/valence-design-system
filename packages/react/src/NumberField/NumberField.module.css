@@ -24,7 +24,7 @@
 }
 
 .control:focus-within {
-  border-color: var(--color-text-primary);
+  border-color: var(--color-border-focus);
   box-shadow: 0 0 0 3px var(--color-border-focus);
 }
 

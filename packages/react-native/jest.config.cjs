@@ -9,5 +9,7 @@ module.exports = {
   moduleNameMapper: {
     '^react-native($|/.*)': `${path.dirname(require.resolve('react-native/package.json'))}/$1`,
   },
-  transformIgnorePatterns: ['node_modules/(?!\\.pnpm/|(?:(?:jest-)?react-native|@react-native)/)'],
+  transformIgnorePatterns: [
+    'node_modules/(?!\\.pnpm/|(?:(?:jest-)?react-native|@react-native|react-native-calendars|react-native-swipe-gestures)/)',
+  ],
 };

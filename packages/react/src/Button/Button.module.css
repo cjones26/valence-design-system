@@ -37,11 +37,11 @@
 .primary {
   padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: var(--radius-control);
-  background: var(--color-text-primary);
-  color: var(--color-background-primary);
+  background: var(--color-action-primary);
+  color: var(--color-text-on-action-primary);
 }
 .primary:active:not(:disabled) {
-  background: color-mix(in srgb, var(--color-text-primary) 80%, white);
+  background: color-mix(in srgb, var(--color-action-primary) 80%, white);
 }
 .primary:disabled:not([data-loading='true']) {
   background: color-mix(in srgb, var(--color-text-primary) 12%, transparent);
@@ -114,11 +114,11 @@
   min-height: 32px;
   padding: var(--spacing-xs) 14px;
   border-radius: var(--radius-pill);
-  background: var(--color-text-primary);
-  color: var(--color-background-primary);
+  background: var(--color-action-primary);
+  color: var(--color-text-on-action-primary);
 }
 .pill:active:not(:disabled) {
-  background: color-mix(in srgb, var(--color-text-primary) 80%, white);
+  background: color-mix(in srgb, var(--color-action-primary) 80%, white);
 }
 .pill:disabled:not([data-loading='true']) {
   background: color-mix(in srgb, var(--color-text-primary) 12%, transparent);

@@ -104,6 +104,12 @@ describe('<SegmentedControl />', () => {
     expect(screen.getByRole('radio', { name: 'Week' })).toBeDisabled();
   });
 
+  it('marks options as disabled without a change handler', async () => {
+    await render(<SegmentedControl label="View" options={OPTIONS} value="day" />);
+
+    expect(screen.getByRole('radio', { name: 'Day' })).toBeDisabled();
+  });
+
   it('renders nothing when options is empty', async () => {
     await render(<SegmentedControl label="View" options={[]} value="day" />);
 

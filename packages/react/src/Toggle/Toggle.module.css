@@ -38,7 +38,7 @@
 }
 
 .input:checked + .track {
-  background: var(--color-state-positive);
+  background: var(--color-control-checked);
 }
 
 .input:disabled + .track {
@@ -46,7 +46,7 @@
   border-color: var(--color-border-primary);
 }
 .input:disabled:checked + .track {
-  background: color-mix(in srgb, var(--color-state-positive) 16%, transparent);
+  background: color-mix(in srgb, var(--color-control-checked) 16%, transparent);
 }
 .input:disabled ~ .text {
   color: var(--color-text-muted);

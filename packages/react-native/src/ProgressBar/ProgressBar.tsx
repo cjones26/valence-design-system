@@ -25,7 +25,7 @@ export const ProgressBar = ({ value, max = 100, label }: ProgressBarProps) => {
           width: `${(current / safeMax) * 100}%`,
           height: '100%',
           borderRadius: 999,
-          backgroundColor: theme.colorTextPrimary,
+          backgroundColor: theme.colorIndicatorActive,
         }}
       />
     </View>

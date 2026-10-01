@@ -67,7 +67,7 @@
   color: var(--color-text-secondary);
 }
 
-.segment[data-focused] {
+.segment[data-focus-visible] {
   background: var(--color-background-subtle);
   box-shadow: 0 0 0 1px var(--color-border-focus);
 }
@@ -116,7 +116,7 @@
 
 .calendarHeader {
   display: grid;
-  grid-template-columns: 40px 1fr 40px;
+  grid-template-columns: 44px 1fr 44px;
   align-items: center;
   margin-bottom: 6px;
 }
@@ -140,20 +140,24 @@
 }
 
 .weekday {
-  width: 40px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   color: var(--color-text-secondary);
   font-size: calc(var(--type-meta-size) / 16 * 1rem);
   font-weight: var(--type-meta-weight);
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   box-sizing: border-box;
   border-radius: 50%;
   cursor: default;
+  line-height: 44px;
   text-align: center;
+  vertical-align: middle;
 }
 
 .cell[data-hovered] {
@@ -161,8 +165,12 @@
 }
 
 .cell[data-selected] {
-  background: var(--color-text-primary);
-  color: var(--color-background-primary);
+  background: var(--color-control-selected);
+  color: var(--color-text-on-control-selected);
+}
+
+.cell[data-today] {
+  border: 1px solid var(--color-border-control);
 }
 
 .cell[data-disabled],

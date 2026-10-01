@@ -35,8 +35,8 @@
 }
 
 .selected {
-  background: var(--color-text-primary);
-  color: var(--color-background-primary);
+  background: var(--color-control-selected);
+  color: var(--color-text-on-control-selected);
   border-color: transparent;
   box-shadow: 0 2px 8px rgba(var(--color-shadow-tint), 0.18);
 }

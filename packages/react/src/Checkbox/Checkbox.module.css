@@ -33,12 +33,12 @@
   justify-content: center;
   flex-shrink: 0;
   transition: transform 0.1s;
-  color: var(--color-text-on-positive);
+  color: var(--color-text-on-control-checked);
 }
 
 .input:checked + .box {
   border: none;
-  background: var(--color-state-positive);
+  background: var(--color-control-checked);
 }
 
 .input:disabled + .box {
