@@ -1,0 +1,52 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label {
+  display: block;
+  color: var(--color-text-primary);
+}
+
+.field {
+  width: 100%;
+  min-height: 96px;
+  box-sizing: border-box;
+  resize: vertical;
+  padding: var(--spacing-md);
+  border: 1.5px solid var(--color-border-control);
+  border-radius: var(--radius-control);
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
+  font: inherit;
+  line-height: 1.5;
+}
+
+.field:focus-visible {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 1px var(--color-border-focus);
+}
+
+.field:disabled {
+  border-color: var(--color-border-primary);
+  background: var(--color-background-subtle);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.error,
+.error:focus-visible {
+  border-color: var(--color-action-danger-text);
+  box-shadow: 0 0 0 1px var(--color-action-danger-text);
+}
+
+.helper {
+  color: var(--color-text-readable);
+}
+
+.helperError {
+  color: var(--color-action-danger-text);
+}

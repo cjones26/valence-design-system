@@ -1,0 +1,21 @@
+.link,
+.disabled {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  font-size: inherit;
+  font-weight: var(--type-body-lg-weight);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  text-decoration: underline;
+}
