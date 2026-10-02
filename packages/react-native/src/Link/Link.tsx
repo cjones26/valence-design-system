@@ -7,7 +7,12 @@ export const Link = ({ href, disabled, onPress, children }: LinkProps) => {
   const theme = useTheme();
 
   const activate = () => {
-    onPress?.();
+    if (onPress) {
+      onPress();
+
+      return;
+    }
+
     void Linking.openURL(href);
   };
 

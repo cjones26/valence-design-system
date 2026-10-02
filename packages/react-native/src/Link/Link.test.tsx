@@ -29,8 +29,10 @@ describe('<Link />', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
-  it('does not replace navigation with the activation callback', async () => {
+  it('lets the activation callback replace navigation', async () => {
     const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
+
+    openURL.mockClear();
 
     await render(
       <Link href="https://example.com" onPress={() => undefined}>
@@ -40,6 +42,6 @@ describe('<Link />', () => {
 
     await user.press(screen.getByRole('link', { name: 'View details' }));
 
-    expect(openURL).toHaveBeenCalledWith('https://example.com');
+    expect(openURL).not.toHaveBeenCalled();
   });
 });

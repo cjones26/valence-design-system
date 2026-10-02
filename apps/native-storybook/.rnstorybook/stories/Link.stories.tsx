@@ -5,7 +5,11 @@ type Story = StoryObj<typeof Link>;
 
 const meta: Meta<typeof Link> = { title: 'Components/Link', component: Link };
 
-export const Default: Story = { args: { href: 'https://example.com', children: 'View details' } };
+const preventNavigation = () => undefined;
+
+export const Default: Story = {
+  args: { href: 'https://example.com', children: 'View details', onPress: preventNavigation },
+};
 
 export const Disabled: Story = {
   args: { href: 'https://example.com', children: 'View details', disabled: true },
