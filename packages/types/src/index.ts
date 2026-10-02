@@ -39,6 +39,18 @@ export interface StatusBadgeProps {
   children: ReactNode;
 }
 
+export interface LinkProps extends Pressable, Disableable {
+  href: string;
+  external?: boolean;
+  children: ReactNode;
+}
+
+export interface IconButtonProps extends Pressable, Disableable {
+  icon: IconSlot;
+  label: string;
+  tone?: 'default' | 'danger';
+}
+
 export interface TextFieldProps extends Disableable, Labeled {
   variant?: 'default' | 'search';
   value: string;
@@ -50,6 +62,17 @@ export interface TextFieldProps extends Disableable, Labeled {
     'off' | 'name' | 'email' | 'username' | 'current-password' | 'new-password' | 'tel' | 'url';
   secureTextEntry?: boolean;
   maxLength?: number;
+  error?: boolean;
+  helperText?: string;
+}
+
+export interface TextAreaProps extends Disableable, Labeled {
+  value: string;
+  placeholder?: string;
+  onChangeText?: (text: string) => void;
+  maxLength?: number;
+  rows?: number;
+  required?: boolean;
   error?: boolean;
   helperText?: string;
 }
@@ -162,6 +185,77 @@ export interface BottomSheetProps {
   title: string;
   onClose: () => void;
   children?: ReactNode;
+}
+
+export interface DialogProps {
+  open: boolean;
+  title: string;
+  onClose: () => void;
+  showCloseButton?: boolean;
+  dismissOnOutsidePress?: boolean;
+  children?: ReactNode;
+  actions?: ReactNode;
+}
+
+export interface AlertDialogProps {
+  open: boolean;
+  title: string;
+  description: string;
+  confirmLabel: string;
+  cancelLabel: string;
+  onConfirm: () => void;
+  onClose: () => void;
+  danger?: boolean;
+  loading?: boolean;
+}
+
+export interface AlertProps {
+  tone?: 'info' | 'success' | 'warning' | 'danger';
+  title?: string;
+  children: ReactNode;
+}
+
+export interface ToastProps {
+  open: boolean;
+  message: string;
+  tone?: 'info' | 'success' | 'warning' | 'danger';
+  duration?: number;
+  actionLabel?: string;
+  onAction?: () => void;
+  onDismiss?: () => void;
+}
+
+export interface TabOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+  content: ReactNode;
+}
+
+export interface TabsProps extends Labeled {
+  options: TabOption[];
+  value: string;
+  onChange?: (value: string) => void;
+}
+
+export interface MenuItem {
+  value: string;
+  label: string;
+  icon?: IconSlot;
+  disabled?: boolean;
+  danger?: boolean;
+}
+
+export interface MenuProps extends Disableable, Labeled {
+  items: MenuItem[];
+  onAction?: (value: string) => void;
+}
+
+export interface PopoverProps extends Labeled {
+  open: boolean;
+  trigger: ReactNode;
+  onOpenChange?: (open: boolean) => void;
+  children: ReactNode;
 }
 
 export interface ListRowProps extends Pressable {

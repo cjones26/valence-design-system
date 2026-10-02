@@ -1,0 +1,29 @@
+import { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-native';
+import { Button, Dialog, Typography } from '@valencesoftwareio/react-native';
+
+type Story = StoryObj<typeof Dialog>;
+
+const meta: Meta<typeof Dialog> = { title: 'Components/Dialog', component: Dialog };
+
+const DialogExample = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onPress={() => setOpen(true)}>Open dialog</Button>
+      <Dialog
+        open={open}
+        title="Account details"
+        onClose={() => setOpen(false)}
+        actions={<Button onPress={() => setOpen(false)}>Done</Button>}
+      >
+        <Typography variant="body">Review your account information.</Typography>
+      </Dialog>
+    </>
+  );
+};
+
+export const Default: Story = { render: () => <DialogExample /> };
+
+export default meta;

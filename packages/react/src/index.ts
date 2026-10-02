@@ -16,7 +16,13 @@ export { DurationPill } from './Pills/DurationPill';
 
 export { StatusBadge } from './Pills/StatusBadge';
 
+export { Link } from './Link/Link';
+
+export { IconButton } from './IconButton/IconButton';
+
 export { TextField } from './TextField/TextField';
+
+export { TextArea } from './TextArea/TextArea';
 
 export { SearchField } from './SearchField/SearchField';
 
@@ -46,6 +52,20 @@ export { Accordion } from './Accordion/Accordion';
 
 export { BottomSheet } from './BottomSheet/BottomSheet';
 
+export { Dialog } from './Dialog/Dialog';
+
+export { AlertDialog } from './AlertDialog/AlertDialog';
+
+export { Alert } from './Alert/Alert';
+
+export { Toast } from './Toast/Toast';
+
+export { Tabs } from './Tabs/Tabs';
+
+export { Menu } from './Menu/Menu';
+
+export { Popover } from './Popover/Popover';
+
 export { ListRow } from './ListRow/ListRow';
 
 export { Slider } from './Slider/Slider';
@@ -70,7 +90,10 @@ export type {
   DeltaPillProps,
   DurationPillProps,
   StatusBadgeProps,
+  LinkProps,
+  IconButtonProps,
   TextFieldProps,
+  TextAreaProps,
   SearchFieldProps,
   PickerProps,
   PickerOption,
@@ -89,6 +112,15 @@ export type {
   DividerProps,
   AccordionProps,
   BottomSheetProps,
+  DialogProps,
+  AlertDialogProps,
+  AlertProps,
+  ToastProps,
+  TabsProps,
+  TabOption,
+  MenuProps,
+  MenuItem,
+  PopoverProps,
   ListRowProps,
   SliderProps,
   ProgressBarProps,
