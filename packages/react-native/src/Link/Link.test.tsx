@@ -14,4 +14,32 @@ describe('<Link />', () => {
 
     expect(openURL).toHaveBeenCalledWith('https://example.com');
   });
+
+  it('reports activation', async () => {
+    const onPress = jest.fn();
+
+    await render(
+      <Link href="https://example.com" onPress={onPress}>
+        View details
+      </Link>,
+    );
+
+    await user.press(screen.getByRole('link', { name: 'View details' }));
+
+    expect(onPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not replace navigation with the activation callback', async () => {
+    const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
+
+    await render(
+      <Link href="https://example.com" onPress={() => undefined}>
+        View details
+      </Link>,
+    );
+
+    await user.press(screen.getByRole('link', { name: 'View details' }));
+
+    expect(openURL).toHaveBeenCalledWith('https://example.com');
+  });
 });
