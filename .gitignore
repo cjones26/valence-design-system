@@ -5,7 +5,6 @@ dist/
 .DS_Store
 storybook-static/
 coverage/
-playwright-report/
 test-results/
 packages/tokens/src/generated/
 .env
