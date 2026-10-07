@@ -6,7 +6,6 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
 concurrency:
   group: visual-web-${{ github.event.pull_request.number || github.ref }}
@@ -30,40 +29,10 @@ jobs:
       - run: pnpm test:visual:web
 
       - name: Upload visual differences
-        id: differences
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: visual-web-differences
-          path: |
-            playwright-report/
-            test-results/visual-web/
+          path: test-results/visual-web/**/*.png
           if-no-files-found: ignore
           retention-days: 14
-
-      - name: Update pull request
-        if: always() && github.event_name == 'pull_request'
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ARTIFACT_URL: ${{ steps.differences.outputs.artifact-url }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          RUN_ID: ${{ github.run_id }}
-          STATUS: ${{ job.status }}
-        run: |
-          marker='<!-- visual-web-status -->'
-          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$RUN_ID"
-          if [ "$STATUS" = 'success' ]; then
-            result='✅ Web visual regression passed.'
-            details="[View the workflow run]($run_url)."
-          else
-            result='❌ Web visual regression found differences.'
-            details="[View the workflow run]($run_url) and download the [visual-web-differences report]($ARTIFACT_URL)."
-          fi
-          body=$(printf '%s\n\n%s\n\n%s' "$marker" "$result" "$details")
-          comment_id=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" --jq ".[] | select(.body | contains(\"$marker\")) | .id" | head -n 1)
-          if [ -n "$comment_id" ]; then
-            gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$comment_id" -f body="$body"
-          else
-            gh api --method POST "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" -f body="$body"
-          fi
