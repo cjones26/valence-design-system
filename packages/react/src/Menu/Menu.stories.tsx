@@ -14,6 +14,10 @@ const items = [
 
 export const Default: Story = {
   args: { label: 'Actions', items, onAction: () => undefined },
+};
+
+export const Playground: Story = {
+  args: { label: 'Actions', items, onAction: () => undefined },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 

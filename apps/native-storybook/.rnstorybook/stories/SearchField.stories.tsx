@@ -21,6 +21,8 @@ const SearchExample = () => {
 
 export const Default: Story = { render: () => <SearchExample /> };
 
+export const Playground: Story = { render: () => <SearchExample /> };
+
 export const Disabled: Story = {
   args: {
     label: 'Search documentation',

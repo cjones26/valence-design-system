@@ -22,6 +22,10 @@ const SearchExample = () => {
 
 export const Default: Story = {
   render: () => <SearchExample />,
+};
+
+export const Playground: Story = {
+  render: () => <SearchExample />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 

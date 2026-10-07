@@ -30,6 +30,10 @@ const TextAreaExample = ({ error = false, disabled = false }: TextAreaExamplePro
 
 export const Default: Story = {
   render: () => <TextAreaExample />,
+};
+
+export const Playground: Story = {
+  render: () => <TextAreaExample />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
