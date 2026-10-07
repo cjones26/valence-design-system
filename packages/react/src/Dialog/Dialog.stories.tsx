@@ -8,8 +8,8 @@ type Story = StoryObj<typeof Dialog>;
 
 const meta: Meta<typeof Dialog> = { title: 'Components/Dialog', component: Dialog };
 
-const DialogExample = () => {
-  const [open, setOpen] = useState(false);
+const DialogExample = ({ initiallyOpen = false }: { initiallyOpen?: boolean }) => {
+  const [open, setOpen] = useState(initiallyOpen);
 
   return (
     <>
@@ -27,5 +27,7 @@ const DialogExample = () => {
 };
 
 export const Default: Story = { render: () => <DialogExample /> };
+
+export const Open: Story = { render: () => <DialogExample initiallyOpen /> };
 
 export default meta;

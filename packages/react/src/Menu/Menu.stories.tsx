@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within } from 'storybook/test';
 import { Icon } from '../Icon/Icon';
 import { Menu } from './Menu';
 
@@ -11,7 +12,14 @@ const items = [
   { value: 'delete', label: 'Delete', danger: true },
 ];
 
-export const Default: Story = { args: { label: 'Actions', items, onAction: () => undefined } };
+export const Default: Story = {
+  args: { label: 'Actions', items, onAction: () => undefined },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('button', { name: 'Actions' }));
+  },
+};
 
 export const Disabled: Story = {
   args: { label: 'Actions', items, disabled: true, onAction: () => undefined },

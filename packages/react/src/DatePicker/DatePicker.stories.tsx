@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within } from 'storybook/test';
 import type { DatePickerValue } from '@valencesoftwareio/types';
 import { DatePicker } from './DatePicker';
 
@@ -42,6 +43,13 @@ export const Disabled: Story = {
   args: { label: 'Due date', value: '2026-09-30', disabled: true },
 };
 
-export const Playground: Story = { render: () => <DatePickerPlayground /> };
+export const Playground: Story = {
+  render: () => <DatePickerPlayground />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('button', { name: /Open Due date calendar/ }));
+  },
+};
 
 export default meta;

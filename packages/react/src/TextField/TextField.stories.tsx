@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within } from 'storybook/test';
 import { TextField } from './TextField';
 
 type Story = StoryObj<typeof TextField>;
@@ -48,6 +49,13 @@ export const WithHelper: Story = {
   },
 };
 
-export const Playground: Story = { render: () => <TextFieldPlayground /> };
+export const Playground: Story = {
+  render: () => <TextFieldPlayground />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('textbox', { name: 'Goal name' }));
+  },
+};
 
 export default meta;

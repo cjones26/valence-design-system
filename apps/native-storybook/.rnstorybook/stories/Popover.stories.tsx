@@ -6,8 +6,8 @@ type Story = StoryObj<typeof Popover>;
 
 const meta: Meta<typeof Popover> = { title: 'Components/Popover', component: Popover };
 
-const PopoverExample = () => {
-  const [open, setOpen] = useState(false);
+const PopoverExample = ({ initiallyOpen = false }: { initiallyOpen?: boolean }) => {
+  const [open, setOpen] = useState(initiallyOpen);
 
   return (
     <Popover
@@ -22,5 +22,7 @@ const PopoverExample = () => {
 };
 
 export const Default: Story = { render: () => <PopoverExample /> };
+
+export const Open: Story = { render: () => <PopoverExample initiallyOpen /> };
 
 export default meta;

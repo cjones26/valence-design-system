@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within } from 'storybook/test';
 import { Picker } from './Picker';
 
 type Story = StoryObj<typeof Picker>;
@@ -41,6 +42,13 @@ export const Disabled: Story = {
   args: { label: 'Frequency', options, value: 'weekly', disabled: true },
 };
 
-export const Playground: Story = { render: () => <PickerPlayground /> };
+export const Playground: Story = {
+  render: () => <PickerPlayground />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('combobox', { name: 'Frequency' }));
+  },
+};
 
 export default meta;
