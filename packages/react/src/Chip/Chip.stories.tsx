@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Icon } from '../Icon/Icon';
 import { Chip } from './Chip';
 
 type Story = StoryObj<typeof Chip>;
@@ -9,10 +10,12 @@ const meta: Meta<typeof Chip> = {
   args: { onPress: () => undefined },
 };
 
-export const Default: Story = { args: { children: 'Pushups', icon: '💪' } };
+const icon = (color: string) => <Icon name="activity" color={color} />;
 
-export const Selected: Story = { args: { children: 'Pushups', icon: '💪', selected: true } };
+export const Default: Story = { args: { children: 'Pushups', icon } };
 
-export const Disabled: Story = { args: { children: 'Pushups', icon: '💪', disabled: true } };
+export const Selected: Story = { args: { children: 'Pushups', icon, selected: true } };
+
+export const Disabled: Story = { args: { children: 'Pushups', icon, disabled: true } };
 
 export default meta;
