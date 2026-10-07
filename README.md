@@ -46,6 +46,33 @@ On macOS, you can start it on iOS with:
 pnpm storybook:ios
 ```
 
+## Visual changes
+
+Every pull request runs the `Visual Web` workflow. It builds the web Storybook and compares each story with the screenshots in `tests/visual/web/baselines`. The suite covers desktop and mobile widths in the `hi-vis` light and dark themes. Open overlays and focused controls are captured through their Storybook stories, so they go through the same public interactions a user would.
+
+When a comparison fails, download the `visual-web-differences` artifact from the failed workflow run. Its HTML report shows the saved screenshot, the current result, and the pixels that changed.
+
+If the change is intentional:
+
+1. Push the finished component and story changes to the pull request.
+2. Open **Actions**, choose **Update Visual Web Baselines**, and run it with the pull request number.
+3. The workflow adds the new screenshots to that pull request and starts the comparison again.
+4. Review the screenshot commit and wait for the pull request checks to pass.
+
+Do not update the screenshots until the rendered change has been reviewed. A new Storybook story is included automatically unless it has the `visual-skip` tag.
+
+To run the same comparison locally:
+
+```bash
+pnpm test:visual:web
+```
+
+To update screenshots locally:
+
+```bash
+pnpm test:visual:web:update
+```
+
 ## Validation
 
 Run the complete local check before opening a pull request:
