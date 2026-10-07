@@ -50,7 +50,7 @@ pnpm storybook:ios
 
 Every pull request runs the `Visual Web` workflow. It builds the web Storybook and compares each story with the screenshots in `tests/visual/web/baselines`. The suite covers desktop and mobile widths in the `hi-vis` light and dark themes. Open overlays and focused controls are captured through their Storybook stories, so they go through the same public interactions a user would.
 
-When a comparison fails, download the `visual-web-differences` artifact from the failed workflow run. Its HTML report shows the saved screenshot, the current result, and the pixels that changed.
+The workflow keeps one status comment on the pull request and updates it after each run. When a comparison fails, the comment links to the `visual-web-differences` report. The report shows the saved screenshot, the current result, and the pixels that changed.
 
 If the change is intentional:
 
