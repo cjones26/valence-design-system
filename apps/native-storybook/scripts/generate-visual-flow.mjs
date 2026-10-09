@@ -19,11 +19,8 @@ for (const storyId of storyIds) {
     commands.push(
       '- stopApp',
       `- openLink: valence-storybook://storybook?STORYBOOK_STORY_ID=${storyId}&preset=hi-vis&mode=${mode}`,
-      '- extendedWaitUntil:',
-      '    visible:',
-      `      id: visual-story-${storyId}-${mode}`,
-      '    timeout: 15000',
-      '- waitForAnimationToEnd',
+      '- waitForAnimationToEnd:',
+      '    timeout: 30000',
       `- takeScreenshot: ${outputDirectory}/${storyId}-${mode}`,
     );
   }

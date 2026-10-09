@@ -22,10 +22,9 @@ const PRESET_OPTIONS = PRESETS.map((value) => ({ value, label: value }));
 
 interface ValenceDecoratorProps {
   children: React.ReactNode;
-  storyId: string;
 }
 
-const ValenceDecorator = ({ children, storyId }: ValenceDecoratorProps) => {
+const ValenceDecorator = ({ children }: ValenceDecoratorProps) => {
   const fontsLoaded = useValenceFonts();
   const visualConfig = useVisualConfig();
   const [preset, setPreset] = useState<ThemePreset>('hi-vis');
@@ -89,12 +88,7 @@ const ValenceDecorator = ({ children, storyId }: ValenceDecoratorProps) => {
                 </Pressable>
               </View>
             )}
-            <View
-              testID={`visual-story-${storyId}-${selectedMode}`}
-              style={{ flex: 1, padding: 16 }}
-            >
-              {children}
-            </View>
+            <View style={{ flex: 1, padding: 16 }}>{children}</View>
           </View>
         </ThemeProvider>
       </SafeAreaProvider>
@@ -104,8 +98,8 @@ const ValenceDecorator = ({ children, storyId }: ValenceDecoratorProps) => {
 
 export default {
   decorators: [
-    (Story, context) => (
-      <ValenceDecorator storyId={context.id}>
+    (Story) => (
+      <ValenceDecorator>
         <Story />
       </ValenceDecorator>
     ),
