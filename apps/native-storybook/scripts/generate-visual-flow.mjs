@@ -17,6 +17,7 @@ const commands = [];
 for (const storyId of storyIds) {
   for (const mode of ['light', 'dark']) {
     commands.push(
+      '- stopApp',
       `- openLink: valence-storybook://storybook?STORYBOOK_STORY_ID=${storyId}&preset=hi-vis&mode=${mode}`,
       '- extendedWaitUntil:',
       '    visible:',
