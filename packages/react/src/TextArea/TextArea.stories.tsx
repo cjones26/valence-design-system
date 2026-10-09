@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within } from 'storybook/test';
 import { TextArea } from './TextArea';
 
 type Story = StoryObj<typeof TextArea>;
@@ -27,7 +28,18 @@ const TextAreaExample = ({ error = false, disabled = false }: TextAreaExamplePro
   );
 };
 
-export const Default: Story = { render: () => <TextAreaExample /> };
+export const Default: Story = {
+  render: () => <TextAreaExample />,
+};
+
+export const Playground: Story = {
+  render: () => <TextAreaExample />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('textbox', { name: 'Notes' }));
+  },
+};
 
 export const Error: Story = { render: () => <TextAreaExample error /> };
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within } from 'storybook/test';
 import { SearchField } from './SearchField';
 
 type Story = StoryObj<typeof SearchField>;
@@ -19,7 +20,18 @@ const SearchExample = () => {
   );
 };
 
-export const Default: Story = { render: () => <SearchExample /> };
+export const Default: Story = {
+  render: () => <SearchExample />,
+};
+
+export const Playground: Story = {
+  render: () => <SearchExample />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('searchbox', { name: 'Search documentation' }));
+  },
+};
 
 export const Disabled: Story = {
   args: {

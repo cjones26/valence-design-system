@@ -34,4 +34,6 @@ export const Error: Story = { render: () => <TextAreaExample error /> };
 
 export const Disabled: Story = { render: () => <TextAreaExample disabled /> };
 
+export const Playground: Story = { render: () => <TextAreaExample /> };
+
 export default meta;

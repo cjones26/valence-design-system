@@ -9,8 +9,13 @@ const meta: Meta<typeof AlertDialog> = {
   component: AlertDialog,
 };
 
-const AlertDialogExample = ({ danger = false }: { danger?: boolean }) => {
-  const [open, setOpen] = useState(false);
+interface AlertDialogExampleProps {
+  danger?: boolean;
+  initiallyOpen?: boolean;
+}
+
+const AlertDialogExample = ({ danger = false, initiallyOpen = false }: AlertDialogExampleProps) => {
+  const [open, setOpen] = useState(initiallyOpen);
 
   return (
     <>
@@ -34,5 +39,11 @@ const AlertDialogExample = ({ danger = false }: { danger?: boolean }) => {
 export const Default: Story = { render: () => <AlertDialogExample /> };
 
 export const Danger: Story = { render: () => <AlertDialogExample danger /> };
+
+export const Open: Story = { render: () => <AlertDialogExample initiallyOpen /> };
+
+export const OpenDanger: Story = {
+  render: () => <AlertDialogExample danger initiallyOpen />,
+};
 
 export default meta;

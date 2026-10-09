@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within } from 'storybook/test';
 import { NumberField } from './NumberField';
 
 type Story = StoryObj<typeof NumberField>;
@@ -25,6 +26,13 @@ export const Error: Story = { args: { label: 'Pushups', value: 40, error: true }
 
 export const Disabled: Story = { args: { label: 'Pushups', value: 40, disabled: true } };
 
-export const Playground: Story = { render: () => <NumberFieldPlayground /> };
+export const Playground: Story = {
+  render: () => <NumberFieldPlayground />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('spinbutton', { name: 'Pushups' }));
+  },
+};
 
 export default meta;

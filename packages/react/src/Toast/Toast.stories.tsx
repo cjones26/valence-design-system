@@ -7,8 +7,13 @@ type Story = StoryObj<typeof Toast>;
 
 const meta: Meta<typeof Toast> = { title: 'Components/Toast', component: Toast };
 
-const ToastExample = ({ danger = false }: { danger?: boolean }) => {
-  const [open, setOpen] = useState(false);
+interface ToastExampleProps {
+  danger?: boolean;
+  initiallyOpen?: boolean;
+}
+
+const ToastExample = ({ danger = false, initiallyOpen = false }: ToastExampleProps) => {
+  const [open, setOpen] = useState(initiallyOpen);
 
   return (
     <>
@@ -27,5 +32,9 @@ const ToastExample = ({ danger = false }: { danger?: boolean }) => {
 export const Default: Story = { render: () => <ToastExample /> };
 
 export const Danger: Story = { render: () => <ToastExample danger /> };
+
+export const Open: Story = { render: () => <ToastExample initiallyOpen /> };
+
+export const OpenDanger: Story = { render: () => <ToastExample danger initiallyOpen /> };
 
 export default meta;

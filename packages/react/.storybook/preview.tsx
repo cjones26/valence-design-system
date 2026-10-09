@@ -42,6 +42,7 @@ const preview: Preview = {
     preset: 'hi-vis',
     mode: 'light',
   },
+  parameters: { layout: 'fullscreen' },
   decorators: [
     (Story, context) => (
       <ThemeProvider preset={context.globals.preset} mode={context.globals.mode}>

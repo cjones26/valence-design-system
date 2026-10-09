@@ -12,6 +12,10 @@ const items = [
 
 export const Default: Story = { args: { label: 'Actions', items, onAction: () => undefined } };
 
+export const Playground: Story = {
+  args: { label: 'Actions', items, onAction: () => undefined },
+};
+
 export const Disabled: Story = {
   args: { label: 'Actions', items, disabled: true, onAction: () => undefined },
 };

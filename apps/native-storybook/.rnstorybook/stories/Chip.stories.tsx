@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Chip } from '@valencesoftwareio/react-native';
+import { Chip, Icon } from '@valencesoftwareio/react-native';
 
 type Story = StoryObj<typeof Chip>;
 
@@ -9,10 +9,12 @@ const meta: Meta<typeof Chip> = {
   args: { onPress: () => undefined },
 };
 
-export const Default: Story = { args: { children: 'Pushups', icon: '💪' } };
+const icon = (color: string) => <Icon name="activity" color={color} />;
 
-export const Selected: Story = { args: { children: 'Pushups', icon: '💪', selected: true } };
+export const Default: Story = { args: { children: 'Pushups', icon } };
 
-export const Disabled: Story = { args: { children: 'Pushups', icon: '💪', disabled: true } };
+export const Selected: Story = { args: { children: 'Pushups', icon, selected: true } };
+
+export const Disabled: Story = { args: { children: 'Pushups', icon, disabled: true } };
 
 export default meta;

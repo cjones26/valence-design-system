@@ -7,8 +7,8 @@ type Story = StoryObj<typeof BottomSheet>;
 
 const meta: Meta<typeof BottomSheet> = { title: 'Components/BottomSheet', component: BottomSheet };
 
-const BottomSheetExample = () => {
-  const [open, setOpen] = useState(false);
+const BottomSheetExample = ({ initiallyOpen = false }: { initiallyOpen?: boolean }) => {
+  const [open, setOpen] = useState(initiallyOpen);
 
   return (
     <>
@@ -21,5 +21,7 @@ const BottomSheetExample = () => {
 };
 
 export const Default: Story = { render: () => <BottomSheetExample /> };
+
+export const Open: Story = { render: () => <BottomSheetExample initiallyOpen /> };
 
 export default meta;

@@ -6,6 +6,8 @@ allowBuilds:
   esbuild: true
   style-dictionary: true
 minimumReleaseAge: 1440
+overrides:
+  shell-quote: 1.11.0
 minimumReleaseAgeExclude:
   - '@expo/cli@57.0.23 || 57.0.24'
   - '@expo/metro-file-map@57.0.3'
