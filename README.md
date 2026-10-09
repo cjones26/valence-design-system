@@ -48,7 +48,7 @@ pnpm storybook:ios
 
 ## Visual changes
 
-Every pull request runs the `Visual` workflow. It compares the web Storybook and native Storybook app with the screenshots under `tests/visual`. Web runs at desktop and mobile widths. Native runs on a fixed Android emulator and iOS Simulator. All three cover the `hi-vis` light and dark themes.
+Every pull request runs the `Visual` workflow. Component changes capture that component on web, Android, and iOS. Changes to shared tokens, themes, fonts, or visual-test setup capture the full system. Changes that cannot affect rendered components skip visual capture. Web runs at desktop and mobile widths. Native runs on a fixed Android emulator and iOS Simulator. All three cover the `hi-vis` light and dark themes.
 
 The workflow keeps one status comment on the pull request and updates it after each run. When a comparison fails, the comment links to a visual report hosted with Storybook. The report shows the saved screenshot, the current result, and the pixels that changed. GitHub also retains the PNG files as a workflow artifact for 14 days.
 
