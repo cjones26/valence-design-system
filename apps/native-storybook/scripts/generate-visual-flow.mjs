@@ -1,9 +1,9 @@
 import { execFileSync } from 'node:child_process';
 
-const [platform, outputDirectory] = process.argv.slice(2);
+const [platform] = process.argv.slice(2);
 
-if (!['android', 'ios'].includes(platform) || !outputDirectory) {
-  throw new Error('Usage: generate-visual-flow <android|ios> <output-directory>');
+if (!['android', 'ios'].includes(platform)) {
+  throw new Error('Usage: generate-visual-flow <android|ios>');
 }
 
 const storyIds = execFileSync(process.execPath, ['scripts/list-visual-stories.mjs'], {
@@ -15,13 +15,14 @@ const storyIds = execFileSync(process.execPath, ['scripts/list-visual-stories.mj
 const commands = [];
 
 for (const storyId of storyIds) {
+  commands.push('- stopApp');
+
   for (const mode of ['light', 'dark']) {
     commands.push(
-      '- stopApp',
       `- openLink: valence-storybook://storybook?STORYBOOK_STORY_ID=${storyId}&preset=hi-vis&mode=${mode}`,
       '- waitForAnimationToEnd:',
       '    timeout: 30000',
-      `- takeScreenshot: ${outputDirectory}/${storyId}-${mode}`,
+      `- takeScreenshot: ${storyId}-${mode}`,
     );
   }
 }

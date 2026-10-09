@@ -10,5 +10,5 @@ mkdir -p "$output_directory"
 trap 'rm -f "$flow"' EXIT
 
 pnpm --dir apps/native-storybook exec node scripts/generate-visual-flow.mjs \
-  "$platform" "$output_directory" > "$flow"
-maestro test "$flow"
+  "$platform" > "$flow"
+maestro test --test-output-dir "$output_directory" "$flow"
