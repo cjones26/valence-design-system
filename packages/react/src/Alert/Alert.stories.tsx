@@ -6,7 +6,7 @@ type Story = StoryObj<typeof Alert>;
 const meta: Meta<typeof Alert> = { title: 'Components/Alert', component: Alert };
 
 export const Default: Story = {
-  args: { title: 'Information', children: 'Your changes are saved automatically.' },
+  args: { title: 'Visual report canary', children: 'This intentional change must fail.' },
 };
 
 export const Success: Story = {
