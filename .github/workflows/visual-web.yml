@@ -12,7 +12,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      scope: ${{ steps.scope.outputs.scope }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Find affected components
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          if test -z "$BASE_SHA"; then
+            scope='*'
+          else
+            scope=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" |
+              node scripts/list-affected-visual-components.mjs)
+          fi
+          echo "scope=$scope" >> "$GITHUB_OUTPUT"
+
   compare:
+    needs: changes
+    if: needs.changes.outputs.scope != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -27,6 +52,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:visual:web
+        env:
+          VISUAL_COMPONENTS: ${{ needs.changes.outputs.scope }}
 
       - name: Upload visual differences
         if: failure()
@@ -38,6 +65,8 @@ jobs:
           retention-days: 14
 
   android:
+    needs: changes
+    if: needs.changes.outputs.scope != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -78,6 +107,8 @@ jobs:
 
       - name: Capture Android stories
         uses: reactivecircus/android-emulator-runner@c9c93e6ba9c4194322e114c40970d5983d9a07cc # v2.38.0
+        env:
+          VISUAL_COMPONENTS: ${{ needs.changes.outputs.scope }}
         with:
           api-level: 34
           arch: x86_64
@@ -112,6 +143,8 @@ jobs:
           retention-days: 1
 
   ios:
+    needs: changes
+    if: needs.changes.outputs.scope != ''
     runs-on: macos-26
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -139,6 +172,8 @@ jobs:
           echo "$RUNNER_TEMP/maestro/maestro/bin" >> "$GITHUB_PATH"
 
       - name: Capture iOS stories
+        env:
+          VISUAL_COMPONENTS: ${{ needs.changes.outputs.scope }}
         run: |
           device_id=$(xcrun simctl list devices available --json |
             jq -r '[.devices | to_entries[] | select(.key | contains("iOS")) | .value[] | select(.name | startswith("iPhone"))][0].udid')

@@ -3,10 +3,17 @@ import path from 'node:path';
 import { storyNameFromExport, toId } from 'storybook/internal/csf';
 
 const storiesDirectory = path.resolve('.rnstorybook/stories');
+const requestedComponents = process.env.VISUAL_COMPONENTS?.split(',').filter(Boolean);
 const stories = [];
 
 for (const fileName of readdirSync(storiesDirectory).sort()) {
   if (!fileName.endsWith('.stories.tsx')) {
+    continue;
+  }
+
+  const component = fileName.slice(0, -'.stories.tsx'.length);
+
+  if (requestedComponents?.[0] !== '*' && !requestedComponents?.includes(component)) {
     continue;
   }
 
