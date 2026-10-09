@@ -13,7 +13,11 @@ for (const fileName of readdirSync(storiesDirectory).sort()) {
 
   const component = fileName.slice(0, -'.stories.tsx'.length);
 
-  if (requestedComponents?.[0] !== '*' && !requestedComponents?.includes(component)) {
+  if (
+    requestedComponents &&
+    requestedComponents[0] !== '*' &&
+    !requestedComponents.includes(component)
+  ) {
     continue;
   }
 

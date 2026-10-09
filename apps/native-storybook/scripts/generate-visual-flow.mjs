@@ -20,6 +20,13 @@ for (const storyId of storyIds) {
   for (const mode of ['light', 'dark']) {
     commands.push(
       `- openLink: valence-storybook://storybook?STORYBOOK_STORY_ID=${storyId}&preset=hi-vis&mode=${mode}`,
+    );
+
+    if (platform === 'ios') {
+      commands.push('- tapOn:', '    text: Open', '    optional: true');
+    }
+
+    commands.push(
       '- waitForAnimationToEnd:',
       '    timeout: 30000',
       `- takeScreenshot: ${storyId}-${mode}`,
